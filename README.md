@@ -46,5 +46,29 @@ Filepicker.io
 5. CDN - AWS Cloudfront
 6. Notification - AWS SNS || Twilio
 
+**File Structure**
+
+E-commerce site
+- client
+  | - dist
+      | - index.html
+      | - bundle.js
+  | - src
+      | - index.jsx
+      | - components
+          | - Product Detail Page
+          | - Ratings & Reviews
+          | - Questions & Answers
+          | - Related Items & Comparison
+  | - styles
+      | - styles.css
+- server
+  | - server.js
+- database
+  | - index.js
+- README.md
+- .gitignore
+- package.json
+- webpack.config.js
 
 
