@@ -9,7 +9,7 @@ Front-end
 1. Asset compilation + loading - Webpack + Nodemon + Axios
 2. Front-end MVC - React
 3. Data Store - React Hooks
-4. CSS Frameworks - Bootstrap
+4. CSS Frameworks - Styled components and CSS
 
 Server
 1. MVC - ExpressJS
