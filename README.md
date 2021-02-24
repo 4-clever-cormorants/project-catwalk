@@ -51,23 +51,20 @@ Filepicker.io
 E-commerce site
 - client
   | - dist
+      | - styles.css
       | - index.html
       | - bundle.js
   | - src
-      | - index.jsx
-      | - components
+      | - index.jsx (app)
+      | - components (add README file to each individual component)
           | - Product Detail Page
           | - Ratings & Reviews
           | - Questions & Answers
           | - Related Items & Comparison
-  | - styles
-      | - styles.css
 - server
-  | - server.js
-- database
-  | - index.js
-- README.md
-- .gitignore
+  | - server.js (api folder ?)
+- README.md (can link to the component READMEs)
+- .gitignore - (node_modules, API keys, the bundle)
 - package.json
 - webpack.config.js
 
