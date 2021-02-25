@@ -1,0 +1,37 @@
+{
+  "name": "project-catwalk",
+  "version": "1.0.0",
+  "description": "1. Package Manager - Npm 2. Dependencies - Axios + Webpack 3. Version - ES6 4. Linting - ESlint",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "react-dev": "webpack --mode development --watch",
+    "server-dev": "npx nodemon server/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/samuelberston/project-catwalk.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/samuelberston/project-catwalk/issues"
+  },
+  "homepage": "https://github.com/samuelberston/project-catwalk#readme",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "express": "^4.17.1",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.13.1",
+    "@babel/preset-env": "^7.12.11",
+    "@babel/preset-react": "^7.12.10",
+    "babel-loader": "^8.2.2",
+    "jest": "^26.6.3",
+    "nodemon": "^2.0.7",
+    "webpack": "^4.44.2",
+    "webpack-cli": "^4.2.0"
+  }
+}
