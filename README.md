@@ -65,6 +65,7 @@ E-commerce site
   | - server.js (api folder ?)
 - README.md (can link to the component READMEs)
 - .gitignore - (node_modules, API keys, the bundle)
+- config.js (put your github token here)
 - package.json
 - webpack.config.js
 
