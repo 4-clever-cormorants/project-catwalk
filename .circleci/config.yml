@@ -19,3 +19,9 @@ jobs:
           name: Running in a Unique Container
           command: |
             node -v
+      - run:
+          name: Install Dependencies
+          command: npm ci
+      - run:
+          name: Run Tests
+          command: npm test
