@@ -11,8 +11,9 @@ class ProductDetails extends React.component {
   render() {
     return (
       <div>
+        hi
       </div>
-    )
+    );
   }
 }
 

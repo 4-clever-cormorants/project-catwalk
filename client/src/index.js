@@ -2,7 +2,7 @@ import React from 'react';
 import ProductDetails from './components/ProductDetails/ProductDetails';
 import RelatedProducts from './components/RelatedProducts';
 import RatingsAndReviews from './components/RatingsAndReviews';
-import Questions from './components/QA';
+import Questions from './components/Questions';
 
 class App extends React.component {
   constructor() {

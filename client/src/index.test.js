@@ -6,7 +6,7 @@ import RatingsAndReviews from './components/RatingsAndReviews';
 import QA from './components/Questions';
 import App from './index';
 
-it ('should render all the components', function() {
+it('should render all the components', () => {
   const wrapper = shallow(<App />);
   const PD = wrapper.find(<ProductDetails />);
   const RP = wrapper.find(<RelatedProducts />);
@@ -16,4 +16,4 @@ it ('should render all the components', function() {
   expect(RP.exists()).toBe(true);
   expect(RR.exists()).toBe(true);
   expect(Q.exists()).toBe(true);
-})
+});
