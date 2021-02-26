@@ -1,8 +1,8 @@
 import React from 'react';
-import ProductDetails from './components/ProductDetails.jsx';
-import RelatedProducts from './components/RelatedProducts.jsx';
-import RatingsAndReviews from './components/RatingsAndReviews.jsx';
-import QA from './components/QA.jsx';
+import ProductDetails from './components/ProductDetails/ProductDetails';
+import RelatedProducts from './components/RelatedProducts';
+import RatingsAndReviews from './components/RatingsAndReviews';
+import Questions from './components/QA';
 
 class App extends React.component {
   constructor() {
@@ -18,9 +18,9 @@ class App extends React.component {
         <ProductDetails />
         <RelatedProducts />
         <RatingsAndReviews />
-        <QA />
+        <Questions />
       </div>
-    )
+    );
   }
 }
 

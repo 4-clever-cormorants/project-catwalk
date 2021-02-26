@@ -1,6 +1,6 @@
 import React from 'react';
 
-clas QA extends React.component {
+class Questions extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -11,8 +11,10 @@ clas QA extends React.component {
   render() {
     return (
       <div>
-
+        hi
       </div>
-    )
+    );
   }
 }
+
+export default Questions;

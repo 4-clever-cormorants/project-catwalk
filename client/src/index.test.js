@@ -1,10 +1,10 @@
 import React from 'react';
-import ProductDetails from './components/ProductDetails.jsx';
-import RelatedProducts from './components/RelatedProducts.jsx';
-import RatingsAndReviews from './components/RatingsAndReviews.jsx';
-import QA from './components/QA.jsx';
-import App from './components/index.jsx';
-import {shallow} from 'enzyme';
+import { shallow } from 'enzyme';
+import ProductDetails from './components/ProductDetails/ProductDetails';
+import RelatedProducts from './components/RelatedProducts';
+import RatingsAndReviews from './components/RatingsAndReviews';
+import QA from './components/Questions';
+import App from './index';
 
 it ('should render all the components', function() {
   const wrapper = shallow(<App />);

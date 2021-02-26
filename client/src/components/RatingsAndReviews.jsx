@@ -11,8 +11,10 @@ class RatingsAndReviews extends React.component {
   render() {
     return (
       <div>
-
+        hi
       </div>
-    )
+    );
   }
 }
+
+export default RatingsAndReviews;

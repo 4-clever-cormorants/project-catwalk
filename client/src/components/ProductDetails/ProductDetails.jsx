@@ -15,3 +15,5 @@ class ProductDetails extends React.component {
     )
   }
 }
+
+export default ProductDetails;
