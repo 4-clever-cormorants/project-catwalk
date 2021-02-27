@@ -23,5 +23,9 @@ jobs:
           name: Install Dependencies
           command: npm ci
       - run:
+          name: Copy config.js
+          command: |
+            echo modules.export = { TOKEN: $TOKEN } > config.js
+      - run:
           name: Run Tests
           command: npm test
