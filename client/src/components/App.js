@@ -8,17 +8,18 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-
+      productId: '14931',
     };
   }
 
   render() {
+    const { productId } = this.state;
     return (
       <div id="app" className="app">
-        <ProductDetails />
-        <RelatedProducts />
-        <RatingsAndReviews />
-        <Questions />
+        <ProductDetails productId={productId} />
+        <RelatedProducts productId={productId} />
+        <RatingsAndReviews productId={productId} />
+        <Questions productId={productId} />
       </div>
     );
   }
