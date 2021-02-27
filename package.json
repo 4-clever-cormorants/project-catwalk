@@ -4,7 +4,7 @@
   "description": "1. Package Manager - Npm 2. Dependencies - Axios + Webpack 3. Version - ES6 4. Linting - ESlint",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
+    "test": "jest --coverage",
     "react-dev": "webpack --mode development --watch",
     "server-dev": "npx nodemon server/server.js"
   },
