@@ -4,6 +4,16 @@ const path = require('path');
 
 const app = express();
 
+app.use(express.static(path.join(__dirname, '/../client/dist')));
+
+const logger = (req, res, next) => {
+  console.log(`Receiving request to ${req.url} with method ${req.method}`);
+  next();
+};
+
+app.get('/', logger);
+
+// some change to commit
 const CAMPUS_CODE = 'hr-sfo';
 
 const axios = require('axios');
@@ -40,6 +50,7 @@ app.get('/products', (req, res) => {
 });
 
 const port = 1128;
+
 const server = app.listen(port, () => {
   console.log(`listening on port ${port}`);
 });
@@ -48,3 +59,5 @@ module.exports = {
   app,
   server,
 };
+
+// some change to initiate the development branch
