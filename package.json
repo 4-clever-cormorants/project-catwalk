@@ -4,7 +4,7 @@
   "description": "1. Package Manager - Npm 2. Dependencies - Axios + Webpack 3. Version - ES6 4. Linting - ESlint",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
+    "test": "jest --coverage",
     "react-dev": "webpack --mode development --watch",
     "server-dev": "npx nodemon server/server.js"
   },
@@ -21,14 +21,19 @@
   "dependencies": {
     "axios": "^0.21.1",
     "express": "^4.17.1",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1"
+    "jest-environment-enzyme": "^7.1.2",
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0"
   },
   "devDependencies": {
     "@babel/core": "^7.13.1",
     "@babel/preset-env": "^7.12.11",
     "@babel/preset-react": "^7.12.10",
+    "babel-jest": "^26.6.3",
     "babel-loader": "^8.2.2",
+    "circleci": "^0.3.3",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.6",
     "eslint": "^7.20.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-plugin-import": "^2.22.1",
@@ -36,8 +41,17 @@
     "eslint-plugin-react": "^7.22.0",
     "eslint-plugin-react-hooks": "^4.2.0",
     "jest": "^26.6.3",
+    "jest-enzyme": "^7.1.2",
     "nodemon": "^2.0.7",
+    "react-test-renderer": "^17.0.1",
+    "supertest": "^6.1.3",
     "webpack": "^4.44.2",
     "webpack-cli": "^4.2.0"
+  },
+  "jest": {
+    "setupFilesAfterEnv": [
+      "jest-enzyme"
+    ],
+    "testEnvironment": "enzyme"
   }
 }
