@@ -1,4 +1,5 @@
 import React from 'react';
+import List from './List';
 
 class RelatedProducts extends React.Component {
   constructor(props) {
@@ -11,7 +12,9 @@ class RelatedProducts extends React.Component {
   render() {
     return (
       <div className="RR">
-        RelatedProducts
+        <span>RelatedProducts</span>
+        <List className="relatedProductsList" />
+        <List className="yourOwnOutfitsList" />
       </div>
     );
   }
