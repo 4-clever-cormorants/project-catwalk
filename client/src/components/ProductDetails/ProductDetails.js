@@ -1,5 +1,4 @@
 import React from 'react';
-
 import ImageGallery from './ImageGallery/ImageGallery';
 import ProductInformation from './ProductInformation/ProductInformation';
 // import StyleSelector from './StyleSelector/StyleSelector';
