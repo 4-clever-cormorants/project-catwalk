@@ -16,7 +16,18 @@ const ProductInformation = ({ product }) => (
 );
 
 ProductInformation.propTypes = {
-  product: PropTypes.objectOf().isRequired,
+  product: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    campus: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    slogan: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    category: PropTypes.string.isRequired,
+    default_price: PropTypes.string.isRequired,
+    created_at: PropTypes.string.isRequired,
+    updated_at: PropTypes.string.isRequired,
+    features: PropTypes.arrayOf(PropTypes.objects).isRequired,
+  }).isRequired,
 };
 
 export default ProductInformation;
