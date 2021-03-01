@@ -1,4 +1,5 @@
 import React from 'react';
+// import ImageGallery from './Im'
 
 class ProductDetails extends React.Component {
   constructor(props) {

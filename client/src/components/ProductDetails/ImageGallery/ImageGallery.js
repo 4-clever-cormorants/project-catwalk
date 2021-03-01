@@ -1,13 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import DefaultView from './DefaultView';
-import Thumbnail
+import ThumbnailView from './ThumbnailView';
 
 class ImageGallery extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      // add image data here
-    };
+  constructor({ photos }) {
+    super({ photos });
   }
 
   render() {
@@ -15,9 +13,15 @@ class ImageGallery extends React.Component {
       <div className="imageGallery">
         image gallery
         <DefaultView />
+        {this.photos.map((photo) => (
+          <ThumbnailView thumbailUrl={photo.thumbail_url} />))}
       </div>
     );
   }
 }
+
+ImageGallery.propTypes = {
+  photos: PropTypes.arrayOf.objects.isRequired,
+};
 
 export default ImageGallery;
