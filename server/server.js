@@ -22,17 +22,6 @@ app.use(express.static(path.join(__dirname, '../client/dist')));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-const CAMPUS_CODE = 'hr-sfo';
-
-const axios = require('axios');
-
-const config = require('../config.js');
-
-app.use(express.static(path.join(__dirname, '../client/dist')));
-
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
-
 app.get('/', (req, res) => {
   res.render('index');
 });
@@ -44,8 +33,17 @@ app.get('/test', (req, res) => {
 app.get('/products', (req, res) => {
   // get all by default as a test
   axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/${CAMPUS_CODE}/products`, {
-app.get('/', (req, res) => {
-  res.render('index');
+    headers: {
+      'User-Agent': 'request',
+      Authorization: `${config.TOKEN}`,
+    },
+  })
+    .then((response) => {
+      res.send(response.data);
+    })
+    .catch((error) => {
+      res.status(500).send(error);
+    });
 });
 
 app.get('/test', (req, res) => {
@@ -78,4 +76,3 @@ module.exports = {
   app,
   server,
 };
-
