@@ -1,10 +1,10 @@
 import React from 'react';
 
 import ImageGallery from './ImageGallery/ImageGallery';
-// import ProductInformation from './ProductInformation/ProductInformation';
+import ProductInformation from './ProductInformation/ProductInformation';
 // import StyleSelector from './StyleSelector/StyleSelector';
 
-// import product from './productDummyData';
+import product from './productDummyData';
 import styles from './stylesDummyData';
 
 class ProductDetails extends React.Component {
@@ -18,8 +18,8 @@ class ProductDetails extends React.Component {
     return (
       <div>
         ProductDetails
-        {/* <ImageGallery /> */}
         <ImageGallery photos={styles.results[0].photos} />
+        <ProductInformation product={product} />
         {/* <ProductInformation />
         <StyleSelector /> */}
       </div>
