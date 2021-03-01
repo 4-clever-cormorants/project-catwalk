@@ -4,21 +4,18 @@ const path = require('path');
 
 const app = express();
 
-app.use(express.static(path.join(__dirname, '/../client/dist')));
+const CAMPUS_CODE = 'hr-sfo';
+
+const axios = require('axios');
+
+const config = require('../config.js');
 
 const logger = (req, res, next) => {
   console.log(`Receiving request to ${req.url} with method ${req.method}`);
   next();
 };
 
-app.get('/', logger);
-
-// some change to commit
-const CAMPUS_CODE = 'hr-sfo';
-
-const axios = require('axios');
-
-const config = require('../config.js');
+app.use('/', logger);
 
 app.use(express.static(path.join(__dirname, '../client/dist')));
 
@@ -27,6 +24,26 @@ app.use(express.json());
 
 app.get('/', (req, res) => {
   res.render('index');
+});
+
+app.get('/test', (req, res) => {
+  res.send('test');
+});
+
+app.get('/products', (req, res) => {
+  // get all by default as a test
+  axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/${CAMPUS_CODE}/products`, {
+    headers: {
+      'User-Agent': 'request',
+      Authorization: `${config.TOKEN}`,
+    },
+  })
+    .then((response) => {
+      res.send(response.data);
+    })
+    .catch((error) => {
+      res.status(500).send(error);
+    });
 });
 
 app.get('/test', (req, res) => {
@@ -59,5 +76,3 @@ module.exports = {
   app,
   server,
 };
-
-// some change to initiate the development branch
