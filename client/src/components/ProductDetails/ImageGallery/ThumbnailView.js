@@ -1,14 +1,15 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-const ThumbnailView = (props) => (
+const ThumbnailView = ({ imageUrl }) => (
   <div>
     a single thumbnail image
-    {props.image}
+    <img src={imageUrl} alt="thumbnailimage" />
   </div>
 );
 
 ThumbnailView.propTypes = {
-  image: PropTypes.string,
+  imageUrl: PropTypes.string.isRequired,
 };
 
 export default ThumbnailView;
