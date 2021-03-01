@@ -32,6 +32,26 @@ app.get('/test', (req, res) => {
 
 app.get('/products', (req, res) => {
   // get all by default as a test
+  axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/${CAMPUS_CODE}/products`, {
+    headers: {
+      'User-Agent': 'request',
+      Authorization: `${config.TOKEN}`,
+    },
+  })
+    .then((response) => {
+      res.send(response.data);
+    })
+    .catch((error) => {
+      res.status(500).send(error);
+    });
+});
+
+app.get('/test', (req, res) => {
+  res.send('test');
+});
+
+app.get('/products', (req, res) => {
+  // get all by default as a test
   axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/${CAMPUS_CODE}/products/`, {
     headers: {
       'User-Agent': 'request',
@@ -47,6 +67,7 @@ app.get('/products', (req, res) => {
 });
 
 const port = 1128;
+
 const server = app.listen(port, () => {
   console.log(`listening on port ${port}`);
 });
@@ -55,5 +76,3 @@ module.exports = {
   app,
   server,
 };
-
-// some change to commit
