@@ -5,7 +5,7 @@ import ImageGallery from './ImageGallery/ImageGallery';
 // import StyleSelector from './StyleSelector/StyleSelector';
 
 // import product from './productDummyData';
-// import styles from './stylesDummyData';
+import styles from './stylesDummyData';
 
 class ProductDetails extends React.Component {
   constructor(props) {
@@ -18,9 +18,9 @@ class ProductDetails extends React.Component {
     return (
       <div>
         ProductDetails
-        <ImageGallery />
-        {/* <ImageGallery photos={styles.results[0].photos} />
-        <ProductInformation />
+        {/* <ImageGallery /> */}
+        <ImageGallery photos={styles.results[0].photos} />
+        {/* <ProductInformation />
         <StyleSelector /> */}
       </div>
     );
