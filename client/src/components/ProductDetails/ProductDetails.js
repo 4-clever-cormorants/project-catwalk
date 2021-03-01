@@ -1,5 +1,5 @@
 import React from 'react';
-// import ImageGallery from './Im'
+import ImageGallery from './ImageGallery/ImageGallery';
 
 class ProductDetails extends React.Component {
   constructor(props) {
@@ -13,6 +13,7 @@ class ProductDetails extends React.Component {
     return (
       <div>
         ProductDetails
+        <ImageGallery />
       </div>
     );
   }
