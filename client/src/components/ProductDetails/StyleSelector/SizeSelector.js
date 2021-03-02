@@ -1,6 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-const SizeSelector = () => (
+const SizeSelector = ({ skus }) => (
   <label>
     size selector
     <select name="size" value="hi">
@@ -8,5 +9,9 @@ const SizeSelector = () => (
     </select>
   </label>
 );
+
+SizeSelector.propTypes = {
+  skus: PropTypes.objectOf().isRequired,
+};
 
 export default SizeSelector;
