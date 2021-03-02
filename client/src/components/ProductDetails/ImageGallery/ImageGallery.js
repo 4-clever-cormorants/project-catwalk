@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import DefaultView from './DefaultView';
 import ThumbnailView from './ThumbnailView';
 
-const ImageGallery = ({ photos }) => (
-  <div className="imageGallery">
+const ImageGallery = ({ photos, styleId }) => (
+  <div className="imageGallery" styleId={styleId}>
     image gallery
     <DefaultView url={photos[0].url} />
     {photos.map((photo) => (
@@ -17,6 +17,7 @@ const ImageGallery = ({ photos }) => (
 
 ImageGallery.propTypes = {
   photos: PropTypes.arrayOf(PropTypes.object).isRequired,
+  styleId: PropTypes.string.isRequired,
 };
 
 export default ImageGallery;
