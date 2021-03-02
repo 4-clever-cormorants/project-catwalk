@@ -3,22 +3,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const SizeSelector = ({ skus }) => (
-  <div className="styleSelector">
+const SizeSelector = ({ skus, onChange }) => (
+  <form className="styleSelector" onChange={onChange}>
     size selector
     <select name="size" value="hi">
       {Object.keys(skus).map((sku) => {
         if (skus[sku].quantity !== 0) {
-          console.log(sku);
           return (
-            <option value={skus[sku].size}>
+            <option value={sku}>
               {skus[sku].size}
             </option>
           );
         }
       })}
     </select>
-  </div>
+  </form>
 );
 
 SizeSelector.propTypes = {
