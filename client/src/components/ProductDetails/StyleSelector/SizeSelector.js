@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 const SizeSelector = ({ skus, onChange }) => (
   <form className="styleSelector" onChange={onChange}>
     size selector
-    <select name="size" value="hi">
+    <select name="size">
       {Object.keys(skus).map((sku) => {
         if (skus[sku].quantity !== 0) {
           return (
@@ -22,6 +22,7 @@ const SizeSelector = ({ skus, onChange }) => (
 
 SizeSelector.propTypes = {
   skus: PropTypes.objectOf(PropTypes.object).isRequired,
+  onChange: PropTypes.func.isRequired,
 };
 
 export default SizeSelector;
