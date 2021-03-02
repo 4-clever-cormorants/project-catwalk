@@ -18,6 +18,6 @@ it('should have card components in the related product list', () => {
   const wrapper = mount(<List className="relatedProductsList" productsList={dummy.relatedProducts} />);
   const firstCard = wrapper.find('.card').first();
 
-  expect(firstCard.text()).toBe('Gwendolyn Sweater');
+  expect(firstCard.find('.cardName').text()).toBe('Gwendolyn Sweater');
   expect(firstCard.getDOMNode().getAttribute('id')).toBe('14373');
 });
