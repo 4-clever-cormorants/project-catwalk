@@ -61,7 +61,7 @@ class ProductDetails extends React.Component {
 }
 
 ProductDetails.propTypes = {
-  productId: PropTypes.string.isRequired,
+  productId: PropTypes.string,
 };
 
 export default ProductDetails;
