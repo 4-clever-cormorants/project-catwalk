@@ -1,5 +1,6 @@
 import React from 'react';
 import List from './List';
+import dummy from './dummy_related';
 
 class RelatedProducts extends React.Component {
   constructor(props) {
@@ -13,8 +14,7 @@ class RelatedProducts extends React.Component {
     return (
       <div className="RR">
         <span>RelatedProducts</span>
-        <List className="relatedProductsList" />
-        <List className="yourOwnOutfitsList" />
+        <List className="relatedProductsList" productsList={dummy.relatedProducts} />
       </div>
     );
   }
