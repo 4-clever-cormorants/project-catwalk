@@ -5,7 +5,7 @@
 /* eslint-disable react/no-array-index-key */
 import React from 'react';
 import DummyData from './DummyData.js';
-//import Review from './Review.js';
+// import Review from './Review.js';
 import AddReview from './AddReview.js';
 
 class RatingsAndReviews extends React.Component {
@@ -22,17 +22,15 @@ class RatingsAndReviews extends React.Component {
     this.setState({
       reviews: DummyData,
       numReviews: DummyData.length,
-    })
+    });
   }
 
-  
-  //handleChange(event) {
+  // handleChange(event) {
   //  this.setState({clicked: true})
-  //console.log(event.target.value);
-//}
+  // console.log(event.target.value);
+  // }
 
   render() {
-
     return (
       <div className="Reviews">
         <h1>Ratings and Reviews</h1>
@@ -40,20 +38,20 @@ class RatingsAndReviews extends React.Component {
         {
           // eslint-disable-next-line react/destructuring-assignment
           // eslint-disable-next-line react/jsx-wrap-multilines
-          this.state.reviews.map((i, index) => <div key={index}>
-            <p>{i.nickname}</p>
-            <p>{i.date}</p>
-            <p>{i.reviewBody}</p>
-            <p>{i.response}</p>
-            <button type="submit">Yes</button>
-            <button type="submit">No</button>
-          </div>
-          )}
-        <br></br>
+          this.state.reviews.map((i, index) => (
+            <div key={index}>
+              <p>{i.nickname}</p>
+              <p>{i.date}</p>
+              <p>{i.reviewBody}</p>
+              <p>{i.response}</p>
+              <button type="submit">Yes</button>
+              <button type="submit">No</button>
+            </div>
+          ))
+}
         <AddReview />
       </div>
-    )
-
+    );
   }
 }
 
