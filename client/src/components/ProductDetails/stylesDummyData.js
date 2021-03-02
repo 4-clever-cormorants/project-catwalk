@@ -6,7 +6,7 @@ const styles = {
       name: 'Teal',
       original_price: '398.00',
       sale_price: '254.00',
-      'default?': true,
+      default: true,
       photos: [
         {
           thumbnail_url: 'https://images.unsplash.com/photo-1532244769164-ff64ddeefa45?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80',

@@ -10,7 +10,7 @@ import SizeSelector from './SizeSelector';
 const StyleSelector = ({ styles }) => (
   <div className="styleSelector">
     style selector
-    <StylesDisplay />
+    <StylesDisplay styles={styles.results} />
     <SizeSelector />
   </div>
 );
@@ -21,7 +21,7 @@ StyleSelector.propTypes = {
     name: PropTypes.string.isRequired,
     original_price: PropTypes.string.isRequired,
     sale_price: PropTypes.string.isRequired,
-    'default?': PropTypes.bool.isRequired,
+    default: PropTypes.bool.isRequired,
     photos: PropTypes.arrayOf(PropTypes.objectOf(PropTypes.string)).isRequired,
     skus: PropTypes.objectOf(PropTypes.object).isRequired,
   })).isRequired,
