@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1614728598205" clover="3.2.0">
-  <project timestamp="1614728598205" name="All files">
+<coverage generated="1614728860536" clover="3.2.0">
+  <project timestamp="1614728860536" name="All files">
     <metrics statements="113" coveredstatements="95" conditionals="4" coveredconditionals="2" methods="43" coveredmethods="29" elements="160" coveredelements="126" complexity="0" loc="113" ncloc="113" packages="10" files="23" classes="23"/>
     <package name="project-catwalk">
       <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
@@ -48,9 +48,9 @@
       <metrics statements="10" coveredstatements="10" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="4"/>
       <file name="DefaultView.js" path="/Users/samuelberston/Desktop/FEC/project-catwalk/client/src/components/ProductDetails/ImageGallery/DefaultView.js">
         <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-        <line num="4" count="3" type="stmt"/>
-        <line num="5" count="4" type="stmt"/>
-        <line num="11" count="3" type="stmt"/>
+        <line num="4" count="4" type="stmt"/>
+        <line num="5" count="5" type="stmt"/>
+        <line num="11" count="4" type="stmt"/>
       </file>
       <file name="ImageGallery.js" path="/Users/samuelberston/Desktop/FEC/project-catwalk/client/src/components/ProductDetails/ImageGallery/ImageGallery.js">
         <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>

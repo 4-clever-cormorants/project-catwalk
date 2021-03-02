@@ -80,10 +80,10 @@ SF:client/src/components/ProductDetails/ImageGallery/DefaultView.js
 FN:4,(anonymous_0)
 FNF:1
 FNH:1
-FNDA:4,(anonymous_0)
-DA:4,3
-DA:5,4
-DA:11,3
+FNDA:5,(anonymous_0)
+DA:4,4
+DA:5,5
+DA:11,4
 LF:3
 LH:3
 BRF:0
