@@ -7,13 +7,28 @@ import SizeSelector from './SizeSelector';
 // refactor to hold the state of the selected style and
 // then refactor the size selector and qty selector to reflect the options for that selected style
 
-const StyleSelector = ({ styles }) => (
-  <div className="styleSelector">
-    style selector
-    <StylesDisplay styles={styles.results} />
-    <SizeSelector />
-  </div>
-);
+class StyleSelector extends React.Component {
+  constructor({ styles }) {
+    super({ styles });
+    this.state = {
+      selectedStyle: styles[0],
+    };
+  }
+
+  render() {
+    const { styles } = this.props;
+    const { selectedStyle } = this.state;
+    console.log('seclectedStyle: ', selectedStyle);
+    const { skus } = selectedStyle;
+    return (
+      <div className="styleSelector">
+        style selector
+        <StylesDisplay styles={styles} />
+        <SizeSelector skus={skus} />
+      </div>
+    );
+  }
+}
 
 StyleSelector.propTypes = {
   styles: PropTypes.arrayOf(PropTypes.shape({

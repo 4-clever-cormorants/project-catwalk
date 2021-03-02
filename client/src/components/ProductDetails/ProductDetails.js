@@ -19,7 +19,7 @@ class ProductDetails extends React.Component {
         ProductDetails
         <ImageGallery photos={styles.results[0].photos} />
         <ProductInformation product={product} />
-        <StyleSelector styles={styles} />
+        <StyleSelector styles={styles.results} />
       </div>
     );
   }
