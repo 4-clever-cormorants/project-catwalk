@@ -11,7 +11,7 @@ class AnswerForm extends React.Component {
   render() {
     return (
       <div className="answerForm">
-        answerForm
+        answerForm1
       </div>
     );
   }
