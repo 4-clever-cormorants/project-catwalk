@@ -7,8 +7,7 @@ import Price from './Price';
 
 const ProductInformation = ({ product }) => (
   <div className="productInformation">
-    {console.log(product)}
-    product information
+    <h2>product information</h2>
     <Category category={product.category} />
     <Title title={product.name} />
     <Price price={product.default_price} />
@@ -26,7 +25,7 @@ ProductInformation.propTypes = {
     default_price: PropTypes.string.isRequired,
     created_at: PropTypes.string.isRequired,
     updated_at: PropTypes.string.isRequired,
-    features: PropTypes.arrayOf(PropTypes.objects).isRequired,
+    features: PropTypes.arrayOf(PropTypes.object).isRequired,
   }).isRequired,
 };
 
