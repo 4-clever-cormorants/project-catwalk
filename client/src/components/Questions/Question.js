@@ -213,24 +213,4 @@ Question.defaultProps = {
   },
 };
 
-/*
-"question_id": 84309,
-      "question_body": "Dolor in et laudantium sit ut rerum reiciendis velit explicabo.",
-      "question_date": "2020-06-18T00:00:00.000Z",
-      "asker_name": "Marina.Feest",
-      "question_helpfulness": 20,
-      "reported": false,
-      "answers": {
-        "800532": {
-          "id": 800532,
-          "body": "Voluptate labore exercitationem dolorem.",
-          "date": "2020-02-27T00:00:00.000Z",
-          "answerer_name": "Marcellus_Barton",
-          "helpfulness": 19,
-          "photos": [
-            "https://images.unsplash.com/photo-1501088430049-71c79fa3283e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80"
-          ]
-        },
-*/
-
 export default Question;
