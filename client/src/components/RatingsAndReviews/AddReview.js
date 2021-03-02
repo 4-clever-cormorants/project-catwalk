@@ -35,18 +35,9 @@ class AddReview extends React.Component {
   }
 
   submitData(event) {
-    //if (this.state.checkout > 3) {
     event.preventDefault();
     console.log(this.state)
-    // axios.post('/basicInfo', {
-    //   data
-    // })
-    //   .then(function (response) {
-    //     console.log(response);
-    //   })
-    //   .catch(function (error) {
-    //     console.log(error);
-    //   })
+   
   }
 
 
