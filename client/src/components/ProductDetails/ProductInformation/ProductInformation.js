@@ -7,7 +7,7 @@ import Price from './Price';
 
 const ProductInformation = ({ product }) => (
   <div className="productInformation">
-    product information
+    <h2>product information</h2>
     <Category category={product.category} />
     <Title title={product.name} />
     <Price price={product.default_price} />

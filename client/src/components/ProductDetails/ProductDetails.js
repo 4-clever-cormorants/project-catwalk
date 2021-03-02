@@ -40,7 +40,7 @@ class ProductDetails extends React.Component {
 
     return (
       <div className="productDetails">
-        ProductDetails
+        <h1>ProductDetails</h1>
         <ImageGallery photos={photos} styleId={styleId} />
         <ProductInformation product={product} />
         <StyleSelector styles={styles.results} onClick={this.styleSelector} />

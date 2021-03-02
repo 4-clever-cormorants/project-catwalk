@@ -33,7 +33,7 @@ class StyleSelector extends React.Component {
     const qty = skus[selectedSku].quantity;
     return (
       <div className="styleSelector">
-        style selector
+        <h2>style selector</h2>
         <StylesDisplay styles={styles} />
         <SizeSelector skus={skus} onChange={this.handleChange} />
         <QtySelector qty={qty} />
