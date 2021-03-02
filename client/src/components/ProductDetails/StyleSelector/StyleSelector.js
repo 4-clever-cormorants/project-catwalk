@@ -5,6 +5,7 @@ import StylesDisplay from './StylesDisplay';
 import SizeSelector from './SizeSelector';
 import QtySelector from './QtySelector';
 import AddToCart from './AddToCart';
+import Favorite from './Favorite';
 
 // refactor to hold the state of the selected style and
 // then refactor the size selector and qty selector to reflect the options for that selected style
@@ -37,6 +38,7 @@ class StyleSelector extends React.Component {
         <SizeSelector skus={skus} onChange={this.handleChange} />
         <QtySelector qty={qty} />
         <AddToCart />
+        <Favorite />
       </div>
     );
   }
