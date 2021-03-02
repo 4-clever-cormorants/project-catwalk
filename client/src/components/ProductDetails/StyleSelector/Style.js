@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Style = ({ style }) => (
-  <div className="style" id={style.style_id}>
+const Style = ({ style, onClick }) => (
+  <div className={style.style_id} id={style.style_id} onClick={onClick}>
     style
     <img src={style.photos[0].thumbnail_url} alt="" className={style.style_id} />
   </div>

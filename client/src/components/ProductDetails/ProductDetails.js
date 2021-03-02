@@ -12,26 +12,17 @@ class ProductDetails extends React.Component {
   constructor({ productId }) {
     super({ productId });
     this.state = {
-      productId,
       styleId: '76285',
-      sku: '440865',
     };
     this.styleSelector = this.styleSelector.bind(this);
-    this.skuSelector = this.skuSelector.bind(this);
   }
 
   styleSelector(e) {
     // when you click on the style image, update the state with that style id
+    console.log(e.target);
     const styleId = e.target.classList[0];
     this.setState({
       styleId,
-    });
-  }
-
-  skuSelector(e) {
-    console.log(e.target);
-    this.setState({
-      sku: 'hi',
     });
   }
 

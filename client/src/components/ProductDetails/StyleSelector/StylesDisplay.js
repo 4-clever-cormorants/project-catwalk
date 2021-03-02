@@ -7,8 +7,8 @@ const StylesDisplay = ({ styles, onClick }) => (
   <div className="StylesDisplay">
     styles: selected style
     {styles.map((style) => (
-      <div key={style.style_id} onClick={onClick} >
-        <Style style={style} />
+      <div key={style.style_id} >
+        <Style style={style} onClick={onClick} />
       </div>
     ))}
   </div>
