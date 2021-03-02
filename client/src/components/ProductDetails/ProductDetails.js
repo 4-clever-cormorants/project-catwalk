@@ -12,23 +12,30 @@ class ProductDetails extends React.Component {
   constructor({ productId }) {
     super({ productId });
     this.state = {
-      productId,
       styleId: '76285',
-      sku: '440865',
+      style: styles.results[0],
     };
     this.styleSelector = this.styleSelector.bind(this);
   }
 
   styleSelector(e) {
-    // when you click on the style image, update the state with that style id
-    console.log(e.target);
+    // when you click on the style image in StylesDisplay,
+    // update the state with that style id and style
+    const styleId = e.target.classList[0];
     this.setState({
-      styleId: 'xx',
+      styleId,
+    });
+    styles.results.forEach((style) => {
+      if (style.style_id === styleId) {
+        this.setState({
+          style,
+        });
+      }
     });
   }
 
   render() {
-    const { productId, styleId, sku } = this.state;
+    const { styleId, style } = this.state;
     // console.log(styles.results);
     // for (let i = 0; i < styles.results.length; i += 1) {
     //   console.log('style', styles.results[i].style_id);
@@ -36,14 +43,18 @@ class ProductDetails extends React.Component {
 
     //   }
     // }
-    const photos = styles.results[0].photos;
 
     return (
       <div className="productDetails">
         <h1>ProductDetails</h1>
-        <ImageGallery photos={photos} styleId={styleId} />
+        <ImageGallery styleId={styleId} style={style} />
         <ProductInformation product={product} />
-        <StyleSelector styles={styles.results} onClick={this.styleSelector} />
+        <StyleSelector
+          styles={styles.results}
+          styleSelector={this.styleSelector}
+          styleId={styleId}
+          style={style}
+        />
       </div>
     );
   }

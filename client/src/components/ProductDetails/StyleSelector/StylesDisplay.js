@@ -3,12 +3,12 @@ import PropTypes from 'prop-types';
 
 import Style from './Style';
 
-const StylesDisplay = ({ styles }) => (
+const StylesDisplay = ({ styles, onClick }) => (
   <div className="StylesDisplay">
     styles: selected style
     {styles.map((style) => (
       <div key={style.style_id}>
-        <Style style={style} />
+        <Style style={style} onClick={onClick} />
       </div>
     ))}
   </div>
@@ -24,6 +24,7 @@ StylesDisplay.propTypes = {
     photos: PropTypes.arrayOf(PropTypes.objectOf(PropTypes.string)).isRequired,
     skus: PropTypes.objectOf(PropTypes.object).isRequired,
   })).isRequired,
+  onClick: PropTypes.func.isRequired,
 };
 
 export default StylesDisplay;
