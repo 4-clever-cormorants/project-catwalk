@@ -10,7 +10,7 @@ const SizeSelector = ({ skus, onChange }) => (
       {Object.keys(skus).map((sku) => {
         if (skus[sku].quantity !== 0) {
           return (
-            <option value={sku}>
+            <option value={sku} key={sku}>
               {skus[sku].size}
             </option>
           );

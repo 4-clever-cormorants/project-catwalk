@@ -10,29 +10,30 @@ class ProductDetails extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      product: '14931',
-      style: '76285',
-      sku: '440865'
+      productId: '14931',
+      styleId: '76285',
+      sku: '440865',
     };
   }
 
-  // find the right photo set
-  // styles.results
-  // console.log(styles);
-  // console.log('hi');
-  componentDidMount() {
-    console.log('styles', styles);
-  }
-
   render() {
+    // const { productId, styleId, sku } = this.state;
+    // console.log(styles.results);
+    // for (let i = 0; i < styles.results.length; i += 1) {
+    //   console.log('style', styles.results[i].style_id);
+    //   if (styles.results[i].style_id === styleId) {
+
+    //   }
+    // }
     const photos = styles.results[0].photos;
+
     return (
       <div className="productDetails">
         ProductDetails
         <ImageGallery photos={photos} />
         <ProductInformation product={product} />
         <StyleSelector styles={styles.results} />
-       </div>
+      </div>
     );
   }
 }

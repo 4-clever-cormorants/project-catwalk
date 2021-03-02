@@ -16,7 +16,7 @@ const StylesDisplay = ({ styles }) => (
 
 StylesDisplay.propTypes = {
   styles: PropTypes.arrayOf(PropTypes.shape({
-    style_id: PropTypes.number.isRequired,
+    style_id: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     original_price: PropTypes.string.isRequired,
     sale_price: PropTypes.string,

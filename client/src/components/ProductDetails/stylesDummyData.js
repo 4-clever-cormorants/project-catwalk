@@ -2,7 +2,7 @@ const styles = {
   product_id: '14931',
   results: [
     {
-      style_id: 76285,
+      style_id: '76285',
       name: 'Teal',
       original_price: '398.00',
       sale_price: '254.00',
@@ -41,7 +41,7 @@ const styles = {
       },
     },
     {
-      style_id: 76286,
+      style_id: '76286',
       name: 'Pink',
       original_price: '398.00',
       sale_price: null,
