@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import StylesDisplay from './StylesDisplay';
 import SizeSelector from './SizeSelector';
 import QtySelector from './QtySelector';
+import AddToCart from './AddToCart';
 
 // refactor to hold the state of the selected style and
 // then refactor the size selector and qty selector to reflect the options for that selected style
@@ -35,6 +36,7 @@ class StyleSelector extends React.Component {
         <StylesDisplay styles={styles} />
         <SizeSelector skus={skus} onChange={this.handleChange} />
         <QtySelector qty={qty} />
+        <AddToCart />
       </div>
     );
   }
