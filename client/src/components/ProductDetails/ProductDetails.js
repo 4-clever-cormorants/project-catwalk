@@ -10,14 +10,26 @@ class ProductDetails extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      product: '14931',
+      style: '76285',
+      sku: '440865'
     };
   }
 
+  // find the right photo set
+  // styles.results
+  // console.log(styles);
+  // console.log('hi');
+  componentDidMount() {
+    console.log('styles', styles);
+  }
+
   render() {
+    const photos = styles.results[0].photos;
     return (
       <div className="productDetails">
         ProductDetails
-        <ImageGallery photos={styles.results[0].photos} />
+        <ImageGallery photos={photos} />
         <ProductInformation product={product} />
         <StyleSelector styles={styles.results} />
        </div>
