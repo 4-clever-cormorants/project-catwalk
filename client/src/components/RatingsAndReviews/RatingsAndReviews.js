@@ -1,3 +1,5 @@
+/* eslint-disable import/extensions */
+/* eslint-disable react/no-unused-state */
 /* eslint-disable react/jsx-one-expression-per-line */
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable react/no-array-index-key */
@@ -12,6 +14,7 @@ class RatingsAndReviews extends React.Component {
     this.state = {
       reviews: [],
       numReviews: 0,
+      clicked: false,
     };
   }
 
@@ -19,19 +22,26 @@ class RatingsAndReviews extends React.Component {
     this.setState({
       reviews: DummyData,
       numReviews: DummyData.length,
-    });
+    })
   }
 
+  
+  //handleChange(event) {
+  //  this.setState({clicked: true})
+  //console.log(event.target.value);
+//}
+
   render() {
+
     return (
       <div className="Reviews">
         <h1>Ratings and Reviews</h1>
-        <h2>{this.state.numReviews} reviews</h2>
+        <h3>{this.state.numReviews} reviews</h3>
         {
           // eslint-disable-next-line react/destructuring-assignment
           // eslint-disable-next-line react/jsx-wrap-multilines
           this.state.reviews.map((i, index) => <div key={index}>
-            <p>{i.name}</p>
+            <p>{i.nickname}</p>
             <p>{i.date}</p>
             <p>{i.reviewBody}</p>
             <p>{i.response}</p>
@@ -43,6 +53,7 @@ class RatingsAndReviews extends React.Component {
         <AddReview />
       </div>
     )
+
   }
 }
 
