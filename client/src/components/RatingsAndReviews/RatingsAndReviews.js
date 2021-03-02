@@ -18,13 +18,6 @@ class RatingsAndReviews extends React.Component {
     };
   }
 
-  componentDidMount() {
-    this.setState({
-      reviews: DummyData,
-      numReviews: DummyData.length,
-    });
-  }
-
   // handleChange(event) {
   //  this.setState({clicked: true})
   // console.log(event.target.value);
@@ -48,7 +41,7 @@ class RatingsAndReviews extends React.Component {
               <button type="submit">No</button>
             </div>
           ))
-}
+        }
         <AddReview />
       </div>
     );

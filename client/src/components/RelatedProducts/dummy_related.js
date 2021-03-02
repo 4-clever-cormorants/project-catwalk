@@ -1,5 +1,30 @@
 const related = [14373, 15034, 14586];
 
+const currentProduct = [{
+  id: 14931,
+  campus: 'hr-sfo',
+  name: 'Manuela Pants',
+  slogan: 'Nemo ratione deserunt.',
+  description:
+    'Rerum quia tempore aperiam reiciendis. Eum a enim. Saepe magni tenetur et. Sit est beatae.',
+  category: 'Pants',
+  default_price: '398.00',
+  created_at: '2021-02-23T02:49:03.102Z',
+  updated_at: '2021-02-23T02:49:03.102Z',
+  features: [
+    {
+      feature: 'Non-GMO',
+      value: null,
+    },
+    {
+      feature: 'Material',
+      value: '"FullControl Skin"',
+    },
+  ],
+  thumbnail_url:
+    'https://images.unsplash.com/photo-1532244769164-ff64ddeefa45?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80',
+}];
+
 const relatedProducts = [
   {
     id: 14373,
@@ -31,7 +56,7 @@ const relatedProducts = [
       },
     ],
     thumbnail_url:
-    'https://images.unsplash.com/photo-1507920676663-3b72429774ff?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80',
+      'https://images.unsplash.com/photo-1507920676663-3b72429774ff?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80',
   },
   {
     id: 15034,
@@ -63,7 +88,7 @@ const relatedProducts = [
       },
     ],
     thumbnail_url:
-    'https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80',
+      'https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80',
   },
   {
     id: 14586,
@@ -83,7 +108,7 @@ const relatedProducts = [
       },
     ],
     thumbnail_url:
-    'https://images.unsplash.com/photo-1547257965-087be799b084?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80',
+      'https://images.unsplash.com/photo-1547257965-087be799b084?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80',
   },
 ];
 
@@ -1257,4 +1282,5 @@ module.exports = {
   related,
   relatedProducts,
   relatedProductsStyles,
+  currentProduct,
 };

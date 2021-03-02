@@ -4,7 +4,7 @@ import propTypes from 'prop-types';
 const Card = ({ item }) => (
   // eslint-disable-next-line object-curly-spacing
   <div className="card" id={item.id.toString()} style={{border: 'solid'}}>
-    <img src={item.thumbnail_url} alt={item.name} />
+    <img className="cardImg" src={item.thumbnail_url} alt={item.name} />
     <h3 className="cardName">
 
       {item.name}
