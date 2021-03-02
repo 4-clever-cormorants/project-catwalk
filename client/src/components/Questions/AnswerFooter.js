@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import AnswerFooter from './AnswerFooter';
 
-class Answer extends React.Component {
+class AnswerFooter extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -12,16 +11,33 @@ class Answer extends React.Component {
 
   render() {
     const { answer } = this.props;
+    const dateOptions = {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+    };
     return (
-      <div className="answer">
-        <div className="answerText"><p>{`A: ${answer.body}`}</p></div>
-        <AnswerFooter answer={answer} />
+      <div className="answerFooter">
+        <div className="answerNameAndDate">
+          <p className="answerName">
+            {`by ${answer.answerer_name}, `}
+            <span className="answerDate">
+              {`${new Date(answer.date).toLocaleDateString('en-US', dateOptions)}`}
+            </span>
+          </p>
+        </div>
+        <div className="answerHelpful">
+          <p>{`Helpful? Yes (${answer.helpfulness})`}</p>
+        </div>
+        <div className="answerReport">
+          <p>Report</p>
+        </div>
       </div>
     );
   }
 }
 
-Answer.propTypes = {
+AnswerFooter.propTypes = {
   answer: PropTypes.shape({
     answer_id: PropTypes.number,
     body: PropTypes.string,
@@ -35,7 +51,7 @@ Answer.propTypes = {
   }),
 };
 
-Answer.defaultProps = {
+AnswerFooter.defaultProps = {
   answer: {
     answer_id: 800553,
     body: 'Alias libero voluptas adipisci et quam iure vel.',
@@ -55,4 +71,4 @@ Answer.defaultProps = {
   },
 };
 
-export default Answer;
+export default AnswerFooter;

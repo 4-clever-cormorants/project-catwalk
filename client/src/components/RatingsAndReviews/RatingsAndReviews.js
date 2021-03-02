@@ -1,35 +1,18 @@
-/* eslint-disable import/extensions */
-/* eslint-disable react/no-unused-state */
-/* eslint-disable react/jsx-one-expression-per-line */
-/* eslint-disable react/destructuring-assignment */
-/* eslint-disable react/no-array-index-key */
 import React from 'react';
-import DummyData from './DummyData.js';
-//import Review from './Review.js';
-import AddReview from './AddReview.js';
 
 class RatingsAndReviews extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      reviews: [],
-      numReviews: 0,
-      clicked: false,
+
     };
   }
 
-  componentDidMount() {
-    this.setState({
-      reviews: DummyData,
-      numReviews: DummyData.length,
-    })
-  }
 
-  
   //handleChange(event) {
   //  this.setState({clicked: true})
   //console.log(event.target.value);
-//}
+  //}
 
   render() {
 
@@ -53,7 +36,6 @@ class RatingsAndReviews extends React.Component {
         <AddReview />
       </div>
     )
-
   }
 }
 
