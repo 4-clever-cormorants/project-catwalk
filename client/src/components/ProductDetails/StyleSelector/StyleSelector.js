@@ -18,7 +18,6 @@ class StyleSelector extends React.Component {
   render() {
     const { styles } = this.props;
     const { selectedStyle } = this.state;
-    console.log('seclectedStyle: ', selectedStyle);
     const { skus } = selectedStyle;
     return (
       <div className="styleSelector">

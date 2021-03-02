@@ -1,3 +1,5 @@
+/* eslint-disable consistent-return */
+/* eslint-disable array-callback-return */
 import React from 'react';
 import PropTypes from 'prop-types';
 
@@ -5,7 +7,6 @@ const SizeSelector = ({ skus }) => (
   <div>
     size selector
     <select name="size" value="hi">
-      {console.log('skus: ', Object.keys(skus))}
       {Object.keys(skus).map((sku) => {
         if (skus[sku].quantity !== 0) {
           return (
