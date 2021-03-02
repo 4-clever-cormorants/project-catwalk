@@ -10,13 +10,6 @@ const axios = require('axios');
 
 const config = require('../config.js');
 
-const logger = (req, res, next) => {
-  console.log(`Receiving request to ${req.url} with method ${req.method}`);
-  next();
-};
-
-app.use('/', logger);
-
 app.use(express.static(path.join(__dirname, '../client/dist')));
 
 app.use(express.urlencoded({ extended: true }));
