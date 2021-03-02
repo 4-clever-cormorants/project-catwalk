@@ -12,19 +12,19 @@ import Favorite from './Favorite';
 
 class StyleSelector extends React.Component {
   constructor({
-    styles, styleId, styleSelector,
+    styles, styleId, styleSelector, style,
   }) {
     super({
-      styles, styleId, styleSelector,
+      styles, styleId, styleSelector, style,
     });
     this.state = {
-      selectedStyle: styles[0],
+      style,
       sku: '440865',
     };
-    this.handleChange = this.handleChange.bind(this);
+    this.skuSelector = this.skuSelector.bind(this);
   }
 
-  handleChange(e) {
+  skuSelector(e) {
     this.setState({
       sku: e.target.value,
     });
@@ -32,14 +32,14 @@ class StyleSelector extends React.Component {
 
   render() {
     const { styles, styleSelector } = this.props;
-    const { selectedStyle, sku } = this.state;
-    const { skus } = selectedStyle;
+    const { style, sku } = this.state;
+    const { skus } = style;
     const qty = skus[sku].quantity;
     return (
       <div className="styleSelector">
         <h2>style selector</h2>
         <StylesDisplay styles={styles} onClick={styleSelector} />
-        <SizeSelector skus={skus} onChange={this.handleChange} />
+        <SizeSelector skus={skus} onChange={this.skuSelector} />
         <QtySelector qty={qty} />
         <AddToCart />
         <Favorite />

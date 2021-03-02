@@ -7,7 +7,6 @@ const ImageGallery = ({ styleId, style }) => (
   <div className="imageGallery" styleid={styleId}>
     <h2>image gallery</h2>
     <DefaultView url={style.photos[0].url} />
-    {console.log(style.photos)}
     {style.photos.map((photo) => (
       <div className="thumbnailView" key={photo.thumbnail_url.toString()}>
         <ThumbnailView thumbnailUrl={photo.thumbnail_url} />
