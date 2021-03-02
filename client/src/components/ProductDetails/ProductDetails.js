@@ -21,6 +21,7 @@ class ProductDetails extends React.Component {
 
   styleSelector(e) {
     // when you click on the style image, update the state with that style id
+    console.log(e.target);
     this.setState({
       styleId: 'xx',
     });
@@ -42,7 +43,7 @@ class ProductDetails extends React.Component {
         ProductDetails
         <ImageGallery photos={photos} styleId={styleId} />
         <ProductInformation product={product} />
-        <StyleSelector styles={styles.results} />
+        <StyleSelector styles={styles.results} onClick={this.styleSelector} />
       </div>
     );
   }

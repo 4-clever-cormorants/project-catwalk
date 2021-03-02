@@ -8,7 +8,7 @@ const ImageGallery = ({ photos, styleId }) => (
     image gallery
     <DefaultView url={photos[0].url} />
     {photos.map((photo) => (
-      <div key={photo.thumbnail_url.toString()}>
+      <div className="thumbnailView" key={photo.thumbnail_url.toString()}>
         <ThumbnailView thumbnailUrl={photo.thumbnail_url} />
       </div>
     ))}

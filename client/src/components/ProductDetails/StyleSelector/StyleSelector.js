@@ -9,8 +9,8 @@ import QtySelector from './QtySelector';
 // then refactor the size selector and qty selector to reflect the options for that selected style
 
 class StyleSelector extends React.Component {
-  constructor({ styles }) {
-    super({ styles });
+  constructor({ styles, onClick }) {
+    super({ styles, onClick });
     this.state = {
       selectedStyle: styles[0],
       selectedSku: '440865',
@@ -26,7 +26,6 @@ class StyleSelector extends React.Component {
 
   render() {
     const { styles } = this.props;
-    console.log
     const { selectedStyle, selectedSku } = this.state;
     const { skus } = selectedStyle;
     const qty = skus[selectedSku].quantity;
@@ -51,6 +50,7 @@ StyleSelector.propTypes = {
     photos: PropTypes.arrayOf(PropTypes.objectOf(PropTypes.string)).isRequired,
     skus: PropTypes.objectOf(PropTypes.object).isRequired,
   })).isRequired,
+  onClick: PropTypes.func.isRequired,
 };
 
 export default StyleSelector;

@@ -4,7 +4,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const SizeSelector = ({ skus, onChange }) => (
-  <form className="styleSelector" onChange={onChange}>
+  <label className="sizeSelector" onChange={onChange}>
     size selector
     <select name="size">
       {Object.keys(skus).map((sku) => {
@@ -17,7 +17,7 @@ const SizeSelector = ({ skus, onChange }) => (
         }
       })}
     </select>
-  </form>
+  </label>
 );
 
 SizeSelector.propTypes = {

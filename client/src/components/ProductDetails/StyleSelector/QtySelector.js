@@ -8,12 +8,12 @@ const QtySelector = ({ qty }) => {
   }
 
   return (
-    <div>
+    <label className="qtySelector">
       Quantity Selector
       <select name="qty">
         {options.map((option) => <option value={option} key={option}>{option}</option>)}
       </select>
-    </div>
+    </label>
   );
 };
 
