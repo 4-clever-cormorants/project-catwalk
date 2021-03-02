@@ -15,3 +15,9 @@ it('should render answers if there are any', () => {
   const answers = wrapper.find(AnswerList);
   expect(answers.exists()).toBe(true);
 });
+
+it('should have a button to add more answers', () => {
+  const wrapper = mount(<Question />);
+  const addAnswer = wrapper.find('.addAnswer');
+  expect(addAnswer.exists()).toBe(true);
+});

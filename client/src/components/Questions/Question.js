@@ -17,6 +17,8 @@ class Question extends React.Component {
     return (
       <div>
         <p style={{ fontWeight: 'bold' }}>{`Q: ${question.question_body}`}</p>
+        <p>{`Helpful? (${question.question_helpfulness})`}</p>
+        <button type="button" className="addAnswer">Add answer</button>
         <AnswerList answers={answers.results} />
       </div>
     );
