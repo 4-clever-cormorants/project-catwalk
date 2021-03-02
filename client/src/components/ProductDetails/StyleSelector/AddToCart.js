@@ -1,9 +1,10 @@
 import React from 'react';
 
 const AddToCart = () => (
-  <div>
+  <label className="AddToCart">
+    Add To Cart
     <input type="submit" value="Add To Cart" />
-  </div>
+  </label>
 );
 
 export default AddToCart;
