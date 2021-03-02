@@ -13,16 +13,23 @@ class ProductDetails extends React.Component {
     super({ productId });
     this.state = {
       styleId: '76285',
+      selectedStyle: styles.results[0],
     };
     this.styleSelector = this.styleSelector.bind(this);
   }
 
   styleSelector(e) {
     // when you click on the style image, update the state with that style id
-    console.log(e.target);
     const styleId = e.target.classList[0];
     this.setState({
       styleId,
+    });
+    styles.results.forEach((style) => {
+      if (style.style_id === styleId) {
+        this.setState({
+          selectedStyle: style,
+        });
+      }
     });
   }
 
@@ -45,7 +52,6 @@ class ProductDetails extends React.Component {
         <StyleSelector
           styles={styles.results}
           styleSelector={this.styleSelector}
-          skuSelector={this.skuSelector}
           styleId={styleId}
         />
       </div>

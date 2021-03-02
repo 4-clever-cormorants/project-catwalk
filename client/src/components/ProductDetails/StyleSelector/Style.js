@@ -18,6 +18,7 @@ Style.propTypes = {
     photos: PropTypes.arrayOf(PropTypes.objectOf(PropTypes.string)).isRequired,
     skus: PropTypes.objectOf(PropTypes.object).isRequired,
   }).isRequired,
+  onClick: PropTypes.func.isRequired,
 };
 
 export default Style;

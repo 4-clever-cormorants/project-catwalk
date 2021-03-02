@@ -18,7 +18,6 @@ class StyleSelector extends React.Component {
       styles, styleId, styleSelector,
     });
     this.state = {
-      styleId,
       selectedStyle: styles[0],
       sku: '440865',
     };
