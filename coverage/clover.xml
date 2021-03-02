@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1614474298469" clover="3.2.0">
-  <project timestamp="1614474298469" name="All files">
-    <metrics statements="38" coveredstatements="32" conditionals="0" coveredconditionals="0" methods="16" coveredmethods="10" elements="54" coveredelements="42" complexity="0" loc="38" ncloc="38" packages="7" files="7" classes="7"/>
+<coverage generated="1614648573140" clover="3.2.0">
+  <project timestamp="1614648573140" name="All files">
+    <metrics statements="94" coveredstatements="86" conditionals="0" coveredconditionals="0" methods="34" coveredmethods="27" elements="128" coveredelements="113" complexity="0" loc="94" ncloc="94" packages="9" files="22" classes="22"/>
     <package name="project-catwalk">
       <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-      <file name="config.js" path="/Users/jeffrey/Documents/HRSF133/project-catwalk/config.js">
+      <file name="config.js" path="/home/rfduong/hackreactor/project-catwalk/config.js">
         <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
       </file>
     </package>
     <package name="project-catwalk.client.src.components">
       <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
-      <file name="App.js" path="/Users/jeffrey/Documents/HRSF133/project-catwalk/client/src/components/App.js">
+      <file name="App.js" path="/home/rfduong/hackreactor/project-catwalk/client/src/components/App.js">
         <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
         <line num="9" count="2" type="stmt"/>
         <line num="10" count="2" type="stmt"/>
@@ -20,26 +20,123 @@
       </file>
     </package>
     <package name="project-catwalk.client.src.components.ProductDetails">
-      <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
-      <file name="ProductDetails.js" path="/Users/jeffrey/Documents/HRSF133/project-catwalk/client/src/components/ProductDetails/ProductDetails.js">
+      <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+      <file name="ProductDetails.js" path="/home/rfduong/hackreactor/project-catwalk/client/src/components/ProductDetails/ProductDetails.js">
         <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
-        <line num="5" count="2" type="stmt"/>
-        <line num="6" count="2" type="stmt"/>
+        <line num="11" count="2" type="stmt"/>
         <line num="12" count="2" type="stmt"/>
+        <line num="17" count="2" type="stmt"/>
+      </file>
+      <file name="productDummyData.js" path="/home/rfduong/hackreactor/project-catwalk/client/src/components/ProductDetails/productDummyData.js">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+      </file>
+      <file name="stylesDummyData.js" path="/home/rfduong/hackreactor/project-catwalk/client/src/components/ProductDetails/stylesDummyData.js">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="project-catwalk.client.src.components.ProductDetails.ImageGallery">
+      <metrics statements="10" coveredstatements="10" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="4"/>
+      <file name="DefaultView.js" path="/home/rfduong/hackreactor/project-catwalk/client/src/components/ProductDetails/ImageGallery/DefaultView.js">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="5" count="2" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
+      </file>
+      <file name="ImageGallery.js" path="/home/rfduong/hackreactor/project-catwalk/client/src/components/ProductDetails/ImageGallery/ImageGallery.js">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="7" count="2" type="stmt"/>
+        <line num="11" count="6" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
+      </file>
+      <file name="ThumbnailView.js" path="/home/rfduong/hackreactor/project-catwalk/client/src/components/ProductDetails/ImageGallery/ThumbnailView.js">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="5" count="6" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="project-catwalk.client.src.components.ProductDetails.ProductInformation">
+      <metrics statements="12" coveredstatements="12" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="4"/>
+      <file name="Category.js" path="/home/rfduong/hackreactor/project-catwalk/client/src/components/ProductDetails/ProductInformation/Category.js">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="5" count="2" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
+      </file>
+      <file name="Price.js" path="/home/rfduong/hackreactor/project-catwalk/client/src/components/ProductDetails/ProductInformation/Price.js">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="5" count="2" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
+      </file>
+      <file name="ProductInformation.js" path="/home/rfduong/hackreactor/project-catwalk/client/src/components/ProductDetails/ProductInformation/ProductInformation.js">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="9" count="2" type="stmt"/>
+        <line num="18" count="1" type="stmt"/>
+      </file>
+      <file name="Title.js" path="/home/rfduong/hackreactor/project-catwalk/client/src/components/ProductDetails/ProductInformation/Title.js">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="5" count="2" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
       </file>
     </package>
     <package name="project-catwalk.client.src.components.Questions">
-      <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
-      <file name="Questions.js" path="/Users/jeffrey/Documents/HRSF133/project-catwalk/client/src/components/Questions/Questions.js">
-        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
-        <line num="5" count="2" type="stmt"/>
-        <line num="6" count="2" type="stmt"/>
-        <line num="12" count="2" type="stmt"/>
+      <metrics statements="28" coveredstatements="28" conditionals="0" coveredconditionals="0" methods="10" coveredmethods="10"/>
+      <file name="Answer.js" path="/home/rfduong/hackreactor/project-catwalk/client/src/components/Questions/Answer.js">
+        <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <line num="6" count="96" type="stmt"/>
+        <line num="7" count="96" type="stmt"/>
+        <line num="13" count="96" type="stmt"/>
+        <line num="14" count="96" type="stmt"/>
+        <line num="22" count="5" type="stmt"/>
+        <line num="36" count="5" type="stmt"/>
+      </file>
+      <file name="AnswerList.js" path="/home/rfduong/hackreactor/project-catwalk/client/src/components/Questions/AnswerList.js">
+        <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
+        <line num="7" count="19" type="stmt"/>
+        <line num="8" count="19" type="stmt"/>
+        <line num="14" count="19" type="stmt"/>
+        <line num="15" count="19" type="stmt"/>
+        <line num="17" count="95" type="stmt"/>
+        <line num="23" count="4" type="stmt"/>
+        <line num="38" count="4" type="stmt"/>
+      </file>
+      <file name="Question.js" path="/home/rfduong/hackreactor/project-catwalk/client/src/components/Questions/Question.js">
+        <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <line num="8" count="18" type="stmt"/>
+        <line num="9" count="18" type="stmt"/>
+        <line num="15" count="18" type="stmt"/>
+        <line num="16" count="18" type="stmt"/>
+        <line num="17" count="18" type="stmt"/>
+        <line num="26" count="3" type="stmt"/>
+        <line num="45" count="3" type="stmt"/>
+      </file>
+      <file name="Questions.js" path="/home/rfduong/hackreactor/project-catwalk/client/src/components/Questions/Questions.js">
+        <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
+        <line num="8" count="4" type="stmt"/>
+        <line num="9" count="4" type="stmt"/>
+        <line num="15" count="4" type="stmt"/>
+        <line num="16" count="4" type="stmt"/>
+        <line num="17" count="4" type="stmt"/>
+        <line num="22" count="16" type="stmt"/>
+      </file>
+      <file name="dummyAnswers.js" path="/home/rfduong/hackreactor/project-catwalk/client/src/components/Questions/dummyAnswers.js">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="3" type="stmt"/>
+      </file>
+      <file name="dummyQuestions.js" path="/home/rfduong/hackreactor/project-catwalk/client/src/components/Questions/dummyQuestions.js">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="2" type="stmt"/>
       </file>
     </package>
     <package name="project-catwalk.client.src.components.RatingsAndReviews">
       <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
-      <file name="RatingsAndReviews.js" path="/Users/jeffrey/Documents/HRSF133/project-catwalk/client/src/components/RatingsAndReviews/RatingsAndReviews.js">
+      <file name="RatingsAndReviews.js" path="/home/rfduong/hackreactor/project-catwalk/client/src/components/RatingsAndReviews/RatingsAndReviews.js">
         <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
         <line num="5" count="2" type="stmt"/>
         <line num="6" count="2" type="stmt"/>
@@ -47,18 +144,24 @@
       </file>
     </package>
     <package name="project-catwalk.client.src.components.RelatedProducts">
-      <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
-      <file name="RelatedProducts.js" path="/Users/jeffrey/Documents/HRSF133/project-catwalk/client/src/components/RelatedProducts/RelatedProducts.js">
+      <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
+      <file name="List.js" path="/home/rfduong/hackreactor/project-catwalk/client/src/components/RelatedProducts/List.js">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="4" count="2" type="stmt"/>
+        <line num="5" count="6" type="stmt"/>
+        <line num="10" count="2" type="stmt"/>
+      </file>
+      <file name="RelatedProducts.js" path="/home/rfduong/hackreactor/project-catwalk/client/src/components/RelatedProducts/RelatedProducts.js">
         <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
-        <line num="5" count="2" type="stmt"/>
-        <line num="6" count="2" type="stmt"/>
-        <line num="12" count="2" type="stmt"/>
+        <line num="6" count="3" type="stmt"/>
+        <line num="7" count="3" type="stmt"/>
+        <line num="13" count="3" type="stmt"/>
       </file>
     </package>
     <package name="project-catwalk.server">
-      <metrics statements="21" coveredstatements="15" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="0"/>
-      <file name="server.js" path="/Users/jeffrey/Documents/HRSF133/project-catwalk/server/server.js">
-        <metrics statements="21" coveredstatements="15" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="0"/>
+      <metrics statements="25" coveredstatements="17" conditionals="0" coveredconditionals="0" methods="7" coveredmethods="0"/>
+      <file name="server.js" path="/home/rfduong/hackreactor/project-catwalk/server/server.js">
+        <metrics statements="25" coveredstatements="17" conditionals="0" coveredconditionals="0" methods="7" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
         <line num="5" count="1" type="stmt"/>
@@ -66,20 +169,24 @@
         <line num="9" count="1" type="stmt"/>
         <line num="11" count="1" type="stmt"/>
         <line num="13" count="1" type="stmt"/>
-        <line num="15" count="1" type="stmt"/>
-        <line num="16" count="1" type="stmt"/>
+        <line num="14" count="0" type="stmt"/>
+        <line num="15" count="0" type="stmt"/>
         <line num="18" count="1" type="stmt"/>
-        <line num="19" count="0" type="stmt"/>
+        <line num="20" count="1" type="stmt"/>
         <line num="22" count="1" type="stmt"/>
-        <line num="23" count="0" type="stmt"/>
-        <line num="26" count="1" type="stmt"/>
-        <line num="28" count="0" type="stmt"/>
+        <line num="23" count="1" type="stmt"/>
+        <line num="25" count="1" type="stmt"/>
+        <line num="26" count="0" type="stmt"/>
+        <line num="29" count="1" type="stmt"/>
+        <line num="30" count="0" type="stmt"/>
+        <line num="33" count="1" type="stmt"/>
         <line num="35" count="0" type="stmt"/>
-        <line num="38" count="0" type="stmt"/>
-        <line num="42" count="1" type="stmt"/>
-        <line num="43" count="1" type="stmt"/>
-        <line num="44" count="0" type="stmt"/>
-        <line num="47" count="1" type="stmt"/>
+        <line num="42" count="0" type="stmt"/>
+        <line num="45" count="0" type="stmt"/>
+        <line num="49" count="1" type="stmt"/>
+        <line num="51" count="1" type="stmt"/>
+        <line num="52" count="0" type="stmt"/>
+        <line num="55" count="1" type="stmt"/>
       </file>
     </package>
   </project>
