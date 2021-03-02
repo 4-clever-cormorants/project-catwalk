@@ -3,7 +3,7 @@
 /* eslint-disable react/no-array-index-key */
 import React from 'react';
 import DummyData from './DummyData.js';
-import Review from './Review.js';
+//import Review from './Review.js';
 import AddReview from './AddReview.js';
 
 class RatingsAndReviews extends React.Component {
