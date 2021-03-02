@@ -1,1 +1,10 @@
-// test to see if i can commit on this separate branch
+import React from 'react';
+import PropTypes from 'prop-types';
+
+const StyleSelector = () => (
+  <div className="styleSelector">
+    style selector
+  </div>
+);
+
+export default StyleSelector;

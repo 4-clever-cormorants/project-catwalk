@@ -1,7 +1,7 @@
 import React from 'react';
 import ImageGallery from './ImageGallery/ImageGallery';
 import ProductInformation from './ProductInformation/ProductInformation';
-// import StyleSelector from './StyleSelector/StyleSelector';
+import StyleSelector from './StyleSelector/StyleSelector';
 
 import product from './productDummyData';
 import styles from './stylesDummyData';
@@ -19,8 +19,7 @@ class ProductDetails extends React.Component {
         ProductDetails
         <ImageGallery photos={styles.results[0].photos} />
         <ProductInformation product={product} />
-        {/* <ProductInformation />
-        <StyleSelector /> */}
+        <StyleSelector />
       </div>
     );
   }
