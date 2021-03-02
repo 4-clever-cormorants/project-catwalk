@@ -11,31 +11,35 @@ import Favorite from './Favorite';
 // then refactor the size selector and qty selector to reflect the options for that selected style
 
 class StyleSelector extends React.Component {
-  constructor({ styles, styleId, onClick }) {
-    super({ styles, styleId, onClick });
+  constructor({
+    styles, styleId, styleSelector,
+  }) {
+    super({
+      styles, styleId, styleSelector,
+    });
     this.state = {
       styleId,
       selectedStyle: styles[0],
-      selectedSku: '440865',
+      sku: '440865',
     };
     this.handleChange = this.handleChange.bind(this);
   }
 
   handleChange(e) {
     this.setState({
-      selectedSku: e.target.value,
+      sku: e.target.value,
     });
   }
 
   render() {
-    const { styles, onClick } = this.props;
-    const { selectedStyle, selectedSku } = this.state;
+    const { styles, styleSelector } = this.props;
+    const { selectedStyle, sku } = this.state;
     const { skus } = selectedStyle;
-    const qty = skus[selectedSku].quantity;
+    const qty = skus[sku].quantity;
     return (
       <div className="styleSelector">
         <h2>style selector</h2>
-        <StylesDisplay styles={styles} onClick={onClick} />
+        <StylesDisplay styles={styles} onClick={styleSelector}/>
         <SizeSelector skus={skus} onChange={this.handleChange} />
         <QtySelector qty={qty} />
         <AddToCart />
@@ -56,7 +60,7 @@ StyleSelector.propTypes = {
     skus: PropTypes.objectOf(PropTypes.object).isRequired,
   })).isRequired,
   styleId: PropTypes.string.isRequired,
-  onClick: PropTypes.func.isRequired,
+  styleSelector: PropTypes.func.isRequired,
 };
 
 export default StyleSelector;

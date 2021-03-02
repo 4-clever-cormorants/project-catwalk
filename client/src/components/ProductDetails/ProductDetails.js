@@ -17,6 +17,7 @@ class ProductDetails extends React.Component {
       sku: '440865',
     };
     this.styleSelector = this.styleSelector.bind(this);
+    this.skuSelector = this.skuSelector.bind(this);
   }
 
   styleSelector(e) {
@@ -27,8 +28,15 @@ class ProductDetails extends React.Component {
     });
   }
 
+  skuSelector(e) {
+    console.log(e.target);
+    this.setState({
+      sku: 'hi',
+    });
+  }
+
   render() {
-    const { styleId, sku } = this.state;
+    const { styleId } = this.state;
     // console.log(styles.results);
     // for (let i = 0; i < styles.results.length; i += 1) {
     //   console.log('style', styles.results[i].style_id);
@@ -43,7 +51,12 @@ class ProductDetails extends React.Component {
         <h1>ProductDetails</h1>
         <ImageGallery photos={photos} styleId={styleId} />
         <ProductInformation product={product} />
-        <StyleSelector styles={styles.results} onClick={this.styleSelector} stylId={styleId} />
+        <StyleSelector
+          styles={styles.results}
+          styleSelector={this.styleSelector}
+          skuSelector={this.skuSelector}
+          styleId={styleId}
+        />
       </div>
     );
   }
