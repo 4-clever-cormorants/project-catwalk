@@ -14,7 +14,9 @@ class AnswerList extends React.Component {
     const { answers } = this.props;
     return (
       <div>
+        <p>A:</p>
         {answers.map((answer) => <Answer key={answer.answer_id} answer={answer} />)}
+        {answers.length > 2 ? <button type="button" className="loadAnswers">Load more answers</button> : ''}
       </div>
     );
   }
