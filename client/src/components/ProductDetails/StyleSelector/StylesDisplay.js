@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 
 import Style from './Style';
 
-const StylesDisplay = ({ styles }) => (
+const StylesDisplay = ({ styles, onClick }) => (
   <div className="StylesDisplay">
     styles: selected style
     {styles.map((style) => (
-      <div key={style.style_id}>
+      <div key={style.style_id} onClick={onClick} >
         <Style style={style} />
       </div>
     ))}

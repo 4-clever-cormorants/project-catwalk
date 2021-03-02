@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 const Style = ({ style }) => (
   <div className="style" id={style.style_id}>
     style
-    <img src={style.photos[0].thumbnail_url} alt="" />
+    <img src={style.photos[0].thumbnail_url} alt="" className={style.style_id} />
   </div>
 );
 

@@ -11,9 +11,10 @@ import Favorite from './Favorite';
 // then refactor the size selector and qty selector to reflect the options for that selected style
 
 class StyleSelector extends React.Component {
-  constructor({ styles, onClick }) {
-    super({ styles, onClick });
+  constructor({ styles, styleId, onClick }) {
+    super({ styles, styleId, onClick });
     this.state = {
+      styleId,
       selectedStyle: styles[0],
       selectedSku: '440865',
     };
@@ -27,14 +28,14 @@ class StyleSelector extends React.Component {
   }
 
   render() {
-    const { styles } = this.props;
+    const { styles, onClick } = this.props;
     const { selectedStyle, selectedSku } = this.state;
     const { skus } = selectedStyle;
     const qty = skus[selectedSku].quantity;
     return (
       <div className="styleSelector">
         <h2>style selector</h2>
-        <StylesDisplay styles={styles} />
+        <StylesDisplay styles={styles} onClick={onClick} />
         <SizeSelector skus={skus} onChange={this.handleChange} />
         <QtySelector qty={qty} />
         <AddToCart />
@@ -54,6 +55,7 @@ StyleSelector.propTypes = {
     photos: PropTypes.arrayOf(PropTypes.objectOf(PropTypes.string)).isRequired,
     skus: PropTypes.objectOf(PropTypes.object).isRequired,
   })).isRequired,
+  styleId: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired,
 };
 

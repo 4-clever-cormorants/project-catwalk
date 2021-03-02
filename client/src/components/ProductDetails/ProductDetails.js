@@ -21,14 +21,14 @@ class ProductDetails extends React.Component {
 
   styleSelector(e) {
     // when you click on the style image, update the state with that style id
-    console.log(e.target);
+    const styleId = e.target.classList[0];
     this.setState({
-      styleId: 'xx',
+      styleId,
     });
   }
 
   render() {
-    const { productId, styleId, sku } = this.state;
+    const { styleId, sku } = this.state;
     // console.log(styles.results);
     // for (let i = 0; i < styles.results.length; i += 1) {
     //   console.log('style', styles.results[i].style_id);
@@ -43,7 +43,7 @@ class ProductDetails extends React.Component {
         <h1>ProductDetails</h1>
         <ImageGallery photos={photos} styleId={styleId} />
         <ProductInformation product={product} />
-        <StyleSelector styles={styles.results} onClick={this.styleSelector} />
+        <StyleSelector styles={styles.results} onClick={this.styleSelector} stylId={styleId} />
       </div>
     );
   }
