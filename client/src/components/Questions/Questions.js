@@ -17,12 +17,17 @@ class Questions extends React.Component {
     return (
       <div>
         <h3>Questions</h3>
+        <div className="searchBar">
+          SearchBar
+        </div>
         <div className="questionsList">
           {questions.results.map((question) => (
             <div key={question.question_id} className="question">
               <Question question={question} />
             </div>
           ))}
+          {questions.results.length > 4 ? <button type="button">More Answered Questions</button> : ''}
+          <button type="button">Add a question</button>
         </div>
       </div>
     );

@@ -27,10 +27,14 @@ class AnswerFooter extends React.Component {
           </p>
         </div>
         <div className="answerHelpful">
-          <p>{`Helpful? Yes (${answer.helpfulness})`}</p>
+          <p>
+            Helpful?
+            <button type="button">Yes</button>
+            <span>{`(${answer.helpfulness})`}</span>
+          </p>
         </div>
         <div className="answerReport">
-          <p>Report</p>
+          <button type="button">Report</button>
         </div>
       </div>
     );
