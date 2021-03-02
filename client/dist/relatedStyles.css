@@ -1,0 +1,25 @@
+.relatedProductsList {
+  overflow:hidden;
+}
+
+.outfitListWithAdd {
+  overflow:hidden;
+}
+
+.yourOwnOutfitList {
+  overflow:hidden;
+}
+
+.card {
+  border: solid;
+  width: fit-content;
+  height: fit-content;
+  float: left;
+}
+
+.addToOutfit {
+  border: solid;
+  width: 200px;
+  height: 300px;
+  float: left;
+};

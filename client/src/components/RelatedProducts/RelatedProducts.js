@@ -24,8 +24,10 @@ class RelatedProducts extends React.Component {
       <div className="RR">
         <span>RelatedProducts</span>
         <List className="relatedProductsList" productsList={dummy.relatedProducts} />
-        <AddToOutfit addToOutfitHandler={this.addToOutfitHandler} />
-        <List className="yourOwnOutfitList" productsList={outfitList} />
+        <div className="outfitListWithAdd">
+          <AddToOutfit addToOutfitHandler={this.addToOutfitHandler} />
+          <List className="yourOwnOutfitList" productsList={outfitList} />
+        </div>
       </div>
     );
   }
