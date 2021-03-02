@@ -15,7 +15,7 @@ class ProductDetails extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="productDetails">
         ProductDetails
         <ImageGallery photos={styles.results[0].photos} />
         <ProductInformation product={product} />

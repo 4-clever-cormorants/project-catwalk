@@ -8,7 +8,10 @@ const ImageGallery = ({ photos }) => (
     image gallery
     <DefaultView url={photos[0].url} />
     {photos.map((photo) => (
-      <ThumbnailView thumbnailUrl={photo.thumbnail_url} />))}
+      <div key={photo.thumbnail_url.toString()}>
+        <ThumbnailView thumbnailUrl={photo.thumbnail_url} />
+      </div>
+    ))}
   </div>
 );
 

@@ -7,7 +7,9 @@ const StylesDisplay = ({ styles }) => (
   <div className="StylesDisplay">
     styles: selected style
     {styles.map((style) => (
-      <Style style={style} />
+      <div key={style.style_id}>
+        <Style style={style} />
+      </div>
     ))}
   </div>
 );
