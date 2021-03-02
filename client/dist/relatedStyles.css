@@ -10,11 +10,17 @@
   overflow:hidden;
 }
 
+.cardImg {
+  width: 100%;
+  height: 60%;
+}
+
 .card {
   border: solid;
-  width: fit-content;
-  height: fit-content;
+  width: 200px;
+  height: 300px;
   float: left;
+  margin: 5px;
 }
 
 .addToOutfit {
@@ -22,4 +28,17 @@
   width: 200px;
   height: 300px;
   float: left;
+  margin: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 };
+
+.addToOutfitButton {
+  display: block;
+}
+
+.addToOutfitText {
+  display: block;
+  margin-right: 10px;
+}
