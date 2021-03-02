@@ -6,6 +6,7 @@ const Card = ({ item }) => (
   <div className="card" id={item.id.toString()} style={{border: 'solid'}}>
     <img src={item.thumbnail_url} alt={item.name} />
     <h3 className="cardName">
+
       {item.name}
     </h3>
     <h5>
