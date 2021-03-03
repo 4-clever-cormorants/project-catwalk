@@ -33,7 +33,7 @@ jobs:
           command: npm test
       - slack/notify:
             event: fail
-            mentions: '@EngineeringTeam'
+            mentions: '<@Sam Berston>'
             template: basic_fail_1
         - slack/notify:
             event: pass
