@@ -2,6 +2,7 @@ import React from 'react';
 import List from './List';
 import ListOutfit from './ListOutfit';
 import AddToOutfit from './AddToOutfit';
+import Comparison from './Comparison';
 import dummy from './dummy_related';
 
 class RelatedProducts extends React.Component {
@@ -32,11 +33,16 @@ class RelatedProducts extends React.Component {
   }
 
   render() {
-    const { outfitList } = this.state;
+    const { outfitList, clicked, current } = this.state;
+    let comparison;
+    if (clicked) {
+      comparison = <Comparison current={current} clicked={clicked} />;
+    }
 
     return (
       <div className="RR">
         <span>RelatedProducts</span>
+        {comparison}
         <List className="relatedProductsList" productsList={dummy.relatedProducts} />
         <div className="outfitListWithAdd">
           <AddToOutfit addToOutfitHandler={this.addToOutfitHandler} />
