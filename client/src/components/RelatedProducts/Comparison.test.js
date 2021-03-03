@@ -6,8 +6,8 @@ import RelatedProducts from './RelatedProducts';
 import Comparison from './Comparison';
 import Card from './Card';
 
-describe('Test comparsion component', () => {
-  it('should render comparsion component when click on card', () => {
+describe('Test comparison component', () => {
+  it('should render comparison component when click on card', () => {
     const wrapper = mount(<RelatedProducts />);
     const card = wrapper.find('.relatedProductsList').find(Card).first();
 
