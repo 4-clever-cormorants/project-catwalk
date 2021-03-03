@@ -1,14 +1,13 @@
 import React from 'react';
 import propTypes from 'prop-types';
-import Favor from './Favor';
+import Drop from './Drop';
 
-const Card = ({ item }) => (
+const CardOutfit = ({ item, dropHandler }) => (
   // eslint-disable-next-line object-curly-spacing
   <div className="card" id={`card${item.id.toString()}`} style={{border: 'solid'}}>
-    <Favor />
+    <Drop id={item.id} dropHandler={dropHandler} />
     <img className="cardImg" src={item.thumbnail_url} alt={item.name} />
     <h3 className="cardName">
-
       {item.name}
     </h3>
     <h5>
@@ -17,14 +16,14 @@ const Card = ({ item }) => (
   </div>
 );
 
-Card.propTypes = {
+CardOutfit.propTypes = {
   item: propTypes.shape({
     name: propTypes.string.isRequired,
     id: propTypes.number.isRequired,
     default_price: propTypes.string.isRequired,
     thumbnail_url: propTypes.string.isRequired,
   }).isRequired,
-  // action: propTypes.element.isRequired,
+  dropHandler: propTypes.func.isRequired,
 };
 
-export default Card;
+export default CardOutfit;

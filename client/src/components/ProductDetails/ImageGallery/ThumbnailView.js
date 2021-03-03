@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const ThumbnailView = ({ thumbnailUrl }) => (
-  <div>
+  <div className="thumbnailView">
     a single thumbnail image
     <img src={thumbnailUrl} alt="thumbnailimage" />
   </div>

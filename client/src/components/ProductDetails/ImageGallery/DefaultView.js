@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const DefaultView = ({ url }) => (
-  <div>
+  <div className="defaultView">
     default view
     <img src={url} alt="" />
   </div>
