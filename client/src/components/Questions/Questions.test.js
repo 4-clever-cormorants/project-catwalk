@@ -12,7 +12,7 @@ it('should exist', () => {
 it('should render questions if there are any', () => {
   const wrapper = mount(<Questions />);
   const instance = wrapper.instance();
-  expect(instance.state.questions.results.length).toBeGreaterThan(0);
+  expect(instance.state.questionsOnScreen.length).toBeGreaterThan(0);
   const question = wrapper.find(Question);
   expect(question.exists()).toBe(true);
 });
@@ -41,4 +41,32 @@ it('should close the question form when clicking on "X" button', () => {
   exitButton.simulate('click');
   questionForm = wrapper.find(QuestionForm);
   expect(questionForm.exists()).toBe(false);
+});
+
+it('should display up to 4 questions by default', () => {
+  const wrapper = mount(<Questions />);
+  const questionsLen = wrapper.find('.question').children().length;
+  expect(questionsLen).toBeLessThanOrEqual(4);
+});
+
+it('should display up to 2 additional questions when clicking load more questions', () => {
+  const wrapper = mount(<Questions />);
+  const loadQuestionsButton = wrapper.find('#loadMoreQuestions');
+  expect(loadQuestionsButton.exists()).toBe(true);
+  const oldQuestionsLen = wrapper.find('.questionsList').children().length;
+  loadQuestionsButton.simulate('click');
+  const newQuestionLen = wrapper.find('.questionsList').children().length;
+  expect(newQuestionLen - oldQuestionsLen).toBeLessThanOrEqual(2);
+});
+
+it('should hide the load more questions button when there are no more questions to load', () => {
+  const wrapper = mount(<Questions />);
+  let loadQuestionsButton = wrapper.find('#loadMoreQuestions');
+  expect(loadQuestionsButton.exists()).toBe(true);
+  const oldQuestionsLen = wrapper.find('.questionsList').children().length;
+  loadQuestionsButton.simulate('click');
+  const newQuestionLen = wrapper.find('.questionsList').children().length;
+  expect(newQuestionLen - oldQuestionsLen).toBeLessThanOrEqual(2);
+  loadQuestionsButton = wrapper.find('#loadMoreQuestions');
+  expect(loadQuestionsButton.exists()).toBe(false);
 });

@@ -62,3 +62,33 @@ it('should not have a button to load more answers if there are 2 or less answers
   const loadButton = wrapper.find('.loadAnswers');
   expect(loadButton.exists()).toBe(false);
 });
+
+it('should render up to 2 answers on page load', () => {
+  const wrapper = mount(<AnswerList answers={dummyAnswers.results} />);
+  const answerLen = wrapper.find('.answerList').children().filter(Answer).length;
+  expect(answerLen).toBeLessThanOrEqual(2);
+});
+
+it('should render all answers when clicking on see more answers button', () => {
+  const wrapper = mount(<AnswerList answers={dummyAnswers.results} />);
+  const oldAnswerLen = wrapper.find('.answerList').children().filter(Answer).length;
+  expect(oldAnswerLen).toBeLessThanOrEqual(2);
+  const loadButton = wrapper.find('.loadAnswers');
+  loadButton.simulate('click');
+  const newAnswerLen = wrapper.find('.answerList').children().filter(Answer).length;
+  expect(newAnswerLen).toBe(dummyAnswers.results.length);
+});
+
+it('should go back to up to 2 answers when clicking collapse answer button', () => {
+  const wrapper = mount(<AnswerList answers={dummyAnswers.results} />);
+  const oldAnswerLen = wrapper.find('.answerList').children().filter(Answer).length;
+  expect(oldAnswerLen).toBeLessThanOrEqual(2);
+  const loadButton = wrapper.find('.loadAnswers');
+  loadButton.simulate('click');
+  const newAnswerLen = wrapper.find('.answerList').children().filter(Answer).length;
+  expect(newAnswerLen).toBe(dummyAnswers.results.length);
+  const collapseButton = wrapper.find('.collapseAnswers');
+  collapseButton.simulate('click');
+  const collapsedAnswerLen = wrapper.find('.answerList').children().filter(Answer).length;
+  expect(collapsedAnswerLen).toBe(oldAnswerLen);
+});
