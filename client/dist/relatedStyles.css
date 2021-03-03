@@ -13,9 +13,11 @@
 .cardImg {
   width: 100%;
   height: 60%;
+  object-fit: cover;
 }
 
 .card {
+  position: relative;
   border: solid;
   width: 200px;
   height: 300px;
@@ -41,4 +43,18 @@
 .addToOutfitText {
   display: block;
   margin-right: 10px;
+}
+
+.actionIconFavor {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  background-color: ivory;
+}
+
+.actionIconDrop {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  background-color: ivory;
 }
