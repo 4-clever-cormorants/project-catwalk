@@ -16,7 +16,7 @@ class StyleSelector extends React.Component {
     const { style } = this.props;
     this.state = {
       style,
-      sku: '440865',
+      sku: Object.keys(style.skus)[0],
     };
     this.skuSelector = this.skuSelector.bind(this);
   }
@@ -36,6 +36,7 @@ class StyleSelector extends React.Component {
 
   render() {
     const { styles, styleSelector } = this.props;
+    // {console.log(style)}
     const { style, sku } = this.state;
     const { skus } = style;
     const qty = skus[sku].quantity;
