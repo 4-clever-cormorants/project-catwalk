@@ -14,6 +14,7 @@ class ProductDetails extends React.Component {
     this.state = {
       styleId: '76285',
       style: styles.results[0],
+      defaultSku: Object.keys(styles.results[0].skus)[0],
     };
     this.styleSelector = this.styleSelector.bind(this);
   }
@@ -29,20 +30,14 @@ class ProductDetails extends React.Component {
       if (style.style_id === styleId) {
         this.setState({
           style,
+          defaultSku: Object.keys(style.skus)[0],
         });
       }
     });
   }
 
   render() {
-    const { styleId, style } = this.state;
-    // console.log(styles.results);
-    // for (let i = 0; i < styles.results.length; i += 1) {
-    //   console.log('style', styles.results[i].style_id);
-    //   if (styles.results[i].style_id === styleId) {
-
-    //   }
-    // }
+    const { styleId, style, defaultSku } = this.state;
 
     return (
       <div className="productDetails">
@@ -53,14 +48,11 @@ class ProductDetails extends React.Component {
           styles={styles.results}
           styleSelector={this.styleSelector}
           style={style}
+          defaultSku={defaultSku}
         />
       </div>
     );
   }
 }
-
-// ProductDetails.propTypes = {
-//   productId: PropTypes.string,
-// };
 
 export default ProductDetails;
