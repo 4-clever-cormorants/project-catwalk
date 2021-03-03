@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import AnswerList from './AnswerList';
+import AnswerForm from './AnswerForm';
 import dummyAnswers from './dummyAnswers';
 
 class Question extends React.Component {
@@ -8,17 +9,27 @@ class Question extends React.Component {
     super(props);
     this.state = {
       answers: dummyAnswers,
+      addAnswerClicked: false,
     };
+  }
+
+  addAnswer() {
+    this.setState({ addAnswerClicked: true });
+  }
+
+  exitAnswerForm() {
+    this.setState({ addAnswerClicked: false });
   }
 
   render() {
     const { question } = this.props;
-    const { answers } = this.state;
+    const { answers, addAnswerClicked } = this.state;
     return (
       <div>
         <p style={{ fontWeight: 'bold' }}>{`Q: ${question.question_body}`}</p>
         <p>{`Helpful? (${question.question_helpfulness})`}</p>
-        <button type="button" className="addAnswer">Add answer</button>
+        <button type="button" className="addAnswerButton" onClick={this.addAnswer.bind(this)}>Add answer</button>
+        {addAnswerClicked ? <AnswerForm exitAnswerForm={() => this.exitAnswerForm()} questionBody={question.question_body} /> : ''}
         <AnswerList answers={answers.results} />
       </div>
     );
