@@ -10,11 +10,13 @@ class AnswerForm extends React.Component {
   }
 
   render() {
-    const { exitAnswerForm } = this.props;
+    const { exitAnswerForm, questionBody } = this.props;
     return (
       <div className="answerForm">
-        answerForm
-        <button type="button" onClick={exitAnswerForm} id="exitButton">X</button>
+        <h3>Submit your Answer</h3>
+        <h4>{`[PRODUCT NAME]: ${questionBody}`}</h4>
+        {/* product name needs to be passed in from apps */}
+        <button type="button" onClick={exitAnswerForm} className="exitButton">X</button>
         <form>
           <label htmlFor="answer">
             * Answer
@@ -44,6 +46,7 @@ class AnswerForm extends React.Component {
 
 AnswerForm.propTypes = {
   exitAnswerForm: PropTypes.func.isRequired,
+  questionBody: PropTypes.string.isRequired,
 };
 
 export default AnswerForm;

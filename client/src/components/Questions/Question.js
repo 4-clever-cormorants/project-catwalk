@@ -28,8 +28,8 @@ class Question extends React.Component {
       <div>
         <p style={{ fontWeight: 'bold' }}>{`Q: ${question.question_body}`}</p>
         <p>{`Helpful? (${question.question_helpfulness})`}</p>
-        <button type="button" className="addAnswer" onClick={this.addAnswer.bind(this)}>Add answer</button>
-        {addAnswerClicked ? <AnswerForm exitAnswerForm={() => this.exitAnswerForm()} /> : ''}
+        <button type="button" className="addAnswerButton" onClick={this.addAnswer.bind(this)}>Add answer</button>
+        {addAnswerClicked ? <AnswerForm exitAnswerForm={() => this.exitAnswerForm()} questionBody={question.question_body} /> : ''}
         <AnswerList answers={answers.results} />
       </div>
     );
