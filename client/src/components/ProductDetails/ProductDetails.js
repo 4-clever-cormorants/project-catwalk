@@ -52,7 +52,7 @@ class ProductDetails extends React.Component {
         <StyleSelector
           styles={styles.results}
           styleSelector={this.styleSelector}
-          style={styles.results[0]}
+          style={style}
         />
       </div>
     );

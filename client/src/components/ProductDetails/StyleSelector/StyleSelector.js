@@ -13,9 +13,9 @@ import Favorite from './Favorite';
 class StyleSelector extends React.Component {
   constructor(props) {
     super(props);
-    const { styles } = this.props;
+    const { style } = this.props;
     this.state = {
-      style: styles[0],
+      style,
       sku: '440865',
     };
     this.skuSelector = this.skuSelector.bind(this);
@@ -25,6 +25,13 @@ class StyleSelector extends React.Component {
     this.setState({
       sku: e.target.value,
     });
+    // this.props.styles.results.forEach((style) => {
+    //   if (style.style_id === styleId) {
+    //     this.setState({
+    //       style,
+    //     });
+    //   }
+    // });
   }
 
   render() {
