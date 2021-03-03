@@ -32,10 +32,6 @@ it('should render answer form when clicking add answer button', () => {
   addAnswerButton.simulate('click');
   addAnswerForm = wrapper.find(AnswerForm);
   expect(addAnswerForm.exists()).toBe(true);
-  // const exitButton = addAnswerForm.find('.exitButton');
-  // exitButton.simulate('click');
-  // addAnswerForm = wrapper.find(AnswerForm);
-  // expect(addAnswerForm.exists()).toBe(true);
 });
 
 it('should close the modal when clicking exit button', () => {
