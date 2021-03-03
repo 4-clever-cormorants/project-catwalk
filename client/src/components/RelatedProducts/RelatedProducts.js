@@ -2,6 +2,7 @@ import React from 'react';
 import List from './List';
 import ListOutfit from './ListOutfit';
 import AddToOutfit from './AddToOutfit';
+import Comparsion from './Comparsion';
 import dummy from './dummy_related';
 
 class RelatedProducts extends React.Component {
@@ -9,9 +10,12 @@ class RelatedProducts extends React.Component {
     super(props);
     this.state = {
       outfitList: dummy.relatedProducts,
+      clicked: undefined,
+      current: dummy.currentProduct,
     };
     this.addToOutfitHandler = this.addToOutfitHandler.bind(this);
     this.dropHandler = this.dropHandler.bind(this);
+    this.compareHandler = this.compareHandler.bind(this);
   }
 
   addToOutfitHandler() {
@@ -31,13 +35,24 @@ class RelatedProducts extends React.Component {
     });
   }
 
+  compareHandler(item) {
+    this.setState({
+      clicked: item,
+    });
+  }
+
   render() {
-    const { outfitList } = this.state;
+    const { outfitList, clicked, current } = this.state;
+    let comparsion;
+    if (clicked) {
+      comparsion = <Comparsion current={current} clicked={clicked} />;
+    }
 
     return (
       <div className="RR">
         <span>RelatedProducts</span>
-        <List className="relatedProductsList" productsList={dummy.relatedProducts} />
+        {comparsion}
+        <List className="relatedProductsList" productsList={dummy.relatedProducts} compareHandler={this.compareHandler} />
         <div className="outfitListWithAdd">
           <AddToOutfit addToOutfitHandler={this.addToOutfitHandler} />
           <ListOutfit className="yourOwnOutfitList" productsList={outfitList} dropHandler={this.dropHandler} />
