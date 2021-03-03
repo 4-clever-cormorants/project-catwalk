@@ -18,7 +18,7 @@ describe('Test Related Product list component', () => {
     const firstCard = wrapper.find('.card').first();
 
     expect(firstCard.find('.cardName').text()).toBe('Gwendolyn Sweater');
-    expect(firstCard.getDOMNode().getAttribute('id')).toBe('14373');
+    expect(firstCard.getDOMNode().getAttribute('id')).toBe('card14373');
   });
 
   it('related product card should have favor component', () => {
