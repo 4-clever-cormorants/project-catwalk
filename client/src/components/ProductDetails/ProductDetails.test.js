@@ -7,7 +7,7 @@ import ProductInformation from './ProductInformation/ProductInformation';
 import StyleSelector from './StyleSelector/StyleSelector';
 
 it('should render all the subcomponents', () => {
-  const wrapper = mount(<ProductDetails />);
+  const wrapper = mount(<ProductDetails productId="14931" />);
   const productDetails = wrapper.find('.productDetails');
   const imageGallery = wrapper.find(ImageGallery);
   const productInformation = wrapper.find(ProductInformation);
