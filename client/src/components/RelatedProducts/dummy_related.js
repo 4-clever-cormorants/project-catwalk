@@ -1,6 +1,6 @@
 const related = [14373, 15034, 14586];
 
-const currentProduct = [{
+const currentProduct = {
   id: 14931,
   campus: 'hr-sfo',
   name: 'Manuela Pants',
@@ -23,7 +23,7 @@ const currentProduct = [{
   ],
   thumbnail_url:
     'https://images.unsplash.com/photo-1532244769164-ff64ddeefa45?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80',
-}];
+};
 
 const relatedProducts = [
   {
