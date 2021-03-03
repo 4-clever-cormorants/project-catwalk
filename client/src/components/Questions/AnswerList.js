@@ -5,18 +5,37 @@ import Answer from './Answer';
 class AnswerList extends React.Component {
   constructor(props) {
     super(props);
+    const { answers } = this.props;
     this.state = {
-
+      answersOnScreen: answers.slice(0, 2),
+      loadAll: false,
     };
+  }
+
+  loadMoreAnswers() {
+    const { answers } = this.props;
+    this.setState({ answersOnScreen: answers, loadAll: true });
+  }
+
+  collapseAnswers() {
+    const { answers } = this.props;
+    this.setState({ answersOnScreen: answers.slice(0, 2), loadAll: false });
   }
 
   render() {
     const { answers } = this.props;
+    const { answersOnScreen, loadAll } = this.state;
+    let expandAnswersButton = '';
+    if (answers.length > 2 && !loadAll) {
+      expandAnswersButton = <button type="button" className="loadAnswers" onClick={this.loadMoreAnswers.bind(this)}>See more answers</button>;
+    } else if (answers.length > 2 && loadAll) {
+      expandAnswersButton = <button type="button" className="collapseAnswers" onClick={this.collapseAnswers.bind(this)}>Collapse answers</button>;
+    }
     return (
-      <div>
+      <div className="answerList">
         <p>A:</p>
-        {answers.map((answer) => <Answer key={answer.answer_id} answer={answer} />)}
-        {answers.length > 2 ? <button type="button" className="loadAnswers">Load more answers</button> : ''}
+        {answersOnScreen.map((answer) => <Answer key={answer.answer_id} answer={answer} />)}
+        {expandAnswersButton}
       </div>
     );
   }

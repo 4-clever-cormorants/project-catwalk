@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
 import ImageGallery from './ImageGallery/ImageGallery';
 import ProductInformation from './ProductInformation/ProductInformation';
@@ -9,8 +9,8 @@ import product from './productDummyData';
 import styles from './stylesDummyData';
 
 class ProductDetails extends React.Component {
-  constructor({ productId }) {
-    super({ productId });
+  constructor(props) {
+    super(props);
     this.state = {
       styleId: '76285',
       style: styles.results[0],
@@ -52,16 +52,15 @@ class ProductDetails extends React.Component {
         <StyleSelector
           styles={styles.results}
           styleSelector={this.styleSelector}
-          styleId={styleId}
-          style={style}
+          style={styles.results[0]}
         />
       </div>
     );
   }
 }
 
-ProductDetails.propTypes = {
-  productId: PropTypes.string,
-};
+// ProductDetails.propTypes = {
+//   productId: PropTypes.string,
+// };
 
 export default ProductDetails;

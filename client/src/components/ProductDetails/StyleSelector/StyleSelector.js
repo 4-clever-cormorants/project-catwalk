@@ -11,14 +11,11 @@ import Favorite from './Favorite';
 // then refactor the size selector and qty selector to reflect the options for that selected style
 
 class StyleSelector extends React.Component {
-  constructor({
-    styles, styleId, styleSelector, style,
-  }) {
-    super({
-      styles, styleId, styleSelector, style,
-    });
+  constructor(props) {
+    super(props);
+    const { styles } = this.props;
     this.state = {
-      style,
+      style: styles[0],
       sku: '440865',
     };
     this.skuSelector = this.skuSelector.bind(this);
@@ -58,7 +55,6 @@ StyleSelector.propTypes = {
     photos: PropTypes.arrayOf(PropTypes.objectOf(PropTypes.string)).isRequired,
     skus: PropTypes.objectOf(PropTypes.object).isRequired,
   })).isRequired,
-  styleId: PropTypes.string.isRequired,
   styleSelector: PropTypes.func.isRequired,
   style: PropTypes.shape({
     style_id: PropTypes.string.isRequired,
