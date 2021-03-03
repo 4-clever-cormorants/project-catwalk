@@ -3,7 +3,7 @@ import { mount, shallow } from 'enzyme';
 import dummy from './dummy_related';
 
 import RelatedProducts from './RelatedProducts';
-import Comparsion from './Comparsion';
+import Comparison from './Comparison';
 import Card from './Card';
 
 describe('Test comparsion component', () => {
@@ -11,8 +11,8 @@ describe('Test comparsion component', () => {
     const wrapper = mount(<RelatedProducts />);
     const card = wrapper.find('.relatedProductsList').find(Card).first();
 
-    expect(wrapper.find(Comparsion).exists()).toBe(false);
+    expect(wrapper.find(Comparison).exists()).toBe(false);
     card.simulate('click');
-    expect(wrapper.find(Comparsion).exists()).toBe(true);
+    expect(wrapper.find(Comparison).exists()).toBe(true);
   });
 });

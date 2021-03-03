@@ -1,7 +1,7 @@
 import React from 'react';
 import propTypes from 'prop-types';
 
-class Comparsion extends React.Component {
+class Comparison extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
@@ -10,7 +10,7 @@ class Comparsion extends React.Component {
   render() {
     const { current, clicked } = this.props;
     return (
-      <div className="comparsion">
+      <div className="Comparison">
         compare `$
         {current.id}
         ` and `$
@@ -21,7 +21,7 @@ class Comparsion extends React.Component {
   }
 }
 
-Comparsion.propTypes = {
+Comparison.propTypes = {
   current: propTypes.shape({
     id: propTypes.number.isRequired,
   }).isRequired,
@@ -30,4 +30,4 @@ Comparsion.propTypes = {
   }).isRequired,
 };
 
-export default Comparsion;
+export default Comparison;

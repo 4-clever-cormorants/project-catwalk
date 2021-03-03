@@ -2,7 +2,7 @@ import React from 'react';
 import List from './List';
 import ListOutfit from './ListOutfit';
 import AddToOutfit from './AddToOutfit';
-import Comparsion from './Comparsion';
+import Comparison from './Comparison';
 import dummy from './dummy_related';
 
 class RelatedProducts extends React.Component {
@@ -45,7 +45,7 @@ class RelatedProducts extends React.Component {
     const { outfitList, clicked, current } = this.state;
     let comparsion;
     if (clicked) {
-      comparsion = <Comparsion current={current} clicked={clicked} />;
+      comparsion = <Comparison current={current} clicked={clicked} />;
     }
 
     return (
