@@ -43,15 +43,15 @@ class RelatedProducts extends React.Component {
 
   render() {
     const { outfitList, clicked, current } = this.state;
-    let comparsion;
+    let comparison;
     if (clicked) {
-      comparsion = <Comparison current={current} clicked={clicked} />;
+      comparison = <Comparison current={current} clicked={clicked} />;
     }
 
     return (
       <div className="RR">
         <span>RelatedProducts</span>
-        {comparsion}
+        {comparison}
         <List className="relatedProductsList" productsList={dummy.relatedProducts} compareHandler={this.compareHandler} />
         <div className="outfitListWithAdd">
           <AddToOutfit addToOutfitHandler={this.addToOutfitHandler} />
