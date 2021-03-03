@@ -4,7 +4,7 @@ orbs:
 jobs:
   build:
     docker:
-    - image: circleci/node:10-browsers
+      - image: circleci/node:10-browsers
     steps:
       - checkout
       - run:
