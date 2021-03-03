@@ -1,15 +1,15 @@
 import React from 'react';
-import propTypes from 'prop-types';
+// import propTypes from 'prop-types';
 
 const Favor = () => (
   // eslint-disable-next-line object-curly-spacing
-  <div>
-    icon
+  <div className="actionIcon">
+    Favor
   </div>
 );
 
-Favor.propTypes = {
+// Favor.propTypes = {
 
-};
+// };
 
 export default Favor;
