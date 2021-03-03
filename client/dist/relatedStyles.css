@@ -16,6 +16,7 @@
 }
 
 .card {
+  position: relative;
   border: solid;
   width: 200px;
   height: 300px;
@@ -41,4 +42,11 @@
 .addToOutfitText {
   display: block;
   margin-right: 10px;
+}
+
+.actionIcon {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  background-color: ivory;
 }
