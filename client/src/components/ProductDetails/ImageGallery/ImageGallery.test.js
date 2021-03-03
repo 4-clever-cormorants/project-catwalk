@@ -6,9 +6,6 @@ import DefaultView from './DefaultView';
 import ThumbnailView from './ThumbnailView';
 
 it('should render the image gallery with the default view and thumbnail(s)', () => {
-<<<<<<< HEAD
-  const wrapper = mount(<ImageGallery />);
-=======
   const style = {
     style_id: '76285',
     name: 'Teal',
@@ -49,7 +46,6 @@ it('should render the image gallery with the default view and thumbnail(s)', () 
     },
   };
   const wrapper = mount(<ImageGallery styleId="76285" style={style} />);
->>>>>>> style-selector
   const imageGallery = wrapper.find('.imageGallery');
   const defaultView = wrapper.find(DefaultView);
   const thumbnailView = wrapper.find(ThumbnailView);
