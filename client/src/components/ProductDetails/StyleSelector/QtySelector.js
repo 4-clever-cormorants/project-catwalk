@@ -10,8 +10,8 @@ const QtySelector = ({ qty }) => {
   return (
     <label className="qtySelector">
       Quantity Selector
-      <select name="qty">
-        {options.map((option) => <option value={option} key={option}>{option}</option>)}
+      <select name="qty" id="qtySelector">
+        {options.map((option) => <option value={option} key={option} className="option">{option}</option>)}
       </select>
     </label>
   );
