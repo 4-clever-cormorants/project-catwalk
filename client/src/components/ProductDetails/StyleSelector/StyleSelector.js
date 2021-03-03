@@ -25,19 +25,13 @@ class StyleSelector extends React.Component {
     this.setState({
       sku: e.target.value,
     });
-    // this.props.styles.results.forEach((style) => {
-    //   if (style.style_id === styleId) {
-    //     this.setState({
-    //       style,
-    //     });
-    //   }
-    // });
   }
 
   render() {
-    const { styles, styleSelector } = this.props;
-    // {console.log(style)}
-    const { style, sku } = this.state;
+    const { styles, style, styleSelector } = this.props;
+    {console.log(style)}
+    const sku = Object.keys(style.skus)[0];
+    {console.log(sku)}
     const { skus } = style;
     const qty = skus[sku].quantity;
     return (
