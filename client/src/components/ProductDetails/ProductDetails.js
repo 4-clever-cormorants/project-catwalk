@@ -1,5 +1,4 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
 
 import ImageGallery from './ImageGallery/ImageGallery';
 import ProductInformation from './ProductInformation/ProductInformation';
@@ -36,13 +35,6 @@ class ProductDetails extends React.Component {
 
   render() {
     const { styleId, style } = this.state;
-    // console.log(styles.results);
-    // for (let i = 0; i < styles.results.length; i += 1) {
-    //   console.log('style', styles.results[i].style_id);
-    //   if (styles.results[i].style_id === styleId) {
-
-    //   }
-    // }
 
     return (
       <div className="productDetails">
@@ -58,9 +50,5 @@ class ProductDetails extends React.Component {
     );
   }
 }
-
-// ProductDetails.propTypes = {
-//   productId: PropTypes.string,
-// };
 
 export default ProductDetails;
