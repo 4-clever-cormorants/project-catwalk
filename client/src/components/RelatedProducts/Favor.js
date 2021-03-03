@@ -3,7 +3,7 @@ import React from 'react';
 
 const Favor = () => (
   // eslint-disable-next-line object-curly-spacing
-  <div className="actionIcon">
+  <div className="actionIconFavor">
     Favor
   </div>
 );
