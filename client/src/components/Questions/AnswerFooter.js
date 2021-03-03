@@ -20,9 +20,14 @@ class AnswerFooter extends React.Component {
       <div className="answerFooter">
         <div className="answerNameAndDate">
           <p className="answerName">
-            {`by ${answer.answerer_name}, `}
+            by
+            <span style={{ fontWeight: answer.answerer_name === 'Seller' ? 'bold' : 'normal' }}>
+              {/* change this to className = answerSeller or answerDefault when doing real css */}
+              {` ${answer.answerer_name}`}
+            </span>
+            ,
             <span className="answerDate">
-              {`${new Date(answer.date).toLocaleDateString('en-US', dateOptions)}`}
+              {` ${new Date(answer.date).toLocaleDateString('en-US', dateOptions)}`}
             </span>
           </p>
         </div>
