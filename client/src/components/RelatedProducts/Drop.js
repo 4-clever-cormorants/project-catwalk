@@ -3,7 +3,7 @@ import React from 'react';
 
 const Drop = () => (
   // eslint-disable-next-line object-curly-spacing
-  <div className="actionIcon">
+  <div className="actionIconDrop">
     Drop
   </div>
 );
