@@ -4,7 +4,7 @@ import Favor from './Favor';
 
 const Card = ({ item }) => (
   // eslint-disable-next-line object-curly-spacing
-  <div className="card" id={`card${item.id.toString()}`} style={{border: 'solid'}}>
+  <div className="card" id={`card${item.id.toString()}`}>
     <Favor />
     <img className="cardImg" src={item.thumbnail_url} alt={item.name} />
     <h3 className="cardName">

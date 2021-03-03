@@ -4,7 +4,7 @@ import Drop from './Drop';
 
 const CardOutfit = ({ item, dropHandler }) => (
   // eslint-disable-next-line object-curly-spacing
-  <div className="card" id={`card${item.id.toString()}`} style={{border: 'solid'}}>
+  <div className="card" id={`card${item.id.toString()}`}>
     <Drop id={item.id} dropHandler={dropHandler} />
     <img className="cardImg" src={item.thumbnail_url} alt={item.name} />
     <h3 className="cardName">

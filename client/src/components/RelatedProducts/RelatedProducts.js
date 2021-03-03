@@ -2,6 +2,7 @@ import React from 'react';
 import List from './List';
 import ListOutfit from './ListOutfit';
 import AddToOutfit from './AddToOutfit';
+import Comparsion from './Comparsion';
 import dummy from './dummy_related';
 
 class RelatedProducts extends React.Component {
