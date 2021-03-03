@@ -2,7 +2,7 @@ version: 2.1
 orbs:
   slack: circleci/slack@4.3.0
 jobs:
-  notify:
+  build:
     docker:
     - image: circleci/node:10-browsers
     steps:
@@ -35,6 +35,6 @@ jobs:
             event: fail
             mentions: '<@Sam Berston>'
             template: basic_fail_1
-        - slack/notify:
-            event: pass
-            template: success_tagged_deploy_1
+      - slack/notify:
+          event: pass
+          template: success_tagged_deploy_1
