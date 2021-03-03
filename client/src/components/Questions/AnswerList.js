@@ -32,7 +32,7 @@ class AnswerList extends React.Component {
       expandAnswersButton = <button type="button" className="collapseAnswers" onClick={this.collapseAnswers.bind(this)}>Collapse answers</button>;
     }
     return (
-      <div>
+      <div className="answerList">
         <p>A:</p>
         {answersOnScreen.map((answer) => <Answer key={answer.answer_id} answer={answer} />)}
         {expandAnswersButton}
