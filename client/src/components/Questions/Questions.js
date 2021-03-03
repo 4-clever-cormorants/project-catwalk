@@ -9,9 +9,18 @@ class Questions extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      questions: dummyQuestions,
+      questionsOnScreen: dummyQuestions.results.slice(0, 4),
+      // change dummyQuestions to some other state that holds all questions from get request
       addQuestionClicked: false,
+      currentLen: 4,
     };
+  }
+
+  loadMoreQuestions() {
+    const { currentLen } = this.state;
+    const newLen = currentLen + 2;
+    const newQuestions = dummyQuestions.results.slice(0, newLen);
+    this.setState({ currentLen: newLen, questionsOnScreen: newQuestions });
   }
 
   addQuestion() {
@@ -23,19 +32,19 @@ class Questions extends React.Component {
   }
 
   render() {
-    const { questions, addQuestionClicked } = this.state;
-    // const fourQuestions = questions.results.slice(0, 4);
+    const { questionsOnScreen, addQuestionClicked, currentLen } = this.state;
+    const allQuestionLen = dummyQuestions.results.length;
     return (
       <div>
         <h3>Questions</h3>
         <SearchBar />
         <div className="questionsList">
-          {questions.results.map((question) => (
+          {questionsOnScreen.map((question) => (
             <div key={question.question_id} className="question">
               <Question question={question} />
             </div>
           ))}
-          {questions.results.length > 4 ? <button type="button">More Answered Questions</button> : ''}
+          {allQuestionLen > 4 && currentLen < allQuestionLen ? <button type="button" onClick={this.loadMoreQuestions.bind(this)} id="loadMoreQuestions">More Answered Questions</button> : ''}
           <button type="button" onClick={this.addQuestion.bind(this)} id="addQuestionButton">Add a question</button>
           {addQuestionClicked ? <QuestionForm exitQuestionForm={() => this.exitQuestionForm()} /> : ''}
         </div>
