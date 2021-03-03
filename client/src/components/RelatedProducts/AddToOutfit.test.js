@@ -9,6 +9,7 @@ describe('Test Button component', () => {
 
     expect(button.exists()).toBe(true);
   });
+
   it('should add current product to outfit list', () => {
     const wrapper = mount(<RelatedProducts />);
     const instance = wrapper.instance();
@@ -16,5 +17,16 @@ describe('Test Button component', () => {
     expect(instance.state.outfitList.length).toEqual(0);
     button.simulate('click');
     expect(instance.state.outfitList.length).toEqual(1);
+  });
+
+  it('outfit list card should have drop component', () => {
+    const wrapper = mount(<RelatedProducts />);
+    const instance = wrapper.instance();
+    const button = wrapper.find('#addToOutfitButton');
+
+    expect(instance.state.outfitList.length).toEqual(0);
+    expect(wrapper.find('.actionIconDrop').exists()).toBe(false);
+    button.simulate('click');
+    expect(wrapper.find('.actionIconDrop').exists()).toBe(true);
   });
 });
