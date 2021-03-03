@@ -49,6 +49,7 @@ describe('Test Button component', () => {
     const { id } = dummy.relatedProducts[0];
     const outfitList = wrapper.find('.outfitListWithAdd');
     const drop = outfitList.find(`#card${id}`).find(Drop);
+    const cardOne = wrapper.find('.outfitListWithAdd').find(`#card${id}`);
 
     const check = (target) => {
       for (let i = 0; i < instance.state.outfitList.length; i += 1) {
