@@ -15,6 +15,11 @@ const SizeSelector = ({ skus, onChange }) => (
             </option>
           );
         }
+        return (
+          <option value={sku} key={sku} disabled>
+            {skus[sku].size}
+          </option>
+        );
       })}
     </select>
   </label>

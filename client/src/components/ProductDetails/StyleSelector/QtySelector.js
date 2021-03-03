@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const QtySelector = ({ qty }) => {
   const options = [];
-  for (let i = 0; i <= qty; i += 1) {
+  for (let i = 1; i <= qty; i += 1) {
     options.push(i);
   }
 
