@@ -10,9 +10,12 @@ class RelatedProducts extends React.Component {
     super(props);
     this.state = {
       outfitList: dummy.relatedProducts,
+      current: dummy.currentProduct,
+      clicked: undefined,
     };
     this.addToOutfitHandler = this.addToOutfitHandler.bind(this);
     this.dropHandler = this.dropHandler.bind(this);
+    this.compareHandler = this.compareHandler.bind(this);
   }
 
   addToOutfitHandler() {
@@ -29,6 +32,12 @@ class RelatedProducts extends React.Component {
     const { outfitList } = this.state;
     this.setState({
       outfitList: outfitList.filter((item) => item.id !== id),
+    });
+  }
+
+  compareHandler(item) {
+    this.setState({
+      clicked: item,
     });
   }
 
