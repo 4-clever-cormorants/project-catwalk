@@ -2,9 +2,8 @@ import React from 'react';
 import propTypes from 'prop-types';
 import Favor from './Favor';
 
-const Card = ({ item }) => (
-  // eslint-disable-next-line object-curly-spacing
-  <div className="card" id={`card${item.id.toString()}`} style={{border: 'solid'}}>
+const Card = ({ item, compareHandler }) => (
+  <div className="card" id={`card${item.id.toString()}`} onClick={compareHandler.bind(this, item)} onKeyPress={compareHandler.bind(this, item)} role="button" tabIndex={0}>
     <Favor />
     <img className="cardImg" src={item.thumbnail_url} alt={item.name} />
     <h3 className="cardName">
@@ -24,7 +23,7 @@ Card.propTypes = {
     default_price: propTypes.string.isRequired,
     thumbnail_url: propTypes.string.isRequired,
   }).isRequired,
-  // action: propTypes.element.isRequired,
+  compareHandler: propTypes.func.isRequired,
 };
 
 export default Card;
