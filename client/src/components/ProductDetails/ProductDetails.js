@@ -1,21 +1,38 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import axios from 'axios';
 
 import ImageGallery from './ImageGallery/ImageGallery';
 import ProductInformation from './ProductInformation/ProductInformation';
 import StyleSelector from './StyleSelector/StyleSelector';
 
-import product from './productDummyData';
+import defaultProduct from './productDummyData';
 import styles from './stylesDummyData';
 
 class ProductDetails extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      product: defaultProduct,
       styleId: '76285',
       style: styles.results[0],
       defaultSku: Object.keys(styles.results[0].skus)[0],
     };
     this.styleSelector = this.styleSelector.bind(this);
+  }
+
+  componentDidMount() {
+    const { productId } = this.props;
+    axios.get(`/products/data?product_id=${productId}`)
+      .then((res) => {
+        console.log('res: ', res.data);
+        this.setState({
+          product: res.data,
+        });
+      })
+      .catch((err) => {
+        console.error(err);
+      });
   }
 
   styleSelector(e) {
@@ -36,7 +53,9 @@ class ProductDetails extends React.Component {
   }
 
   render() {
-    const { styleId, style, defaultSku } = this.state;
+    const {
+      product, styleId, style, defaultSku,
+    } = this.state;
 
     return (
       <div className="productDetails">
@@ -53,5 +72,9 @@ class ProductDetails extends React.Component {
     );
   }
 }
+
+ProductDetails.propTypes = {
+  productId: PropTypes.string.isRequired,
+};
 
 export default ProductDetails;
