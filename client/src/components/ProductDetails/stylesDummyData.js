@@ -2,11 +2,11 @@ const styles = {
   product_id: '14931',
   results: [
     {
-      style_id: '76285',
-      name: 'Teal',
+      style_id: 76285,
+      name: 'Tina',
       original_price: '398.00',
       sale_price: '254.00',
-      default: true,
+      'default?': true,
       photos: [
         {
           thumbnail_url: 'https://images.unsplash.com/photo-1532244769164-ff64ddeefa45?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80',
@@ -41,11 +41,11 @@ const styles = {
       },
     },
     {
-      style_id: '76286',
+      style_id: 76286,
       name: 'Pink',
       original_price: '398.00',
       sale_price: null,
-      default: false,
+      'default?': false,
       photos: [
         {
           thumbnail_url: 'https://images.unsplash.com/photo-1470434767159-ac7bf1b43351?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80',

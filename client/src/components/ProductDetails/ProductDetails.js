@@ -7,16 +7,17 @@ import ProductInformation from './ProductInformation/ProductInformation';
 import StyleSelector from './StyleSelector/StyleSelector';
 
 import defaultProduct from './productDummyData';
-import styles from './stylesDummyData';
+import defaultStyles from './stylesDummyData';
 
 class ProductDetails extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       product: defaultProduct,
-      styleId: '76285',
-      style: styles.results[0],
-      defaultSku: Object.keys(styles.results[0].skus)[0],
+      styleId: 76285,
+      styles: defaultStyles,
+      style: defaultStyles.results[0],
+      defaultSku: Object.keys(defaultStyles.results[0].skus)[0],
     };
     this.styleSelector = this.styleSelector.bind(this);
   }
@@ -25,7 +26,6 @@ class ProductDetails extends React.Component {
     const { productId } = this.props;
     axios.get(`/products/data?product_id=${productId}`)
       .then((res) => {
-        console.log('res: ', res.data);
         this.setState({
           product: res.data,
         });
@@ -33,17 +33,27 @@ class ProductDetails extends React.Component {
       .catch((err) => {
         console.error(err);
       });
+    axios.get(`/products/styles?product_id=${productId}`)
+      .then((res) => {
+        console.log('styles: ', res.data);
+        this.setState({
+          styles: res.data,
+          style: res.data.results[0],
+        });
+      });
   }
 
-  styleSelector(e) {
+  styleSelector(e) { // fix this
     // when you click on the style image in StylesDisplay,
     // update the state with that style id and style
-    const styleId = e.target.classList[0];
+    const styleId = Number(e.target.classList[0]);
+    const { styles } = this.state;
     this.setState({
       styleId,
     });
     styles.results.forEach((style) => {
       if (style.style_id === styleId) {
+        console.log(style);
         this.setState({
           style,
           defaultSku: Object.keys(style.skus)[0],
@@ -54,7 +64,7 @@ class ProductDetails extends React.Component {
 
   render() {
     const {
-      product, styleId, style, defaultSku,
+      product, styleId, styles, style, defaultSku,
     } = this.state;
 
     return (
