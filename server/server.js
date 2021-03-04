@@ -5,6 +5,7 @@ const path = require('path');
 const app = express();
 
 const productRouter = require('./routes/productRoutes.js');
+const questionsRoutes = require('./routes/questionsRoutes.js');
 
 app.use(express.static(path.join(__dirname, '../client/dist')));
 
@@ -15,8 +16,12 @@ const logger = (req, res, next) => {
 
 app.use('/', logger);
 
+app.use(express.static(path.join(__dirname, '../client/dist')));
+
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+app.use('/qa', questionsRoutes);
 
 app.get('/', (req, res) => {
   res.render('index');

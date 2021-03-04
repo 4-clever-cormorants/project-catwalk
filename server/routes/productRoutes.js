@@ -11,7 +11,6 @@ const headers = {
 };
 
 productRouter.get('/data', (req, res) => {
-  // res.send('hello');
   axios
     .get(`${url}products/${req.query.product_id}`, headers)
     .then((product) => {

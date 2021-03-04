@@ -35,7 +35,6 @@ class ProductDetails extends React.Component {
       });
     axios.get(`/products/styles?product_id=${productId}`)
       .then((res) => {
-        console.log('styles: ', res.data);
         this.setState({
           styles: res.data,
           style: res.data.results[0],
@@ -53,7 +52,6 @@ class ProductDetails extends React.Component {
     });
     styles.results.forEach((style) => {
       if (style.style_id === styleId) {
-        console.log(style);
         this.setState({
           style,
           defaultSku: Object.keys(style.skus)[0],
