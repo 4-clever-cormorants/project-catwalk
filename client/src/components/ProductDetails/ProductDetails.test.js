@@ -7,9 +7,9 @@ import DefaultView from './ImageGallery/DefaultView';
 import ThumbnailView from './ImageGallery/ThumbnailView';
 
 import ProductInformation from './ProductInformation/ProductInformation';
-// import Category from './ProductInformation/Category';
-// import Title from './ProductInformation/Title';
-// import Price from './ProductInformation/Price';
+import Category from './ProductInformation/Category';
+import Title from './ProductInformation/Title';
+import Price from './ProductInformation/Price';
 
 import StyleSelector from './StyleSelector/StyleSelector';
 import StylesDisplay from './StyleSelector/StylesDisplay';
@@ -25,6 +25,9 @@ it('should render all the subcomponents', () => {
   const defaultView = wrapper.find(DefaultView);
   const thumbnailView = wrapper.find(ThumbnailView);
   const productInformation = wrapper.find(ProductInformation);
+  const category = wrapper.find(Category);
+  const title = wrapper.find(Title);
+  const price = wrapper.find(Price);
   const styleSelector = wrapper.find(StyleSelector);
   const stylesDisplay = wrapper.find(StylesDisplay);
   const sizeSelector = wrapper.find(SizeSelector);
@@ -37,6 +40,9 @@ it('should render all the subcomponents', () => {
   expect(defaultView.exists()).toBe(true);
   expect(thumbnailView.exists()).toBe(true);
   expect(productInformation.exists()).toBe(true);
+  expect(category.exists()).toBe(true);
+  expect(title.exists()).toBe(true);
+  expect(price.exists()).toBe(true);
   expect(styleSelector.exists()).toBe(true);
   expect(stylesDisplay.exists()).toBe(true);
   expect(sizeSelector.exists()).toBe(true);
