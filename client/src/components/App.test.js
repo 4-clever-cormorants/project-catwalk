@@ -24,5 +24,5 @@ it('should render all the components', () => {
 it('should have a default state of productId being 14931', () => {
   const wrapper = mount(<App />);
   const instance = wrapper.instance();
-  expect(instance.state.productId).toBe('14931');
+  expect(instance.state.productId).toBe(14931);
 });

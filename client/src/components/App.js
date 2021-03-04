@@ -16,8 +16,10 @@ class App extends React.Component {
 
   componentDidMount() {
     const queryParams = url.parse(window.location.search, true).query;
-    const productId = Number(queryParams.product_id);
-    this.setState({ productId });
+    const productId = parseInt(queryParams.product_id, 10);
+    if (!Number.isNaN(productId)) {
+      this.setState({ productId });
+    }
   }
 
   render() {
