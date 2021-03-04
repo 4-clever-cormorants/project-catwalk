@@ -13,10 +13,10 @@ import ProductInformation from './ProductInformation/ProductInformation';
 
 import StyleSelector from './StyleSelector/StyleSelector';
 import StylesDisplay from './StyleSelector/StylesDisplay';
-// import SizeSelector from './StyleSelector/SizeSelector';
-// import QtySelector from './StyleSelector/QtySelector';
-// import AddToCart from './StyleSelector/AddToCart';
-// import Favorite from './StyleSelector/Favorite';
+import SizeSelector from './StyleSelector/SizeSelector';
+import QtySelector from './StyleSelector/QtySelector';
+import AddToCart from './StyleSelector/AddToCart';
+import Favorite from './StyleSelector/Favorite';
 
 it('should render all the subcomponents', () => {
   const wrapper = mount(<ProductDetails productId="14931" />);
@@ -27,6 +27,11 @@ it('should render all the subcomponents', () => {
   const productInformation = wrapper.find(ProductInformation);
   const styleSelector = wrapper.find(StyleSelector);
   const stylesDisplay = wrapper.find(StylesDisplay);
+  const sizeSelector = wrapper.find(SizeSelector);
+  const qtySelecotr = wrapper.find(QtySelector);
+  const addToCart = wrapper.find(AddToCart);
+  const favorite = wrapper.find(Favorite);
+
   expect(productDetails.exists()).toBe(true);
   expect(imageGallery.exists()).toBe(true);
   expect(defaultView.exists()).toBe(true);
@@ -34,4 +39,8 @@ it('should render all the subcomponents', () => {
   expect(productInformation.exists()).toBe(true);
   expect(styleSelector.exists()).toBe(true);
   expect(stylesDisplay.exists()).toBe(true);
+  expect(sizeSelector.exists()).toBe(true);
+  expect(qtySelecotr.exists()).toBe(true);
+  expect(addToCart.exists()).toBe(true);
+  expect(favorite.exists()).toBe(true);
 });
