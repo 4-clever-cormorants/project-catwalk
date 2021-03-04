@@ -95,7 +95,7 @@ class AnswerForm extends React.Component {
             <button type="button" className="uploadPhoto">Upload photo</button>
           </label>
           <button type="button" className="submitAnswer" onClick={this.handleSubmitAnswer.bind(this)} disabled={submitted}>Submit</button>
-          {submitError ? `You must enter the following: ${errorMessage}` : ''}
+          {submitError ? <div className="errorMessage">{`You must enter the following: ${errorMessage}`}</div> : ''}
         </form>
       </div>
     );

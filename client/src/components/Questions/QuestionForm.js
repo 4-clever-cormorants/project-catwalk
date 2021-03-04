@@ -90,7 +90,7 @@ class QuestionForm extends React.Component {
             <p>For authentication reasons, you will not be emailed</p>
           </label>
           <button type="button" id="submitQuestion" onClick={this.handleSubmitAnswer.bind(this)} disabled={submitted}>Submit</button>
-          {submitError ? `You must enter the following: ${errorMessage}` : ''}
+          {submitError ? <div className="errorMessage">{`You must enter the following: ${errorMessage}`}</div> : ''}
         </form>
       </div>
     );
