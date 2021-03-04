@@ -13,6 +13,7 @@ class ProductDetails extends React.Component {
     this.state = {
       styleId: '76285',
       style: styles.results[0],
+      defaultSku: Object.keys(styles.results[0].skus)[0],
     };
     this.styleSelector = this.styleSelector.bind(this);
   }
@@ -28,13 +29,14 @@ class ProductDetails extends React.Component {
       if (style.style_id === styleId) {
         this.setState({
           style,
+          defaultSku: Object.keys(style.skus)[0],
         });
       }
     });
   }
 
   render() {
-    const { styleId, style } = this.state;
+    const { styleId, style, defaultSku } = this.state;
 
     return (
       <div className="productDetails">
@@ -44,7 +46,8 @@ class ProductDetails extends React.Component {
         <StyleSelector
           styles={styles.results}
           styleSelector={this.styleSelector}
-          style={styles.results[0]}
+          style={style}
+          defaultSku={defaultSku}
         />
       </div>
     );

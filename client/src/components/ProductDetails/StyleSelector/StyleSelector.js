@@ -13,10 +13,9 @@ import Favorite from './Favorite';
 class StyleSelector extends React.Component {
   constructor(props) {
     super(props);
-    const { styles } = this.props;
+    const { defaultSku } = this.props;
     this.state = {
-      style: styles[0],
-      sku: '440865',
+      sku: defaultSku,
     };
     this.skuSelector = this.skuSelector.bind(this);
   }
@@ -28,9 +27,14 @@ class StyleSelector extends React.Component {
   }
 
   render() {
-    const { styles, styleSelector } = this.props;
-    const { style, sku } = this.state;
+    const {
+      styles, style, styleSelector, defaultSku,
+    } = this.props;
+    let { sku } = this.state;
     const { skus } = style;
+    if (skus[sku] === undefined) {
+      sku = defaultSku;
+    }
     const qty = skus[sku].quantity;
     return (
       <div className="styleSelector">
@@ -65,6 +69,7 @@ StyleSelector.propTypes = {
     photos: PropTypes.arrayOf(PropTypes.objectOf(PropTypes.string)).isRequired,
     skus: PropTypes.objectOf(PropTypes.object).isRequired,
   }).isRequired,
+  defaultSku: PropTypes.string.isRequired,
 };
 
 export default StyleSelector;
