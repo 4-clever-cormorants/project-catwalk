@@ -48,3 +48,27 @@ it('should close the modal when clicking exit button', () => {
   addAnswerForm = wrapper.find(AnswerForm);
   expect(addAnswerForm.exists()).toBe(false);
 });
+
+it('should increase the helpfulness count after clicking helpful button', () => {
+  const wrapper = mount(<Question />);
+  const instance = wrapper.instance();
+  expect(instance.state.increased).toBe(false);
+  const oldHelpfulness = instance.state.questionHelpfulness;
+  const helpfulButton = wrapper.find('.questionHelpfulButton');
+  helpfulButton.simulate('click');
+  expect(instance.state.questionHelpfulness - oldHelpfulness).toBe(1);
+  expect(instance.state.increased).toBe(true);
+});
+
+it('should disable the helpful button after clicking', () => {
+  const wrapper = mount(<Question />);
+  const instance = wrapper.instance();
+  expect(instance.state.increased).toBe(false);
+  const oldHelpfulness = instance.state.questionHelpfulness;
+  let helpfulButton = wrapper.find('.questionHelpfulButton');
+  helpfulButton.simulate('click');
+  expect(instance.state.questionHelpfulness - oldHelpfulness).toBe(1);
+  expect(instance.state.increased).toBe(true);
+  helpfulButton = wrapper.find('.questionHelpfulButton');
+  expect(helpfulButton.props().disabled).toBe(true);
+});
