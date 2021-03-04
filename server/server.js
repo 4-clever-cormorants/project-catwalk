@@ -13,6 +13,7 @@ const url = require('url');
 const config = require('../config.js');
 
 const questionsRoutes = require('./routes/questionsRoutes.js');
+const relatedRoutes = require('./routes/relatedRoutes.js');
 
 app.use(express.static(path.join(__dirname, '../client/dist')));
 
@@ -20,6 +21,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use('/qa', questionsRoutes);
+app.use('/related', relatedRoutes);
 
 app.get('/', (req, res) => {
   res.render('index');
