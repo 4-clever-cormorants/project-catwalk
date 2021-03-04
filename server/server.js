@@ -24,6 +24,7 @@ app.use('/qa', questionsRoutes);
 app.use('/related', relatedRoutes);
 
 app.get('/', (req, res) => {
+  res.write('test');
   res.render('index');
 });
 

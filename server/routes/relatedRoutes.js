@@ -16,7 +16,7 @@ const average = (ratings) => {
   let totolRatings = 0;
   if (rates.length === 0) { return null; }
   for (let i = 0; i < rates.length; i += 1) {
-    totolRatings += (5 - i) * parseInt(ratings[rates[i]], 10);
+    totolRatings += i * parseInt(ratings[rates[i]], 10);
     totolReviews += parseInt(ratings[rates[i]], 10);
   }
   return totolRatings / totolReviews;
@@ -47,7 +47,7 @@ router.get('/relatedProducts', (req, res) => {
       }
       Promise.all(wait)
         .then((dataList) => {
-          res.send(dataList);
+          res.status(200).send(dataList);
         });
     })
     .catch((error) => {
