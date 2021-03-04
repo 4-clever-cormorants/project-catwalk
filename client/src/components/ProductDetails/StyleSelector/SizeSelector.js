@@ -6,11 +6,11 @@ import PropTypes from 'prop-types';
 const SizeSelector = ({ skus, onChange }) => (
   <label className="sizeSelector" onChange={onChange}>
     size selector
-    <select name="size">
+    <select name="size" id="sizeSelector">
       {Object.keys(skus).map((sku) => {
         if (skus[sku].quantity !== 0) {
           return (
-            <option value={sku} key={sku}>
+            <option value={sku} key={sku} className="option">
               {skus[sku].size}
             </option>
           );

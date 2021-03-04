@@ -28,18 +28,15 @@ class StyleSelector extends React.Component {
   }
 
   render() {
-    const { styles, style, styleSelector, defaultSku } = this.props;
-    console.log('d-sku', defaultSku);
-    console.log('sS/style: ', style);
+    const {
+      styles, style, styleSelector, defaultSku,
+    } = this.props;
     let { sku } = this.state;
-    console.log('sku(size): ', sku);
     const { skus } = style;
-    console.log('skus: ', skus);
     if (skus[sku] === undefined) {
       sku = defaultSku;
     }
     const qty = skus[sku].quantity;
-    console.log('qty: ', qty);
     return (
       <div className="styleSelector">
         <h2>style selector</h2>

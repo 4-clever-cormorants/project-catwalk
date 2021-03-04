@@ -10,3 +10,5 @@ test('QtySelector offers qty options to select', () => {
   expect(qtySelector.exists()).toBe(true);
   expect(optionsLen).toBe(32);
 });
+
+// want to test that the qty selector reflects the qty of the sku that the style selector has ....
