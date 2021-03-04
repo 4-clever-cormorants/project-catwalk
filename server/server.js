@@ -8,8 +8,6 @@ const CAMPUS_CODE = 'hr-sfo';
 
 const axios = require('axios');
 
-const url = require('url');
-
 const config = require('../config.js');
 
 const questionsRoutes = require('./routes/questionsRoutes.js');
