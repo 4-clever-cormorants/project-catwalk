@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Category = ({ category }) => (
-  <div>
+  <div className="category">
     category:
     {category}
   </div>

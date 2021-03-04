@@ -8,13 +8,15 @@ import Price from './Price';
 
 import product from '../productDummyData';
 
-test('product information should render all the components', () => {
+test('ProductInformation should display the category, title, and price', () => {
   const wrapper = mount(<ProductInformation product={product} />);
   const productInformation = wrapper.find(ProductInformation);
+  const productInformationLen = wrapper.find('.productInformation').children().length;
   const category = wrapper.find(Category);
   const title = wrapper.find(Title);
   const price = wrapper.find(Price);
   expect(productInformation.exists()).toBe(true);
+  expect(productInformationLen).toBe(4);
   expect(category.exists()).toBe(true);
   expect(title.exists()).toBe(true);
   expect(price.exists()).toBe(true);
