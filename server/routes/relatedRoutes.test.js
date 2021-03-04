@@ -4,7 +4,7 @@ const expServer = require('../server');
 
 test('response should be an array of object', () => {
   supertest(expServer.app)
-    .get('/related/relatedProducts')
+    .get('/related/relatedProducts?product_id=14931')
     .expect(200)
     .then((response) => {
       expect(Array.isArray(response.data)).toBe(true);
