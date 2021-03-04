@@ -7,7 +7,6 @@ import SizeSelector from './SizeSelector';
 import QtySelector from './QtySelector';
 import AddToCart from './AddToCart';
 import Favorite from './Favorite';
-
 import styles from '../stylesDummyData';
 
 test('StyleSelector should render all the subcomponents', () => {
@@ -24,7 +23,7 @@ test('StyleSelector should render all the subcomponents', () => {
       }
     });
   }
-  const wrapper = mount(<StyleSelector styles={styles.results} styleSelector={styleSelector} styleId="76285" style={styles.results[0]} />);
+  const wrapper = mount(<StyleSelector styles={styles.results} styleSelector={styleSelector} styleId="76285" style={styles.results[0]} defaultSku={Object.keys(styles.results[0].skus)[0]} />);
   const sS = wrapper.find(StyleSelector);
   const stylesDisplay = wrapper.find(StylesDisplay);
   const sizeSelector = wrapper.find(SizeSelector);
@@ -38,3 +37,7 @@ test('StyleSelector should render all the subcomponents', () => {
   expect(addToCart.exists()).toBe(true);
   expect(favorite.exists()).toBe(true);
 });
+
+// must test that the clicking on a style in the style selector updates
+// the state of the ProductDetails component and is passed as a prop to
+// the image gallery
