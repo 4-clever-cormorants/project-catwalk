@@ -1,15 +1,25 @@
 import React from 'react';
 import ProductDetails from './ProductDetails/ProductDetails';
 import RelatedProducts from './RelatedProducts/RelatedProducts';
-import RatingsAndReviews from './RatingsAndReviews/RatingsAndReviews';
 import Questions from './Questions/Questions';
+
+const axios = require('axios');
+const url = require('url');
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      productId: '14931',
+      productId: 14931,
     };
+  }
+
+  componentDidMount() {
+    const queryParams = url.parse(window.location.search, true).query;
+    const productId = parseInt(queryParams.product_id, 10);
+    if (!Number.isNaN(productId)) {
+      this.setState({ productId });
+    }
   }
 
   render() {
@@ -18,7 +28,6 @@ class App extends React.Component {
       <div id="app" className="app">
         <ProductDetails productId={productId} />
         <RelatedProducts productId={productId} />
-        <RatingsAndReviews productId={productId} />
         <Questions productId={productId} />
       </div>
     );
