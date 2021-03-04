@@ -7,7 +7,7 @@ test('GET /products/data', () => {
     .get('/products')
     .expect(200)
     .then((res) => {
-      expect(res.data)
-    })
+      expect(typeof res.data).toBe('object');
+    });
   expServer.server.close();
 });
