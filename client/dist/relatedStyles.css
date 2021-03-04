@@ -58,3 +58,22 @@
   right: 0px;
   background-color: ivory;
 }
+
+.comparison {
+  border: solid;
+  width: 500px;
+  height: fit-content;
+}
+
+#compareTitle {
+  position: relative;
+}
+
+#compareCurrentName {
+  margin-right: 70px;
+}
+
+#compareClickedName {
+  margin-left: 70px;
+}
+

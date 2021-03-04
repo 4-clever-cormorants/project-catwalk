@@ -4,13 +4,27 @@ import PropTypes from 'prop-types';
 class AnswerFooter extends React.Component {
   constructor(props) {
     super(props);
+    const { answer } = this.props;
     this.state = {
-
+      answerHelpfulness: answer.helpfulness,
+      reported: false,
+      increased: false,
     };
+  }
+
+  increaseAnswerHelpfulness() {
+    const { answerHelpfulness } = this.state;
+    const newHelpfulness = answerHelpfulness + 1;
+    this.setState({ answerHelpfulness: newHelpfulness, increased: true });
+  }
+
+  reportAnswer() {
+    this.setState({ reported: true });
   }
 
   render() {
     const { answer } = this.props;
+    const { answerHelpfulness, reported, increased } = this.state;
     const dateOptions = {
       year: 'numeric',
       month: 'long',
@@ -34,12 +48,12 @@ class AnswerFooter extends React.Component {
         <div className="answerHelpful">
           <p>
             Helpful?
-            <button type="button">Yes</button>
-            <span>{`(${answer.helpfulness})`}</span>
+            <button type="button" className="answerHelpfulButton" onClick={this.increaseAnswerHelpfulness.bind(this)} disabled={increased}>Yes</button>
+            <span>{`(${answerHelpfulness})`}</span>
           </p>
         </div>
         <div className="answerReport">
-          <button type="button">Report</button>
+          {reported ? 'Reported' : <button type="button" className="answerReportButton" onClick={this.reportAnswer.bind(this)}>Report</button>}
         </div>
       </div>
     );
