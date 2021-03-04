@@ -13,9 +13,8 @@ import Favorite from './Favorite';
 class StyleSelector extends React.Component {
   constructor(props) {
     super(props);
-    const { style, defaultSku } = this.props;
+    const { defaultSku } = this.props;
     this.state = {
-      style,
       sku: defaultSku,
     };
     this.skuSelector = this.skuSelector.bind(this);
