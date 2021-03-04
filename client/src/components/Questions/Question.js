@@ -7,9 +7,12 @@ import dummyAnswers from './dummyAnswers';
 class Question extends React.Component {
   constructor(props) {
     super(props);
+    const { question } = this.props;
     this.state = {
       answers: dummyAnswers,
       addAnswerClicked: false,
+      questionHelpfulness: question.question_helpfulness,
+      increased: false,
     };
   }
 
@@ -21,13 +24,27 @@ class Question extends React.Component {
     this.setState({ addAnswerClicked: false });
   }
 
+  increaseQuestionHelpfulness() {
+    const { questionHelpfulness } = this.state;
+    this.setState({ questionHelpfulness: questionHelpfulness + 1, increased: true });
+  }
+
   render() {
     const { question } = this.props;
-    const { answers, addAnswerClicked } = this.state;
+    const {
+      answers,
+      addAnswerClicked,
+      questionHelpfulness,
+      increased,
+    } = this.state;
     return (
       <div>
         <p style={{ fontWeight: 'bold' }}>{`Q: ${question.question_body}`}</p>
-        <p>{`Helpful? (${question.question_helpfulness})`}</p>
+        <p>
+          Helpful?
+          <button type="button" className="questionHelpfulButton" onClick={this.increaseQuestionHelpfulness.bind(this)} disabled={increased}>Yes</button>
+          <span>{`(${questionHelpfulness})`}</span>
+        </p>
         <button type="button" className="addAnswerButton" onClick={this.addAnswer.bind(this)}>Add answer</button>
         {addAnswerClicked ? <AnswerForm exitAnswerForm={() => this.exitAnswerForm()} questionBody={question.question_body} /> : ''}
         <AnswerList answers={answers.results} />
