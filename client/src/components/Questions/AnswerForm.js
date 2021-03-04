@@ -10,6 +10,7 @@ class AnswerForm extends React.Component {
       email: '',
       errorMessages: [],
       submitError: false,
+      submitted: false,
     };
   }
 
@@ -29,7 +30,7 @@ class AnswerForm extends React.Component {
     this.validateForm(() => {
       const { errorMessages } = this.state;
       if (errorMessages.length === 0) {
-        this.setState({ submitError: false });
+        this.setState({ submitError: false, submitted: true });
       } else {
         this.setState({ submitError: true });
       }
@@ -64,7 +65,9 @@ class AnswerForm extends React.Component {
     const {
       errorMessages,
       submitError,
+      submitted,
     } = this.state;
+    const errorMessage = errorMessages.join(', ');
     return (
       <div className="answerForm">
         <h3>Submit your Answer</h3>
@@ -91,8 +94,8 @@ class AnswerForm extends React.Component {
             <input type="file" />
             <button type="button" className="uploadPhoto">Upload photo</button>
           </label>
-          <button type="button" className="submitAnswer" onClick={this.handleSubmitAnswer.bind(this)}>Submit</button>
-          {submitError ? `You must enter the following: ${errorMessages.map((message) => message)}` : ''}
+          <button type="button" className="submitAnswer" onClick={this.handleSubmitAnswer.bind(this)} disabled={submitted}>Submit</button>
+          {submitError ? `You must enter the following: ${errorMessage}` : ''}
         </form>
       </div>
     );
