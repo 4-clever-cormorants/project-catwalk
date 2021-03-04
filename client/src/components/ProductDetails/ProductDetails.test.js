@@ -5,6 +5,8 @@ import ProductDetails from './ProductDetails';
 import ImageGallery from './ImageGallery/ImageGallery';
 import ProductInformation from './ProductInformation/ProductInformation';
 import StyleSelector from './StyleSelector/StyleSelector';
+import StylesDisplay from './StyleSelector/StylesDisplay';
+import 
 
 it('should render all the subcomponents', () => {
   const wrapper = mount(<ProductDetails productId="14931" />);
@@ -12,8 +14,10 @@ it('should render all the subcomponents', () => {
   const imageGallery = wrapper.find(ImageGallery);
   const productInformation = wrapper.find(ProductInformation);
   const styleSelector = wrapper.find(StyleSelector);
+  const stylesDisplay = wrapper.find(StylesDisplay);
   expect(productDetails.exists()).toBe(true);
   expect(imageGallery.exists()).toBe(true);
   expect(productInformation.exists()).toBe(true);
   expect(styleSelector.exists()).toBe(true);
+  expect(stylesDisplay.exists()).toBe(true);
 });
