@@ -20,4 +20,5 @@ test('GET /products/styles', () => {
       expect(typeof res.data).toBe('object');
       expect(typeof res.data.results[0]).toBe('object');
     });
+  expServer.server.close();
 });
