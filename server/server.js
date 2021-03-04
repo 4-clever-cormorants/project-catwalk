@@ -8,12 +8,18 @@ const CAMPUS_CODE = 'hr-sfo';
 
 const axios = require('axios');
 
+const url = require('url');
+
 const config = require('../config.js');
+
+const questionsRoutes = require('./routes/questionsRoutes.js');
 
 app.use(express.static(path.join(__dirname, '../client/dist')));
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+app.use('/qa', questionsRoutes);
 
 app.get('/', (req, res) => {
   res.render('index');
