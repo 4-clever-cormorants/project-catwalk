@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable consistent-return */
 /* eslint-disable array-callback-return */
 import React from 'react';
