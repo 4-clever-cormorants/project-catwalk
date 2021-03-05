@@ -25,14 +25,7 @@ class Question extends React.Component {
       this.setState({ loadAnswers: true });
       return;
     }
-    //this.fetchAnswers()
-    const { question } = this.props;
-    const questionId = question.question_id;
-    axios.get('/qa/answers', {
-      params: {
-        questionId,
-      },
-    })
+    this.fetchAnswers()
       .then((response) => {
         this.setState({ answers: response.data, loadAnswers: true });
       })
