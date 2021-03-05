@@ -6,22 +6,33 @@ import Style from './Style';
 
 import css from './StyleSelector.css';
 
-const StyleSelector = ({
-  styles, styleSelector,
-}) => {
+const StyleSelector = ({ styles, styleSelector }) => {
   const n = styles.length;
+  let row1;
+  let row2;
   if (n > 4) {
-    styles.slice(0, 4);
+    row1 = styles.slice(0, 4);
+    row2 = styles.slice(4, 7);
   }
+
   return (
     <div className={css.styleSelector}>
       <h2>style selector (click to view style)</h2>
       <div className={css.stylesDisplay}>
-        {styles.map((style) => (
-          <div key={style.style_id} className={css.style}>
-            <Style style={style} onClick={styleSelector} />
-          </div>
-        ))}
+        <div className={css.row1}>
+          {row1.map((style) => (
+            <div key={style.style_id} className={css.style}>
+              <Style style={style} onClick={styleSelector} />
+            </div>
+          ))}
+        </div>
+        <div className={css.row2}>
+          {row2.map((style) => (
+            <div key={style.style_id} className={css.style}>
+              <Style style={style} onClick={styleSelector} />
+            </div>
+          ))}
+        </div>
 
       </div>
     </div>

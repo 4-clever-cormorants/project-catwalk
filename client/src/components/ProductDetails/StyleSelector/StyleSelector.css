@@ -1,9 +1,12 @@
 .styleSelector {
   grid-column: 2;
   grid-row: 2/3;
-  display: grid;
+  display: flex;
+  flex-direction: column;
+  justify-self: center;
   height: 100%;
-  border: 1px solid black;
+  width: 100%;
+  border: 4px solid red;
 }
 
 .styleSelector h2 {
@@ -13,6 +16,20 @@
 }
 
 .styleSelector .stylesDisplay {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  justify-content: center;
+  border: 4px solid orange;
+}
+
+.styleSelector .stylesDisplay .row1 {
+  grid-row: 1;
+  display: flex;
+  flex-direction: row;
+}
+
+.styleSelector .stylesDisplay .row2 {
+  grid-row: 2;
   display: flex;
   flex-direction: row;
 }
