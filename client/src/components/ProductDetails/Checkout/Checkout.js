@@ -6,13 +6,15 @@ import QtySelector from './QtySelector';
 import AddToCart from './AddToCart';
 import Favorite from './Favorite';
 
+import css from './Checkout.css';
+
 const Checkout = ({
   style, addToCart, skuSelector, sku,
 }) => {
   const { skus } = style;
   const qty = skus[sku].quantity;
   return (
-    <div className="checkout">
+    <div className={css.checkout}>
       <form onSubmit={addToCart} className="form">
         <SizeSelector skus={skus} onChange={skuSelector} />
         <QtySelector qty={qty} />
