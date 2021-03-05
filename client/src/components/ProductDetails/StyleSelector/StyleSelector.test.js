@@ -50,8 +50,6 @@ it('should add a selected sku to the cart only once per sku', () => {
   const wrapper = mount(<StyleSelector styles={styles.results} styleSelector={styleSelector} styleId="76285" style={styles.results[0]} defaultSku={Object.keys(styles.results[0].skus)[0]} />);
   const instance = wrapper.instance();
   const form = wrapper.find('.form');
-  console.log(form.exists());
-  console.log(instance.state.sku);
   form.simulate('submit');
   expect(instance.state.cart.length).toBe(1);
   form.simulate('submit');
