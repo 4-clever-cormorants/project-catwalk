@@ -16,7 +16,9 @@ class Question extends React.Component {
       questionHelpfulness: question.question_helpfulness,
       increased: false,
       loadAnswers: false,
+      answerCount: 3,
     };
+    this.updateAnswers = this.updateAnswers.bind(this);
   }
 
   componentDidMount() {
@@ -25,9 +27,17 @@ class Question extends React.Component {
       this.setState({ loadAnswers: true });
       return;
     }
+    this.updateAnswers(() => {});
+  }
+
+  updateAnswers(callback) {
     this.fetchAnswers()
       .then((response) => {
-        this.setState({ answers: response.data, loadAnswers: true });
+        this.setState({
+          answers: response.data,
+          loadAnswers: true,
+          answerCount: Number.MAX_SAFE_INTEGER,
+        }, callback);
       })
       .catch((err) => {
         console.log('question err', err);
@@ -37,9 +47,11 @@ class Question extends React.Component {
   fetchAnswers() {
     const { question } = this.props;
     const questionId = question.question_id;
+    const { answerCount } = this.state;
     return axios.get('/qa/answers', {
       params: {
         questionId,
+        answerCount,
       },
     });
   }
@@ -76,7 +88,7 @@ class Question extends React.Component {
         </p>
         <button type="button" className="addAnswerButton" onClick={this.addAnswer.bind(this)}>Add answer</button>
         {addAnswerClicked ? <AnswerForm exitAnswerForm={() => this.exitAnswerForm()} questionBody={question.question_body} /> : ''}
-        {loadAnswers ? <AnswerList answers={answers.results} /> : ''}
+        {loadAnswers ? <AnswerList answers={answers.results} updateAnswers={this.updateAnswers} /> : ''}
       </div>
     );
   }
