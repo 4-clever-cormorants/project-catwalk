@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import DefaultView from './DefaultView';
-import ThumbnailView from './ThumbnailView';
+// import ThumbnailView from './ThumbnailView';
+import css from './ImageGallery.css';
 
 const ImageGallery = ({ styleId, style, name }) => (
-  <div className="imageGallery" styleid={styleId}>
+  <div className={css.imageGallery} styleid={styleId}>
     {/* <div className="name">
       <h2>{ name }</h2>
     </div> */}

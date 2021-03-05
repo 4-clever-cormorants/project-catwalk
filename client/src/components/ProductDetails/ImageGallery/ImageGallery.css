@@ -1,0 +1,24 @@
+.imageGallery {
+  display: grid;
+  /* grid-template-columns: 1fr 3fr; */
+  /* grid-template-rows: 1fr 6fr; */
+  grid-column: 1;
+  grid-row: 2/3;
+  height: 700px;
+  width: 100%;
+  border: 1px solid black;
+}
+
+.imageGallery .defaultView {
+  /* grid-column: 2; */
+  /* grid-row: 2; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px black solid;
+}
+
+.imageGallery .defaultView img {
+  max-width: 500px;
+  max-height: 500px;
+}
