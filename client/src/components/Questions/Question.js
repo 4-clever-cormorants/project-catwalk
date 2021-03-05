@@ -87,7 +87,7 @@ class Question extends React.Component {
           <span>{`(${questionHelpfulness})`}</span>
         </p>
         <button type="button" className="addAnswerButton" onClick={this.addAnswer.bind(this)}>Add answer</button>
-        {addAnswerClicked ? <AnswerForm exitAnswerForm={() => this.exitAnswerForm()} questionBody={question.question_body} /> : ''}
+        {addAnswerClicked ? <AnswerForm exitAnswerForm={() => this.exitAnswerForm()} questionBody={question.question_body} questionId={question.question_id} /> : ''}
         {loadAnswers ? <AnswerList answers={answers.results} updateAnswers={this.updateAnswers} /> : ''}
       </div>
     );
