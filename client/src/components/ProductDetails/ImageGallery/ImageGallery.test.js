@@ -51,5 +51,5 @@ it('should render the image gallery with the default view and thumbnail(s)', () 
   const thumbnailView = wrapper.find(ThumbnailView);
   expect(imageGallery.exists()).toBe(true);
   expect(defaultView.exists()).toBe(true);
-  expect(thumbnailView.exists()).toBe(true);
+  expect(thumbnailView.exists()).toBe(false);
 });
