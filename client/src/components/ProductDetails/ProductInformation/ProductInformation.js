@@ -12,13 +12,15 @@ import css from './ProductInformation.css';
 
 const ProductInformation = ({ product, rating }) => (
   <div className={css.productInformation}>
-    <Rating rating={rating} />
-    <Category category={product.category} />
-    <Title title={product.name} />
-    <Price price={product.default_price} />
-    <Shipping />
-    <Description description={product.description} />
-    {/* <Slogan slogan={product.slogan} /> */}
+    <div className={css.info}>
+      <Rating rating={rating} />
+      <Category category={product.category} />
+      <Title title={product.name} />
+      <Price price={product.default_price} />
+      <Shipping />
+      <Description description={product.description} />
+      {/* <Slogan slogan={product.slogan} /> */}
+    </div>
   </div>
 );
 
