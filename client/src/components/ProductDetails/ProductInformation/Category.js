@@ -1,10 +1,10 @@
+/* eslint-disable react/jsx-one-expression-per-line */
 import React from 'react';
 import PropTypes from 'prop-types';
 
 const Category = ({ category }) => (
   <div className="category">
-    category:
-    {category}
+    category: {category}
   </div>
 );
 

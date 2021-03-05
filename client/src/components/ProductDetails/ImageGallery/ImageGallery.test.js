@@ -7,7 +7,7 @@ import ThumbnailView from './ThumbnailView';
 
 it('should render the image gallery with the default view and thumbnail(s)', () => {
   const style = {
-    style_id: '76285',
+    style_id: 76285,
     name: 'Teal',
     original_price: '398.00',
     sale_price: '254.00',
@@ -45,7 +45,7 @@ it('should render the image gallery with the default view and thumbnail(s)', () 
       },
     },
   };
-  const wrapper = mount(<ImageGallery styleId="76285" style={style} />);
+  const wrapper = mount(<ImageGallery styleId={76285} style={style} />);
   const imageGallery = wrapper.find('.imageGallery');
   const defaultView = wrapper.find(DefaultView);
   const thumbnailView = wrapper.find(ThumbnailView);

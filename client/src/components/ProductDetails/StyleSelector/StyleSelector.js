@@ -38,12 +38,13 @@ class StyleSelector extends React.Component {
     const qty = skus[sku].quantity;
     return (
       <div className="styleSelector">
-        <h2>style selector</h2>
         <StylesDisplay styles={styles} onClick={styleSelector} />
-        <SizeSelector skus={skus} onChange={this.skuSelector} />
-        <QtySelector qty={qty} />
-        <AddToCart />
-        <Favorite />
+        <div className="checkout">
+          <SizeSelector skus={skus} onChange={this.skuSelector} />
+          <QtySelector qty={qty} />
+          <AddToCart />
+          <Favorite />
+        </div>
       </div>
     );
   }
@@ -51,21 +52,21 @@ class StyleSelector extends React.Component {
 
 StyleSelector.propTypes = {
   styles: PropTypes.arrayOf(PropTypes.shape({
-    style_id: PropTypes.string.isRequired,
+    style_id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
     original_price: PropTypes.string.isRequired,
     sale_price: PropTypes.string,
-    default: PropTypes.bool.isRequired,
+    'default?': PropTypes.bool.isRequired,
     photos: PropTypes.arrayOf(PropTypes.objectOf(PropTypes.string)).isRequired,
     skus: PropTypes.objectOf(PropTypes.object).isRequired,
   })).isRequired,
   styleSelector: PropTypes.func.isRequired,
   style: PropTypes.shape({
-    style_id: PropTypes.string.isRequired,
+    style_id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
     original_price: PropTypes.string.isRequired,
     sale_price: PropTypes.string,
-    default: PropTypes.bool.isRequired,
+    'default?': PropTypes.bool.isRequired,
     photos: PropTypes.arrayOf(PropTypes.objectOf(PropTypes.string)).isRequired,
     skus: PropTypes.objectOf(PropTypes.object).isRequired,
   }).isRequired,

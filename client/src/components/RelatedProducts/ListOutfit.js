@@ -1,9 +1,10 @@
 import React from 'react';
 import propTypes from 'prop-types';
 import CardOutfit from './CardOutfit';
+import style from './css/list.css';
 
-const ListOutfit = ({ className, productsList, dropHandler }) => (
-  <div className={className}>
+const ListOutfit = ({ productsList, dropHandler }) => (
+  <div className={style.yourOwnOutfitList}>
     {productsList.map((item) => (
       <div key={item.id.toString()}>
         <CardOutfit item={item} dropHandler={dropHandler} />
@@ -14,7 +15,6 @@ const ListOutfit = ({ className, productsList, dropHandler }) => (
 );
 
 ListOutfit.propTypes = {
-  className: propTypes.string.isRequired,
   productsList: propTypes.arrayOf(propTypes.object).isRequired,
   dropHandler: propTypes.func.isRequired,
 };

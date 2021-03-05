@@ -1,11 +1,12 @@
 import React from 'react';
 import propTypes from 'prop-types';
+import style from './css/comparison.css';
 
 const Results = ({ feature, currentValue, clickedValue }) => (
   <tr>
-    <td className="currentValue">{currentValue}</td>
-    <td className="feature">{feature}</td>
-    <td className="clickedValue">{clickedValue}</td>
+    <td className={style.currentValue}>{currentValue}</td>
+    <td className={style.feature}>{feature}</td>
+    <td className={style.clickedValue}>{clickedValue}</td>
   </tr>
 );
 
@@ -34,13 +35,13 @@ const Comparison = ({ current, clicked }) => {
   });
 
   return (
-    <div className="comparison">
+    <div className={style.comparison}>
       <div>comparison</div>
       <div id="compareTitle">
         <span id="compareCurrentName">{current.name}</span>
         <span id="compareClickedName">{clicked.name}</span>
       </div>
-      <table className="comparisonTable">
+      <table className={style.comparisonTable}>
         <tbody>
           {compareCurrentFeature}
           {compareClickedFeature}

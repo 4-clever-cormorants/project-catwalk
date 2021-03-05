@@ -9,17 +9,11 @@ const url = require('url');
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      productId: 14931,
-    };
-  }
-
-  componentDidMount() {
     const queryParams = url.parse(window.location.search, true).query;
     const productId = parseInt(queryParams.product_id, 10);
-    if (!Number.isNaN(productId)) {
-      this.setState({ productId });
-    }
+    this.state = {
+      productId: !Number.isNaN(productId) ? productId : 14931,
+    };
   }
 
   render() {
