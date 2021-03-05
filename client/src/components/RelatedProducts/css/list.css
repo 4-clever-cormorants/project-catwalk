@@ -1,0 +1,47 @@
+.relatedProductsList {
+  /* overflow:hidden; */
+  display: flex;
+
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.relatedProductsList::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.relatedProductsList {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.outfitListWithAdd {
+  overflow:hidden;
+}
+
+.yourOwnOutfitList {
+  overflow:hidden;
+}
+
+.addToOutfit {
+  border: solid;
+  width: 200px;
+  height: 300px;
+  float: left;
+  margin: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+};
+
+.addToOutfitButton {
+  display: block;
+}
+
+.addToOutfitText {
+  display: block;
+  margin-right: 10px;
+}
