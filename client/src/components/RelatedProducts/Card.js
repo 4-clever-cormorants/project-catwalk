@@ -1,11 +1,12 @@
 import React from 'react';
 import propTypes from 'prop-types';
 import Favor from './Favor';
+import style from './css/card.css';
 
 const Card = ({ item, compareHandler }) => (
-  <div className="card" id={`card${item.id.toString()}`} onClick={compareHandler.bind(this, item)} onKeyPress={compareHandler.bind(this, item)} role="button" tabIndex={0}>
+  <div className={style.card} id={`card${item.id.toString()}`} onClick={compareHandler.bind(this, item)} onKeyPress={compareHandler.bind(this, item)} role="button" tabIndex={0}>
     <Favor />
-    <img className="cardImg" src={item.thumbnail_url} alt={item.name} />
+    <img className={style.cardImg} src={item.thumbnail_url} alt={item.name} />
     <h3 className="cardName">
 
       {item.name}
