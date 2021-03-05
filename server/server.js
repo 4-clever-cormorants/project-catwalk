@@ -4,7 +4,7 @@ const path = require('path');
 
 const app = express();
 
-const productRouter = require('./routes/productRoutes.js');
+const productRoutes = require('./routes/productRoutes.js');
 const questionsRoutes = require('./routes/questionsRoutes.js');
 const relatedRoutes = require('./routes/relatedRoutes.js');
 
