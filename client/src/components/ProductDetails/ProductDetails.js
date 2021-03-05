@@ -92,10 +92,14 @@ class ProductDetails extends React.Component {
     } = this.state;
 
     return (
-      <div>
+      <div className="PD">
         { load ? (
           <div className={css.productDetails}>
-            <ImageGallery styleId={styleId} style={style} name={product.name} />
+            <ImageGallery
+              styleId={styleId}
+              style={style}
+              styles={styles.results}
+            />
             <ProductInformation product={product} rating={rating} />
             <StyleSelector
               styles={styles.results}
