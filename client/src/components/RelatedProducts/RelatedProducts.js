@@ -4,6 +4,7 @@ import ListOutfit from './ListOutfit';
 import AddToOutfit from './AddToOutfit';
 import Comparison from './Comparison';
 import dummy from './dummy_related';
+import style from './css/relatedProducts.css';
 
 class RelatedProducts extends React.Component {
   constructor(props) {
@@ -53,7 +54,7 @@ class RelatedProducts extends React.Component {
         <span>RelatedProducts</span>
         {comparison}
         <List productsList={dummy.relatedProducts} compareHandler={this.compareHandler} />
-        <div className="outfitListWithAdd">
+        <div className={style.outfitListWithAdd}>
           <AddToOutfit addToOutfitHandler={this.addToOutfitHandler} />
           <ListOutfit productsList={outfitList} dropHandler={this.dropHandler} />
         </div>

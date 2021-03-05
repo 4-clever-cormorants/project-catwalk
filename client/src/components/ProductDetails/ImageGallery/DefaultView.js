@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 
 const DefaultView = ({ url }) => (
   <div className="defaultView">
-    default view
     <img src={url} alt="" />
   </div>
 );
