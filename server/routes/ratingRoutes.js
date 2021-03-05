@@ -11,15 +11,19 @@ const headers = {
 };
 
 const average = (ratings) => {
-  const rates = Object.keys(ratings);
-  let totalReviews = 0;
-  let totalRatings = 0;
-  if (rates.length === 0) { return null; }
-  for (let i = 0; i < rates.length; i += 1) {
-    totalRatings += i * parseInt(ratings[rates[i]], 10);
-    totalReviews += parseInt(ratings[rates[i]], 10);
+  let scores = 0;
+  let total = 0;
+  for (let i = 1; i <= 5; i += 1) {
+    if (ratings[i.toString()] !== undefined) {
+      scores += i * parseInt(ratings[i.toString()], 10);
+    }
   }
-  return totalRatings / totalReviews;
+  for (let i = 1; i <= 5; i += 1) {
+    if (ratings[i.toString()] !== undefined) {
+      total += parseInt(ratings[i.toString()], 10);
+    }
+  }
+  return scores / total;
 };
 
 ratingRouter.get('/data', (req, res) => {

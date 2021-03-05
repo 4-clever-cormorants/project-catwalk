@@ -119,3 +119,65 @@
   justify-content: space-around;
   align-items: center;
 }
+
+.star {
+  display: inline-block;
+  position: relative;
+  font-size: 100px;
+  color: #ddd;
+}
+
+.empty:after {
+  font-family: FontAwesome;
+  content: "\f005";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 0%;
+  overflow: hidden;
+  color: #f80;
+}
+
+.quarter:after {
+  font-family: FontAwesome;
+  content: "\f005";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 25%;
+  overflow: hidden;
+  color: #f80;
+}
+
+.half:after {
+  font-family: FontAwesome;
+  content: "\f005";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 50%;
+  overflow: hidden;
+  color: #f80;
+}
+
+.three-quarter:after {
+  font-family: FontAwesome;
+  content: "\f005";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 75%;
+  overflow: hidden;
+  color: #f80;
+}
+
+.full:after {
+  font-family: FontAwesome;
+  content: "\f005";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  overflow: hidden;
+  color: #f80;
+}
