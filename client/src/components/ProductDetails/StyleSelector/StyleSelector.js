@@ -18,11 +18,20 @@ class StyleSelector extends React.Component {
       sku: defaultSku,
     };
     this.skuSelector = this.skuSelector.bind(this);
+    this.addToCart = this.addToCart.bind(this);
   }
 
   skuSelector(e) {
     this.setState({
       sku: e.target.value,
+    });
+  }
+
+  addToCart(e) {
+    e.preventDefault();
+    const { cart, sku } = this.state;
+    this.setState({
+      cart: [...cart, sku],
     });
   }
 
@@ -42,7 +51,7 @@ class StyleSelector extends React.Component {
         <StylesDisplay styles={styles} onClick={styleSelector} />
         <SizeSelector skus={skus} onChange={this.skuSelector} />
         <QtySelector qty={qty} />
-        <AddToCart />
+        <AddToCart onSubmit={this.addToCart} />
         <Favorite />
       </div>
     );
