@@ -12,14 +12,14 @@ const headers = {
 
 const average = (ratings) => {
   const rates = Object.keys(ratings);
-  let totolReviews = 0;
-  let totolRatings = 0;
+  let totalReviews = 0;
+  let totalRatings = 0;
   if (rates.length === 0) { return null; }
   for (let i = 0; i < rates.length; i += 1) {
-    totolRatings += i * parseInt(ratings[rates[i]], 10);
-    totolReviews += parseInt(ratings[rates[i]], 10);
+    totalRatings += i * parseInt(ratings[rates[i]], 10);
+    totalReviews += parseInt(ratings[rates[i]], 10);
   }
-  return totolRatings / totolReviews;
+  return totalRatings / totalReviews;
 };
 
 const requestProductInfo = (productId) => axios.get(`${url}products/${productId}`, headers);
