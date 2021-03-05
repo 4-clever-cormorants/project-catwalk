@@ -3,14 +3,17 @@ import { mount } from 'enzyme';
 import Question from './Question';
 import AnswerList from './AnswerList';
 import AnswerForm from './AnswerForm';
+import dummyAnswers from './dummyAnswers';
+
+const axios = require('axios');
 
 it('should exist', () => {
-  const wrapper = mount(<Question />);
+  const wrapper = mount(<Question test />);
   expect(wrapper.exists()).toBe(true);
 });
 
 it('should render answers if there are any', () => {
-  const wrapper = mount(<Question />);
+  const wrapper = mount(<Question test />);
   const instance = wrapper.instance();
   expect(instance.state.answers.results.length).toBeGreaterThan(0);
   const answers = wrapper.find(AnswerList);
@@ -18,13 +21,13 @@ it('should render answers if there are any', () => {
 });
 
 it('should have a button to add more answers', () => {
-  const wrapper = mount(<Question />);
+  const wrapper = mount(<Question test />);
   const addAnswer = wrapper.find('.addAnswerButton');
   expect(addAnswer.exists()).toBe(true);
 });
 
 it('should render answer form when clicking add answer button', () => {
-  const wrapper = mount(<Question />);
+  const wrapper = mount(<Question test />);
   const addAnswerButton = wrapper.find('.addAnswerButton');
   expect(addAnswerButton.exists()).toBe(true);
   let addAnswerForm = wrapper.find(AnswerForm);
@@ -35,7 +38,7 @@ it('should render answer form when clicking add answer button', () => {
 });
 
 it('should close the modal when clicking exit button', () => {
-  const wrapper = mount(<Question />);
+  const wrapper = mount(<Question test />);
   const addAnswerButton = wrapper.find('.addAnswerButton');
   expect(addAnswerButton.exists()).toBe(true);
   let addAnswerForm = wrapper.find(AnswerForm);
@@ -50,7 +53,7 @@ it('should close the modal when clicking exit button', () => {
 });
 
 it('should increase the helpfulness count after clicking helpful button', () => {
-  const wrapper = mount(<Question />);
+  const wrapper = mount(<Question test />);
   const instance = wrapper.instance();
   expect(instance.state.increased).toBe(false);
   const oldHelpfulness = instance.state.questionHelpfulness;
@@ -61,7 +64,7 @@ it('should increase the helpfulness count after clicking helpful button', () => 
 });
 
 it('should disable the helpful button after clicking', () => {
-  const wrapper = mount(<Question />);
+  const wrapper = mount(<Question test />);
   const instance = wrapper.instance();
   expect(instance.state.increased).toBe(false);
   const oldHelpfulness = instance.state.questionHelpfulness;
@@ -71,4 +74,10 @@ it('should disable the helpful button after clicking', () => {
   expect(instance.state.increased).toBe(true);
   helpfulButton = wrapper.find('.questionHelpfulButton');
   expect(helpfulButton.props().disabled).toBe(true);
+});
+
+it('should not render any answers before fetching', () => {
+  const wrapper = mount(<Question />);
+  const answers = wrapper.find(AnswerList);
+  expect(answers.exists()).toBe(false);
 });
