@@ -4,9 +4,10 @@ const path = require('path');
 
 const app = express();
 
-const productRouter = require('./routes/productRoutes.js');
+const productRoutes = require('./routes/productRoutes.js');
 const questionsRoutes = require('./routes/questionsRoutes.js');
 const relatedRoutes = require('./routes/relatedRoutes.js');
+const ratingRoutes = require('./routes/ratingRoutes.js');
 
 app.use(express.static(path.join(__dirname, '../client/dist')));
 
@@ -22,14 +23,13 @@ app.use(express.json());
 
 app.use('/qa', questionsRoutes);
 app.use('/related', relatedRoutes);
+app.use('/products', productRoutes);
+app.use('/styles', productRoutes);
+app.use('/rating', ratingRoutes);
 
 app.get('/', (req, res) => {
   res.render('index');
 });
-
-app.use('/products', productRouter);
-
-app.use('/styles', productRouter);
 
 app.get('/test', (req, res) => {
   res.send('test');
