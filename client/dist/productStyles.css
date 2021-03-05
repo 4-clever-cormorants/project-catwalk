@@ -1,6 +1,6 @@
 .productDetails {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 2fr 3fr;
   grid-template-rows: 1fr 3fr;
   border: 1px solid black;
 }
@@ -12,6 +12,7 @@
   grid-column: 1;
   grid-row: 1/3;
   height: 800px;
+  width: 100%;
   border: 1px solid black;
 }
 
@@ -27,7 +28,8 @@
 }
 
 .imageGallery .defaultView img {
-  height: 500px;
+  max-height: 500px;
+  max-width: 300px;
 }
 
 .imageGallery .thumbnailView {
