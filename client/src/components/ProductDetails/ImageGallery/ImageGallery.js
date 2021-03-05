@@ -1,18 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import DefaultView from './DefaultView';
-import ThumbnailView from './ThumbnailView';
+import Thumbnail from './Thumbnail';
 import css from './ImageGallery.css';
 
-const ImageGallery = ({ styleId, style, styles }) => (
+const ImageGallery = ({ styleId, style, styles, styleSelector }) => (
   <div className={css.imageGallery} styleid={styleId}>
     <DefaultView url={style.photos[0].url} />
     <div className={css.thumbnailView}>
-      {styles.map((thumbnail) => (
-        <div key={thumbnail.photos[0].url.toString()}>
-          <ThumbnailView url={thumbnail.photos[0].url} />
-        </div>
-      ))}
+      <div className={css.thumbnails}>
+        {styles.map((thumbnail) => (
+          <div key={thumbnail.photos[0].url.toString()}>
+            <Thumbnail style={thumbnail} styleSelector={styleSelector} />
+          </div>
+        ))}
+      </div>
     </div>
   </div>
 );
@@ -37,6 +39,7 @@ ImageGallery.propTypes = {
     photos: PropTypes.arrayOf(PropTypes.objectOf(PropTypes.string)).isRequired,
     skus: PropTypes.objectOf(PropTypes.object).isRequired,
   })).isRequired,
+  styleSelector: PropTypes.func.isRequired,
 };
 
 export default ImageGallery;
