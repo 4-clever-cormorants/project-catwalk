@@ -1,4 +1,4 @@
-const productRouter = require('express').Router();
+const productRoutes = require('express').Router();
 const axios = require('axios');
 const config = require('../../config.js');
 
@@ -10,7 +10,7 @@ const headers = {
   },
 };
 
-productRouter.get('/data', (req, res) => {
+productRoutes.get('/data', (req, res) => {
   axios
     .get(`${url}products/${req.query.product_id}`, headers)
     .then((product) => {
@@ -21,7 +21,7 @@ productRouter.get('/data', (req, res) => {
     });
 });
 
-productRouter.get('/styles', (req, res) => {
+productRoutes.get('/styles', (req, res) => {
   axios
     .get(`${url}products/${req.query.product_id}/styles`, headers)
     .then((styles) => {
@@ -32,4 +32,4 @@ productRouter.get('/styles', (req, res) => {
     });
 });
 
-module.exports = productRouter;
+module.exports = productRoutes;
