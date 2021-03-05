@@ -52,10 +52,10 @@ class RelatedProducts extends React.Component {
       <div className="RR">
         <span>RelatedProducts</span>
         {comparison}
-        <List className="relatedProductsList" productsList={dummy.relatedProducts} compareHandler={this.compareHandler} />
+        <List productsList={dummy.relatedProducts} compareHandler={this.compareHandler} />
         <div className="outfitListWithAdd">
           <AddToOutfit addToOutfitHandler={this.addToOutfitHandler} />
-          <ListOutfit className="yourOwnOutfitList" productsList={outfitList} dropHandler={this.dropHandler} />
+          <ListOutfit productsList={outfitList} dropHandler={this.dropHandler} />
         </div>
       </div>
     );
