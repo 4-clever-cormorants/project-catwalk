@@ -67,8 +67,7 @@ class ProductDetails extends React.Component {
 
     return (
       <div className="productDetails">
-        <h1>ProductDetails</h1>
-        <ImageGallery styleId={styleId} style={style} />
+        <ImageGallery styleId={styleId} style={style} name={product.name} />
         <ProductInformation product={product} />
         <StyleSelector
           styles={styles.results}
@@ -82,7 +81,7 @@ class ProductDetails extends React.Component {
 }
 
 ProductDetails.propTypes = {
-  productId: PropTypes.string.isRequired,
+  productId: PropTypes.number.isRequired,
 };
 
 export default ProductDetails;
