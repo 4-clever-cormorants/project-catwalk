@@ -16,10 +16,6 @@ const average = (ratings) => {
   for (let i = 1; i <= 5; i += 1) {
     if (ratings[i.toString()] !== undefined) {
       scores += i * parseInt(ratings[i.toString()], 10);
-    }
-  }
-  for (let i = 1; i <= 5; i += 1) {
-    if (ratings[i.toString()] !== undefined) {
       total += parseInt(ratings[i.toString()], 10);
     }
   }
