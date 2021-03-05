@@ -3,11 +3,13 @@ import PropTypes from 'prop-types';
 
 import Style from './Style';
 
+import css from './StyleSelector.css';
+
 const StylesDisplay = ({ styles, onClick }) => (
-  <div className="stylesDisplay">
+  <div className={css.stylesDisplay}>
     <h2>style selector (click to view style)</h2>
     {styles.map((style) => (
-      <div key={style.style_id} className="style">
+      <div key={style.style_id} className={css.style}>
         <Style style={style} onClick={onClick} />
       </div>
     ))}

@@ -7,15 +7,17 @@ import QtySelector from './QtySelector';
 import AddToCart from './AddToCart';
 import Favorite from './Favorite';
 
+import css from './StyleSelector.css';
+
 const StyleSelector = ({
   styles, style, styleSelector, skuSelector, addToCart, sku,
 }) => {
   const { skus } = style;
   const qty = skus[sku].quantity;
   return (
-    <div className="styleSelector">
+    <div className={css.styleSelector}>
       <StylesDisplay styles={styles} onClick={styleSelector} />
-      <div className="checkout">
+      <div className={css.checkout}>
         <form onSubmit={addToCart} className="form">
           <SizeSelector skus={skus} onChange={skuSelector} />
           <QtySelector qty={qty} />
