@@ -3,8 +3,7 @@ import PropTypes from 'prop-types';
 
 const Price = ({ price }) => (
   <div className="price">
-    price: $
-    {price}
+    ${price}
   </div>
 );
 

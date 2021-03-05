@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 const Category = ({ category }) => (
   <div className="category">
-    category: {category}
+    {category}
   </div>
 );
 
