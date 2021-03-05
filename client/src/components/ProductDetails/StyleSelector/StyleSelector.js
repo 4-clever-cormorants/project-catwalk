@@ -13,6 +13,9 @@ const StyleSelector = ({ styles, styleSelector }) => {
   if (n > 4) {
     row1 = styles.slice(0, 4);
     row2 = styles.slice(4, 7);
+  } else {
+    row1 = styles;
+    row2 = [];
   }
 
   return (
