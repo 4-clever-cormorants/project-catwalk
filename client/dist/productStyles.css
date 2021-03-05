@@ -50,6 +50,8 @@
 }
 
 .styleSelector {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   grid-column: 2;
   grid-row: 2;
   height: 600px;
@@ -57,9 +59,27 @@
 }
 
 .styleSelector .stylesDisplay {
+  grid-column: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   height: 450px;
 }
+.styleSelector .stylesDisplay .style {
+  margin: 2px;
+  padding: 5px;
+  border: 1px solid black;
+}
 
-.styleSelector .stylesDisplay .style img{
-  height: 200px;
+.styleSelector .stylesDisplay .style img {
+  max-height: 200px;
+  max-width: 200px;
+}
+
+.styleSelector .checkout {
+  grid-column: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
 }

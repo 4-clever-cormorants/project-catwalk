@@ -5,6 +5,7 @@ import Style from './Style';
 
 const StylesDisplay = ({ styles, onClick }) => (
   <div className="stylesDisplay">
+    <h2>style selector (click to view style)</h2>
     {styles.map((style) => (
       <div key={style.style_id} className="style">
         <Style style={style} onClick={onClick} />
