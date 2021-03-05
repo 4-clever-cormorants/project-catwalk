@@ -8,8 +8,10 @@ import Description from './Description';
 // import Slogan from './Slogan';
 import Price from './Price';
 
+import css from './ProductInformation.css';
+
 const ProductInformation = ({ product, rating }) => (
-  <div className="productInformation">
+  <div className={css.productInformation}>
     <h2>product information</h2>
     <Rating rating={rating} />
     <Category category={product.category} />
