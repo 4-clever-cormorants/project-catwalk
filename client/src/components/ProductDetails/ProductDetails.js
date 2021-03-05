@@ -6,18 +6,15 @@ import ImageGallery from './ImageGallery/ImageGallery';
 import ProductInformation from './ProductInformation/ProductInformation';
 import StyleSelector from './StyleSelector/StyleSelector';
 
-import defaultProduct from './productDummyData';
-import defaultStyles from './stylesDummyData';
-
 class ProductDetails extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      product: defaultProduct,
-      styleId: 76285,
-      styles: defaultStyles,
-      style: defaultStyles.results[0],
-      defaultSku: Object.keys(defaultStyles.results[0].skus)[0],
+      product: null,
+      styleId: null,
+      styles: null,
+      style: null,
+      defaultSku: null,
       load: false,
     };
     this.styleSelector = this.styleSelector.bind(this);
