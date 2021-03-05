@@ -33,7 +33,7 @@ test('StyleSelector should render all the subcomponents', () => {
   expect(favorite.exists()).toBe(true);
 });
 
-it('should add a selected sku to the cart', () => {
+it('should add a selected sku to the cart only once per sku', () => {
   function styleSelector(e) {
     const styleId = e.target.classList[0];
     this.setState({
@@ -48,10 +48,13 @@ it('should add a selected sku to the cart', () => {
     });
   }
   const wrapper = mount(<StyleSelector styles={styles.results} styleSelector={styleSelector} styleId="76285" style={styles.results[0]} defaultSku={Object.keys(styles.results[0].skus)[0]} />);
-  // const sS = wrapper.find(StyleSelectnpm or);
   const instance = wrapper.instance();
-  const button = wrapper.find('.addToCartButton');
-  button.simulate('click');
+  const form = wrapper.find('.form');
+  console.log(form.exists());
+  console.log(instance.state.sku);
+  form.simulate('submit');
+  expect(instance.state.cart.length).toBe(1);
+  form.simulate('submit');
   expect(instance.state.cart.length).toBe(1);
 });
 

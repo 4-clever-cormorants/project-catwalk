@@ -52,7 +52,7 @@ class StyleSelector extends React.Component {
       <div className="styleSelector">
         <StylesDisplay styles={styles} onClick={styleSelector} />
         <div className="checkout">
-          <form onSubmit={this.addToCart}>
+          <form onSubmit={this.addToCart} className="form">
             <SizeSelector skus={skus} onChange={this.skuSelector} />
             <QtySelector qty={qty} />
             <AddToCart />
