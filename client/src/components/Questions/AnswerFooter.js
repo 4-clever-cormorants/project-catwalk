@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+const axios = require('axios');
+
 class AnswerFooter extends React.Component {
   constructor(props) {
     super(props);
@@ -14,12 +16,37 @@ class AnswerFooter extends React.Component {
 
   increaseAnswerHelpfulness() {
     const { answerHelpfulness } = this.state;
-    const newHelpfulness = answerHelpfulness + 1;
-    this.setState({ answerHelpfulness: newHelpfulness, increased: true });
+    this.setState({ increased: true, answerHelpfulness: answerHelpfulness + 1 },
+      this.putHelpful());
+  }
+
+  putHelpful() {
+    const { answer } = this.props;
+    const answerId = answer.answer_id;
+    axios.put('/qa/answerHelpful', {
+      answerId,
+    })
+      .then(() => {})
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
+  putReport() {
+    const { answer } = this.props;
+    const answerId = answer.answer_id;
+    axios.put('/qa/answerReport', {
+      answerId,
+    })
+      .then(() => {})
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   reportAnswer() {
-    this.setState({ reported: true });
+    this.setState({ reported: true },
+      this.putReport());
   }
 
   render() {
