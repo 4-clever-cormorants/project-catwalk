@@ -1,15 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import Rating from './Rating';
 import Category from './Category';
 import Title from './Title';
+import Description from './Description';
+import Slogan from './Slogan';
 import Price from './Price';
 
 const ProductInformation = ({ product }) => (
   <div className="productInformation">
     <h2>product information</h2>
+    <Rating rating={4.25} />
     <Category category={product.category} />
     <Title title={product.name} />
+    <Description description={product.description} />
+    <Slogan slogan={product.slogan} />
     <Price price={product.default_price} />
   </div>
 );
