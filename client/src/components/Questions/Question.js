@@ -20,6 +20,12 @@ class Question extends React.Component {
   }
 
   componentDidMount() {
+    const { test } = this.props;
+    if (test) {
+      this.setState({ loadAnswers: true });
+      return;
+    }
+    //this.fetchAnswers()
     const { question } = this.props;
     const questionId = question.question_id;
     axios.get('/qa/answers', {
@@ -33,6 +39,16 @@ class Question extends React.Component {
       .catch((err) => {
         console.log('question err', err);
       });
+  }
+
+  fetchAnswers() {
+    const { question } = this.props;
+    const questionId = question.question_id;
+    return axios.get('/qa/answers', {
+      params: {
+        questionId,
+      },
+    });
   }
 
   addAnswer() {
@@ -90,6 +106,7 @@ Question.propTypes = {
       photos: PropTypes.arrayOf(PropTypes.string),
     })),
   }),
+  test: PropTypes.bool,
 };
 
 Question.defaultProps = {
@@ -261,6 +278,7 @@ Question.defaultProps = {
       },
     },
   },
+  test: false,
 };
 
 export default Question;

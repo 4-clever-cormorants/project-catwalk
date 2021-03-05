@@ -13,7 +13,6 @@ class Questions extends React.Component {
     this.state = {
       questions: dummyQuestions,
       questionsOnScreen: dummyQuestions.results.slice(0, 4),
-      // change dummyQuestions to some other state that holds all questions from get request
       addQuestionClicked: false,
       currentLen: 4,
       loadQuestions: false,
@@ -22,11 +21,12 @@ class Questions extends React.Component {
 
   componentDidMount() {
     const { productId } = this.props;
-    axios.get('/qa/questions', {
-      params: {
-        productId,
-      },
-    })
+    // for testing purposes
+    if (productId === -1) {
+      this.setState({ loadQuestions: true });
+      return;
+    }
+    this.fetchQuestions()
       .then((response) => {
         const newQuestions = response.data;
         const newQuestionsOnScreen = newQuestions.results.slice(0, 4);
@@ -37,6 +37,15 @@ class Questions extends React.Component {
       .catch((err) => {
         console.log(err);
       });
+  }
+
+  fetchQuestions() {
+    const { productId } = this.props;
+    return axios.get('/qa/questions', {
+      params: {
+        productId,
+      },
+    });
   }
 
   loadMoreQuestions() {
@@ -76,10 +85,10 @@ class Questions extends React.Component {
                 </div>
               ))}
               {allQuestionLen > 4 && currentLen < allQuestionLen ? <button type="button" onClick={this.loadMoreQuestions.bind(this)} id="loadMoreQuestions">More Answered Questions</button> : ''}
-              <button type="button" onClick={this.addQuestion.bind(this)} id="addQuestionButton">Add a question</button>
-              {addQuestionClicked ? <QuestionForm exitQuestionForm={() => this.exitQuestionForm()} /> : ''}
             </div>
           ) : ''}
+        <button type="button" onClick={this.addQuestion.bind(this)} id="addQuestionButton">Add a question</button>
+        {addQuestionClicked ? <QuestionForm exitQuestionForm={() => this.exitQuestionForm()} /> : ''}
       </div>
     );
   }
