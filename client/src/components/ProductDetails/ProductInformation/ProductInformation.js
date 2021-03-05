@@ -14,9 +14,9 @@ const ProductInformation = ({ product }) => (
     <Rating rating={4.25} />
     <Category category={product.category} />
     <Title title={product.name} />
-    <Description description={product.description} />
-    <Slogan slogan={product.slogan} />
     <Price price={product.default_price} />
+    <Description description={product.description} />
+    {/* <Slogan slogan={product.slogan} /> */}
   </div>
 );
 
