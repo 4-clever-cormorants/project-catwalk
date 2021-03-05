@@ -1,5 +1,5 @@
 import React from 'react';
-import { mount, shallow } from 'enzyme';
+import { mount } from 'enzyme';
 import dummy from './dummy_related';
 
 import RelatedProducts from './RelatedProducts';
