@@ -16,7 +16,7 @@ test('ProductInformation should display the category, title, and price', () => {
   const title = wrapper.find(Title);
   const price = wrapper.find(Price);
   expect(productInformation.exists()).toBe(true);
-  expect(productInformationLen).toBe(4);
+  expect(productInformationLen).toBe(7);
   expect(category.exists()).toBe(true);
   expect(title.exists()).toBe(true);
   expect(price.exists()).toBe(true);
