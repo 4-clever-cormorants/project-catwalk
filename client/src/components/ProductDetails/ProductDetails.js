@@ -6,6 +6,8 @@ import ImageGallery from './ImageGallery/ImageGallery';
 import ProductInformation from './ProductInformation/ProductInformation';
 import StyleSelector from './StyleSelector/StyleSelector';
 
+import css from './ProductDetails.css';
+
 class ProductDetails extends React.Component {
   constructor(props) {
     super(props);
@@ -73,7 +75,7 @@ class ProductDetails extends React.Component {
     return (
       <div>
         { load ? (
-          <div className="productDetails">
+          <div className={css.productDetails}>
             <ImageGallery styleId={styleId} style={style} name={product.name} />
             <ProductInformation product={product} rating={rating} />
             <StyleSelector
