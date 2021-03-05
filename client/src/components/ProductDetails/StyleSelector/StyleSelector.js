@@ -47,7 +47,6 @@ class StyleSelector extends React.Component {
     const qty = skus[sku].quantity;
     return (
       <div className="styleSelector">
-        <h2>style selector</h2>
         <StylesDisplay styles={styles} onClick={styleSelector} />
         <SizeSelector skus={skus} onChange={this.skuSelector} />
         <QtySelector qty={qty} />

@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import DefaultView from './DefaultView';
 import ThumbnailView from './ThumbnailView';
 
-const ImageGallery = ({ styleId, style }) => (
+const ImageGallery = ({ styleId, style, name }) => (
   <div className="imageGallery" styleid={styleId}>
-    <h2>image gallery</h2>
+    <h2>{ name }</h2>
     <DefaultView url={style.photos[0].url} />
     {style.photos.map((photo) => (
       <div className="thumbnailView" key={photo.thumbnail_url.toString()}>
@@ -26,6 +26,7 @@ ImageGallery.propTypes = {
     skus: PropTypes.objectOf(PropTypes.object).isRequired,
   }).isRequired,
   styleId: PropTypes.number.isRequired,
+  name: PropTypes.string.isRequired,
 };
 
 export default ImageGallery;
