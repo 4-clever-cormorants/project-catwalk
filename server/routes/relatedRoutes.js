@@ -32,7 +32,7 @@ const requestData = (productId) => Promise.all([
 ]).then((results) => {
   const productInfo = results[0].data;
   productInfo.sale_price = results[1].data.results[0].sale_price;
-  productInfo.thumbnail_url = results[1].data.results[0].photos[0].thumbnail_url;
+  productInfo.thumbnail_url = results[1].data.results[0].photos[0].url;
   productInfo.average_ratings = average(results[2].data.ratings);
   return productInfo;
 });
@@ -41,7 +41,8 @@ router.get('/relatedProducts', (req, res) => {
   axios
     .get(`${url}products/${req.query.product_id}/related`, headers)
     .then((related) => {
-      const wait = [];
+      // store current product info in the first element
+      const wait = [requestData(req.query.product_id)];
       for (let i = 0; i < related.data.length; i += 1) {
         wait.push(requestData(related.data[i]));
       }

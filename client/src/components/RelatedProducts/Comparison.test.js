@@ -9,8 +9,13 @@ import Card from './Card';
 describe('Test comparsion component', () => {
   it('should render comparsion component when click on card', () => {
     const wrapper = mount(<RelatedProducts />);
+    wrapper.setState({
+      related: dummy.relatedProducts,
+      current: dummy.currentProduct,
+      outfitList: dummy.relatedProducts,
+      load: true,
+    });
     const card = wrapper.find('.relatedProductsList').find(Card).first();
-
     expect(wrapper.find(Comparison).exists()).toBe(false);
     card.simulate('click');
     expect(wrapper.find(Comparison).exists()).toBe(true);
