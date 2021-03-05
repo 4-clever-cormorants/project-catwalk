@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const axios = require('axios');
 const config = require('../../config.js');
+const outfitList = require('../models/outfitList');
 
 const url = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/';
 const headers = {
@@ -55,6 +56,10 @@ router.get('/relatedProducts', (req, res) => {
     .catch((error) => {
       res.status(500).send(error);
     });
+});
+
+router.get('/outfitList', (req, res) => {
+
 });
 
 module.exports = router;
