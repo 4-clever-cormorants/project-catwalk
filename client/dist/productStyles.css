@@ -76,8 +76,9 @@
   max-width: 200px;
 }
 
-.styleSelector .checkout {
+.styleSelector .checkout form {
   grid-column: 2;
+  height: 500px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
