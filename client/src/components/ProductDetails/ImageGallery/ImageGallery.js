@@ -5,13 +5,15 @@ import ThumbnailView from './ThumbnailView';
 
 const ImageGallery = ({ styleId, style, name }) => (
   <div className="imageGallery" styleid={styleId}>
-    <h2>{ name }</h2>
+    {/* <div className="name">
+      <h2>{ name }</h2>
+    </div> */}
     <DefaultView url={style.photos[0].url} />
-    {style.photos.map((photo) => (
+    {/* {style.photos.map((photo) => (
       <div className="thumbnailView" key={photo.thumbnail_url.toString()}>
         <ThumbnailView thumbnailUrl={photo.thumbnail_url} />
       </div>
-    ))}
+    ))} */}
   </div>
 );
 

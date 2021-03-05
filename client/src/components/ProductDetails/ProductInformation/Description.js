@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 const Description = ({ description }) => (
   <div className="description">
-    description: {description}
+    {description}
   </div>
 );
 

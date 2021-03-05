@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const Style = ({ style, onClick }) => (
   <div className={style.style_id} id={style.style_id} onClick={onClick}>
-    <img src={style.photos[0].thumbnail_url} alt="" className={style.style_id} />
+    <img src={style.photos[0].url} alt="" className={style.style_id} />
   </div>
 );
 
