@@ -20,7 +20,7 @@ import Favorite from './StyleSelector/Favorite';
 
 it('should render all the subcomponents', () => {
   const wrapper = mount(<ProductDetails productId={14931} />);
-  const productDetails = wrapper.find('.productDetails');
+  const productDetails = wrapper.find(ProductDetails);
   const imageGallery = wrapper.find(ImageGallery);
   const defaultView = wrapper.find(DefaultView);
   const thumbnailView = wrapper.find(ThumbnailView);

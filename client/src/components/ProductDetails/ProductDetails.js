@@ -26,18 +26,23 @@ class ProductDetails extends React.Component {
   componentDidMount() {
     const { productId } = this.props;
     axios.get(`/products/data?product_id=${productId}`)
-      .then((res) => {
-        const product = res.data;
-        axios.get(`/products/styles?product_id=${productId}`)
-          .then((response) => {
-            this.setState({
-              product,
-              styleId: response.data.results[0].style_id,
-              styles: response.data,
-              style: response.data.results[0],
-              defaultSku: Object.keys(response.data.results[0].skus)[0],
-              load: true,
-            });
+      .then((prod) => {
+        const product = prod.data;
+        axios.get(`/rating/data?product_id=${productId}`)
+          .then((rtng) => {
+            const rating = rtng.data.average;
+            axios.get(`/products/styles?product_id=${productId}`)
+              .then((response) => {
+                this.setState({
+                  product,
+                  rating,
+                  styleId: response.data.results[0].style_id,
+                  styles: response.data,
+                  style: response.data.results[0],
+                  defaultSku: Object.keys(response.data.results[0].skus)[0],
+                  load: true,
+                });
+              });
           });
       })
       .catch((err) => {
@@ -65,7 +70,7 @@ class ProductDetails extends React.Component {
 
   render() {
     const {
-      product, styleId, styles, style, defaultSku, load,
+      product, rating, styleId, styles, style, defaultSku, load,
     } = this.state;
 
     return (
@@ -73,7 +78,7 @@ class ProductDetails extends React.Component {
         { load ? (
           <div className="productDetails">
             <ImageGallery styleId={styleId} style={style} name={product.name} />
-            <ProductInformation product={product} />
+            <ProductInformation product={product} rating={rating} />
             <StyleSelector
               styles={styles.results}
               styleSelector={this.styleSelector}

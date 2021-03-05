@@ -26,8 +26,8 @@ ratingRouter.get('/data', (req, res) => {
   axios
     .get(`${url}reviews/meta?product_id=${req.query.product_id}`, headers)
     .then((rating) => {
-      console.log(rating.data.ratings);
-      res.status(202).send(average(rating.data.ratings));
+      const result = { average: average(rating.data.ratings) };
+      res.send(result);
     })
     .catch((err) => {
       console.error(err);
