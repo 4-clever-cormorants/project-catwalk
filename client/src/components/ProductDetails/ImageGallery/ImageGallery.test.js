@@ -11,7 +11,7 @@ it('should render the image gallery with the default view and thumbnail(s)', () 
     name: 'Teal',
     original_price: '398.00',
     sale_price: '254.00',
-    default: true,
+    'default?': true,
     photos: [
       {
         thumbnail_url: 'https://images.unsplash.com/photo-1532244769164-ff64ddeefa45?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80',
@@ -45,7 +45,7 @@ it('should render the image gallery with the default view and thumbnail(s)', () 
       },
     },
   };
-  const wrapper = mount(<ImageGallery styleId={76285} style={style} />);
+  const wrapper = mount(<ImageGallery styleId={76285} style={style} name="dress" />);
   const imageGallery = wrapper.find('.imageGallery');
   const defaultView = wrapper.find(DefaultView);
   const thumbnailView = wrapper.find(ThumbnailView);
