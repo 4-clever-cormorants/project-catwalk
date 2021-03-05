@@ -67,8 +67,8 @@ class ProductDetails extends React.Component {
 
     return (
       <div className="productDetails">
-        <h1>ProductDetails</h1>
-        <ImageGallery styleId={styleId} style={style} />
+        {/* <h1>ProductDetails</h1> */}
+        <ImageGallery styleId={styleId} style={style} name={product.name} />
         <ProductInformation product={product} />
         <StyleSelector
           styles={styles.results}
