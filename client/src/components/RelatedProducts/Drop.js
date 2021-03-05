@@ -1,9 +1,9 @@
 import React from 'react';
 import propTypes from 'prop-types';
+import style from './css/actionIcon.css';
 
 const Drop = ({ id, dropHandler }) => (
-  // eslint-disable-next-line object-curly-spacing
-  <div className="actionIconDrop" onClick={dropHandler.bind(this, id)} onKeyPress={dropHandler.bind(this, id)} role="button" tabIndex={0}>
+  <div className={style.actionIconDrop} onClick={dropHandler.bind(this, id)} onKeyPress={dropHandler.bind(this, id)} role="button" tabIndex={0}>
     Drop
   </div>
 );

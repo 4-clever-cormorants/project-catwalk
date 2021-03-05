@@ -1,9 +1,10 @@
 import React from 'react';
 import propTypes from 'prop-types';
 import Card from './Card';
+import style from './css/list.css';
 
 const List = ({ productsList, compareHandler }) => (
-  <div className="relatedProductsList">
+  <div className={style.relatedProductsList}>
     {productsList.map((item) => (
       <div key={item.id.toString()}>
         <Card item={item} compareHandler={compareHandler} />
