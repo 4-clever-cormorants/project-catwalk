@@ -1,30 +1,48 @@
 import React from 'react';
+import axios from 'axios';
+import propTypes from 'prop-types';
 import List from './List';
 import ListOutfit from './ListOutfit';
 import AddToOutfit from './AddToOutfit';
 import Comparison from './Comparison';
-import dummy from './dummy_related';
 import style from './css/relatedProducts.css';
 
 class RelatedProducts extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      outfitList: dummy.relatedProducts,
-      current: dummy.currentProduct,
+      related: [],
+      outfitList: [],
+      current: undefined,
       clicked: undefined,
+      load: false,
     };
     this.addToOutfitHandler = this.addToOutfitHandler.bind(this);
     this.dropHandler = this.dropHandler.bind(this);
     this.compareHandler = this.compareHandler.bind(this);
+    this.getInfo();
+  }
+
+  getInfo() {
+    const { productId } = this.props;
+    axios.get(`/related/relatedProducts?product_id=${productId}`)
+      .then((response) => {
+        if (response.data) {
+          this.setState({
+            current: response.data[0],
+            related: response.data.slice(1),
+            load: true,
+          });
+        }
+      });
   }
 
   addToOutfitHandler() {
-    const { outfitList } = this.state;
-    const checker = outfitList.filter((item) => item.id === dummy.currentProduct.id);
+    const { current, outfitList } = this.state;
+    const checker = outfitList.filter((item) => item.id === current.id);
     if (checker.length === 0) {
       this.setState({
-        outfitList: [dummy.currentProduct, ...outfitList],
+        outfitList: [current, ...outfitList],
       });
     }
   }
@@ -43,24 +61,34 @@ class RelatedProducts extends React.Component {
   }
 
   render() {
-    const { outfitList, clicked, current } = this.state;
+    const {
+      outfitList, clicked, current, related, load
+    } = this.state;
     let comparison;
     if (clicked) {
       comparison = <Comparison current={current} clicked={clicked} />;
     }
 
     return (
-      <div className="RR">
-        <span>RelatedProducts</span>
-        {comparison}
-        <List productsList={dummy.relatedProducts} compareHandler={this.compareHandler} />
-        <div className={style.outfitListWithAdd}>
-          <AddToOutfit addToOutfitHandler={this.addToOutfitHandler} />
-          <ListOutfit productsList={outfitList} dropHandler={this.dropHandler} />
-        </div>
+      <div>
+        {load ? (
+          <div className="relatedProducts">
+            <span>RelatedProducts</span>
+            {comparison}
+            <List productsList={related} compareHandler={this.compareHandler} />
+            <div className={style.outfitListWithAdd}>
+              <AddToOutfit addToOutfitHandler={this.addToOutfitHandler} />
+              <ListOutfit productsList={outfitList} dropHandler={this.dropHandler} />
+            </div>
+          </div>
+        ) : ''}
       </div>
     );
   }
 }
+
+RelatedProducts.propTypes = {
+  productId: propTypes.number.isRequired,
+};
 
 export default RelatedProducts;
