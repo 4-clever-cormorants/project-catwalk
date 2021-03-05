@@ -1,7 +1,6 @@
 .relatedProductsList {
-  /* overflow:hidden; */
+  overflow:hidden;
   display: flex;
-
   overflow-x: auto;
   scroll-snap-type: x mandatory;
 
@@ -18,23 +17,21 @@
   scrollbar-width: none;  /* Firefox */
 }
 
-.outfitListWithAdd {
-  overflow:hidden;
-}
-
 .yourOwnOutfitList {
-  overflow:hidden;
+  display: flex;
 }
 
 .addToOutfit {
-  border: solid;
-  width: 200px;
-  height: 300px;
+  display: flex;
+  flex: 0 0 auto;
+  position: relative;
+  width: 400px;
+  height: 600px;
   float: left;
   margin: 5px;
-  display: flex;
   justify-content: center;
   align-items: center;
+  background-color: rgb(237, 237, 237);
 };
 
 .addToOutfitButton {
