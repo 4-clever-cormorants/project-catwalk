@@ -5,12 +5,12 @@ import Question from './Question';
 import QuestionForm from './QuestionForm';
 
 it('should exist', () => {
-  const wrapper = mount(<Questions />);
+  const wrapper = mount(<Questions productId={14931} />);
   expect(wrapper.exists()).toBe(true);
 });
 
 it('should render questions if there are any', () => {
-  const wrapper = mount(<Questions />);
+  const wrapper = mount(<Questions productId={14931} />);
   const instance = wrapper.instance();
   expect(instance.state.questionsOnScreen.length).toBeGreaterThan(0);
   const question = wrapper.find(Question);
@@ -18,7 +18,7 @@ it('should render questions if there are any', () => {
 });
 
 it('should render question form when clicking "add a question" button', () => {
-  const wrapper = mount(<Questions />);
+  const wrapper = mount(<Questions productId={14931} />);
   const addQuestionButton = wrapper.find('#addQuestionButton');
   expect(addQuestionButton.exists()).toBe(true);
   let questionForm = wrapper.find(QuestionForm);
@@ -29,7 +29,7 @@ it('should render question form when clicking "add a question" button', () => {
 });
 
 it('should close the question form when clicking on "X" button', () => {
-  const wrapper = mount(<Questions />);
+  const wrapper = mount(<Questions productId={14931} />);
   const addQuestionButton = wrapper.find('#addQuestionButton');
   expect(addQuestionButton.exists()).toBe(true);
   let questionForm = wrapper.find(QuestionForm);
@@ -44,13 +44,13 @@ it('should close the question form when clicking on "X" button', () => {
 });
 
 it('should display up to 4 questions by default', () => {
-  const wrapper = mount(<Questions />);
+  const wrapper = mount(<Questions productId={14931} />);
   const questionsLen = wrapper.find('.question').children().length;
   expect(questionsLen).toBeLessThanOrEqual(4);
 });
 
 it('should display up to 2 additional questions when clicking load more questions', () => {
-  const wrapper = mount(<Questions />);
+  const wrapper = mount(<Questions productId={14931} />);
   const loadQuestionsButton = wrapper.find('#loadMoreQuestions');
   expect(loadQuestionsButton.exists()).toBe(true);
   const oldQuestionsLen = wrapper.find('.questionsList').children().length;
@@ -60,7 +60,7 @@ it('should display up to 2 additional questions when clicking load more question
 });
 
 it('should hide the load more questions button when there are no more questions to load', () => {
-  const wrapper = mount(<Questions />);
+  const wrapper = mount(<Questions productId={14931} />);
   let loadQuestionsButton = wrapper.find('#loadMoreQuestions');
   expect(loadQuestionsButton.exists()).toBe(true);
   const oldQuestionsLen = wrapper.find('.questionsList').children().length;

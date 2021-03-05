@@ -4,6 +4,8 @@ import AnswerList from './AnswerList';
 import AnswerForm from './AnswerForm';
 import dummyAnswers from './dummyAnswers';
 
+const axios = require('axios');
+
 class Question extends React.Component {
   constructor(props) {
     super(props);
@@ -13,7 +15,24 @@ class Question extends React.Component {
       addAnswerClicked: false,
       questionHelpfulness: question.question_helpfulness,
       increased: false,
+      loadAnswers: false,
     };
+  }
+
+  componentDidMount() {
+    const { question } = this.props;
+    const questionId = question.question_id;
+    axios.get('/qa/answers', {
+      params: {
+        questionId,
+      },
+    })
+      .then((response) => {
+        this.setState({ answers: response.data, loadAnswers: true });
+      })
+      .catch((err) => {
+        console.log('question err', err);
+      });
   }
 
   addAnswer() {
@@ -36,6 +55,7 @@ class Question extends React.Component {
       addAnswerClicked,
       questionHelpfulness,
       increased,
+      loadAnswers,
     } = this.state;
     return (
       <div>
@@ -47,7 +67,7 @@ class Question extends React.Component {
         </p>
         <button type="button" className="addAnswerButton" onClick={this.addAnswer.bind(this)}>Add answer</button>
         {addAnswerClicked ? <AnswerForm exitAnswerForm={() => this.exitAnswerForm()} questionBody={question.question_body} /> : ''}
-        <AnswerList answers={answers.results} />
+        {loadAnswers ? <AnswerList answers={answers.results} /> : ''}
       </div>
     );
   }
