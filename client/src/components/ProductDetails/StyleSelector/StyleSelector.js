@@ -13,20 +13,19 @@ import Favorite from './Favorite';
 class StyleSelector extends React.Component {
   constructor(props) {
     super(props);
-    const { defaultSku } = this.props;
+    const { sku } = this.props;
     this.state = {
-      sku: defaultSku,
+      sku,
       cart: [],
     };
-    this.skuSelector = this.skuSelector.bind(this);
     this.addToCart = this.addToCart.bind(this);
   }
 
-  skuSelector(e) {
-    this.setState({
-      sku: e.target.value,
-    });
-  }
+  // skuSelector(e) {
+  //   this.setState({
+  //     sku: e.target.value,
+  //   });
+  // }
 
   addToCart(e) {
     e.preventDefault();
@@ -40,20 +39,20 @@ class StyleSelector extends React.Component {
 
   render() {
     const {
-      styles, style, styleSelector, defaultSku,
+      styles, style, styleSelector, skuSelector, sku,
     } = this.props;
-    let { sku } = this.state;
+    // let { sku } = this.state;
     const { skus } = style;
-    if (skus[sku] === undefined) {
-      sku = defaultSku;
-    }
+    // if (skus[sku] === undefined) {
+    //   sku
+    // }
     const qty = skus[sku].quantity;
     return (
       <div className="styleSelector">
         <StylesDisplay styles={styles} onClick={styleSelector} />
         <div className="checkout">
           <form onSubmit={this.addToCart} className="form">
-            <SizeSelector skus={skus} onChange={this.skuSelector} />
+            <SizeSelector skus={skus} onChange={skuSelector} />
             <QtySelector qty={qty} />
             <AddToCart />
             <Favorite />
@@ -75,6 +74,7 @@ StyleSelector.propTypes = {
     skus: PropTypes.objectOf(PropTypes.object).isRequired,
   })).isRequired,
   styleSelector: PropTypes.func.isRequired,
+  skuSelector: PropTypes.func.isRequired,
   style: PropTypes.shape({
     style_id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
@@ -84,7 +84,7 @@ StyleSelector.propTypes = {
     photos: PropTypes.arrayOf(PropTypes.objectOf(PropTypes.string)).isRequired,
     skus: PropTypes.objectOf(PropTypes.object).isRequired,
   }).isRequired,
-  defaultSku: PropTypes.string.isRequired,
+  sku: PropTypes.string.isRequired,
 };
 
 export default StyleSelector;

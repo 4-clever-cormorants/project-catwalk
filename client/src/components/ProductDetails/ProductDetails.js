@@ -16,10 +16,11 @@ class ProductDetails extends React.Component {
       styleId: null,
       styles: null,
       style: null,
-      defaultSku: null,
+      sku: null,
       load: false,
     };
     this.styleSelector = this.styleSelector.bind(this);
+    this.skuSelector = this.skuSelector.bind(this);
   }
 
   componentDidMount() {
@@ -38,7 +39,7 @@ class ProductDetails extends React.Component {
                   styleId: response.data.results[0].style_id,
                   styles: response.data,
                   style: response.data.results[0],
-                  defaultSku: Object.keys(response.data.results[0].skus)[0],
+                  sku: Object.keys(response.data.results[0].skus)[0],
                   load: true,
                 });
               });
@@ -61,15 +62,21 @@ class ProductDetails extends React.Component {
       if (style.style_id === styleId) {
         this.setState({
           style,
-          defaultSku: Object.keys(style.skus)[0],
+          sku: Object.keys(style.skus)[0],
         });
       }
     });
   }
 
+  skuSelector(e) {
+    this.setState({
+      sku: e.target.value,
+    });
+  }
+
   render() {
     const {
-      product, rating, styleId, styles, style, defaultSku, load,
+      product, rating, styleId, styles, style, sku, load,
     } = this.state;
 
     return (
@@ -81,8 +88,9 @@ class ProductDetails extends React.Component {
             <StyleSelector
               styles={styles.results}
               styleSelector={this.styleSelector}
+              skuSelector={this.skuSelector}
               style={style}
-              defaultSku={defaultSku}
+              sku={sku}
             />
           </div>
         ) : ''}
