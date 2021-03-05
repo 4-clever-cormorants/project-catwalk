@@ -5,6 +5,7 @@ import axios from 'axios';
 import ImageGallery from './ImageGallery/ImageGallery';
 import ProductInformation from './ProductInformation/ProductInformation';
 import StyleSelector from './StyleSelector/StyleSelector';
+import Checkout from './Checkout/Checkout';
 
 import css from './ProductDetails.css';
 
@@ -104,6 +105,8 @@ class ProductDetails extends React.Component {
             <StyleSelector
               styles={styles.results}
               styleSelector={this.styleSelector}
+            />
+            <Checkout
               skuSelector={this.skuSelector}
               addToCart={this.addToCart}
               style={style}
