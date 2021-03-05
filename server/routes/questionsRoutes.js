@@ -24,6 +24,17 @@ router.get('/questions', (req, res) => {
     });
 });
 
+router.put('/questionHelpful', (req, res) => {
+  axios.put(`${apiUrl}qa/questions/${req.body.questionId}/helpful`, { question_id: req.body.questionId }, headers)
+    .then(() => {
+      res.send('Put successful');
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).send(err);
+    });
+});
+
 router.post('/questionPost', (req, res) => {
   const {
     productId,
@@ -40,6 +51,27 @@ router.post('/questionPost', (req, res) => {
     .then((response) => {
       console.log(response);
       res.send('posted question');
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).send(err);
+    });
+});
+
+router.get('/answers', (req, res) => {
+  axios.get(`${apiUrl}qa/questions/${req.query.questionId}/answers/?count=${req.query.answerCount}`, headers)
+    .then((response) => {
+      res.send(response.data);
+    })
+    .catch((err) => {
+      res.status(500).send(err);
+    });
+});
+
+router.put('/answerHelpful', (req, res) => {
+  axios.put(`${apiUrl}qa/answers/${req.body.answerId}/helpful`, { answer_id: req.body.answerId }, headers)
+    .then(() => {
+      res.send('Put successful');
     })
     .catch((err) => {
       console.log(err);
@@ -77,12 +109,13 @@ router.post('/answerPost', (req, res) => {
     });
 });
 
-router.get('/answers', (req, res) => {
-  axios.get(`${apiUrl}qa/questions/${req.query.questionId}/answers/?count=${req.query.answerCount}`, headers)
-    .then((response) => {
-      res.send(response.data);
+router.put('/answerReport', (req, res) => {
+  axios.put(`${apiUrl}qa/answers/${req.body.answerId}/report`, { answer_id: req.body.answerId }, headers)
+    .then(() => {
+      res.send('Put successful');
     })
     .catch((err) => {
+      console.log(err);
       res.status(500).send(err);
     });
 });

@@ -66,7 +66,20 @@ class Question extends React.Component {
 
   increaseQuestionHelpfulness() {
     const { questionHelpfulness } = this.state;
-    this.setState({ questionHelpfulness: questionHelpfulness + 1, increased: true });
+    this.setState({ increased: true, questionHelpfulness: questionHelpfulness + 1 },
+      this.putHelpful());
+  }
+
+  putHelpful() {
+    const { question } = this.props;
+    const questionId = question.question_id;
+    axios.put('/qa/questionHelpful', {
+      questionId,
+    })
+      .then(() => {})
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   render() {
