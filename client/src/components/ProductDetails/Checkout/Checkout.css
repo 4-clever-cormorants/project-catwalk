@@ -1,6 +1,10 @@
 .checkout {
   grid-column: 2;
   grid-row: 3/4;
+  border: 3px green solid;
+}
+
+.checkout .form {
   display: flex;
   flex-direction: column;
 }

@@ -5,7 +5,7 @@
   grid-row: 1/4;
   height: 700px;
   width: 100%;
-  border: 1px solid black;
+  border: 1px solid yellow;
 }
 
 .imageGallery .defaultView {
@@ -14,7 +14,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 2px black solid;
+  border: 3px burlywood solid;
 }
 
 .imageGallery .defaultView img {
