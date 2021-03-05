@@ -15,8 +15,7 @@ router.get('/', (req, res) => {
 });
 
 router.get('/questions', (req, res) => {
-  console.log(req);
-  axios.get(`${apiUrl}qa/questions/?product_id=14931`, headers)
+  axios.get(`${apiUrl}qa/questions/?product_id=${req.query.productId}`, headers)
     .then((response) => {
       res.send(response.data);
     })
@@ -26,7 +25,7 @@ router.get('/questions', (req, res) => {
 });
 
 router.get('/answers', (req, res) => {
-  axios.get(`${apiUrl}qa/questions/14931/answers`, headers)
+  axios.get(`${apiUrl}qa/questions/${req.query.questionId}/answers`, headers)
     .then((response) => {
       res.send(response.data);
     })
