@@ -17,10 +17,12 @@ class ProductDetails extends React.Component {
       styles: null,
       style: null,
       sku: null,
+      cart: [],
       load: false,
     };
     this.styleSelector = this.styleSelector.bind(this);
     this.skuSelector = this.skuSelector.bind(this);
+    this.addToCart = this.addToCart.bind(this);
   }
 
   componentDidMount() {
@@ -74,6 +76,16 @@ class ProductDetails extends React.Component {
     });
   }
 
+  addToCart(e) {
+    e.preventDefault();
+    const { cart, sku } = this.state;
+    if (cart.indexOf(sku) === -1) {
+      this.setState({
+        cart: [...cart, sku],
+      });
+    }
+  }
+
   render() {
     const {
       product, rating, styleId, styles, style, sku, load,
@@ -89,6 +101,7 @@ class ProductDetails extends React.Component {
               styles={styles.results}
               styleSelector={this.styleSelector}
               skuSelector={this.skuSelector}
+              addToCart={this.addToCart}
               style={style}
               sku={sku}
             />

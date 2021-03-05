@@ -18,7 +18,6 @@ class StyleSelector extends React.Component {
       sku,
       cart: [],
     };
-    this.addToCart = this.addToCart.bind(this);
   }
 
   // skuSelector(e) {
@@ -27,19 +26,19 @@ class StyleSelector extends React.Component {
   //   });
   // }
 
-  addToCart(e) {
-    e.preventDefault();
-    const { cart, sku } = this.state;
-    if (cart.indexOf(sku) === -1) {
-      this.setState({
-        cart: [...cart, sku],
-      });
-    }
-  }
+  // addToCart(e) {
+  //   e.preventDefault();
+  //   const { cart, sku } = this.state;
+  //   if (cart.indexOf(sku) === -1) {
+  //     this.setState({
+  //       cart: [...cart, sku],
+  //     });
+  //   }
+  // }
 
   render() {
     const {
-      styles, style, styleSelector, skuSelector, sku,
+      styles, style, styleSelector, skuSelector, addToCart, sku,
     } = this.props;
     // let { sku } = this.state;
     const { skus } = style;
@@ -51,7 +50,7 @@ class StyleSelector extends React.Component {
       <div className="styleSelector">
         <StylesDisplay styles={styles} onClick={styleSelector} />
         <div className="checkout">
-          <form onSubmit={this.addToCart} className="form">
+          <form onSubmit={addToCart} className="form">
             <SizeSelector skus={skus} onChange={skuSelector} />
             <QtySelector qty={qty} />
             <AddToCart />
