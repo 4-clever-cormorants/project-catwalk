@@ -18,6 +18,7 @@ class Question extends React.Component {
       loadAnswers: false,
       answerCount: 3,
     };
+    this.updateAnswers = this.updateAnswers.bind(this);
   }
 
   componentDidMount() {
@@ -87,8 +88,7 @@ class Question extends React.Component {
         </p>
         <button type="button" className="addAnswerButton" onClick={this.addAnswer.bind(this)}>Add answer</button>
         {addAnswerClicked ? <AnswerForm exitAnswerForm={() => this.exitAnswerForm()} questionBody={question.question_body} /> : ''}
-        {/* eslint-disable-next-line react/jsx-no-bind */}
-        {loadAnswers ? <AnswerList answers={answers.results} updateAnswers={this.updateAnswers.bind(this)} /> : ''}
+        {loadAnswers ? <AnswerList answers={answers.results} updateAnswers={this.updateAnswers} /> : ''}
       </div>
     );
   }
