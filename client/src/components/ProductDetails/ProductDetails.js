@@ -47,7 +47,7 @@ class ProductDetails extends React.Component {
       });
   }
 
-  styleSelector(e) { // fix this
+  styleSelector(e) {
     // when you click on the style image in StylesDisplay,
     // update the state with that style id and style
     const styleId = Number(e.target.classList[0]);
