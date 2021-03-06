@@ -3,7 +3,7 @@ import style from './css/actionIcon.css';
 
 const Favor = () => (
   <div className={style.actionIconFavor}>
-    <i className={`${style.favor} far fa-heart`} />
+    <i className={`${style.favor} far fa-star`} />
   </div>
 );
 

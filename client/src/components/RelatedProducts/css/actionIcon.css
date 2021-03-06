@@ -6,9 +6,9 @@
 }
 
 .favor {
-  margin: 5px;
-  font-size: 50px;
-  color: pink;
+  margin: 10px;
+  font-size: 40px;
+  color: rgb(255, 204, 0);
 }
 
 .actionIconDrop {
@@ -19,7 +19,7 @@
 }
 
 .drop {
-  margin: 5px;
-  font-size: 50px;
+  margin: 10px;
+  font-size: 40px;
   color: gray;
 }
