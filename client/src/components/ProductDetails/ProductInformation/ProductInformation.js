@@ -39,6 +39,8 @@ ProductInformation.propTypes = {
     updated_at: PropTypes.string.isRequired,
     features: PropTypes.arrayOf(PropTypes.object).isRequired,
   }).isRequired,
+  originalPrice: PropTypes.string.isRequired,
+  salePrice: PropTypes.string.isRequired,
   rating: PropTypes.number.isRequired,
 };
 
