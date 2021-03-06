@@ -6,10 +6,16 @@
   height: 100%;
   border: 3px solid blue;
   font-family: Arial, Helvetica, sans-serif;
+  color: rgb(40, 40, 40)
 }
 
 .productInformation .info {
   border: 3px solid purple;
+}
+
+.productInformation .category {
+  font-size: 14px;
+  font-weight: 100;
 }
 
 .productInformation .title {
