@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import style from './css/AnswerForm.css';
 
 const axios = require('axios');
 
@@ -89,11 +90,15 @@ class AnswerForm extends React.Component {
     } = this.state;
     const errorMessage = errorMessages.join(', ');
     return (
-      <div className="answerForm">
-        <h3>Submit your Answer</h3>
-        <h4>{`[PRODUCT NAME]: ${questionBody}`}</h4>
-        {/* product name needs to be passed in from apps */}
-        <button type="button" className="exitButton" onClick={exitAnswerForm}>X</button>
+      <div className={`${style.answerForm} answerForm`}>
+        <div className={`${style.answerFormHeader} answerFormHeader`}>
+          <div className={`${style.answerFormTitle} answerFormTitle`}>
+            <h3>Submit your Answer</h3>
+            <h4>{`[PRODUCT NAME]: ${questionBody}`}</h4>
+            {/* product name needs to be passed in from apps */}
+          </div>
+          <button type="button" className={`${style.exitButton} exitButton`} onClick={exitAnswerForm}>X</button>
+        </div>
         <form>
           <label htmlFor="answer">
             * Answer
