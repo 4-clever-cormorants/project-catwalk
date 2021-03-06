@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+const axios = require('axios');
+
 class QuestionForm extends React.Component {
   constructor(props) {
     super(props);
@@ -30,7 +32,8 @@ class QuestionForm extends React.Component {
     this.validateForm(() => {
       const { errorMessages } = this.state;
       if (errorMessages.length === 0) {
-        this.setState({ submitError: false, submitted: true });
+        this.setState({ submitError: false, submitted: true },
+          this.postQuestion());
       } else {
         this.setState({ submitError: true });
       }
@@ -41,6 +44,21 @@ class QuestionForm extends React.Component {
     const { email } = this.state;
     const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return emailRegex.test(email);
+  }
+
+  postQuestion() {
+    const { productId } = this.props;
+    const { questionBody, nickname, email } = this.state;
+    axios.post('/qa/questionPost', {
+      productId,
+      body: questionBody,
+      name: nickname,
+      email,
+    })
+      .then(() => {})
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   validateForm(callback) {
@@ -99,6 +117,7 @@ class QuestionForm extends React.Component {
 
 QuestionForm.propTypes = {
   exitQuestionForm: PropTypes.func.isRequired,
+  productId: PropTypes.number.isRequired,
 };
 
 export default QuestionForm;
