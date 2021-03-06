@@ -8,7 +8,13 @@ const Card = ({ item, compareHandler }) => (
   <div className={style.card} id={`card${item.id.toString()}`} onClick={compareHandler.bind(this, item)} onKeyPress={compareHandler.bind(this, item)} role="button" tabIndex={0}>
     <Favor />
     <img className={style.cardImg} src={item.thumbnail_url} alt={item.name} />
-    <a className={style.cardName} href={`http://localhost:1128/?product_id=${item.id}`}>
+    <a
+      className={style.cardName}
+      href={`http://localhost:1128/?product_id=${item.id}`}
+      onClick={(e) => {
+        e.stopPropagation();
+      }}
+    >
       <h3>
         {item.name}
       </h3>

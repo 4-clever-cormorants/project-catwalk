@@ -8,7 +8,13 @@ const CardOutfit = ({ item, dropHandler }) => (
   <div className={style.card} id={`card${item.id.toString()}`}>
     <Drop id={item.id} dropHandler={dropHandler} />
     <img className={style.cardImg} src={item.thumbnail_url} alt={item.name} />
-    <a className={style.cardName} href={`http://localhost:1128/?product_id=${item.id}`}>
+    <a
+      className={style.cardName}
+      href={`http://localhost:1128/?product_id=${item.id}`}
+      onClick={(e) => {
+        e.stopPropagation();
+      }}
+    >
       <h3>
         {item.name}
       </h3>
