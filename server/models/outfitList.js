@@ -13,7 +13,6 @@ const add = (item, callback) => {
 };
 
 const drop = (id, callback) => {
-  outfitList.map((item) => (item.id === id ? undefined : item));
   for (let i = 0; i < outfitList.length; i += 1) {
     if (outfitList[i].id === id) {
       outfitList = outfitList.slice(0, i).concat(outfitList.slice(i + 1));

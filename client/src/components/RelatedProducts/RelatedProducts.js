@@ -55,16 +55,16 @@ class RelatedProducts extends React.Component {
     const { current, outfitList } = this.state;
     const checker = outfitList.filter((item) => item.id === current.id);
     if (checker.length === 0) {
-      axios.post(`/related/outfitList?product_id=${current.id}`).then(() => {
-        this.setState({
-          outfitList: [current, ...outfitList],
-        });
+      axios.post(`/related/outfitList?product_id=${current.id}`);
+      this.setState({
+        outfitList: [current, ...outfitList],
       });
     }
   }
 
   dropHandler(id) {
     const { outfitList } = this.state;
+    axios.post(`/related/outfitListDrop?product_id=${id}`);
     this.setState({
       outfitList: outfitList.filter((item) => item.id !== id),
     });

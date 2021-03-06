@@ -70,4 +70,10 @@ router.post('/outfitList', (req, res) => {
     }));
 });
 
+router.post('/outfitListDrop', (req, res) => {
+  outfitList.drop(parseInt(req.query.product_id, 10), () => {
+    res.status(200).end();
+  });
+});
+
 module.exports = router;
