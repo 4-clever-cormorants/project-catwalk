@@ -29,14 +29,19 @@ const Price = ({ originalPrice, salePrice }) => {
   }
   return (
     <div className={css.price}>
-      ${originalPrice}
+      $
+      {originalPrice}
     </div>
   );
 };
 
 Price.propTypes = {
   originalPrice: PropTypes.string.isRequired,
-  salePrice: PropTypes.string.isRequired,
+  salePrice: PropTypes.string,
+};
+
+Price.defaultProps = {
+  salePrice: null,
 };
 
 export default Price;

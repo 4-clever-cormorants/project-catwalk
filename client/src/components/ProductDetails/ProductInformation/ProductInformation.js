@@ -10,7 +10,9 @@ import Shipping from './Shipping';
 
 import css from './ProductInformation.css';
 
-const ProductInformation = ({ product, originalPrice, salePrice, rating, totalRatings }) => (
+const ProductInformation = ({
+  product, originalPrice, salePrice, rating, totalRatings,
+}) => (
   <div className={css.productInformation}>
     <div className={css.info}>
       <Rating rating={rating} totalRatings={totalRatings} />
@@ -43,6 +45,10 @@ ProductInformation.propTypes = {
   salePrice: PropTypes.string,
   rating: PropTypes.number.isRequired,
   totalRatings: PropTypes.number.isRequired,
+};
+
+ProductInformation.defaultProps = {
+  salePrice: null,
 };
 
 export default ProductInformation;
