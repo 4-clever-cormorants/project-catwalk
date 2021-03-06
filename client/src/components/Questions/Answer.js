@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import AnswerFooter from './AnswerFooter';
+import style from './css/Answer.css';
 
 class Answer extends React.Component {
   constructor(props) {
@@ -13,7 +14,7 @@ class Answer extends React.Component {
   render() {
     const { answer } = this.props;
     return (
-      <div className="answer">
+      <div className={`${style.answerContent} answer`}>
         <div className="answerText"><p>{answer.body}</p></div>
         <AnswerFooter answer={answer} />
       </div>
