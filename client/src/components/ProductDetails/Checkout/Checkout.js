@@ -12,7 +12,10 @@ const Checkout = ({
   style, addToCart, skuSelector, sku,
 }) => {
   const { skus } = style;
-  const qty = skus[sku].quantity;
+  let qty = null;
+  if (sku !== null && sku !== 'Size') {
+    qty = skus[sku].quantity;
+  }
   return (
     <div className={css.checkout}>
       <form onSubmit={addToCart} className={css.form}>
@@ -37,7 +40,11 @@ Checkout.propTypes = {
   }).isRequired,
   skuSelector: PropTypes.func.isRequired,
   addToCart: PropTypes.func.isRequired,
-  sku: PropTypes.string.isRequired,
+  sku: PropTypes.string,
+};
+
+Checkout.defaultProps = {
+  sku: null,
 };
 
 export default Checkout;

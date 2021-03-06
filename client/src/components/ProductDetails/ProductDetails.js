@@ -42,7 +42,7 @@ class ProductDetails extends React.Component {
                   styleId: response.data.results[0].style_id,
                   styles: response.data,
                   style: response.data.results[0],
-                  sku: Object.keys(response.data.results[0].skus)[0],
+                  // sku: Object.keys(response.data.results[0].skus)[0],
                   load: true,
                 },
                 () => { getProductName(product.name); });
@@ -66,13 +66,14 @@ class ProductDetails extends React.Component {
       if (style.style_id === styleId) {
         this.setState({
           style,
-          sku: Object.keys(style.skus)[0],
+          sku: null,
         });
       }
     });
   }
 
   skuSelector(e) {
+    console.log(e.target.value);
     this.setState({
       sku: e.target.value,
     });
