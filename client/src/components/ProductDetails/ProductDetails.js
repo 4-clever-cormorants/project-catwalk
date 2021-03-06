@@ -66,13 +66,14 @@ class ProductDetails extends React.Component {
       if (style.style_id === styleId) {
         this.setState({
           style,
-          sku: Object.keys(style.skus)[0],
+          sku: null,
         });
       }
     });
   }
 
   skuSelector(e) {
+    console.log(e.target.value);
     this.setState({
       sku: e.target.value,
     });
