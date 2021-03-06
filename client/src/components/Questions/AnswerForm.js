@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+const axios = require('axios');
+
 class AnswerForm extends React.Component {
   constructor(props) {
     super(props);
@@ -30,7 +32,9 @@ class AnswerForm extends React.Component {
     this.validateForm(() => {
       const { errorMessages } = this.state;
       if (errorMessages.length === 0) {
-        this.setState({ submitError: false, submitted: true });
+        this.setState({ submitError: false, submitted: true }, () => {
+          this.postAnswer();
+        });
       } else {
         this.setState({ submitError: true });
       }
@@ -41,6 +45,22 @@ class AnswerForm extends React.Component {
     const { email } = this.state;
     const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return emailRegex.test(email);
+  }
+
+  postAnswer() {
+    const { answerBody, nickname, email } = this.state;
+    const { questionId } = this.props;
+    axios.post('/qa/answerPost', {
+      body: answerBody,
+      name: nickname,
+      email,
+      photos: [],
+      questionId,
+    })
+      .then(() => {})
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   validateForm(callback) {
@@ -105,6 +125,7 @@ class AnswerForm extends React.Component {
 AnswerForm.propTypes = {
   exitAnswerForm: PropTypes.func.isRequired,
   questionBody: PropTypes.string.isRequired,
+  questionId: PropTypes.number.isRequired,
 };
 
 export default AnswerForm;

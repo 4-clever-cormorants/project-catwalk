@@ -4,7 +4,7 @@ import style from './css/actionIcon.css';
 
 const Drop = ({ id, dropHandler }) => (
   <div className={style.actionIconDrop} onClick={dropHandler.bind(this, id)} onKeyPress={dropHandler.bind(this, id)} role="button" tabIndex={0}>
-    Drop
+    <i className={`${style.drop} far fa-times-circle`} />
   </div>
 );
 
