@@ -8,9 +8,11 @@ const Card = ({ item, compareHandler }) => (
   <div className={style.card} id={`card${item.id.toString()}`} onClick={compareHandler.bind(this, item)} onKeyPress={compareHandler.bind(this, item)} role="button" tabIndex={0}>
     <Favor />
     <img className={style.cardImg} src={item.thumbnail_url} alt={item.name} />
-    <h3 className="cardName">
-      {item.name}
-    </h3>
+    <a className={style.cardName} href={`http://localhost:1128/?product_id=${item.id}`}>
+      <h3>
+        {item.name}
+      </h3>
+    </a>
     <h5>
       {item.default_price}
     </h5>

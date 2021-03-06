@@ -12,3 +12,8 @@
   margin: 5px;
   background-color: rgb(237, 237, 237);
 }
+
+.cardName {
+    color: black;
+    text-decoration: none;
+}
