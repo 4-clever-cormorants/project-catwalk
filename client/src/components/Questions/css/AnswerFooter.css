@@ -1,0 +1,21 @@
+.buttonLink {
+  background: none!important;
+  border: none;
+  padding: 0!important;
+  color: #555;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.answerNameAndDate {
+  color: #888;
+}
+
+.answerNameSeller {
+  font-weight: bold;
+}
+
+.answerHelpful,
+.answerReport {
+  color: #555;
+}

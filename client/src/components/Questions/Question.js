@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import AnswerList from './AnswerList';
 import AnswerForm from './AnswerForm';
 import dummyAnswers from './dummyAnswers';
+import style from './css/Question.css';
 
 const axios = require('axios');
 
@@ -92,14 +93,21 @@ class Question extends React.Component {
       loadAnswers,
     } = this.state;
     return (
-      <div>
-        <p style={{ fontWeight: 'bold' }}>{`Q: ${question.question_body}`}</p>
-        <p>
-          Helpful?
-          <button type="button" className="questionHelpfulButton" onClick={this.increaseQuestionHelpfulness.bind(this)} disabled={increased}>Yes</button>
-          <span>{`(${questionHelpfulness})`}</span>
-        </p>
-        <button type="button" className="addAnswerButton" onClick={this.addAnswer.bind(this)}>Add answer</button>
+      <div className={style.questionDefault}>
+        <div className={style.questionContent}>
+          <div className={style.questionText}>
+            <p>{`Q: ${question.question_body}`}</p>
+          </div>
+          <div className={style.questionFooter}>
+            <p>
+              <span>Helpful? </span>
+              <button type="button" className={`${style.buttonLink} questionHelpfulButton`} onClick={this.increaseQuestionHelpfulness.bind(this)} disabled={increased}>Yes</button>
+              <span>{` (${questionHelpfulness})`}</span>
+              <span> | </span>
+              <button type="button" className={`${style.buttonLink} addAnswerButton`} onClick={this.addAnswer.bind(this)}>Add answer</button>
+            </p>
+          </div>
+        </div>
         {addAnswerClicked ? <AnswerForm exitAnswerForm={() => this.exitAnswerForm()} questionBody={question.question_body} questionId={question.question_id} /> : ''}
         {loadAnswers ? <AnswerList answers={answers.results} updateAnswers={this.updateAnswers} /> : ''}
       </div>

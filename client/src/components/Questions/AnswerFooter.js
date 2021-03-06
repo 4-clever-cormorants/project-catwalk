@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import style from './css/AnswerFooter.css';
 
 const axios = require('axios');
 
@@ -57,30 +58,36 @@ class AnswerFooter extends React.Component {
       month: 'long',
       day: 'numeric',
     };
+    let answerNameClass = 'answerName';
+    if (answer.answerer_name === 'Seller') {
+      answerNameClass = `${style.answerNameSeller} answerName`;
+    }
     return (
-      <div className="answerFooter">
-        <div className="answerNameAndDate">
-          <p className="answerName">
-            by
-            <span style={{ fontWeight: answer.answerer_name === 'Seller' ? 'bold' : 'normal' }}>
-              {/* change this to className = answerSeller or answerDefault when doing real css */}
-              {` ${answer.answerer_name}`}
-            </span>
-            ,
-            <span className="answerDate">
-              {` ${new Date(answer.date).toLocaleDateString('en-US', dateOptions)}`}
-            </span>
-          </p>
-        </div>
-        <div className="answerHelpful">
+      <div className={`${style.answerFooter} answerFooter`}>
+        <div>
           <p>
-            Helpful?
-            <button type="button" className="answerHelpfulButton" onClick={this.increaseAnswerHelpfulness.bind(this)} disabled={increased}>Yes</button>
-            <span>{`(${answerHelpfulness})`}</span>
+            <span className={`${style.answerNameAndDate} answerNameAndDate`}>
+              by
+              <span className={answerNameClass}>
+                {/* change this to className = answerSeller or answerDefault when doing real css */}
+                {` ${answer.answerer_name}`}
+              </span>
+              ,
+              <span className="answerDate">
+                {` ${new Date(answer.date).toLocaleDateString('en-US', dateOptions)}`}
+              </span>
+            </span>
+            <span> | </span>
+            <span className={`${style.answerHelpful} answerHelpful`}>
+              <span>Helpful? </span>
+              <button type="button" className={`${style.buttonLink} answerHelpfulButton`} onClick={this.increaseAnswerHelpfulness.bind(this)} disabled={increased}>Yes</button>
+              <span>{` (${answerHelpfulness})`}</span>
+            </span>
+            <span> | </span>
+            <span className={`${style.answerReport} answerReport`}>
+              {reported ? <p>Reported</p> : <button type="button" className={`${style.buttonLink} answerReportButton`} onClick={this.reportAnswer.bind(this)}>Report</button>}
+            </span>
           </p>
-        </div>
-        <div className="answerReport">
-          {reported ? 'Reported' : <button type="button" className="answerReportButton" onClick={this.reportAnswer.bind(this)}>Report</button>}
         </div>
       </div>
     );
