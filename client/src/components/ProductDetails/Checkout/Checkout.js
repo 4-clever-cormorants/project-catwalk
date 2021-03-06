@@ -12,7 +12,10 @@ const Checkout = ({
   style, addToCart, skuSelector, sku,
 }) => {
   const { skus } = style;
-  const qty = skus[sku].quantity;
+  let qty = null;
+  if (sku !== undefined && sku !== null) {
+    qty = skus[sku].quantity;
+  }
   return (
     <div className={css.checkout}>
       <form onSubmit={addToCart} className={css.form}>

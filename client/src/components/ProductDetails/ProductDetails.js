@@ -42,7 +42,7 @@ class ProductDetails extends React.Component {
                   styleId: response.data.results[0].style_id,
                   styles: response.data,
                   style: response.data.results[0],
-                  sku: Object.keys(response.data.results[0].skus)[0],
+                  // sku: Object.keys(response.data.results[0].skus)[0],
                   load: true,
                 },
                 () => { getProductName(product.name); });
