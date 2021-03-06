@@ -25,7 +25,9 @@ const QtySelector = ({ qty }) => {
         { qty !== null
           ? options.map(
             (option) => <option value={option} key={option} className="option">{option}</option>
-          ) : ''}
+          )
+          : <option disabled>Must select a size</option>
+        }
       </select>
     </label>
   );
