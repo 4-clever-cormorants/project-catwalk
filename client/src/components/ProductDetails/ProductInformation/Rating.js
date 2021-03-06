@@ -4,6 +4,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import css from './Rating.css';
+
 const Rating = ({ rating }) => {
   let n = (Math.round(rating * 4) / 4).toFixed(2);
   const stars = [];
@@ -24,27 +26,27 @@ const Rating = ({ rating }) => {
       {stars.map((star) => {
         if (star === 0) {
           return (
-            <span className="star empty fa fa-star" />
+            <span className={`${css.star} ${css.empty} fa fa-star`} />
           );
         }
         if (star === 0.25) {
           return (
-            <span className="star quarter fa fa-star" />
+            <span className={`${css.star} ${css.quarter} fa fa-star`} />
           );
         }
         if (star === 0.50) {
           return (
-            <span className="star half fa fa-star" />
+            <span className={`${css.star} ${css.half} fa fa-star`} />
           );
         }
         if (star === 0.75) {
           return (
-            <span className="star three-quarter fa fa-star" />
+            <span className={`${css.star} ${css.threeQuarter} fa fa-star`} />
           );
         }
         if (star === 1) {
           return (
-            <span className="star full fa fa-star" />
+            <span className={`${css.star} ${css.full} ${'fa fa-star'}`} />
           );
         }
       })}

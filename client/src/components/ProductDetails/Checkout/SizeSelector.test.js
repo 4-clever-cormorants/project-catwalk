@@ -10,5 +10,5 @@ test('should offer six sizes to choose from', () => {
   const sizeSelector = wrapper.find(SizeSelector);
   const sizes = wrapper.find('#sizeSelector').children().length;
   expect(sizeSelector.exists()).toBe(true);
-  expect(sizes).toBe(6);
+  expect(sizes).toBe(7);
 });

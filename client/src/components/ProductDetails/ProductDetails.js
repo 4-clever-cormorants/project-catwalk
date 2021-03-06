@@ -5,6 +5,9 @@ import axios from 'axios';
 import ImageGallery from './ImageGallery/ImageGallery';
 import ProductInformation from './ProductInformation/ProductInformation';
 import StyleSelector from './StyleSelector/StyleSelector';
+import Checkout from './Checkout/Checkout';
+
+import css from './ProductDetails.css';
 
 class ProductDetails extends React.Component {
   constructor(props) {
@@ -14,10 +17,13 @@ class ProductDetails extends React.Component {
       styleId: null,
       styles: null,
       style: null,
-      defaultSku: null,
+      sku: null,
+      cart: [],
       load: false,
     };
     this.styleSelector = this.styleSelector.bind(this);
+    this.skuSelector = this.skuSelector.bind(this);
+    this.addToCart = this.addToCart.bind(this);
   }
 
   componentDidMount() {
@@ -36,7 +42,7 @@ class ProductDetails extends React.Component {
                   styleId: response.data.results[0].style_id,
                   styles: response.data,
                   style: response.data.results[0],
-                  defaultSku: Object.keys(response.data.results[0].skus)[0],
+                  sku: Object.keys(response.data.results[0].skus)[0],
                   load: true,
                 });
               });
@@ -59,28 +65,53 @@ class ProductDetails extends React.Component {
       if (style.style_id === styleId) {
         this.setState({
           style,
-          defaultSku: Object.keys(style.skus)[0],
+          sku: Object.keys(style.skus)[0],
         });
       }
     });
   }
 
+  skuSelector(e) {
+    this.setState({
+      sku: e.target.value,
+    });
+  }
+
+  addToCart(e) {
+    e.preventDefault();
+    const { cart, sku } = this.state;
+    if (cart.indexOf(sku) === -1) {
+      this.setState({
+        cart: [...cart, sku],
+      });
+    }
+  }
+
   render() {
     const {
-      product, rating, styleId, styles, style, defaultSku, load,
+      product, rating, styleId, styles, style, sku, load,
     } = this.state;
 
     return (
-      <div>
+      <div className="PD">
         { load ? (
-          <div className="productDetails">
-            <ImageGallery styleId={styleId} style={style} name={product.name} />
+          <div className={css.productDetails}>
+            <ImageGallery
+              styleId={styleId}
+              style={style}
+              styles={styles.results}
+              styleSelector={this.styleSelector}
+            />
             <ProductInformation product={product} rating={rating} />
             <StyleSelector
               styles={styles.results}
               styleSelector={this.styleSelector}
+            />
+            <Checkout
+              skuSelector={this.skuSelector}
+              addToCart={this.addToCart}
               style={style}
-              defaultSku={defaultSku}
+              sku={sku}
             />
           </div>
         ) : ''}
