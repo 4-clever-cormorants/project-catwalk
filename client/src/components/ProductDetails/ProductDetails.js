@@ -108,6 +108,7 @@ class ProductDetails extends React.Component {
             />
             <StyleSelector
               styles={styles.results}
+              selected={style.name}
               styleSelector={this.styleSelector}
             />
             <Checkout
