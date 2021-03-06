@@ -84,7 +84,7 @@ class Question extends React.Component {
   }
 
   render() {
-    const { question } = this.props;
+    const { question, productName } = this.props;
     const {
       answers,
       addAnswerClicked,
@@ -108,7 +108,7 @@ class Question extends React.Component {
             </p>
           </div>
         </div>
-        {addAnswerClicked ? <AnswerForm exitAnswerForm={() => this.exitAnswerForm()} questionBody={question.question_body} questionId={question.question_id} /> : ''}
+        {addAnswerClicked ? <AnswerForm exitAnswerForm={() => this.exitAnswerForm()} questionBody={question.question_body} questionId={question.question_id} productName={productName} /> : ''}
         {loadAnswers ? <AnswerList answers={answers.results} updateAnswers={this.updateAnswers} /> : ''}
       </div>
     );
@@ -133,6 +133,7 @@ Question.propTypes = {
     })),
   }),
   test: PropTypes.bool,
+  productName: PropTypes.string.isRequired,
 };
 
 Question.defaultProps = {

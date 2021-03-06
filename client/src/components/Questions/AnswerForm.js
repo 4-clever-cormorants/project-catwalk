@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import style from './css/Form.css';
 
 const axios = require('axios');
 
@@ -81,7 +82,7 @@ class AnswerForm extends React.Component {
   }
 
   render() {
-    const { exitAnswerForm, questionBody } = this.props;
+    const { exitAnswerForm, questionBody, productName } = this.props;
     const {
       errorMessages,
       submitError,
@@ -89,34 +90,47 @@ class AnswerForm extends React.Component {
     } = this.state;
     const errorMessage = errorMessages.join(', ');
     return (
-      <div className="answerForm">
-        <h3>Submit your Answer</h3>
-        <h4>{`[PRODUCT NAME]: ${questionBody}`}</h4>
-        {/* product name needs to be passed in from apps */}
-        <button type="button" className="exitButton" onClick={exitAnswerForm}>X</button>
-        <form>
-          <label htmlFor="answer">
-            * Answer
-            <textarea className="answerField" name="answerField" maxLength="1000" onChange={(e) => this.handleAnswerChange(e)} required />
-          </label>
-          <label htmlFor="nickname">
-            * Nickname
-            <input type="text" className="answerNickname" placeholder="Example: jack543!" maxLength="60" onChange={(e) => this.handleNicknameChange(e)} required />
-            <p>For privacy reasons, do not use your full name or email address</p>
-          </label>
-          <label htmlFor="email">
-            * Email
-            <input type="email" className="answerEmail" placeholder="Example:jack@email.com" maxLength="60" onChange={(e) => this.handleEmailChange(e)} required />
-            <p>For authentication reasons, you will not be emailed</p>
-          </label>
-          <label htmlFor="photos">
-            Photos
-            <input type="file" />
-            <button type="button" className="uploadPhoto">Upload photo</button>
-          </label>
-          <button type="button" className="submitAnswer" onClick={this.handleSubmitAnswer.bind(this)} disabled={submitted}>Submit</button>
-          {submitError ? <div className="errorMessage">{`You must enter the following: ${errorMessage}`}</div> : ''}
-        </form>
+      <div className={`${style.form} answerForm`}>
+        <div className={`${style.formHeader} answerFormHeader`}>
+          <div className={`${style.formTitle} answerFormTitle`}>
+            <h3>Submit your Answer</h3>
+            <h4>{`${productName}: ${questionBody}`}</h4>
+          </div>
+          <button type="button" className={`${style.exitButton} exitButton`} onClick={exitAnswerForm}>X</button>
+        </div>
+        <div className={`${style.formContent} answerFormContent`}>
+          <form>
+            <label htmlFor="answer">
+              * Answer
+              <textarea className="answerField" name="answerField" maxLength="1000" onChange={(e) => this.handleAnswerChange(e)} required />
+            </label>
+            <label htmlFor="nickname">
+              * Nickname
+              <input type="text" className="answerNickname" placeholder="Example: jack543!" maxLength="60" onChange={(e) => this.handleNicknameChange(e)} required />
+              <p className={style.fieldDescription}>
+                For privacy reasons, do not use your full name or email address
+              </p>
+            </label>
+            <label htmlFor="email">
+              * Email
+              <input type="email" className="answerEmail" placeholder="Example: jack@email.com" maxLength="60" onChange={(e) => this.handleEmailChange(e)} required />
+              <p className={style.fieldDescription}>
+                For authentication reasons, you will not be emailed
+              </p>
+            </label>
+            <label htmlFor="photos">
+              Photos
+              <div className={style.photoUploadContainer}>
+                <input type="file" />
+                <button type="button" className={`${style.uploadPhoto} uploadPhoto`}>UPLOAD</button>
+              </div>
+            </label>
+            <div className={`${style.buttonContainer}`}>
+              <button type="button" className={`${style.submitButton} submitAnswer`} onClick={this.handleSubmitAnswer.bind(this)} disabled={submitted}>SUBMIT</button>
+            </div>
+            {submitError ? <div className={`${style.errorMessage} errorMessage`}>{`You must enter the following: ${errorMessage}`}</div> : ''}
+          </form>
+        </div>
       </div>
     );
   }
@@ -126,6 +140,7 @@ AnswerForm.propTypes = {
   exitAnswerForm: PropTypes.func.isRequired,
   questionBody: PropTypes.string.isRequired,
   questionId: PropTypes.number.isRequired,
+  productName: PropTypes.string.isRequired,
 };
 
 export default AnswerForm;

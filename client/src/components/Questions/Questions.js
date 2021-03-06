@@ -89,7 +89,7 @@ class Questions extends React.Component {
   }
 
   render() {
-    const { productId } = this.props;
+    const { productId, productName } = this.props;
     const {
       questions,
       questionsOnScreen,
@@ -107,15 +107,15 @@ class Questions extends React.Component {
               <div className="questionsList">
                 {questionsOnScreen.map((question) => (
                   <div key={question.question_id} className="question">
-                    <Question question={question} />
+                    <Question question={question} productName={productName} />
                   </div>
                 ))}
                 {questions.results.length > 4 && !hideButton ? <button type="button" onClick={this.loadMoreQuestions.bind(this)} id="loadMoreQuestions">More Answered Questions</button> : ''}
               </div>
             ) : ''}
         </div>
-        <button className={style.addQuestionButton} type="button" onClick={this.addQuestion.bind(this)} id="addQuestionButton">Add a question</button>
-        {addQuestionClicked ? <QuestionForm exitQuestionForm={() => this.exitQuestionForm()} productId={productId} /> : ''}
+        <button className={style.addQuestionButton} type="button" onClick={this.addQuestion.bind(this)} id="addQuestionButton">ADD A QUESTION</button>
+        {addQuestionClicked ? <QuestionForm exitQuestionForm={() => this.exitQuestionForm()} productId={productId} productName={productName} /> : ''}
       </div>
     );
   }
@@ -123,6 +123,7 @@ class Questions extends React.Component {
 
 Questions.propTypes = {
   productId: PropTypes.number.isRequired,
+  productName: PropTypes.string.isRequired,
 };
 
 export default Questions;

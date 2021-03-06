@@ -10,7 +10,7 @@
 }
 
 .qaContent {
-  max-height: calc(95vh - 123px - 1rem);
+  max-height: calc(90vh - 123px - 1rem);
   overflow: auto;
 }
 
@@ -28,7 +28,9 @@
 
 .addQuestionButton:hover {
   cursor: pointer;
+  /* border: 1px solid rgb(237, 237, 237); */
   /* background: #E3D4BC; */
+  /* background: rgb(237, 237, 237) */
   background: black;
   color: white;
 }
