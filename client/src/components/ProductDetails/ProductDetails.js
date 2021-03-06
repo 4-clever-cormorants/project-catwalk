@@ -27,10 +27,11 @@ class ProductDetails extends React.Component {
   }
 
   componentDidMount() {
-    const { productId } = this.props;
+    const { productId, getProductName } = this.props;
     axios.get(`/products/data?product_id=${productId}`)
       .then((prod) => {
         const product = prod.data;
+        getProductName(product.name);
         axios.get(`/rating/data?product_id=${productId}`)
           .then((rtng) => {
             const rating = rtng.data;
@@ -130,6 +131,7 @@ class ProductDetails extends React.Component {
 
 ProductDetails.propTypes = {
   productId: PropTypes.number.isRequired,
+  getProductName: PropTypes.func.isRequired,
 };
 
 export default ProductDetails;
