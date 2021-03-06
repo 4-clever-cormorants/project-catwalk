@@ -61,8 +61,12 @@ const Rating = ({ rating, totalRatings }) => {
 };
 
 Rating.propTypes = {
-  rating: PropTypes.number.isRequired,
+  rating: PropTypes.number,
   totalRatings: PropTypes.number.isRequired,
+};
+
+Rating.defaultProps = {
+  rating: null,
 };
 
 export default Rating;

@@ -43,12 +43,13 @@ ProductInformation.propTypes = {
   }).isRequired,
   originalPrice: PropTypes.string.isRequired,
   salePrice: PropTypes.string,
-  rating: PropTypes.number.isRequired,
+  rating: PropTypes.number,
   totalRatings: PropTypes.number.isRequired,
 };
 
 ProductInformation.defaultProps = {
   salePrice: null,
+  rating: null,
 };
 
 export default ProductInformation;
