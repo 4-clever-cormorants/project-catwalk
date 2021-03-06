@@ -6,6 +6,8 @@ import Style from './Style';
 
 import css from './StyleSelector.css';
 
+// make it so the first one is automatically checked
+
 const StyleSelector = ({ styles, selected, styleSelector }) => {
   const n = styles.length;
   let row1;

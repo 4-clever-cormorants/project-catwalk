@@ -12,12 +12,14 @@ const Style = ({ style, onClick }) => (
     id={style.style_id}
     onClick={onClick}
   >
-    <input type="radio" name="thumbnail" className={css.radio} />
-    <img
-      src={style.photos[0].url}
-      alt=""
-      className={style.style_id}
-    />
+    <label>
+      <input type="radio" name="style" className={css.radio} />
+      <img
+        src={style.photos[0].url}
+        alt=""
+        className={style.style_id}
+      />
+    </label>
   </div>
 );
 

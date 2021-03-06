@@ -50,8 +50,13 @@
   align-items: center;
 }
 
-.styleSelector .stylesDisplay .style .radio {
+.styleSelector .stylesDisplay .style input {
   display: none;
+}
+
+
+.styleSelector .stylesDisplay .style input:checked + img {
+  border: 3px solid rgb(70, 70, 70);
 }
 
 .styleSelector .stylesDisplay .style img {
