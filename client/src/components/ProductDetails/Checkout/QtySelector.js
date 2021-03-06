@@ -4,8 +4,6 @@ import PropTypes from 'prop-types';
 
 import css from './Checkout.css';
 
-// update so it limits at 15 and update so it only renders after the size is selected (a sku is provided)
-
 const QtySelector = ({ qty }) => {
   const options = [];
   if (qty !== null) {
@@ -24,8 +22,9 @@ const QtySelector = ({ qty }) => {
         <option value={null} key="qty" className="option">Qty</option>
         { qty !== null
           ? options.map(
-            (option) => <option value={option} key={option} className="option">{option}</option>
-          ) : ''}
+            (option) => <option value={option} key={option} className="option">{option}</option>,
+          )
+          : <option disabled>Must select a size</option>}
       </select>
     </label>
   );
