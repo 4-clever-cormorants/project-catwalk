@@ -10,10 +10,10 @@ import Shipping from './Shipping';
 
 import css from './ProductInformation.css';
 
-const ProductInformation = ({ product, originalPrice, salePrice, rating }) => (
+const ProductInformation = ({ product, originalPrice, salePrice, rating, totalRatings }) => (
   <div className={css.productInformation}>
     <div className={css.info}>
-      <Rating rating={rating} />
+      <Rating rating={rating} totalRatings={totalRatings} />
       <Category category={product.category} />
       <Title title={product.name} />
       <div className={css.flexRow}>
@@ -42,6 +42,7 @@ ProductInformation.propTypes = {
   originalPrice: PropTypes.string.isRequired,
   salePrice: PropTypes.string.isRequired,
   rating: PropTypes.number.isRequired,
+  totalRatings: PropTypes.number.isRequired,
 };
 
 export default ProductInformation;

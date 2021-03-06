@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 
 import css from './Rating.css';
 
-const Rating = ({ rating }) => {
+const Rating = ({ rating, totalRatings }) => {
   let n = (Math.round(rating * 4) / 4).toFixed(2);
   const stars = [];
   for (let i = 0; i < 5; i += 1) {
@@ -22,7 +22,7 @@ const Rating = ({ rating }) => {
   }
 
   return (
-    <div className="rating">
+    <div className={css.rating}>
       {stars.map((star) => {
         if (star === 0) {
           return (
@@ -50,12 +50,17 @@ const Rating = ({ rating }) => {
           );
         }
       })}
+      &nbsp;
+      <div className={css.totalRatings}>
+        ({totalRatings})
+      </div>
     </div>
   );
 };
 
 Rating.propTypes = {
   rating: PropTypes.number.isRequired,
+  totalRatings: PropTypes.number.isRequired,
 };
 
 export default Rating;

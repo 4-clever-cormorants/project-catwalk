@@ -33,7 +33,7 @@ class ProductDetails extends React.Component {
         const product = prod.data;
         axios.get(`/rating/data?product_id=${productId}`)
           .then((rtng) => {
-            const rating = rtng.data.average;
+            const rating = rtng.data;
             axios.get(`/products/styles?product_id=${productId}`)
               .then((response) => {
                 this.setState({
@@ -104,7 +104,8 @@ class ProductDetails extends React.Component {
             />
             <ProductInformation
               product={product}
-              rating={rating}
+              rating={rating.average}
+              totalRatings={rating.ratings}
               originalPrice={style.original_price}
               salePrice={style.sale_price}
             />
