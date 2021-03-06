@@ -105,6 +105,8 @@ class ProductDetails extends React.Component {
             <ProductInformation
               product={product}
               rating={rating}
+              originalPrice={style.original_price}
+              salePrice={style.sale_price}
             />
             <StyleSelector
               styles={styles.results}

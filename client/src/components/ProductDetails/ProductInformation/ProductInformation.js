@@ -10,13 +10,13 @@ import Shipping from './Shipping';
 
 import css from './ProductInformation.css';
 
-const ProductInformation = ({ product, rating }) => (
+const ProductInformation = ({ product, originalPrice, salePrice, rating }) => (
   <div className={css.productInformation}>
     <div className={css.info}>
       <Rating rating={rating} />
       <Category category={product.category} />
       <Title title={product.name} />
-      <Price price={product.default_price} />
+      <Price originalPrice={originalPrice} salePrice={salePrice} />
       <Shipping />
       <Description description={product.description} />
     </div>

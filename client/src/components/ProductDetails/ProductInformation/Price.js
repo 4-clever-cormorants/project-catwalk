@@ -3,14 +3,29 @@ import PropTypes from 'prop-types';
 
 import css from './ProductInformation.css';
 
-const Price = ({ price }) => (
-  <div className={css.price}>
-    ${price}
-  </div>
-);
+const Price = ({ originalPrice, salePrice }) => {
+  if (salePrice !== null) {
+    return (
+      <div className={css.price}>
+        <strike>
+          ${originalPrice}
+        </strike>
+        <p>
+          ${salePrice}
+        </p>
+      </div>
+    );
+  }
+  return (
+    <div className={css.price}>
+      ${originalPrice}
+    </div>
+  );
+};
 
 Price.propTypes = {
-  price: PropTypes.string.isRequired,
+  originalPrice: PropTypes.string.isRequired,
+  salePrice: PropTypes.string.isRequired,
 };
 
 export default Price;
