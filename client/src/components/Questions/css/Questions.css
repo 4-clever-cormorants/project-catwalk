@@ -1,0 +1,34 @@
+.qa {
+  /* height: 95vh; */
+  max-height: 95vh;
+  display: grid;
+  max-width: 1020px;
+  /* background-color: #f2ebe0; */
+  margin-left: auto;
+  margin-right: auto;
+  color: #333;
+}
+
+.qaContent {
+  max-height: calc(95vh - 123px - 1rem);
+  overflow: auto;
+}
+
+.addQuestionButton {
+  align-self: center;
+  outline: none;
+  /* border: 4px solid #E3D4BC; */
+  border: 1px solid black;
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  background: none;
+  transition: all 0.2s ease-in-out;
+}
+
+.addQuestionButton:hover {
+  cursor: pointer;
+  /* background: #E3D4BC; */
+  background: black;
+  color: white;
+}

@@ -1,0 +1,23 @@
+.questionContent {
+  display: flex;
+  justify-content: space-between;
+}
+
+.questionText {
+  font-weight: bold;
+}
+
+.questionFooter {
+  display: grid;
+  grid-template-columns: auto auto auto auto auto;
+  color: #555;
+}
+
+.buttonLink {
+  background: none!important;
+  border: none;
+  padding: 0!important;
+  color: #555;
+  text-decoration: underline;
+  cursor: pointer;
+}
