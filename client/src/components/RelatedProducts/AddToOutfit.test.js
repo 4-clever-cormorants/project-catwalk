@@ -5,6 +5,8 @@ import RelatedProducts from './RelatedProducts';
 import dummy from './dummy_related';
 import Drop from './Drop';
 
+import regeneratorRuntime from 'regenerator-runtime';
+
 jest.mock('axios');
 
 axios.get.mockImplementation((url) => {
