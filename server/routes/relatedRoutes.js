@@ -40,11 +40,12 @@ const requestData = (productId) => Promise.all([
 router.get('/relatedProducts', (req, res) => {
   axios
     .get(`${url}products/${req.query.product_id}/related`, headers)
-    .then((related) => {
+    .then((response) => {
       // store current product info in the first element
       const wait = [requestData(req.query.product_id)];
-      for (let i = 0; i < related.data.length; i += 1) {
-        wait.push(requestData(related.data[i]));
+      const related = [...(new Set(response.data))];
+      for (let i = 0; i < related.length; i += 1) {
+        wait.push(requestData(related[i]));
       }
       Promise.all(wait)
         .then((dataList) => {
