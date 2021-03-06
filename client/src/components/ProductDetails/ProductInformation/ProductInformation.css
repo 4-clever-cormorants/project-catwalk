@@ -4,8 +4,8 @@
   display: flex;
   justify-content: flex-start;
   align-items:flex-start;
-  height: 210px;
-  border: 3px solid blue;
+  height: 170px;
+  /* border: 3px solid blue; */
   font-family: Arial, Helvetica, sans-serif;
   color: rgb(40, 40, 40)
 }
@@ -13,8 +13,12 @@
 .productInformation .info {
   margin: 4px;
   padding: 2px;
-  height: 200px;
-  border: 3px solid purple;
+  height: 130px;
+  width: 75%;
+  /* border: 3px solid purple; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .productInformation .category {
@@ -31,6 +35,8 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+  position:relative;
+  top: 10px;
 }
 
 .productInformation .price, .sale {
@@ -57,4 +63,6 @@
 
 .productInformation .description {
   font-size: 12px;
+  position:relative;
+  top: 20px;
 }
