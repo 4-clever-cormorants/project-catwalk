@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import SizeSelector from './SizeSelector';
 import QtySelector from './QtySelector';
 import AddToCart from './AddToCart';
-import Favorite from './Favorite';
+import AddToWishList from './AddToWishList';
 
 import css from './Checkout.css';
 
@@ -19,7 +19,7 @@ const Checkout = ({
         <SizeSelector skus={skus} onChange={skuSelector} />
         <QtySelector qty={qty} />
         <AddToCart />
-        <Favorite />
+        <AddToWishList />
       </form>
     </div>
   );

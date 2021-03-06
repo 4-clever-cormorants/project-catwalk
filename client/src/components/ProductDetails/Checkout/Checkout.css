@@ -1,6 +1,7 @@
 .checkout {
   grid-column: 2;
   grid-row: 3/4;
+  height: 250px;
   border: 3px green solid;
 }
 
@@ -12,16 +13,12 @@
   align-items: center;
 }
 
-.sizeSelector {
+.sizeSelector, .qtySelector, .addToCart, .addToWishList {
   width: 90%;
   position: relative;
 }
 
-.sizeSelector select {
-  /* display: none; */
-}
-
-.sizeSelector .sizeSelectorButton {
+.sizeSelector .sizeSelectorButton, .qtySelector .qtySelectorButton, .addToCart .addToCartButton {
   width: 90%;
   height: 35px;
   font-size: 16px;
@@ -29,8 +26,7 @@
   border-radius: 0%;
 }
 
-.sizeSelector .sizeSelectorButton:hover {
-  /* padding-bottom: -4px; */
+.sizeSelector .sizeSelectorButton:hover, .qtySelector .qtySelectorButton:hover {
   padding-top: 1px;
   padding-bottom: -4px;
   border-bottom: 3px solid grey;
@@ -38,4 +34,32 @@
 
 .sizeSelector .sizeSelectorButton option {
   background-color: white;
+}
+
+.addToCart .addToCartButton {
+  background-color: black;
+  color: white;
+}
+
+.addToCart .addToCartButton:hover {
+  background-color: rgb(88, 88, 88);
+}
+
+.addToCart .addToCartButton .fa {
+  background-color: white;
+}
+
+.addToWishList {
+  font-family: Arial;
+  font-size: 14px;
+}
+
+.addToWishListButton {
+  color: rgb(49, 49, 49);
+  background-color: white;
+  border: white;
+}
+
+.addToWishListButton u:hover {
+  text-decoration: underline rgb(49, 49, 49) 2px;
 }
