@@ -31,7 +31,6 @@ class ProductDetails extends React.Component {
     axios.get(`/products/data?product_id=${productId}`)
       .then((prod) => {
         const product = prod.data;
-        getProductName(product.name);
         axios.get(`/rating/data?product_id=${productId}`)
           .then((rtng) => {
             const rating = rtng.data;
@@ -45,7 +44,8 @@ class ProductDetails extends React.Component {
                   style: response.data.results[0],
                   sku: Object.keys(response.data.results[0].skus)[0],
                   load: true,
-                });
+                },
+                () => { getProductName(product.name); });
               });
           });
       })
