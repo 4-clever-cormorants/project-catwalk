@@ -5,7 +5,9 @@ import DefaultView from './DefaultView';
 import Thumbnail from './Thumbnail';
 import css from './ImageGallery.css';
 
-const ImageGallery = ({ styleId, style, styles, styleSelector }) => (
+const ImageGallery = ({
+  styleId, style, styles, styleSelector,
+}) => (
   <div className={css.imageGallery} styleid={styleId}>
     <DefaultView url={style.photos[0].url} />
     <div className={css.thumbnailView}>
