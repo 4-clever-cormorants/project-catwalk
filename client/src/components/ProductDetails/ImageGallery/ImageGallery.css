@@ -15,11 +15,24 @@
   justify-content: center;
   align-items: center;
   /* border: 3px burlywood solid; */
+  overflow: hidden; /* [1.2] Hide the overflowing of child elements */
+
 }
 
 .imageGallery .defaultView img {
   max-width: 500px;
   max-height: 575px;
+}
+
+/* [2] Transition property for smooth transformation of images */
+.defaultView img {
+  transition: transform .5s ease;
+}
+
+/* [3] Finally, transforming the image when container gets hovered */
+.defaultView:hover img {
+  transform: scale(1.5);
+  cursor: cell;
 }
 
 .imageGallery .thumbnailView {
