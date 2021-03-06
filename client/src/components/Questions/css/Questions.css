@@ -16,4 +16,19 @@
 
 .addQuestionButton {
   align-self: center;
+  outline: none;
+  /* border: 4px solid #E3D4BC; */
+  border: 1px solid black;
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  background: none;
+  transition: all 0.2s ease-in-out;
+}
+
+.addQuestionButton:hover {
+  cursor: pointer;
+  /* background: #E3D4BC; */
+  background: black;
+  color: white;
 }
