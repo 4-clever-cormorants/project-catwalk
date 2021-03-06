@@ -7,13 +7,13 @@ import PropTypes from 'prop-types';
 import css from './Rating.css';
 
 const Rating = ({ rating, totalRatings }) => {
-  let n = (Math.round(rating * 4) / 4).toFixed(2);
+  let n = Number((Math.round(rating * 4) / 4).toFixed(2));
   const stars = [];
   for (let i = 0; i < 5; i += 1) {
     if (n >= 1) {
       stars.push(1);
       n -= 1;
-    } else if (n > 0 && n < 1) {
+    } else if (n >= 0 && n < 1) {
       stars.push(n);
       n = 0;
     } else if (n === 0) {
@@ -51,14 +51,14 @@ const Rating = ({ rating, totalRatings }) => {
         }
       })}
       &nbsp;
-      {totalRatings > 0
-        ? (
           <div className={css.totalRatings}>
             ({totalRatings}) &nbsp;
             <span className={`${css.arrow} fa fa-angle-up`} />
           </div>
+      {/* {totalRatings > 0
+        ? (
         )
-        : ''}
+        : ''} */}
     </div>
   );
 };
