@@ -27,7 +27,7 @@ class ProductDetails extends React.Component {
   }
 
   componentDidMount() {
-    const { productId } = this.props;
+    const { productId, getProductName } = this.props;
     axios.get(`/products/data?product_id=${productId}`)
       .then((prod) => {
         const product = prod.data;
@@ -44,7 +44,8 @@ class ProductDetails extends React.Component {
                   style: response.data.results[0],
                   sku: Object.keys(response.data.results[0].skus)[0],
                   load: true,
-                });
+                },
+                () => { getProductName(product.name); });
               });
           });
       })
@@ -130,6 +131,7 @@ class ProductDetails extends React.Component {
 
 ProductDetails.propTypes = {
   productId: PropTypes.number.isRequired,
+  getProductName: PropTypes.func.isRequired,
 };
 
 export default ProductDetails;
