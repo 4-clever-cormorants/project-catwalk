@@ -10,13 +10,15 @@ import css from './StyleSelector.css';
 
 const StyleSelector = ({ styles, selected, styleSelector }) => {
   const n = styles.length;
+  let style1;
   let row1;
   let row2;
   if (n > 4) {
-    row1 = styles.slice(0, 4);
+    [style1] = [styles[0]];
+    row1 = styles.slice(1, 4);
     row2 = styles.slice(4, 8);
   } else {
-    row1 = styles;
+    [style1, row1] = [styles[0], styles.slice(1)];
     row2 = [];
   }
 
@@ -30,6 +32,9 @@ const StyleSelector = ({ styles, selected, styleSelector }) => {
       </p>
       <div className={css.stylesDisplay}>
         <div className={css.row1}>
+          <div key={style1.style_id} className={css.style}>
+            <Style style={style1} onClick={styleSelector} defaultChecked />
+          </div>
           {row1.map((style) => (
             <div key={style.style_id} className={css.style}>
               <Style style={style} onClick={styleSelector} />
