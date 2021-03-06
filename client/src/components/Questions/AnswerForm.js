@@ -98,29 +98,33 @@ class AnswerForm extends React.Component {
           </div>
           <button type="button" className={`${style.exitButton} exitButton`} onClick={exitAnswerForm}>X</button>
         </div>
-        <form>
-          <label htmlFor="answer">
-            * Answer
-            <textarea className="answerField" name="answerField" maxLength="1000" onChange={(e) => this.handleAnswerChange(e)} required />
-          </label>
-          <label htmlFor="nickname">
-            * Nickname
-            <input type="text" className="answerNickname" placeholder="Example: jack543!" maxLength="60" onChange={(e) => this.handleNicknameChange(e)} required />
-            <p>For privacy reasons, do not use your full name or email address</p>
-          </label>
-          <label htmlFor="email">
-            * Email
-            <input type="email" className="answerEmail" placeholder="Example:jack@email.com" maxLength="60" onChange={(e) => this.handleEmailChange(e)} required />
-            <p>For authentication reasons, you will not be emailed</p>
-          </label>
-          <label htmlFor="photos">
-            Photos
-            <input type="file" />
-            <button type="button" className="uploadPhoto">Upload photo</button>
-          </label>
-          <button type="button" className="submitAnswer" onClick={this.handleSubmitAnswer.bind(this)} disabled={submitted}>Submit</button>
-          {submitError ? <div className="errorMessage">{`You must enter the following: ${errorMessage}`}</div> : ''}
-        </form>
+        <div className={`${style.answerFormContent} answerFormContent`}>
+          <form>
+            <label htmlFor="answer">
+              * Answer
+              <textarea className="answerField" name="answerField" maxLength="1000" onChange={(e) => this.handleAnswerChange(e)} required />
+            </label>
+            <label htmlFor="nickname">
+              * Nickname
+              <input type="text" className="answerNickname" placeholder="Example: jack543!" maxLength="60" onChange={(e) => this.handleNicknameChange(e)} required />
+              <p>For privacy reasons, do not use your full name or email address</p>
+            </label>
+            <label htmlFor="email">
+              * Email
+              <input type="email" className="answerEmail" placeholder="Example: jack@email.com" maxLength="60" onChange={(e) => this.handleEmailChange(e)} required />
+              <p>For authentication reasons, you will not be emailed</p>
+            </label>
+            <label htmlFor="photos">
+              Photos
+              <input type="file" />
+              <button type="button" className="uploadPhoto">Upload photo</button>
+            </label>
+            <div className={`${style.buttonContainer}`}>
+              <button type="button" className={`${style.submitAnswerButton} submitAnswer`} onClick={this.handleSubmitAnswer.bind(this)} disabled={submitted}>SUBMIT</button>
+            </div>
+            {submitError ? <div className={`${style.errorMessage} errorMessage`}>{`You must enter the following: ${errorMessage}`}</div> : ''}
+          </form>
+        </div>
       </div>
     );
   }

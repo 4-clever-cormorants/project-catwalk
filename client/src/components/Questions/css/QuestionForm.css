@@ -1,35 +1,33 @@
-/* .answerForm {
-  background-color: #f2ebe0;
+/* .questionForm {
+  background-color: pink;
 } */
 
-.answerFormHeader {
+.questionFormHeader {
   display: flex;
   justify-content: space-between;
   padding: 10px;
 }
 
-.answerFormHeader h3,
-.answerFormHeader h4 {
+.questionFormHeader h3,
+.questionFormHeader h4 {
   margin: 0 auto;
 }
 
-.answerFormHeader h4 {
-  color: #999;
+.questionFormHeader h4 {
+  color: #ccc;
 }
 
 .exitButton {
   align-self: flex-start;
 }
 
-.answerFormContent {
+.questionFormContent {
   border-radius: 5px;
   padding: 20px;
 }
 
-.answerForm input[type=text],
-.answerForm input[type=email],
-.answerForm input[type=file],
-.answerForm textarea {
+.questionForm input,
+.questionForm textarea {
   width: 100%;
   padding: 12px;
   border: 1px solid #ccc;
@@ -37,17 +35,11 @@
   box-sizing: border-box;
   margin-top: 6px;
   margin-bottom: 16px;
-}
-
-.answerForm input[type=file] {
-  resize: none;
-}
-
-.answerForm textarea {
   resize: vertical;
 }
 
-.submitAnswerButton {
+.submitQuestionButton {
+  /* align-self: center; */
   width: 100%;
   outline: none;
   border: 1px solid black;
@@ -58,11 +50,10 @@
   transition: all 0.2s ease-in-out;
 }
 
-.submitAnswerButton:hover {
+.submitQuestionButton:hover {
   cursor: pointer;
   background: black;
   color: white;
-  /* border-radius: 5px; */
 }
 
 .errorMessage {
@@ -73,3 +64,4 @@
   display: flex;
   justify-content: center;
 }
+
