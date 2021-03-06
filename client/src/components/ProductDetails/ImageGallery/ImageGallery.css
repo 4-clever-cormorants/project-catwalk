@@ -15,8 +15,7 @@
   justify-content: center;
   align-items: center;
   /* border: 3px burlywood solid; */
-  overflow: hidden; /* [1.2] Hide the overflowing of child elements */
-
+  overflow: hidden;
 }
 
 .imageGallery .defaultView img {
@@ -58,6 +57,7 @@
   max-height: 60px;
   max-width: 60px;
   /* border: 3px black solid; */
+  /* transition: all .25s ease; */
 }
 
 .imageGallery .thumbnailView img:hover {
