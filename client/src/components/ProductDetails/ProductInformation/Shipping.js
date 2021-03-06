@@ -5,7 +5,7 @@ import React from 'react';
 const Shipping = () => (
   <div className="shipping">
     <span className="fa fa-truck" />
-    Free Shipping
+    &nbsp; Free Shipping
   </div>
 );
 
