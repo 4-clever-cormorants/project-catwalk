@@ -2,12 +2,24 @@
   position: absolute;
   top: 0px;
   right: 0px;
-  background-color: ivory;
+  /* background-color: ivory; */
+}
+
+.favor {
+  margin: 5px;
+  font-size: 50px;
+  color: pink;
 }
 
 .actionIconDrop {
   position: absolute;
   top: 0px;
   right: 0px;
-  background-color: ivory;
+  /* background-color: ivory; */
+}
+
+.drop {
+  margin: 5px;
+  font-size: 50px;
+  color: gray;
 }
