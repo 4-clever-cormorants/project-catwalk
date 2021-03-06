@@ -21,19 +21,18 @@ describe('Test the outfitList module', () => {
     expect(list.length).toBe(1);
   });
 
-  test('should read all items with getAll', () => {
+  test('should read all items with getAll and latest item at head', () => {
     outfitList.add(dummy.relatedProducts[0], () => {});
     outfitList.add(dummy.relatedProducts[1], () => {});
     const list = outfitList.getAll();
     expect(list.length).toBe(3);
     expect(list[1].id).toEqual(dummy.relatedProducts[0].id);
-    expect(list[2].id).toEqual(dummy.relatedProducts[1].id);
+    expect(list[0].id).toEqual(dummy.relatedProducts[1].id);
   });
 
   test('should able to drop product by id', () => {
-    const list = outfitList.getAll();
     outfitList.drop(dummy.currentProduct.id, () => {});
+    const list = outfitList.getAll();
     expect(list.length).toBe(2);
   });
 });
-

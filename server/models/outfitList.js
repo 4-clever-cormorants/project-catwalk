@@ -5,7 +5,7 @@ const getAll = () => outfitList;
 const add = (item, callback) => {
   const checker = outfitList.filter((data) => data.id === item.id);
   if (checker.length === 0) {
-    outfitList.push(item);
+    outfitList.unshift(item);
     callback(null);
   } else {
     callback('already exist');
