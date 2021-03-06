@@ -12,7 +12,7 @@ const StyleSelector = ({ styles, selected, styleSelector }) => {
   let row2;
   if (n > 4) {
     row1 = styles.slice(0, 4);
-    row2 = styles.slice(4, 7);
+    row2 = styles.slice(4, 8);
   } else {
     row1 = styles;
     row2 = [];

@@ -6,7 +6,6 @@
   justify-self: center;
   height: 100%;
   width: 100%;
-  border: 4px solid red;
 }
 
 .styleSelector .selected {
@@ -51,7 +50,10 @@
 
 .styleSelector .stylesDisplay .style img:hover {
   border: 3px solid rgb(70, 70, 70);
-  /* position: relative; */
+}
+
+.styleSelector .stylesDisplay .style img .selected {
+  border: 3px solid rgb(70, 70, 70);
 }
 
 .styleSelector .stylesDisplay .style img {

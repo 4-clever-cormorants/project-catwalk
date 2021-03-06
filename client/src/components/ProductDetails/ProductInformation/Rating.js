@@ -46,7 +46,7 @@ const Rating = ({ rating, totalRatings }) => {
         }
         if (star === 1) {
           return (
-            <span className={`${css.star} ${css.full} ${'fa fa-star'}`} />
+            <span className={`${css.star} ${css.full} fa fa-star`} />
           );
         }
       })}
@@ -54,6 +54,8 @@ const Rating = ({ rating, totalRatings }) => {
       <div className={css.totalRatings}>
         ({totalRatings})
       </div>
+      &nbsp;
+      <span className={`${css.arrow} fa fa-angle-up`} />
     </div>
   );
 };
