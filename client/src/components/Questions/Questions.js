@@ -42,11 +42,11 @@ class Questions extends React.Component {
 
   fetchQuestions() {
     const { productId } = this.props;
-    const { totalCount } = this.state;
+    const { totalCount, loadQuestions } = this.state;
     return axios.get('/qa/questions', {
       params: {
         productId,
-        count: totalCount === 5 ? totalCount : totalCount + 2,
+        count: !loadQuestions ? 5 : totalCount + 2,
       },
     });
   }
@@ -80,6 +80,7 @@ class Questions extends React.Component {
   }
 
   render() {
+    const { productId } = this.props;
     const {
       questionsOnScreen,
       addQuestionClicked,
@@ -103,7 +104,7 @@ class Questions extends React.Component {
             </div>
           ) : ''}
         <button type="button" onClick={this.addQuestion.bind(this)} id="addQuestionButton">Add a question</button>
-        {addQuestionClicked ? <QuestionForm exitQuestionForm={() => this.exitQuestionForm()} /> : ''}
+        {addQuestionClicked ? <QuestionForm exitQuestionForm={() => this.exitQuestionForm()} productId={productId} /> : ''}
       </div>
     );
   }
