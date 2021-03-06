@@ -34,3 +34,12 @@
 .sale .salePrice {
   color: red;
 }
+
+.productInformation .shipping {
+  font-size: 14px;
+  font-weight: 100;
+}
+
+.productInformation .description {
+  font-size: 14px;
+}
