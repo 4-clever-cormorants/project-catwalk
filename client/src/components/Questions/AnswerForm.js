@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import style from './css/AnswerForm.css';
+import style from './css/Form.css';
 
 const axios = require('axios');
 
@@ -90,15 +90,15 @@ class AnswerForm extends React.Component {
     } = this.state;
     const errorMessage = errorMessages.join(', ');
     return (
-      <div className={`${style.answerForm} answerForm`}>
-        <div className={`${style.answerFormHeader} answerFormHeader`}>
-          <div className={`${style.answerFormTitle} answerFormTitle`}>
+      <div className={`${style.form} answerForm`}>
+        <div className={`${style.formHeader} answerFormHeader`}>
+          <div className={`${style.formTitle} answerFormTitle`}>
             <h3>Submit your Answer</h3>
             <h4>{`${productName}: ${questionBody}`}</h4>
           </div>
           <button type="button" className={`${style.exitButton} exitButton`} onClick={exitAnswerForm}>X</button>
         </div>
-        <div className={`${style.answerFormContent} answerFormContent`}>
+        <div className={`${style.formContent} answerFormContent`}>
           <form>
             <label htmlFor="answer">
               * Answer
@@ -107,20 +107,26 @@ class AnswerForm extends React.Component {
             <label htmlFor="nickname">
               * Nickname
               <input type="text" className="answerNickname" placeholder="Example: jack543!" maxLength="60" onChange={(e) => this.handleNicknameChange(e)} required />
-              <p>For privacy reasons, do not use your full name or email address</p>
+              <p className={style.fieldDescription}>
+                For privacy reasons, do not use your full name or email address
+              </p>
             </label>
             <label htmlFor="email">
               * Email
               <input type="email" className="answerEmail" placeholder="Example: jack@email.com" maxLength="60" onChange={(e) => this.handleEmailChange(e)} required />
-              <p>For authentication reasons, you will not be emailed</p>
+              <p className={style.fieldDescription}>
+                For authentication reasons, you will not be emailed
+              </p>
             </label>
             <label htmlFor="photos">
               Photos
-              <input type="file" />
-              <button type="button" className="uploadPhoto">Upload photo</button>
+              <div className={style.photoUploadContainer}>
+                <input type="file" />
+                <button type="button" className={`${style.uploadPhoto} uploadPhoto`}>UPLOAD</button>
+              </div>
             </label>
             <div className={`${style.buttonContainer}`}>
-              <button type="button" className={`${style.submitAnswerButton} submitAnswer`} onClick={this.handleSubmitAnswer.bind(this)} disabled={submitted}>SUBMIT</button>
+              <button type="button" className={`${style.submitButton} submitAnswer`} onClick={this.handleSubmitAnswer.bind(this)} disabled={submitted}>SUBMIT</button>
             </div>
             {submitError ? <div className={`${style.errorMessage} errorMessage`}>{`You must enter the following: ${errorMessage}`}</div> : ''}
           </form>
