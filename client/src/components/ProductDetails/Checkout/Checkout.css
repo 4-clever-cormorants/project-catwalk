@@ -11,3 +11,31 @@
   justify-content: space-around;
   align-items: center;
 }
+
+.sizeSelector {
+  width: 90%;
+  position: relative;
+}
+
+.sizeSelector select {
+  /* display: none; */
+}
+
+.sizeSelector .sizeSelectorButton {
+  width: 90%;
+  height: 35px;
+  font-size: 16px;
+  border: 1px solid grey;
+  border-radius: 0%;
+}
+
+.sizeSelector .sizeSelectorButton:hover {
+  /* padding-bottom: -4px; */
+  padding-top: 1px;
+  padding-bottom: -4px;
+  border-bottom: 3px solid grey;
+}
+
+.sizeSelector .sizeSelectorButton option {
+  background-color: white;
+}

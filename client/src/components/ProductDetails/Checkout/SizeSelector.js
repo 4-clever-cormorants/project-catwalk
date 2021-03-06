@@ -4,10 +4,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import css from './Checkout.css';
+
 const SizeSelector = ({ skus, onChange }) => (
-  <label className="sizeSelector" onChange={onChange}>
-    Size
-    <select name="size" id="sizeSelector">
+  <label className={css.sizeSelector} onChange={onChange}>
+    <select className={css.sizeSelectorButton} id={css.sizeSelector} required>
+      <option value={null} key="size" className="sizeOption">Size</option>
       {Object.keys(skus).map((sku) => {
         if (skus[sku].quantity !== 0) {
           return (
