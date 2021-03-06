@@ -114,7 +114,7 @@ class Questions extends React.Component {
               </div>
             ) : ''}
         </div>
-        <button className={style.addQuestionButton} type="button" onClick={this.addQuestion.bind(this)} id="addQuestionButton">Add a question</button>
+        <button className={style.addQuestionButton} type="button" onClick={this.addQuestion.bind(this)} id="addQuestionButton">ADD A QUESTION</button>
         {addQuestionClicked ? <QuestionForm exitQuestionForm={() => this.exitQuestionForm()} productId={productId} /> : ''}
       </div>
     );
