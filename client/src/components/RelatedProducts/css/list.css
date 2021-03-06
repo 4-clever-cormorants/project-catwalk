@@ -34,11 +34,13 @@
   background-color: rgb(237, 237, 237);
 };
 
-.addToOutfitButton {
+.addoutfitButton {
   display: block;
+  font-size: 30px;
 }
 
 .addToOutfitText {
   display: block;
+  font-size: 30px;
   margin-right: 10px;
 }
