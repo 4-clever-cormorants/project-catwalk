@@ -13,6 +13,7 @@ const CardOutfit = ({ item, dropHandler }) => (
     <h5>
       {item.default_price}
     </h5>
+    <Rating rating={item.average_ratings} totalRatings={item.totalReviews} id={item.id} />
   </div>
 );
 
@@ -22,6 +23,8 @@ CardOutfit.propTypes = {
     id: propTypes.number.isRequired,
     default_price: propTypes.string.isRequired,
     thumbnail_url: propTypes.string.isRequired,
+    average_ratings: propTypes.number.isRequired,
+    totalReviews: propTypes.number.isRequired,
   }).isRequired,
   dropHandler: propTypes.func.isRequired,
 };
