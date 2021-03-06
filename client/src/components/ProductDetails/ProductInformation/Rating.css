@@ -1,3 +1,8 @@
+.rating {
+  display: flex;
+  flex-direction: row;
+}
+
 .star {
   display: inline-block;
   position: relative;
@@ -58,4 +63,10 @@
   width: 100%;
   overflow: hidden;
   color: #f80;
+}
+
+.totalRatings {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 13px;
+  font-weight: 100;
 }

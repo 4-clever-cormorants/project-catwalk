@@ -3,12 +3,12 @@ import { mount } from 'enzyme';
 
 import ProductDetails from './ProductDetails';
 
-import ImageGallery from './ImageGallery/ImageGallery';
+// import ImageGallery from './ImageGallery/ImageGallery';
 import DefaultView from './ImageGallery/DefaultView';
 import Thumbnail from './ImageGallery/Thumbnail';
 
 import ProductInformation from './ProductInformation/ProductInformation';
-import Rating from './ProductInformation/Rating';
+// import Rating from './ProductInformation/Rating';
 import Category from './ProductInformation/Category';
 import Title from './ProductInformation/Title';
 import Price from './ProductInformation/Price';
@@ -36,6 +36,7 @@ describe('test Product Details component', () => {
     style: styles.results[0],
     sku: Object.keys(styles.results[0].skus)[0],
     cart: [],
+    rating: { average: 3, totalRatings: 35 },
     load: true,
   });
   wrapper.update();

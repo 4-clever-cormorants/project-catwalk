@@ -4,11 +4,18 @@
   display: flex;
   align-items: center;
   height: 100%;
-  border: 3px solid blue;
+  /* border: 3px solid blue; */
+  font-family: Arial, Helvetica, sans-serif;
+  color: rgb(40, 40, 40)
 }
 
 .productInformation .info {
-  border: 3px solid purple;
+  /* border: 3px solid purple; */
+}
+
+.productInformation .category {
+  font-size: 14px;
+  font-weight: 100;
 }
 
 .productInformation .title {
@@ -16,7 +23,34 @@
   font-weight: 700;
 }
 
-.productInformation .price {
-  font-size: 16px;
+.productInformation .flexRow {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.productInformation .price, .sale {
+  height: 20px;
+  font-size: 15px;
   font-weight: 600;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.sale strike {
+  color: grey;
+}
+
+.sale .salePrice {
+  color: rgb(221, 63, 0);
+}
+
+.productInformation .shipping, .description {
+  font-size: 13px;
+  font-weight: 100;
+}
+
+.productInformation .description {
+  font-size: 12px;
 }

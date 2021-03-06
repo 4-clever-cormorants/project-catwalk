@@ -19,14 +19,17 @@ const average = (ratings) => {
       total += parseInt(ratings[i.toString()], 10);
     }
   }
-  return scores / total;
+  return [scores / total, total];
 };
 
 ratingRouter.get('/data', (req, res) => {
   axios
     .get(`${url}reviews/meta?product_id=${req.query.product_id}`, headers)
     .then((rating) => {
-      const result = { average: average(rating.data.ratings) };
+      const result = {
+        average: average(rating.data.ratings)[0],
+        ratings: average(rating.data.ratings)[1],
+      };
       res.send(result);
     })
     .catch((err) => {

@@ -10,14 +10,19 @@ import Shipping from './Shipping';
 
 import css from './ProductInformation.css';
 
-const ProductInformation = ({ product, rating }) => (
+const ProductInformation = ({
+  product, originalPrice, salePrice, rating, totalRatings,
+}) => (
   <div className={css.productInformation}>
     <div className={css.info}>
-      <Rating rating={rating} />
+      <Rating rating={rating} totalRatings={totalRatings} />
       <Category category={product.category} />
       <Title title={product.name} />
-      <Price price={product.default_price} />
-      <Shipping />
+      <div className={css.flexRow}>
+        <Price originalPrice={originalPrice} salePrice={salePrice} />
+        &nbsp; &nbsp; &nbsp;
+        <Shipping />
+      </div>
       <Description description={product.description} />
     </div>
   </div>
@@ -36,7 +41,14 @@ ProductInformation.propTypes = {
     updated_at: PropTypes.string.isRequired,
     features: PropTypes.arrayOf(PropTypes.object).isRequired,
   }).isRequired,
+  originalPrice: PropTypes.string.isRequired,
+  salePrice: PropTypes.string,
   rating: PropTypes.number.isRequired,
+  totalRatings: PropTypes.number.isRequired,
+};
+
+ProductInformation.defaultProps = {
+  salePrice: null,
 };
 
 export default ProductInformation;
