@@ -16,8 +16,11 @@ const ProductInformation = ({ product, originalPrice, salePrice, rating }) => (
       <Rating rating={rating} />
       <Category category={product.category} />
       <Title title={product.name} />
-      <Price originalPrice={originalPrice} salePrice={salePrice} />
-      <Shipping />
+      <div className={css.flexRow}>
+        <Price originalPrice={originalPrice} salePrice={salePrice} />
+        &nbsp; &nbsp; &nbsp;
+        <Shipping />
+      </div>
       <Description description={product.description} />
     </div>
   </div>
