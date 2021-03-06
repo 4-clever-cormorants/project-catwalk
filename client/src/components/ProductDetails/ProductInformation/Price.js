@@ -5,14 +5,25 @@ import css from './ProductInformation.css';
 
 const Price = ({ originalPrice, salePrice }) => {
   if (salePrice !== null) {
+    const discount = Math.floor((1 - (salePrice / originalPrice)) * 100);
     return (
       <div className={css.price}>
-        <strike>
-          ${originalPrice}
-        </strike>
-        <p>
-          ${salePrice}
-        </p>
+        <div className={css.sale}>
+          <p className={css.salePrice}>
+            $
+            {salePrice}
+          </p>
+          &nbsp; &nbsp;
+          <strike>
+            $
+            {originalPrice}
+          </strike>
+          &nbsp; &nbsp;
+          <p className={css.discount}>
+            {discount}
+            % off
+          </p>
+        </div>
       </div>
     );
   }
