@@ -6,13 +6,15 @@ import Style from './Style';
 
 import css from './StyleSelector.css';
 
-const StyleSelector = ({ styles, styleSelector }) => {
+// make it so the first one is automatically checked
+
+const StyleSelector = ({ styles, selected, styleSelector }) => {
   const n = styles.length;
   let row1;
   let row2;
   if (n > 4) {
     row1 = styles.slice(0, 4);
-    row2 = styles.slice(4, 7);
+    row2 = styles.slice(4, 8);
   } else {
     row1 = styles;
     row2 = [];
@@ -20,7 +22,12 @@ const StyleSelector = ({ styles, styleSelector }) => {
 
   return (
     <div className={css.styleSelector}>
-      <h2>style selector (click to view style)</h2>
+      <p className={css.selected}>
+        STYLE &gt; &nbsp;
+        <span className={css.selectedName}>
+          {selected.toUpperCase()}
+        </span>
+      </p>
       <div className={css.stylesDisplay}>
         <div className={css.row1}>
           {row1.map((style) => (
@@ -36,7 +43,6 @@ const StyleSelector = ({ styles, styleSelector }) => {
             </div>
           ))}
         </div>
-
       </div>
     </div>
   );
@@ -52,6 +58,7 @@ StyleSelector.propTypes = {
     photos: PropTypes.arrayOf(PropTypes.objectOf(PropTypes.string)).isRequired,
     skus: PropTypes.objectOf(PropTypes.object).isRequired,
   })).isRequired,
+  selected: PropTypes.string.isRequired,
   styleSelector: PropTypes.func.isRequired,
 };
 

@@ -6,26 +6,32 @@
   justify-self: center;
   height: 100%;
   width: 100%;
-  border: 4px solid red;
 }
 
-.styleSelector h2 {
-  display: flex;
-  justify-self: center;
-  align-self: center;
+.styleSelector .selected {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 15px;
+  font-weight: 900;
+  color: rgb(23,23,23);
+}
+
+.styleSelector .selected .selectedName {
+  font-weight: 100;
+  color: rgb(44, 44, 44);
 }
 
 .styleSelector .stylesDisplay {
   display: grid;
   grid-template-rows: 1fr 1fr;
-  justify-content: center;
-  border: 4px solid orange;
+  justify-content:flex-start ;
+  /* border: 4px solid orange; */
 }
 
 .styleSelector .stylesDisplay .row1 {
   grid-row: 1;
   display: flex;
   flex-direction: row;
+  position: absolute;
 }
 
 .styleSelector .stylesDisplay .row2 {
@@ -35,18 +41,36 @@
 }
 
 .styleSelector .stylesDisplay .style {
-  margin: 2px 2px 2px 2px;
-  padding-bottom: -10px;
-  height: 100px;
-  width: 140px;
-  border: 1px solid black;
+  margin: 8px;
+  height: 75px;
+  width: 75px;
+  border-radius: 20%;
   display: flex;
   justify-content: center;
   align-items: center;
-  /* align-self: center; */
+}
+
+.styleSelector .stylesDisplay .style input {
+  display: none;
+}
+
+
+.styleSelector .stylesDisplay .style input:checked + img {
+  border: 3px solid rgb(70, 70, 70);
 }
 
 .styleSelector .stylesDisplay .style img {
-  max-height: 95px;
-  max-width: 130px;
+  padding: 2px;
+  object-fit: cover;
+  position: relative;
+  top: 2px;
+  height: 75px;
+  width: 75px;
+  border-radius: 20%;
+  border: 1px solid rgb(105, 105, 105);
+  transition: border .25s ease;
+}
+
+.styleSelector .stylesDisplay .style img:hover {
+  border: 3px solid rgb(70, 70, 70);
 }

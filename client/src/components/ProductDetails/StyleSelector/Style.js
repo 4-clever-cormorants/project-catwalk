@@ -1,9 +1,25 @@
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import css from './StyleSelector.css';
+
 const Style = ({ style, onClick }) => (
-  <div className={style.style_id} id={style.style_id} onClick={onClick}>
-    <img src={style.photos[0].url} alt="" className={style.style_id} />
+  <div
+    className={style.style_id}
+    id={style.style_id}
+    onClick={onClick}
+  >
+    <label>
+      <input type="radio" name="style" className="styleRadio" />
+      <img
+        src={style.photos[0].url}
+        alt=""
+        className={style.style_id}
+      />
+    </label>
   </div>
 );
 
