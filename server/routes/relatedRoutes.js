@@ -15,12 +15,20 @@ const average = (ratings) => {
   const rates = Object.keys(ratings);
   let totalReviews = 0;
   let totalRatings = 0;
-  if (rates.length === 0) { return null; }
+  if (rates.length === 0) {
+    return {
+      average_ratings: 0,
+      totalReviews,
+    };
+  }
   for (let i = 0; i < rates.length; i += 1) {
     totalRatings += rates[i] * parseInt(ratings[rates[i]], 10);
     totalReviews += parseInt(ratings[rates[i]], 10);
   }
-  return totalRatings / totalReviews;
+  return {
+    average_ratings: (totalRatings / totalReviews),
+    totalReviews,
+  };
 };
 
 const requestProductInfo = (productId) => axios.get(`${url}products/${productId}`, headers);
@@ -34,7 +42,9 @@ const requestData = (productId) => Promise.all([
   const productInfo = results[0].data;
   productInfo.sale_price = results[1].data.results[0].sale_price;
   productInfo.thumbnail_url = results[1].data.results[0].photos[0].url;
-  productInfo.average_ratings = average(results[2].data.ratings);
+  const ratingCal = average(results[2].data.ratings);
+  productInfo.average_ratings = ratingCal.average_ratings;
+  productInfo.totalReviews = ratingCal.totalReviews;
   return productInfo;
 });
 
