@@ -1,3 +1,4 @@
+/* eslint-disable react/no-array-index-key */
 import React from 'react';
 import PropTypes from 'prop-types';
 import DefaultView from './DefaultView';
@@ -9,8 +10,8 @@ const ImageGallery = ({ styleId, style, styles, styleSelector }) => (
     <DefaultView url={style.photos[0].url} />
     <div className={css.thumbnailView}>
       <div className={css.thumbnails}>
-        {styles.map((thumbnail) => (
-          <div key={thumbnail.photos[0].url.toString()}>
+        {styles.map((thumbnail, i) => (
+          <div key={`${i} ${thumbnail.photos[0].url.toString()}`}>
             <Thumbnail style={thumbnail} styleSelector={styleSelector} />
           </div>
         ))}

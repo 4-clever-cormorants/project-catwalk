@@ -1,3 +1,4 @@
+/* eslint-disable react/no-array-index-key */
 /* eslint-disable array-callback-return */
 /* eslint-disable consistent-return */
 /* eslint-disable react/jsx-one-expression-per-line */
@@ -23,30 +24,30 @@ const Rating = ({ rating, totalRatings }) => {
 
   return (
     <div className={css.rating}>
-      {stars.map((star) => {
+      {stars.map((star, i) => {
         if (star === 0) {
           return (
-            <span className={`${css.star} ${css.empty} fa fa-star`} />
+            <span className={`${css.star} ${css.empty} fa fa-star`} key={i} />
           );
         }
         if (star === 0.25) {
           return (
-            <span className={`${css.star} ${css.quarter} fa fa-star`} />
+            <span className={`${css.star} ${css.quarter} fa fa-star`} key={i} />
           );
         }
         if (star === 0.50) {
           return (
-            <span className={`${css.star} ${css.half} fa fa-star`} />
+            <span className={`${css.star} ${css.half} fa fa-star`} key={i} />
           );
         }
         if (star === 0.75) {
           return (
-            <span className={`${css.star} ${css.threeQuarter} fa fa-star`} />
+            <span className={`${css.star} ${css.threeQuarter} fa fa-star`} key={i} />
           );
         }
         if (star === 1) {
           return (
-            <span className={`${css.star} ${css.full} fa fa-star`} />
+            <span className={`${css.star} ${css.full} fa fa-star`} key={i} />
           );
         }
       })}
