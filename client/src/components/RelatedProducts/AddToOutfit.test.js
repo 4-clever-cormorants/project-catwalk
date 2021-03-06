@@ -5,15 +5,26 @@ import dummy from './dummy_related';
 import Drop from './Drop';
 
 describe('Test Button component', () => {
+  const wrapper = mount(<RelatedProducts />);
   it('should have a button component', () => {
-    const wrapper = mount(<RelatedProducts />);
+    wrapper.setState({
+      related: dummy.relatedProducts,
+      current: dummy.currentProduct,
+      outfitList: dummy.relatedProducts,
+      load: true,
+    });
     const button = wrapper.find('#addToOutfitButton');
 
     expect(button.exists()).toBe(true);
   });
 
   it('should add current product to outfit list', () => {
-    const wrapper = mount(<RelatedProducts />);
+    wrapper.setState({
+      related: dummy.relatedProducts,
+      current: dummy.currentProduct,
+      outfitList: dummy.relatedProducts,
+      load: true,
+    });
     const instance = wrapper.instance();
     const button = wrapper.find('#addToOutfitButton');
     expect(instance.state.outfitList.length).toEqual(dummy.relatedProducts.length);
@@ -22,7 +33,12 @@ describe('Test Button component', () => {
   });
 
   it('should only add the same product once', () => {
-    const wrapper = mount(<RelatedProducts />);
+    wrapper.setState({
+      related: dummy.relatedProducts,
+      current: dummy.currentProduct,
+      outfitList: dummy.relatedProducts,
+      load: true,
+    });
     const instance = wrapper.instance();
     const button = wrapper.find('#addToOutfitButton');
     expect(instance.state.outfitList.length).toEqual(dummy.relatedProducts.length);
@@ -33,7 +49,12 @@ describe('Test Button component', () => {
   });
 
   it('outfit list card should have drop component', () => {
-    const wrapper = mount(<RelatedProducts />);
+    wrapper.setState({
+      related: dummy.relatedProducts,
+      current: dummy.currentProduct,
+      outfitList: dummy.relatedProducts,
+      load: true,
+    });
     const instance = wrapper.instance();
 
     if (instance.state.outfitList.length > 0) {
@@ -44,12 +65,16 @@ describe('Test Button component', () => {
   });
 
   it('should drop product after click on drop component', () => {
-    const wrapper = mount(<RelatedProducts />);
+    wrapper.setState({
+      related: dummy.relatedProducts,
+      current: dummy.currentProduct,
+      outfitList: dummy.relatedProducts,
+      load: true,
+    });
     const instance = wrapper.instance();
     const { id } = dummy.relatedProducts[0];
     const outfitList = wrapper.find('.outfitListWithAdd');
     const drop = outfitList.find(`#card${id}`).find(Drop);
-    const cardOne = wrapper.find('.outfitListWithAdd').find(`#card${id}`);
 
     const check = (target) => {
       for (let i = 0; i < instance.state.outfitList.length; i += 1) {

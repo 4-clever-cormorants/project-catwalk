@@ -6,15 +6,21 @@ import RelatedProducts from './RelatedProducts';
 import List from './List';
 
 describe('Test Related Product list component', () => {
-  it('should have a List components as Related Products', () => {
-    const wrapper = mount(<RelatedProducts />);
-    const relatedProductsList = wrapper.find('.relatedProductsList');
+  const wrapper = mount(<RelatedProducts />);
+  wrapper.setState({
+    related: dummy.relatedProducts,
+    current: dummy.currentProduct,
+    outfitList: dummy.relatedProducts,
+    load: true,
+  });
+  wrapper.update();
 
+  it('should have a List components as Related Products', () => {
+    const relatedProductsList = wrapper.find('.relatedProductsList');
     expect(relatedProductsList.exists()).toBe(true);
   });
 
   it('should have card components in the related product list', () => {
-    const wrapper = mount(<RelatedProducts />);
     const firstCard = wrapper.find('.relatedProductsList').find('.card').first();
 
     expect(firstCard.find('.cardName').text()).toBe('Gwendolyn Sweater');
@@ -22,7 +28,6 @@ describe('Test Related Product list component', () => {
   });
 
   it('related product card should have favor component', () => {
-    const wrapper = mount(<RelatedProducts />);
     expect(wrapper.find('.actionIconFavor').exists()).toBe(true);
   });
 });
