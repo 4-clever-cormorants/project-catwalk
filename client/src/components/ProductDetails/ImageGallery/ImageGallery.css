@@ -5,7 +5,7 @@
   grid-row: 1/4;
   height: 700px;
   width: 100%;
-  border: 1px solid yellow;
+  border-bottom: 2px solid rgb(220, 220, 220);
 }
 
 .imageGallery .defaultView {
@@ -14,12 +14,24 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 3px burlywood solid;
+  /* border: 3px burlywood solid; */
+  overflow: hidden;
 }
 
 .imageGallery .defaultView img {
   max-width: 500px;
-  max-height: 500px;
+  max-height: 575px;
+}
+
+/* [2] Transition property for smooth transformation of images */
+.defaultView img {
+  transition: transform .5s ease;
+}
+
+/* [3] Finally, transforming the image when container gets hovered */
+.defaultView:hover img {
+  transform: scale(1.5);
+  cursor: cell;
 }
 
 .imageGallery .thumbnailView {
@@ -29,7 +41,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border: 3px red solid;
+  /* border: 3px red solid; */
 }
 
 .imageGallery .thumbnailView .thumbnails {
@@ -37,11 +49,20 @@
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  border: 3px orange solid;
+  /* border: 3px orange solid; */
 }
 
 .imageGallery .thumbnailView img {
+  position: relative;
   max-height: 60px;
   max-width: 60px;
-  border: 2px black solid;
+  /* border: 3px black solid; */
+  /* transition: all .25s ease; */
+}
+
+.imageGallery .thumbnailView img:hover {
+  margin-bottom: -5px;
+  padding-top: -2px;
+  padding-bottom: 2px;
+  border-bottom: 3px solid grey;
 }

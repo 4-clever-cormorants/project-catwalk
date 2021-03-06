@@ -2,15 +2,16 @@
   grid-column: 2;
   grid-row: 3/4;
   height: 250px;
-  border: 3px green solid;
+  /* border: 3px green solid; */
 }
 
 .checkout .form {
   display: flex;
   flex-direction: column;
   height: 100%;
+  padding: 4px;
   justify-content: space-around;
-  align-items: center;
+  align-items: flex-start;
 }
 
 .sizeSelector, .qtySelector, .addToCart, .addToWishList {
@@ -38,11 +39,14 @@
 
 .addToCart .addToCartButton {
   background-color: black;
+  border-color: black;
   color: white;
+  transition: all 0.25s ease;
 }
 
 .addToCart .addToCartButton:hover {
   background-color: rgb(88, 88, 88);
+  border-color: rgb(88, 88, 88);
 }
 
 .addToCart .addToCartButton .fa {

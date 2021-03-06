@@ -33,7 +33,7 @@ class ProductDetails extends React.Component {
         const product = prod.data;
         axios.get(`/rating/data?product_id=${productId}`)
           .then((rtng) => {
-            const rating = rtng.data.average;
+            const rating = rtng.data;
             axios.get(`/products/styles?product_id=${productId}`)
               .then((response) => {
                 this.setState({
@@ -93,7 +93,8 @@ class ProductDetails extends React.Component {
     } = this.state;
 
     return (
-      <div className="PD">
+      <div className={css.PD}>
+        <h1> Website Header </h1>
         { load ? (
           <div className={css.productDetails}>
             <ImageGallery
@@ -102,9 +103,16 @@ class ProductDetails extends React.Component {
               styles={styles.results}
               styleSelector={this.styleSelector}
             />
-            <ProductInformation product={product} rating={rating} />
+            <ProductInformation
+              product={product}
+              rating={rating.average}
+              totalRatings={rating.ratings}
+              originalPrice={style.original_price}
+              salePrice={style.sale_price}
+            />
             <StyleSelector
               styles={styles.results}
+              selected={style.name}
               styleSelector={this.styleSelector}
             />
             <Checkout
