@@ -4,13 +4,13 @@
   display: flex;
   align-items: center;
   height: 100%;
-  border: 3px solid blue;
+  /* border: 3px solid blue; */
   font-family: Arial, Helvetica, sans-serif;
   color: rgb(40, 40, 40)
 }
 
 .productInformation .info {
-  border: 3px solid purple;
+  /* border: 3px solid purple; */
 }
 
 .productInformation .category {
