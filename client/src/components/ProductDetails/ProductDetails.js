@@ -55,20 +55,21 @@ class ProductDetails extends React.Component {
   }
 
   styleSelector(e) {
-    e.preventDefault();
     const styleId = Number(e.target.classList[0]);
-    const { styles } = this.state;
-    this.setState({
-      styleId,
-    });
-    styles.results.forEach((style) => {
-      if (style.style_id === styleId) {
-        this.setState({
-          style,
-          sku: null,
-        });
-      }
-    });
+    if (!Number.isNaN(styleId)) {
+      const { styles } = this.state;
+      this.setState({
+        styleId,
+      });
+      styles.results.forEach((style) => {
+        if (style.style_id === styleId) {
+          this.setState({
+            style,
+            sku: null,
+          });
+        }
+      });
+    }
   }
 
   skuSelector(e) {
