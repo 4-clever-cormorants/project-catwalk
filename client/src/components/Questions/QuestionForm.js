@@ -79,7 +79,7 @@ class QuestionForm extends React.Component {
   }
 
   render() {
-    const { exitQuestionForm } = this.props;
+    const { exitQuestionForm, productName } = this.props;
     const {
       errorMessages,
       submitError,
@@ -89,8 +89,7 @@ class QuestionForm extends React.Component {
     return (
       <div className="questionForm">
         <h3>Ask Your Question</h3>
-        <h4>About the [PRODUCT NAME HERE]</h4>
-        {/* needs to be passed in from app */}
+        <h4>{`About ${productName}`}</h4>
         <button type="button" onClick={exitQuestionForm} id="exitButton">X</button>
         <form>
           <label htmlFor="question">
@@ -118,6 +117,7 @@ class QuestionForm extends React.Component {
 QuestionForm.propTypes = {
   exitQuestionForm: PropTypes.func.isRequired,
   productId: PropTypes.number.isRequired,
+  productName: PropTypes.string.isRequired,
 };
 
 export default QuestionForm;

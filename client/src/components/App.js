@@ -25,12 +25,12 @@ class App extends React.Component {
   }
 
   render() {
-    const { productId } = this.state;
+    const { productId, productName } = this.state;
     return (
       <div id="app" className="app">
         <ProductDetails productId={productId} getProductName={this.getProductName} />
         <RelatedProducts productId={productId} />
-        <Questions productId={productId} />
+        <Questions productId={productId} productName={productName} />
       </div>
     );
   }

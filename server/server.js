@@ -11,12 +11,12 @@ const ratingRoutes = require('./routes/ratingRoutes.js');
 
 app.use(express.static(path.join(__dirname, '../client/dist')));
 
-const logger = (req, res, next) => {
-  console.log(`Receiving request to ${req.url} with method ${req.method}`);
-  next();
-};
+// const logger = (req, res, next) => {
+//   console.log(`Receiving request to ${req.url} with method ${req.method}`);
+//   next();
+// };
 
-app.use('/', logger);
+// app.use('/', logger);
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());

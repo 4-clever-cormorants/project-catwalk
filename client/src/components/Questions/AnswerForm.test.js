@@ -3,12 +3,12 @@ import { mount } from 'enzyme';
 import AnswerForm from './AnswerForm';
 
 it('should exist', () => {
-  const wrapper = mount(<AnswerForm exitAnswerForm={() => true} questionBody="test" />);
+  const wrapper = mount(<AnswerForm exitAnswerForm={() => true} questionBody="test" questionId={1} productName="test" />);
   expect(wrapper.exists()).toBe(true);
 });
 
 it('should have an answer field, a nickname field, an email field, photo fields, and a submit button', () => {
-  const wrapper = mount(<AnswerForm exitAnswerForm={() => true} questionBody="test" />);
+  const wrapper = mount(<AnswerForm exitAnswerForm={() => true} questionBody="test" questionId={1} productName="test" />);
   const answerField = wrapper.find('.answerField');
   expect(answerField.exists()).toBe(true);
   const nicknameField = wrapper.find('.answerNickname');
@@ -22,7 +22,7 @@ it('should have an answer field, a nickname field, an email field, photo fields,
 });
 
 it('should change answer, nickname, and email state when typing into respective fields', () => {
-  const wrapper = mount(<AnswerForm exitAnswerForm={() => true} questionBody="test" />);
+  const wrapper = mount(<AnswerForm exitAnswerForm={() => true} questionBody="test" questionId={1} productName="test" />);
   const instance = wrapper.instance();
   const answerField = wrapper.find('.answerField');
   const nicknameField = wrapper.find('.answerNickname');
@@ -36,7 +36,7 @@ it('should change answer, nickname, and email state when typing into respective 
 });
 
 it('should have isValidEmail return true on a valid email', () => {
-  const wrapper = mount(<AnswerForm exitAnswerForm={() => true} questionBody="test" />);
+  const wrapper = mount(<AnswerForm exitAnswerForm={() => true} questionBody="test" questionId={1} productName="test" />);
   const instance = wrapper.instance();
   const emailField = wrapper.find('.answerEmail');
   emailField.simulate('change', { target: { value: 'example@example.com' } });
@@ -44,7 +44,7 @@ it('should have isValidEmail return true on a valid email', () => {
 });
 
 it('should have isValidEmail return false on an invalid email', () => {
-  const wrapper = mount(<AnswerForm exitAnswerForm={() => true} questionBody="test" />);
+  const wrapper = mount(<AnswerForm exitAnswerForm={() => true} questionBody="test" questionId={1} productName="test" />);
   const instance = wrapper.instance();
   const emailField = wrapper.find('.answerEmail');
   emailField.simulate('change', { target: { value: 'badEmail' } });
@@ -52,7 +52,7 @@ it('should have isValidEmail return false on an invalid email', () => {
 });
 
 it('should show an error message if answer body is empty', () => {
-  const wrapper = mount(<AnswerForm exitAnswerForm={() => true} questionBody="test" />);
+  const wrapper = mount(<AnswerForm exitAnswerForm={() => true} questionBody="test" questionId={1} productName="test" />);
   const instance = wrapper.instance();
   const nicknameField = wrapper.find('.answerNickname');
   const emailField = wrapper.find('.answerEmail');
@@ -68,7 +68,7 @@ it('should show an error message if answer body is empty', () => {
 });
 
 it('should show an error message if nickname is empty', () => {
-  const wrapper = mount(<AnswerForm exitAnswerForm={() => true} questionBody="test" />);
+  const wrapper = mount(<AnswerForm exitAnswerForm={() => true} questionBody="test" questionId={1} productName="test" />);
   const instance = wrapper.instance();
   const answerField = wrapper.find('.answerField');
   const emailField = wrapper.find('.answerEmail');
@@ -84,7 +84,7 @@ it('should show an error message if nickname is empty', () => {
 });
 
 it('should show an error message if email is empty', () => {
-  const wrapper = mount(<AnswerForm exitAnswerForm={() => true} questionBody="test" />);
+  const wrapper = mount(<AnswerForm exitAnswerForm={() => true} questionBody="test" questionId={1} productName="test" />);
   const instance = wrapper.instance();
   const answerField = wrapper.find('.answerField');
   const nicknameField = wrapper.find('.answerNickname');
@@ -100,7 +100,7 @@ it('should show an error message if email is empty', () => {
 });
 
 it('should show an error message if email has wrong format', () => {
-  const wrapper = mount(<AnswerForm exitAnswerForm={() => true} questionBody="test" />);
+  const wrapper = mount(<AnswerForm exitAnswerForm={() => true} questionBody="test" questionId={1} productName="test" />);
   const instance = wrapper.instance();
   const answerField = wrapper.find('.answerField');
   const nicknameField = wrapper.find('.answerNickname');
@@ -118,7 +118,7 @@ it('should show an error message if email has wrong format', () => {
 });
 
 it('should not show an error message if everything is valid', () => {
-  const wrapper = mount(<AnswerForm exitAnswerForm={() => true} questionBody="test" />);
+  const wrapper = mount(<AnswerForm exitAnswerForm={() => true} questionBody="test" questionId={1} productName="test" />);
   const instance = wrapper.instance();
   const answerField = wrapper.find('.answerField');
   const nicknameField = wrapper.find('.answerNickname');
