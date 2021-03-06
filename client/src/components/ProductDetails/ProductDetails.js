@@ -55,8 +55,7 @@ class ProductDetails extends React.Component {
   }
 
   styleSelector(e) {
-    // when you click on the style image in StylesDisplay,
-    // update the state with that style id and style
+    e.preventDefault();
     const styleId = Number(e.target.classList[0]);
     const { styles } = this.state;
     this.setState({
@@ -73,7 +72,6 @@ class ProductDetails extends React.Component {
   }
 
   skuSelector(e) {
-    console.log(e.target.value);
     this.setState({
       sku: e.target.value,
     });
