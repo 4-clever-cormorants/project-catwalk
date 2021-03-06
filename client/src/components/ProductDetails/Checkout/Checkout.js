@@ -40,7 +40,11 @@ Checkout.propTypes = {
   }).isRequired,
   skuSelector: PropTypes.func.isRequired,
   addToCart: PropTypes.func.isRequired,
-  sku: PropTypes.string.isRequired,
+  sku: PropTypes.string,
+};
+
+Checkout.defaultProps = {
+  sku: null,
 };
 
 export default Checkout;

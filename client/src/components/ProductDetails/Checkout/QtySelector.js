@@ -32,7 +32,11 @@ const QtySelector = ({ qty }) => {
 };
 
 QtySelector.propTypes = {
-  qty: PropTypes.number.isRequired,
+  qty: PropTypes.number,
+};
+
+QtySelector.defaultProps = {
+  qty: null,
 };
 
 export default QtySelector;
