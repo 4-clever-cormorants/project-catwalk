@@ -1,50 +1,88 @@
 import React from 'react';
+import axios from 'axios';
 import { mount } from 'enzyme';
 import RelatedProducts from './RelatedProducts';
 import dummy from './dummy_related';
 import Drop from './Drop';
 
+import regeneratorRuntime from 'regenerator-runtime';
+
+jest.mock('axios');
+
+axios.get.mockImplementation((url) => {
+  if (url === `/related/relatedProducts?product_id=${dummy.currentProduct.id}`) {
+    return Promise.resolve({ data: [dummy.currentProduct, ...dummy.relatedProducts] });
+  }
+  if (url === '/related/outfitList') {
+    return Promise.resolve({ data: dummy.relatedProducts });
+  }
+  return undefined;
+});
+
+axios.post.mockImplementation((url) => {
+  if (url === `/related/outfitList?product_id=${dummy.currentProduct.id}`) {
+    return Promise.resolve({});
+  }
+  return undefined;
+});
+
+// Helper function returns a promise that resolves after all other promise mocks,
+// even if they are chained like Promise.resolve().then(...)
+// Technically: this is designed to resolve on the next macrotask
+function tick() {
+  return new Promise((resolve) => {
+    setTimeout(resolve, 0);
+  });
+}
+
 describe('Test Button component', () => {
-  const wrapper = mount(<RelatedProducts />);
+  const wrapper = mount(<RelatedProducts productId={dummy.currentProduct.id} />);
   it('should have a button component', () => {
     wrapper.setState({
       related: dummy.relatedProducts,
       current: dummy.currentProduct,
       outfitList: dummy.relatedProducts,
       load: true,
+      outfitLoad: true,
     });
     const button = wrapper.find('#addToOutfitButton');
 
     expect(button.exists()).toBe(true);
   });
 
-  it('should add current product to outfit list', () => {
+  it('should add current product to outfit list', async () => {
     wrapper.setState({
       related: dummy.relatedProducts,
       current: dummy.currentProduct,
       outfitList: dummy.relatedProducts,
       load: true,
+      outfitLoad: true,
     });
     const instance = wrapper.instance();
     const button = wrapper.find('#addToOutfitButton');
+
     expect(instance.state.outfitList.length).toEqual(dummy.relatedProducts.length);
     button.simulate('click');
+    await tick();
     expect(instance.state.outfitList.length).toEqual(dummy.relatedProducts.length + 1);
   });
 
-  it('should only add the same product once', () => {
+  it('should only add the same product once', async () => {
     wrapper.setState({
       related: dummy.relatedProducts,
       current: dummy.currentProduct,
       outfitList: dummy.relatedProducts,
       load: true,
+      outfitLoad: true,
     });
     const instance = wrapper.instance();
     const button = wrapper.find('#addToOutfitButton');
     expect(instance.state.outfitList.length).toEqual(dummy.relatedProducts.length);
     button.simulate('click');
+    await tick();
     expect(instance.state.outfitList.length).toEqual(dummy.relatedProducts.length + 1);
     button.simulate('click');
+    await tick();
     expect(instance.state.outfitList.length).toEqual(dummy.relatedProducts.length + 1);
   });
 
@@ -54,6 +92,7 @@ describe('Test Button component', () => {
       current: dummy.currentProduct,
       outfitList: dummy.relatedProducts,
       load: true,
+      outfitLoad: true,
     });
     const instance = wrapper.instance();
 
@@ -70,6 +109,7 @@ describe('Test Button component', () => {
       current: dummy.currentProduct,
       outfitList: dummy.relatedProducts,
       load: true,
+      outfitLoad: true,
     });
     const instance = wrapper.instance();
     const { id } = dummy.relatedProducts[0];
@@ -89,7 +129,6 @@ describe('Test Button component', () => {
       expect(instance.state.outfitList.length).toEqual(dummy.relatedProducts.length);
       expect(check(id)).toBe(true);
       drop.simulate('click');
-      // console.log(outfitList.find(`#card${id}`).instance());
       expect(instance.state.outfitList.length).toEqual(dummy.relatedProducts.length - 1);
       expect(check(id)).toBe(false);
     } else {

@@ -16,16 +16,19 @@ class RelatedProducts extends React.Component {
       current: undefined,
       clicked: undefined,
       load: false,
+      outfitLoad: false,
     };
     this.addToOutfitHandler = this.addToOutfitHandler.bind(this);
     this.dropHandler = this.dropHandler.bind(this);
     this.compareHandler = this.compareHandler.bind(this);
     this.getInfo();
+    this.getOutfitList();
   }
 
   getInfo() {
     const { productId } = this.props;
-    axios.get(`/related/relatedProducts?product_id=${productId}`)
+    axios
+      .get(`/related/relatedProducts?product_id=${productId}`)
       .then((response) => {
         if (response.data) {
           this.setState({
@@ -37,10 +40,22 @@ class RelatedProducts extends React.Component {
       });
   }
 
+  getOutfitList() {
+    axios.get('/related/outfitList').then((response) => {
+      if (response.data) {
+        this.setState({
+          outfitList: response.data,
+          outfitLoad: true,
+        });
+      }
+    });
+  }
+
   addToOutfitHandler() {
     const { current, outfitList } = this.state;
     const checker = outfitList.filter((item) => item.id === current.id);
     if (checker.length === 0) {
+      axios.post(`/related/outfitList?product_id=${current.id}`);
       this.setState({
         outfitList: [current, ...outfitList],
       });
@@ -49,6 +64,7 @@ class RelatedProducts extends React.Component {
 
   dropHandler(id) {
     const { outfitList } = this.state;
+    axios.post(`/related/outfitListDrop?product_id=${id}`);
     this.setState({
       outfitList: outfitList.filter((item) => item.id !== id),
     });
@@ -62,7 +78,7 @@ class RelatedProducts extends React.Component {
 
   render() {
     const {
-      outfitList, clicked, current, related, load
+      outfitList, clicked, current, related, load, outfitLoad,
     } = this.state;
     let comparison;
     if (clicked) {
@@ -70,18 +86,27 @@ class RelatedProducts extends React.Component {
     }
 
     return (
-      <div>
+      <div className="relatedProducts">
         {load ? (
-          <div className="relatedProducts">
+          <div>
             <span>RelatedProducts</span>
             {comparison}
             <List productsList={related} compareHandler={this.compareHandler} />
-            <div className={style.outfitListWithAdd}>
-              <AddToOutfit addToOutfitHandler={this.addToOutfitHandler} />
-              <ListOutfit productsList={outfitList} dropHandler={this.dropHandler} />
-            </div>
           </div>
-        ) : ''}
+        ) : (
+          ''
+        )}
+        {outfitLoad ? (
+          <div className={style.outfitListWithAdd}>
+            <AddToOutfit addToOutfitHandler={this.addToOutfitHandler} />
+            <ListOutfit
+              productsList={outfitList}
+              dropHandler={this.dropHandler}
+            />
+          </div>
+        ) : (
+          ''
+        )}
       </div>
     );
   }
