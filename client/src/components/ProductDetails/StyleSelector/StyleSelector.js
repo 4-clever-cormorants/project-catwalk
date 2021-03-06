@@ -43,7 +43,6 @@ const StyleSelector = ({ styles, selected, styleSelector }) => {
             </div>
           ))}
         </div>
-
       </div>
     </div>
   );

@@ -13,7 +13,7 @@ const Style = ({ style, onClick }) => (
     onClick={onClick}
   >
     <label>
-      <input type="radio" name="style" className={css.radio} />
+      <input type="radio" name="style" className="styleRadio" />
       <img
         src={style.photos[0].url}
         alt=""

@@ -40,7 +40,7 @@ ProductInformation.propTypes = {
     features: PropTypes.arrayOf(PropTypes.object).isRequired,
   }).isRequired,
   originalPrice: PropTypes.string.isRequired,
-  salePrice: PropTypes.string.isRequired,
+  salePrice: PropTypes.string,
   rating: PropTypes.number.isRequired,
   totalRatings: PropTypes.number.isRequired,
 };

@@ -41,6 +41,7 @@
   background-color: black;
   border-color: black;
   color: white;
+  transition: all 0.25s ease;
 }
 
 .addToCart .addToCartButton:hover {
