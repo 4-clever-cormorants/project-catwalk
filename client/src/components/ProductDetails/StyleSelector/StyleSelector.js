@@ -20,9 +20,11 @@ const StyleSelector = ({ styles, selected, styleSelector }) => {
 
   return (
     <div className={css.styleSelector}>
-      <p className="selected">
-        Style &gt; &nbsp;
-        {selected}
+      <p className={css.selected}>
+        STYLE &gt; &nbsp;
+        <span className={css.selectedName}>
+          {selected.toUpperCase()}
+        </span>
       </p>
       <div className={css.stylesDisplay}>
         <div className={css.row1}>
