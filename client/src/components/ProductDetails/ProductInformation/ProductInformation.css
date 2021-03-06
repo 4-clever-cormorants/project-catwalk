@@ -1,0 +1,22 @@
+.productInformation {
+  grid-column: 2;
+  grid-row: 1/2;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  border: 3px solid blue;
+}
+
+.productInformation .info {
+  border: 3px solid purple;
+}
+
+.productInformation .title {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.productInformation .price {
+  font-size: 16px;
+  font-weight: 600;
+}

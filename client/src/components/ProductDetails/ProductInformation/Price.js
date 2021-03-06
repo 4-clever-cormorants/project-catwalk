@@ -1,8 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import css from './ProductInformation.css';
+
 const Price = ({ price }) => (
-  <div className="price">
+  <div className={css.price}>
     ${price}
   </div>
 );
