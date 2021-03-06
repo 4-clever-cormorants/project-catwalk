@@ -2,6 +2,7 @@ import React from 'react';
 import propTypes from 'prop-types';
 import Drop from './Drop';
 import style from './css/card.css';
+import Rating from './Rating';
 
 const CardOutfit = ({ item, dropHandler }) => (
   <div className={style.card} id={`card${item.id.toString()}`}>
