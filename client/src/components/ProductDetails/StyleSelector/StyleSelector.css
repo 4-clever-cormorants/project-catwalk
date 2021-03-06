@@ -50,6 +50,10 @@
   align-items: center;
 }
 
+.styleSelector .stylesDisplay .style .radio {
+  display: none;
+}
+
 .styleSelector .stylesDisplay .style img {
   padding: 2px;
   object-fit: cover;
