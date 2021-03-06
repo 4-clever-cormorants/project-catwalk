@@ -4,16 +4,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import css from './StyleSelector.css';
-
-const Style = ({ style, onClick }) => (
+const Style = ({ style, onClick, defaultChecked }) => (
   <div
     className={style.style_id}
     id={style.style_id}
     onClick={onClick}
   >
     <label>
-      <input type="radio" name="style" className="styleRadio" />
+      <input type="radio" name="style" className="styleRadio" defaultChecked={defaultChecked} />
       <img
         src={style.photos[0].url}
         alt=""
@@ -34,6 +32,11 @@ Style.propTypes = {
     skus: PropTypes.objectOf(PropTypes.object).isRequired,
   }).isRequired,
   onClick: PropTypes.func.isRequired,
+  defaultChecked: PropTypes.bool,
+};
+
+Style.defaultProps = {
+  defaultChecked: null,
 };
 
 export default Style;
