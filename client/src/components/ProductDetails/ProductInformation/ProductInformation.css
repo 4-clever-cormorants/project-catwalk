@@ -2,15 +2,19 @@
   grid-column: 2;
   grid-row: 1/2;
   display: flex;
-  align-items: center;
-  height: 100%;
-  /* border: 3px solid blue; */
+  justify-content: flex-start;
+  align-items:flex-start;
+  height: 210px;
+  border: 3px solid blue;
   font-family: Arial, Helvetica, sans-serif;
   color: rgb(40, 40, 40)
 }
 
 .productInformation .info {
-  /* border: 3px solid purple; */
+  margin: 4px;
+  padding: 2px;
+  height: 200px;
+  border: 3px solid purple;
 }
 
 .productInformation .category {
