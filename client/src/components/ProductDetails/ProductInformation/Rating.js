@@ -51,11 +51,14 @@ const Rating = ({ rating, totalRatings }) => {
         }
       })}
       &nbsp;
-      <div className={css.totalRatings}>
-        ({totalRatings})
-      </div>
-      &nbsp;
-      <span className={`${css.arrow} fa fa-angle-up`} />
+      {totalRatings > 0
+        ? (
+          <div className={css.totalRatings}>
+            ({totalRatings}) &nbsp;
+            <span className={`${css.arrow} fa fa-angle-up`} />
+          </div>
+        )
+        : ''}
     </div>
   );
 };
