@@ -93,7 +93,8 @@ class ProductDetails extends React.Component {
     } = this.state;
 
     return (
-      <div className="PD">
+      <div className={css.PD}>
+        <h1> Website Header </h1>
         { load ? (
           <div className={css.productDetails}>
             <ImageGallery

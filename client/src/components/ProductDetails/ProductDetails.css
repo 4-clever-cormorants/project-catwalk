@@ -1,3 +1,7 @@
+.PD {
+  height: 800px;
+}
+
 .productDetails {
   display: grid;
   grid-template-columns: 7fr 4fr;
