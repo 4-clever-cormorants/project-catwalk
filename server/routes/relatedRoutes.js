@@ -59,15 +59,15 @@ router.get('/relatedProducts', (req, res) => {
 });
 
 router.get('/outfitList', (req, res) => {
-  res.status(200).send(outfitList.getAll());
+  const list = outfitList.getAll();
+  res.status(200).send(list);
 });
 
 router.post('/outfitList', (req, res) => {
   requestData(req.query.product_id)
-    .then((data) => outfitList.add(data))
-    .then(
-      res.status(201).end(),
-    );
+    .then((data) => outfitList.add(data, () => {
+      res.status(201).end();
+    }));
 });
 
 module.exports = router;

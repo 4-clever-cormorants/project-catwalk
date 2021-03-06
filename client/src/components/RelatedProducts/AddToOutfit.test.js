@@ -12,6 +12,7 @@ describe('Test Button component', () => {
       current: dummy.currentProduct,
       outfitList: dummy.relatedProducts,
       load: true,
+      outfitLoad: true,
     });
     const button = wrapper.find('#addToOutfitButton');
 
@@ -24,6 +25,7 @@ describe('Test Button component', () => {
       current: dummy.currentProduct,
       outfitList: dummy.relatedProducts,
       load: true,
+      outfitLoad: true,
     });
     const instance = wrapper.instance();
     const button = wrapper.find('#addToOutfitButton');
@@ -38,6 +40,7 @@ describe('Test Button component', () => {
       current: dummy.currentProduct,
       outfitList: dummy.relatedProducts,
       load: true,
+      outfitLoad: true,
     });
     const instance = wrapper.instance();
     const button = wrapper.find('#addToOutfitButton');
@@ -54,6 +57,7 @@ describe('Test Button component', () => {
       current: dummy.currentProduct,
       outfitList: dummy.relatedProducts,
       load: true,
+      outfitLoad: true,
     });
     const instance = wrapper.instance();
 
@@ -70,6 +74,7 @@ describe('Test Button component', () => {
       current: dummy.currentProduct,
       outfitList: dummy.relatedProducts,
       load: true,
+      outfitLoad: true,
     });
     const instance = wrapper.instance();
     const { id } = dummy.relatedProducts[0];
