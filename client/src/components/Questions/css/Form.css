@@ -2,6 +2,31 @@
   background-color: #f2ebe0;
 } */
 
+.blocker {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  content: ' ';
+  z-index: 101;
+  background: rgba(0,0,0,.5);
+}
+
+.form {
+  position:fixed;
+  top:50%;
+  left:50%;
+  width: 500px;
+  height: fit-content;
+  /* border-radius: 20px; */
+  /* background-color: ivory; */
+  background-color: white;
+  z-index: 110;
+  padding: 20px;
+  transform: translate(-50%, -50%);
+}
+
 .formHeader {
   display: flex;
   justify-content: space-between;
@@ -22,14 +47,15 @@
   align-self: flex-start;
   background: none;
   border: none;
-  transition: all 0.2s ease-in-out;
   outline: none;
   font-size: 20px;
   font-family: sans-serif, Arial;
+  color: gray;
+  transition: all 0.2s ease-in-out;
 }
 
 .exitButton:hover {
-  color: gray;
+  color: black;
   cursor: pointer;
 }
 
@@ -62,7 +88,7 @@
 
 .photoUploadContainer {
   display: grid;
-  grid-template-columns: auto 15%;
+  grid-template-columns: auto 20%;
 }
 
 .submitButton,

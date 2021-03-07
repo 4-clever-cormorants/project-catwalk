@@ -88,39 +88,42 @@ class QuestionForm extends React.Component {
     } = this.state;
     const errorMessage = errorMessages.join(', ');
     return (
-      <div className={`${style.form} questionForm`}>
-        <div className={`${style.formHeader} questionFormHeader`}>
-          <div className={`${style.formTitle} questionFormTitle`}>
-            <h3>Ask Your Question</h3>
-            <h4>{`About ${productName}`}</h4>
-          </div>
-          <button type="button" onClick={exitQuestionForm} id="exitButton" className={`${style.exitButton}`}>X</button>
-        </div>
-        <div className={`${style.formContent} questionFormContent`}>
-          <form>
-            <label htmlFor="question">
-              * Question
-              <textarea id="questionField" name="questionField" onChange={(e) => this.handleQuestionChange(e)} />
-            </label>
-            <label htmlFor="nickname">
-              * Nickname
-              <input type="text" id="questionNickname" name="questionNickname" placeholder="Example: jackson11!" onChange={(e) => this.handleNicknameChange(e)} />
-              <p className={style.fieldDescription}>
-                For privacy reasons, do not use your full name or email address
-              </p>
-            </label>
-            <label htmlFor="email">
-              * Email
-              <input type="text" id="questionEmail" name="questionEmail" placeholder="Why did you like the product or not?" onChange={(e) => this.handleEmailChange(e)} />
-              <p className={style.fieldDescription}>
-                For authentication reasons, you will not be emailed
-              </p>
-            </label>
-            <div className={`${style.buttonContainer}`}>
-              <button type="button" id="submitQuestion" className={`${style.submitButton}`} onClick={this.handleSubmitAnswer.bind(this)} disabled={submitted}>Submit</button>
+      <div>
+        <div className={style.blocker} onClick={exitQuestionForm} />
+        <div className={`${style.form} questionForm`}>
+          <div className={`${style.formHeader} questionFormHeader`}>
+            <div className={`${style.formTitle} questionFormTitle`}>
+              <h3>Ask Your Question</h3>
+              <h4>{`About ${productName}`}</h4>
             </div>
-            {submitError ? <div className={`${style.errorMessage} errorMessage`}>{`You must enter the following: ${errorMessage}`}</div> : ''}
-          </form>
+            <button type="button" onClick={exitQuestionForm} id="exitButton" className={`${style.exitButton}`}>X</button>
+          </div>
+          <div className={`${style.formContent} questionFormContent`}>
+            <form>
+              <label htmlFor="question">
+                * Question
+                <textarea id="questionField" name="questionField" onChange={(e) => this.handleQuestionChange(e)} />
+              </label>
+              <label htmlFor="nickname">
+                * Nickname
+                <input type="text" id="questionNickname" name="questionNickname" placeholder="Example: jackson11!" onChange={(e) => this.handleNicknameChange(e)} />
+                <p className={style.fieldDescription}>
+                  For privacy reasons, do not use your full name or email address
+                </p>
+              </label>
+              <label htmlFor="email">
+                * Email
+                <input type="text" id="questionEmail" name="questionEmail" placeholder="Why did you like the product or not?" onChange={(e) => this.handleEmailChange(e)} />
+                <p className={style.fieldDescription}>
+                  For authentication reasons, you will not be emailed
+                </p>
+              </label>
+              <div className={`${style.buttonContainer}`}>
+                <button type="button" id="submitQuestion" className={`${style.submitButton}`} onClick={this.handleSubmitAnswer.bind(this)} disabled={submitted}>Submit</button>
+              </div>
+              {submitError ? <div className={`${style.errorMessage} errorMessage`}>{`You must enter the following: ${errorMessage}`}</div> : ''}
+            </form>
+          </div>
         </div>
       </div>
     );
