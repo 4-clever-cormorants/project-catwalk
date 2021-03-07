@@ -1,10 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import css from "./ImageGallery.css";
+
 const Thumbnail = ({ url }) => (
-  <div className="thumbnail" id={url}>
+  <div
+    className={css.thumbnail}
+    id={url}
+    // onClick={() => {}}
+  >
     <label>
-      <input type="radio" name="thumbnail" className="styleRadio" />
+      <input type="radio" name="thumbnail" className="styleRadio" defaultChecked="defaultChecked" />
       <img src={url} alt="thumbnailimage" />
     </label>
   </div>
