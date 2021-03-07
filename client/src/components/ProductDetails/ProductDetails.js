@@ -68,6 +68,7 @@ class ProductDetails extends React.Component {
         if (style.style_id === styleId) {
           this.setState({
             style,
+            defaultView: style.photos[0].url,
             sku: null,
           });
         }
