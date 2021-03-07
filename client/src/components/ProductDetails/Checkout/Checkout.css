@@ -3,6 +3,8 @@
   grid-row: 3/4;
   height: 250px;
   /* border: 3px green solid; */
+  position: relative;
+  top: -30px;
 }
 
 .checkout .form {

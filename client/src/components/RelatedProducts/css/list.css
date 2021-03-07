@@ -31,7 +31,8 @@
   margin: 5px;
   justify-content: center;
   align-items: center;
-  background-color: rgb(237, 237, 237);
+  background-color: rgb(240, 240, 240);
+  border-radius: 20px;
 };
 
 .addoutfitButton {
@@ -43,4 +44,13 @@
   display: block;
   font-size: 30px;
   margin-right: 10px;
+}
+
+.addToOutfit:hover {
+  background-color: rgb(235, 235, 235);
+}
+
+.addToOutfit:focus {
+  outline: none;
+  box-shadow: none;
 }
