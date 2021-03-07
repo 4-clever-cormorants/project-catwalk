@@ -1,9 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-// import css from './ProductInformation.css';
-
-const Price = ({ originalPrice, salePrice, css}) => {
+const Price = ({ originalPrice, salePrice, css }) => {
   if (salePrice !== null) {
     const discount = Math.floor((1 - (salePrice / originalPrice)) * 100);
     return (

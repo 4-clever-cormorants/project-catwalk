@@ -3,14 +3,14 @@ import PropTypes from 'prop-types';
 
 import css from "./ImageGallery.css";
 
-const Thumbnail = ({ url }) => (
+const Thumbnail = ({ url, defaultChecked }) => (
   <div
     className={css.thumbnail}
     id={url}
     // onClick={() => {}}
   >
     <label>
-      <input type="radio" name="thumbnail" className="styleRadio" defaultChecked="defaultChecked" />
+      <input type="radio" name="thumbnail" className="styleRadio" defaultChecked={defaultChecked} />
       <img src={url} alt="thumbnailimage" />
     </label>
   </div>
