@@ -2,6 +2,10 @@
   background-color: #f2ebe0;
 } */
 
+/* .modal {
+  transition: opacity 400ms ease-in;
+} */
+
 .blocker {
   position: fixed;
   top: 0;
@@ -25,12 +29,13 @@
   z-index: 110;
   padding: 20px;
   transform: translate(-50%, -50%);
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.25);
 }
 
 .formHeader {
-  display: flex;
-  justify-content: space-between;
-  padding: 10px;
+  display: grid;
+  grid-template-columns: 100% auto;
+  padding: 20px;
 }
 
 .formHeader h3,
@@ -38,9 +43,18 @@
   margin: 0 auto;
 }
 
+.formHeader h3 {
+  grid-row: 1;
+}
+
 .formHeader h4 {
   color: gray;
   font-weight: 400;
+  grid-row: 2;
+}
+
+.formTitle {
+  display: grid;
 }
 
 .exitButton {
@@ -52,6 +66,7 @@
   font-family: sans-serif, Arial;
   color: gray;
   transition: all 0.2s ease-in-out;
+  margin-top: -26px;
 }
 
 .exitButton:hover {
@@ -79,11 +94,15 @@
 
 .form input[type=file] {
   height: 46px;
-  resize: none;
+  /* resize: none; */
 }
 
 .form textarea {
-  resize: vertical;
+  resize: none;
+}
+
+.invalidField {
+  border: 1px solid crimson !important;
 }
 
 .photoUploadContainer {
@@ -99,7 +118,8 @@
   padding: 10px 20px;
   font-size: 1rem;
   font-weight: bold;
-  background: none;
+  background: black;
+  color: white;
   transition: all 0.2s ease-in-out;
 }
 
@@ -113,11 +133,12 @@
 .submitButton:hover,
 .uploadPhoto:hover {
   cursor: pointer;
-  background: black;
-  color: white;
+  background: white;
+  color: black;
 }
 
 .errorMessage {
+  margin-top: 16px;
   color: crimson;
 }
 
@@ -129,4 +150,5 @@
 .fieldDescription {
   margin-top: -10px;
   color: #555;
+  /* text-align: center; */
 }
