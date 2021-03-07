@@ -6,6 +6,7 @@ import ListOutfit from './ListOutfit';
 import AddToOutfit from './AddToOutfit';
 import Comparison from './Comparison';
 import style from './css/relatedProducts.css';
+import dummy from './dummy_related';
 
 class RelatedProducts extends React.Component {
   constructor(props) {
@@ -119,10 +120,10 @@ class RelatedProducts extends React.Component {
     }
 
     return (
-      <div className="relatedProducts">
+      <div className={style.relatedProducts}>
         {load ? (
-          <div>
-            <span>RelatedProducts</span>
+          <div className={style.gridContainer0}>
+            <span>Related Products</span>
             {comparison}
             <List productsList={related} compareHandler={this.compareHandler} />
           </div>
@@ -130,12 +131,15 @@ class RelatedProducts extends React.Component {
           ''
         )}
         {outfitLoad ? (
-          <div className={style.outfitListWithAdd}>
-            <AddToOutfit addToOutfitHandler={this.addToOutfitHandler} />
-            <ListOutfit
-              productsList={outfitList}
-              dropHandler={this.dropHandler}
-            />
+          <div className={style.gridContainer1}>
+            <span>Your Ownoutfit</span>
+            <div className={style.outfitListWithAdd}>
+              <AddToOutfit addToOutfitHandler={this.addToOutfitHandler} />
+              <ListOutfit
+                productsList={outfitList}
+                dropHandler={this.dropHandler}
+              />
+            </div>
           </div>
         ) : (
           ''
