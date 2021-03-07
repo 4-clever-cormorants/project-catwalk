@@ -14,6 +14,9 @@ class QuestionForm extends React.Component {
       errorMessages: [],
       submitError: false,
       submitted: false,
+      bodyInvalid: false,
+      nameInvalid: false,
+      emailInvalid: false,
     };
   }
 
@@ -65,18 +68,30 @@ class QuestionForm extends React.Component {
   validateForm(callback) {
     const { questionBody, nickname, email } = this.state;
     const errorMessages = [];
+    let bodyInvalid = false;
+    let nameInvalid = false;
+    let emailInvalid = false;
     if (questionBody.length === 0) {
       errorMessages.push('Question');
+      bodyInvalid = true;
     }
     if (nickname.length === 0) {
       errorMessages.push('Nickname');
+      nameInvalid = true;
     }
     if (email.length === 0) {
       errorMessages.push('Email address');
+      emailInvalid = true;
     } else if (!this.isValidEmail()) {
       errorMessages.push('The email address provided is not in correct email format');
+      emailInvalid = true;
     }
-    this.setState({ errorMessages }, callback);
+    this.setState({
+      errorMessages,
+      bodyInvalid,
+      nameInvalid,
+      emailInvalid,
+    }, callback);
   }
 
   render() {
@@ -85,10 +100,25 @@ class QuestionForm extends React.Component {
       errorMessages,
       submitError,
       submitted,
+      bodyInvalid,
+      nameInvalid,
+      emailInvalid,
     } = this.state;
     const errorMessage = errorMessages.join(', ');
+    let bodyClass = 'questionField';
+    let nameClass = 'questionNickname';
+    let emailClass = 'questionEmail';
+    if (bodyInvalid) {
+      bodyClass = `${style.invalidField} questionField`;
+    }
+    if (nameInvalid) {
+      nameClass = `${style.invalidField} questionNickname`;
+    }
+    if (emailInvalid) {
+      emailClass = `${style.invalidField} questionEmail`;
+    }
     return (
-      <div>
+      <div className={style.modal}>
         <div className={style.blocker} onClick={exitQuestionForm} />
         <div className={`${style.form} questionForm`}>
           <div className={`${style.formHeader} questionFormHeader`}>
@@ -101,19 +131,19 @@ class QuestionForm extends React.Component {
           <div className={`${style.formContent} questionFormContent`}>
             <form>
               <label htmlFor="question">
-                * Question
-                <textarea id="questionField" name="questionField" onChange={(e) => this.handleQuestionChange(e)} />
+                Question *
+                <textarea id="questionField" className={bodyClass} name="questionField" onChange={(e) => this.handleQuestionChange(e)} />
               </label>
               <label htmlFor="nickname">
-                * Nickname
-                <input type="text" id="questionNickname" name="questionNickname" placeholder="Example: jackson11!" onChange={(e) => this.handleNicknameChange(e)} />
+                Nickname *
+                <input type="text" id="questionNickname" className={nameClass} name="questionNickname" placeholder="Example: jackson11!" onChange={(e) => this.handleNicknameChange(e)} />
                 <p className={style.fieldDescription}>
                   For privacy reasons, do not use your full name or email address
                 </p>
               </label>
               <label htmlFor="email">
-                * Email
-                <input type="text" id="questionEmail" name="questionEmail" placeholder="Why did you like the product or not?" onChange={(e) => this.handleEmailChange(e)} />
+                Email *
+                <input type="text" id="questionEmail" className={emailClass} name="questionEmail" placeholder="Why did you like the product or not?" onChange={(e) => this.handleEmailChange(e)} />
                 <p className={style.fieldDescription}>
                   For authentication reasons, you will not be emailed
                 </p>

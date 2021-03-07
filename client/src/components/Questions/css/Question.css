@@ -32,7 +32,9 @@
   text-decoration: underline gray 2px;
 }
 
-.buttonLinkDisabled {
+.buttonLinkDisabled,
+.buttonLinkDisabled:hover {
   text-decoration: none;
   cursor: default;
+  color: #555;
 }
