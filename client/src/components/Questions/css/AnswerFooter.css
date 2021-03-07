@@ -14,6 +14,7 @@
 
 .buttonLink:hover {
   color: gray;
+  text-decoration: underline gray 2px;
 }
 
 .buttonLinkDisabled {
