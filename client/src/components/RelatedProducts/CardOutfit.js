@@ -3,6 +3,7 @@ import propTypes from 'prop-types';
 import Drop from './Drop';
 import style from './css/card.css';
 import Rating from './Rating';
+import Price from './Price';
 
 const CardOutfit = ({ item, dropHandler }) => (
   <div className={style.card} id={`card${item.id.toString()}`}>
@@ -21,9 +22,7 @@ const CardOutfit = ({ item, dropHandler }) => (
         {item.name}
       </h3>
     </a>
-    <h5>
-      {item.default_price}
-    </h5>
+    <Price originalPrice={item.default_price} salePrice={item.sale_price} />
     <Rating rating={item.average_ratings} totalRatings={item.totalReviews} id={item.id} />
   </div>
 );
@@ -33,6 +32,7 @@ CardOutfit.propTypes = {
     name: propTypes.string.isRequired,
     id: propTypes.number.isRequired,
     default_price: propTypes.string.isRequired,
+    sale_price: propTypes.string,
     thumbnail_url: propTypes.string.isRequired,
     average_ratings: propTypes.number.isRequired,
     totalReviews: propTypes.number.isRequired,
