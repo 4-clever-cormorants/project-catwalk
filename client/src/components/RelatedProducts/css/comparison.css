@@ -2,7 +2,7 @@
   position:fixed;
   top:50%;
   left:50%;
-  width: 500px;
+  width: fit-content;
   height: fit-content;
   border-radius: 20px;
   background-color: ivory;
@@ -22,14 +22,38 @@
   background: rgba(0,0,0,.5);
 }
 
-#compareTitle {
-  /* position: relative; */
+.row {
+  height: 50px;
 }
 
-#compareCurrentName {
-  margin-right: 70px;
+.currentValue, .feature, .clickedValue {
+  text-align: center;
+  width: 300px;
 }
 
-#compareClickedName {
-  margin-left: 70px;
+.close {
+  position: fixed;
+  font-size: 15pt;
+  top: 20px;
+  right: 20px;
+}
+
+.close:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.compareTitle {
+  text-align: left;
+}
+
+.titleRow {
+  font-size: 15pt;
+  font-weight: bold;
+  text-align: center;
+}
+
+.comparisonTable {
+  position: relative;
+  top: 10px;
 }

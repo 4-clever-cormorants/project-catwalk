@@ -1,3 +1,12 @@
+.relatedProducts {
+  display: grid;
+  max-width: 1020px;
+  margin-left: auto;
+  margin-right: auto;
+  grid-template-columns: 1020px;
+  grid-template-rows: 500px 500px;
+}
+
 .outfitListWithAdd {
   overflow:hidden;
   display: flex;

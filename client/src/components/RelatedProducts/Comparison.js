@@ -3,7 +3,7 @@ import propTypes from 'prop-types';
 import style from './css/comparison.css';
 
 const Results = ({ feature, currentValue, clickedValue }) => (
-  <tr>
+  <tr className={style.row}>
     <td className={style.currentValue}>{currentValue}</td>
     <td className={style.feature}>{feature}</td>
     <td className={style.clickedValue}>{clickedValue}</td>
@@ -36,15 +36,17 @@ const Comparison = ({ current, clicked, closeCompare }) => {
 
   return (
     <div>
-      <div className={style.blocker} onClick={closeCompare} onKeyPress={closeCompare} role="button" tabIndex={0} />
+      <div className={style.blocker} onClick={closeCompare} onKeyPress={closeCompare} role="button" tabIndex={0} aria-label="Mute volume" />
       <div className={style.comparison}>
-        <div>comparison</div>
-        <div id="compareTitle">
-          <span id="compareCurrentName">{current.name}</span>
-          <span id="compareClickedName">{clicked.name}</span>
-        </div>
+        <div className={style.compareTitle}>comparison</div>
+        <i className={`${style.close} fa fa-times`} onClick={closeCompare} onKeyPress={closeCompare} role="button" tabIndex={0} aria-label="Mute volume" />
         <table className={style.comparisonTable}>
           <tbody>
+            <tr>
+              <td className={style.titleRow}>{current.name}</td>
+              <td className={style.titleRow}>features</td>
+              <td className={style.titleRow}>{clicked.name}</td>
+            </tr>
             {compareCurrentFeature}
             {compareClickedFeature}
           </tbody>
