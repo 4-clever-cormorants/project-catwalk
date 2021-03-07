@@ -17,6 +17,7 @@ class ProductDetails extends React.Component {
       styleId: null,
       styles: null,
       style: null,
+      defaultView: null,
       sku: null,
       cart: [],
       load: false,
@@ -24,6 +25,7 @@ class ProductDetails extends React.Component {
     this.styleSelector = this.styleSelector.bind(this);
     this.skuSelector = this.skuSelector.bind(this);
     this.addToCart = this.addToCart.bind(this);
+    this.renderDefaultView = this.renderDefaultView.bind(this);
   }
 
   componentDidMount() {
@@ -42,6 +44,7 @@ class ProductDetails extends React.Component {
                   styleId: response.data.results[0].style_id,
                   styles: response.data,
                   style: response.data.results[0],
+                  defaultView: response.data.results[0].photos[0].url,
                   // sku: Object.keys(response.data.results[0].skus)[0],
                   load: true,
                 },
@@ -50,7 +53,7 @@ class ProductDetails extends React.Component {
           });
       })
       .catch((err) => {
-        console.error(err);
+        throw (err);
       });
   }
 
@@ -88,9 +91,16 @@ class ProductDetails extends React.Component {
     }
   }
 
+  renderDefaultView(e) {
+    console.log(e.target);
+    this.setState({
+      defaultView: e.target.id,
+    });
+  }
+
   render() {
     const {
-      product, rating, styleId, styles, style, sku, load,
+      product, rating, styleId, styles, style, defaultView, sku, load,
     } = this.state;
 
     return (
@@ -101,8 +111,8 @@ class ProductDetails extends React.Component {
             <ImageGallery
               styleId={styleId}
               style={style}
-              styles={styles.results}
-              styleSelector={this.styleSelector}
+              defaultView={defaultView}
+              renderDefaultView={this.renderDefaultView}
             />
             <ProductInformation
               product={product}

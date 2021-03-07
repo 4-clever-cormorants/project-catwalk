@@ -6,20 +6,20 @@ import Thumbnail from './Thumbnail';
 import css from './ImageGallery.css';
 
 const ImageGallery = ({
-  styleId, style,
+  styleId, style, defaultView, renderDefaultView,
 }) => {
   const [photo, photos] = [style.photos[0], style.photos.slice(1)];
   return (
     <div className={css.imageGallery} styleid={styleId}>
-      <DefaultView url={style.photos[0].url} />
+      <DefaultView url={defaultView} />
       <div className={css.thumbnailView}>
         <div className={css.thumbnails}>
           <div key={`first ${photo.url.toString()}`}>
-            <Thumbnail url={photo.url} defaultChecked />
+            <Thumbnail url={photo.url} onClick={renderDefaultView} defaultChecked />
           </div>
           {photos.map((thumbnail, i) => (
             <div key={`${i} ${thumbnail.url.toString()}`}>
-              <Thumbnail url={thumbnail.url} />
+              <Thumbnail url={thumbnail.url} onClick={renderDefaultView} />
             </div>
           ))}
         </div>
@@ -40,6 +40,8 @@ ImageGallery.propTypes = {
     skus: PropTypes.objectOf(PropTypes.object).isRequired,
   }).isRequired,
   styleId: PropTypes.number.isRequired,
+  defaultView: PropTypes.string.isRequired,
+  renderDefaultView: PropTypes.func.isRequired,
 };
 
 export default ImageGallery;
