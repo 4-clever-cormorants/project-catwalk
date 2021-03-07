@@ -11,10 +11,13 @@
 .imageGallery .defaultView {
   grid-column: 2;
   grid-row: 1;
+  height: 600px;
+  width: 500px;
   display: flex;
   justify-content: center;
+  align-self: center;
   align-items: center;
-  /* border: 3px burlywood solid; */
+  border: 1px rgb(98, 98, 98) solid;
   overflow: hidden;
 }
 
