@@ -3,6 +3,8 @@ import propTypes from 'prop-types';
 import Favor from './Favor';
 import style from './css/card.css';
 import Rating from './Rating';
+import Price from '../ProductDetails/ProductInformation/Price';
+import priceCss from './css/price.css';
 
 const Card = ({ item, compareHandler }) => (
   <div className={style.card} id={`card${item.id.toString()}`} onClick={compareHandler.bind(this, item)} onKeyPress={compareHandler.bind(this, item)} role="button" tabIndex={0}>
@@ -21,9 +23,7 @@ const Card = ({ item, compareHandler }) => (
         {item.name}
       </h3>
     </a>
-    <h5>
-      {item.default_price}
-    </h5>
+    <Price originalPrice={item.default_price} salePrice={item.sale_price} css={priceCss} />
     <Rating rating={item.average_ratings} totalRatings={item.totalReviews} id={item.id} />
   </div>
 );
@@ -33,6 +33,7 @@ Card.propTypes = {
     name: propTypes.string.isRequired,
     id: propTypes.number.isRequired,
     default_price: propTypes.string.isRequired,
+    sale_price: propTypes.string,
     thumbnail_url: propTypes.string.isRequired,
     average_ratings: propTypes.number.isRequired,
     totalReviews: propTypes.number.isRequired,

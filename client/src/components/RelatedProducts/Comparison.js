@@ -10,7 +10,7 @@ const Results = ({ feature, currentValue, clickedValue }) => (
   </tr>
 );
 
-const Comparison = ({ current, clicked }) => {
+const Comparison = ({ current, clicked, closeCompare }) => {
   const currentFeatures = {};
   for (let i = 0; i < current.features.length; i += 1) {
     currentFeatures[current.features[i].feature] = current.features[i].value;
@@ -35,18 +35,21 @@ const Comparison = ({ current, clicked }) => {
   });
 
   return (
-    <div className={style.comparison}>
-      <div>comparison</div>
-      <div id="compareTitle">
-        <span id="compareCurrentName">{current.name}</span>
-        <span id="compareClickedName">{clicked.name}</span>
+    <div>
+      <div className={style.blocker} onClick={closeCompare} onKeyPress={closeCompare} role="button" tabIndex={0} />
+      <div className={style.comparison}>
+        <div>comparison</div>
+        <div id="compareTitle">
+          <span id="compareCurrentName">{current.name}</span>
+          <span id="compareClickedName">{clicked.name}</span>
+        </div>
+        <table className={style.comparisonTable}>
+          <tbody>
+            {compareCurrentFeature}
+            {compareClickedFeature}
+          </tbody>
+        </table>
       </div>
-      <table className={style.comparisonTable}>
-        <tbody>
-          {compareCurrentFeature}
-          {compareClickedFeature}
-        </tbody>
-      </table>
     </div>
   );
 };
@@ -68,6 +71,7 @@ Comparison.propTypes = {
     id: propTypes.number.isRequired,
     features: propTypes.arrayOf(propTypes.object).isRequired,
   }).isRequired,
+  closeCompare: propTypes.func.isRequired,
 };
 
 export default Comparison;

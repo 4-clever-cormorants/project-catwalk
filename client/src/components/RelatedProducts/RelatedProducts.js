@@ -21,6 +21,7 @@ class RelatedProducts extends React.Component {
     this.addToOutfitHandler = this.addToOutfitHandler.bind(this);
     this.dropHandler = this.dropHandler.bind(this);
     this.compareHandler = this.compareHandler.bind(this);
+    this.closeCompare = this.closeCompare.bind(this);
     this.getInfo();
     this.getOutfitList();
   }
@@ -76,13 +77,30 @@ class RelatedProducts extends React.Component {
     });
   }
 
+  closeCompare() {
+    this.setState({
+      clicked: undefined,
+    });
+  }
+
   render() {
     const {
-      outfitList, clicked, current, related, load, outfitLoad,
+      outfitList,
+      clicked,
+      current,
+      related,
+      load,
+      outfitLoad,
     } = this.state;
     let comparison;
     if (clicked) {
-      comparison = <Comparison current={current} clicked={clicked} />;
+      comparison = (
+        <Comparison
+          current={current}
+          clicked={clicked}
+          closeCompare={this.closeCompare}
+        />
+      );
     }
 
     return (
