@@ -20,6 +20,8 @@ class Questions extends React.Component {
       loadQuestions: false,
       hideButton: false,
     };
+    this.escFunction = this.escFunction.bind(this);
+    this.exitQuestionForm = this.exitQuestionForm.bind(this);
   }
 
   componentDidMount() {
@@ -41,6 +43,11 @@ class Questions extends React.Component {
       .catch((err) => {
         console.log(err);
       });
+    document.addEventListener('keydown', this.escFunction, false);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('keydown', this.escFunction, false);
   }
 
   fetchQuestions() {
@@ -52,6 +59,12 @@ class Questions extends React.Component {
         count: !loadQuestions ? 5 : totalCount + 2,
       },
     });
+  }
+
+  escFunction(event) {
+    if (event.keyCode === 27) {
+      this.exitQuestionForm();
+    }
   }
 
   loadMoreQuestions() {

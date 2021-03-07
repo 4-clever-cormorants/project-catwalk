@@ -20,6 +20,8 @@ class Question extends React.Component {
       answerCount: 3,
     };
     this.updateAnswers = this.updateAnswers.bind(this);
+    this.escFunction = this.escFunction.bind(this);
+    this.exitAnswerForm = this.exitAnswerForm.bind(this);
   }
 
   componentDidMount() {
@@ -29,6 +31,17 @@ class Question extends React.Component {
       return;
     }
     this.updateAnswers(() => {});
+    document.addEventListener('keydown', this.escFunction, false);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('keydown', this.escFunction, false);
+  }
+
+  escFunction(event) {
+    if (event.keyCode === 27) {
+      this.exitAnswerForm();
+    }
   }
 
   updateAnswers(callback) {
