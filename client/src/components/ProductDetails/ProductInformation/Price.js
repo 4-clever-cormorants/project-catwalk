@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import css from './ProductInformation.css';
+// import css from './ProductInformation.css';
 
-const Price = ({ originalPrice, salePrice }) => {
+const Price = ({ originalPrice, salePrice, css}) => {
   if (salePrice !== null) {
     const discount = Math.floor((1 - (salePrice / originalPrice)) * 100);
     return (
@@ -38,6 +38,7 @@ const Price = ({ originalPrice, salePrice }) => {
 Price.propTypes = {
   originalPrice: PropTypes.string.isRequired,
   salePrice: PropTypes.string,
+  css: PropTypes.objectOf(PropTypes.string).isRequired,
 };
 
 Price.defaultProps = {
