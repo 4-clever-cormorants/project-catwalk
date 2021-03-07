@@ -1,3 +1,17 @@
+.answerA {
+  font-weight: bold;
+}
+
+.answerList {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: -10px;
+}
+
+.answerListContent {
+  margin-top: 16px;
+}
+
 .buttonLink {
   background: none!important;
   border: none;
@@ -6,6 +20,11 @@
   text-decoration: underline;
   cursor: pointer;
   outline: none;
+}
+
+.buttonLinkDisabled {
+  text-decoration: none;
+  cursor: default;
 }
 
 .buttonLink:active {
@@ -17,20 +36,11 @@
   text-decoration: underline gray 2px;
 }
 
-.buttonLinkDisabled {
-  text-decoration: none;
-  cursor: default;
-}
-
-.answerNameAndDate {
-  color: #888;
-}
-
-.answerNameSeller {
+.expandAnswers {
   font-weight: bold;
+  text-decoration: none;
 }
 
-.answerHelpful,
-.answerReport {
-  color: #555;
+.expandAnswers:hover {
+  color: gray;
 }
