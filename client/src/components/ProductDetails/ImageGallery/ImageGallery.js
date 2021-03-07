@@ -12,9 +12,9 @@ const ImageGallery = ({
     <DefaultView url={style.photos[0].url} />
     <div className={css.thumbnailView}>
       <div className={css.thumbnails}>
-        {styles.map((thumbnail, i) => (
-          <div key={`${i} ${thumbnail.photos[0].url.toString()}`}>
-            <Thumbnail style={thumbnail} styleSelector={styleSelector} />
+        {style.photos.map((thumbnail, i) => (
+          <div key={`${i} ${thumbnail.url.toString()}`}>
+            <Thumbnail url={thumbnail.url} />
           </div>
         ))}
       </div>

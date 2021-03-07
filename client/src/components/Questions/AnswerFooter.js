@@ -62,6 +62,10 @@ class AnswerFooter extends React.Component {
     if (answer.answerer_name === 'Seller') {
       answerNameClass = `${style.answerNameSeller} answerName`;
     }
+    let helpfulClassName = `${style.buttonLink} answerHelpfulButton`;<button type="button" className={`${style.buttonLink} answerHelpfulButton`} onClick={this.increaseAnswerHelpfulness.bind(this)} disabled={increased}>Yes</button>;
+    if (increased) {
+      helpfulClassName = `${style.buttonLink} ${style.buttonLinkDisabled} answerHelpfulButton`;
+    }
     return (
       <div className={`${style.answerFooter} answerFooter`}>
         <div>
@@ -69,7 +73,6 @@ class AnswerFooter extends React.Component {
             <span className={`${style.answerNameAndDate} answerNameAndDate`}>
               by
               <span className={answerNameClass}>
-                {/* change this to className = answerSeller or answerDefault when doing real css */}
                 {` ${answer.answerer_name}`}
               </span>
               ,
@@ -80,7 +83,7 @@ class AnswerFooter extends React.Component {
             <span> | </span>
             <span className={`${style.answerHelpful} answerHelpful`}>
               <span>Helpful? </span>
-              <button type="button" className={`${style.buttonLink} answerHelpfulButton`} onClick={this.increaseAnswerHelpfulness.bind(this)} disabled={increased}>Yes</button>
+              <button type="button" className={helpfulClassName} onClick={this.increaseAnswerHelpfulness.bind(this)} disabled={increased}>Yes</button>
               <span>{` (${answerHelpfulness})`}</span>
             </span>
             <span> | </span>

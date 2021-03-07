@@ -57,8 +57,11 @@
   /* border: 3px orange solid; */
 }
 
-.imageGallery .thumbnailView img {
+.imageGallery .thumbnailView .thumbnail input {
+  display: none;
+}
 
+.imageGallery .thumbnailView img {
   position: relative;
   object-fit: cover;
   top: 2px;

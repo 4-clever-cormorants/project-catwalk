@@ -15,7 +15,7 @@ class Answer extends React.Component {
     const { answer } = this.props;
     return (
       <div className={`${style.answerContent} answer`}>
-        <div className="answerText"><p>{answer.body}</p></div>
+        <div><p className={`${style.answerText} answerText`}>{answer.body}</p></div>
         <AnswerFooter answer={answer} />
       </div>
     );

@@ -19,7 +19,7 @@ const ProductInformation = ({
       <Category category={product.category} />
       <Title title={product.name} />
       <div className={css.flexRow}>
-        <Price originalPrice={originalPrice} salePrice={salePrice} />
+        <Price originalPrice={originalPrice} salePrice={salePrice} css={css} />
         &nbsp; &nbsp; &nbsp;
         <Shipping />
       </div>
