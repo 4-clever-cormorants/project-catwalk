@@ -1,9 +1,7 @@
 .qa {
-  /* height: 95vh; */
   max-height: 95vh;
   display: grid;
   max-width: 1020px;
-  /* background-color: #f2ebe0; */
   margin-left: auto;
   margin-right: auto;
   color: #333;
@@ -14,10 +12,9 @@
   overflow: auto;
 }
 
-.addQuestionButton {
+.questionButton {
   align-self: center;
   outline: none;
-  /* border: 4px solid #E3D4BC; */
   border: 1px solid black;
   padding: 10px 20px;
   font-size: 1rem;
@@ -26,11 +23,17 @@
   transition: all 0.2s ease-in-out;
 }
 
-.addQuestionButton:hover {
+.questionButton:hover {
   cursor: pointer;
-  /* border: 1px solid rgb(237, 237, 237); */
-  /* background: #E3D4BC; */
-  /* background: rgb(237, 237, 237) */
   background: black;
   color: white;
+}
+
+.qaFooterButtons {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.qaFooterButtons button:first-child {
+  margin-right: 10px;
 }
