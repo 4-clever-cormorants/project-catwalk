@@ -23,7 +23,9 @@ const ImageGallery = ({
             </div>
           ))}
         </div>
-        <span className={`fa fa-chevron-down ${css.arrow}`} />
+        <div className={css.arrow}>
+          <span className="fa fa-chevron-down" />
+        </div>
       </div>
     </div>
   );
