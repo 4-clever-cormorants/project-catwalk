@@ -22,8 +22,17 @@ class RelatedProducts extends React.Component {
     this.dropHandler = this.dropHandler.bind(this);
     this.compareHandler = this.compareHandler.bind(this);
     this.closeCompare = this.closeCompare.bind(this);
+    this.escFunction = this.escFunction.bind(this);
+  }
+
+  componentDidMount() {
     this.getInfo();
     this.getOutfitList();
+    document.addEventListener('keydown', this.escFunction, false);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('keydown', this.escFunction, false);
   }
 
   getInfo() {
@@ -75,6 +84,12 @@ class RelatedProducts extends React.Component {
     this.setState({
       clicked: item,
     });
+  }
+
+  escFunction(event) {
+    if (event.keyCode === 27) {
+      this.closeCompare();
+    }
   }
 
   closeCompare() {
