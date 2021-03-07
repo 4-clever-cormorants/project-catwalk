@@ -56,9 +56,15 @@
 }
 
 .imageGallery .thumbnailView img {
+
   position: relative;
-  max-height: 60px;
-  max-width: 60px;
+  object-fit: cover;
+  top: 2px;
+  height: 100px;
+  width: 75px;
+  /* border: 1px solid rgb(105, 105, 105); */
+  /* max-height: 60px;
+  max-width: 60px; */
   /* border: 3px black solid; */
   /* transition: all .25s ease; */
 }
