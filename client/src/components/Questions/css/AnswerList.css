@@ -1,0 +1,45 @@
+.answerA {
+  font-weight: bold;
+}
+
+.answerList {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: -10px;
+}
+
+.answerListContent {
+  margin-top: 16px;
+}
+
+.buttonLink {
+  background: none!important;
+  border: none;
+  padding: 0!important;
+  color: #555;
+  text-decoration: underline;
+  cursor: pointer;
+  outline: none;
+}
+
+.buttonLinkDisabled {
+  text-decoration: none;
+  cursor: default;
+}
+
+.buttonLink:active {
+  color: #ccc;
+}
+
+.buttonLink:hover {
+  color: gray;
+}
+
+.expandAnswers {
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.expandAnswers:hover {
+  color: gray;
+}

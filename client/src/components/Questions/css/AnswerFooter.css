@@ -5,6 +5,20 @@
   color: #555;
   text-decoration: underline;
   cursor: pointer;
+  outline: none;
+}
+
+.buttonLink:active {
+  color: #ccc;
+}
+
+.buttonLink:hover {
+  color: gray;
+}
+
+.buttonLinkDisabled {
+  text-decoration: none;
+  cursor: default;
 }
 
 .answerNameAndDate {
