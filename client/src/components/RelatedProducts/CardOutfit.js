@@ -7,7 +7,9 @@ import Rating from './Rating';
 const CardOutfit = ({ item, dropHandler }) => (
   <div className={style.card} id={`card${item.id.toString()}`}>
     <Drop id={item.id} dropHandler={dropHandler} />
-    <img className={style.cardImg} src={item.thumbnail_url} alt={item.name} />
+    <div className={style.cardImgContainer}>
+      <img className={style.cardImg} src={item.thumbnail_url} alt={item.name} />
+    </div>
     <a
       className={style.cardName}
       href={`http://localhost:1128/?product_id=${item.id}`}
