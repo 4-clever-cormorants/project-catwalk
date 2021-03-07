@@ -1,11 +1,28 @@
 .comparison {
+  /* position: relative; */
+  position:fixed;
+  top:50%;
+  left:50%;
   border: solid;
   width: 500px;
   height: fit-content;
+  background-color: ivory;
+  z-index: 110;
+}
+
+.blocker {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  content: ' ';
+  z-index: 101;
+  background: rgba(0,0,0,.5);
 }
 
 #compareTitle {
-  position: relative;
+  /* position: relative; */
 }
 
 #compareCurrentName {
