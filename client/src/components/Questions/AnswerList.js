@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Answer from './Answer';
+import style from './css/AnswerList.css';
 
 class AnswerList extends React.Component {
   constructor(props) {
@@ -37,15 +38,17 @@ class AnswerList extends React.Component {
     const { answersOnScreen, loadAll } = this.state;
     let expandAnswersButton = '';
     if (answers.length > 2 && !loadAll) {
-      expandAnswersButton = <button type="button" className="loadAnswers" onClick={this.loadMoreAnswers.bind(this)}>See more answers</button>;
+      expandAnswersButton = <button type="button" className={`${style.buttonLink} ${style.expandAnswers} loadAnswers`} onClick={this.loadMoreAnswers.bind(this)}>SEE MORE ANSWERS</button>;
     } else if (answers.length > 2 && loadAll) {
-      expandAnswersButton = <button type="button" className="collapseAnswers" onClick={this.collapseAnswers.bind(this)}>Collapse answers</button>;
+      expandAnswersButton = <button type="button" className={`${style.buttonLink} ${style.expandAnswers} collapseAnswers`} onClick={this.collapseAnswers.bind(this)}>COLLAPSE ANSWERS</button>;
     }
     return (
-      <div className="answerList">
-        {answersOnScreen.length > 0 ? <p>A:</p> : ''}
-        {answersOnScreen.map((answer) => <Answer key={answer.answer_id} answer={answer} />)}
-        {expandAnswersButton}
+      <div className={`${style.answerList} answerList`}>
+        {answersOnScreen.length > 0 ? <p className={`${style.answerA}`}>A:&nbsp;</p> : ''}
+        <div className={`${style.answerListContent} answerListContent`}>
+          {answersOnScreen.map((answer) => <Answer key={answer.answer_id} answer={answer} />)}
+          {expandAnswersButton}
+        </div>
       </div>
     );
   }

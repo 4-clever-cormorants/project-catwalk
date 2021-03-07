@@ -92,6 +92,10 @@ class Question extends React.Component {
       increased,
       loadAnswers,
     } = this.state;
+    let helpfulClassName = `${style.buttonLink} questionHelpfulButton`;
+    if (increased) {
+      helpfulClassName = `${style.buttonLink} ${style.buttonLinkDisabled} questionHelpfulButton`;
+    }
     return (
       <div className={style.questionDefault}>
         <div className={style.questionContent}>
@@ -101,7 +105,7 @@ class Question extends React.Component {
           <div className={style.questionFooter}>
             <p>
               <span>Helpful? </span>
-              <button type="button" className={`${style.buttonLink} questionHelpfulButton`} onClick={this.increaseQuestionHelpfulness.bind(this)} disabled={increased}>Yes</button>
+              <button type="button" className={helpfulClassName} onClick={this.increaseQuestionHelpfulness.bind(this)} disabled={increased}>Yes</button>
               <span>{` (${questionHelpfulness})`}</span>
               <span> | </span>
               <button type="button" className={`${style.buttonLink} addAnswerButton`} onClick={this.addAnswer.bind(this)}>Add answer</button>
