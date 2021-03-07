@@ -92,7 +92,6 @@ class ProductDetails extends React.Component {
   }
 
   renderDefaultView(e) {
-    console.log(e.target);
     this.setState({
       defaultView: e.target.id,
     });
