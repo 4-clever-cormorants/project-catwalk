@@ -47,17 +47,23 @@
   flex-direction: column;
   justify-content: center;
   align-self: center;
-  align-items: center;
-  border: 3px red solid;
+  align-items: flex-start;
+  /* border: 3px red solid; */
 }
 
 .imageGallery .thumbnailView .thumbnails {
   height: 575px;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  border: 3px orange solid;
+  /* justify-content: center;
+  align-content: center; */
+  /* border: 3px orange solid; */
   overflow: scroll;
+}
+
+.arrow {
+  position: relative;
+  left: 28px;
 }
 
 .thumbnails::-webkit-scrollbar {

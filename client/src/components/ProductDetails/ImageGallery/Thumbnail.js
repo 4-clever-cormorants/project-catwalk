@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import css from "./ImageGallery.css";
+import css from './ImageGallery.css';
 
 const Thumbnail = ({ url, defaultChecked }) => (
   <div
@@ -18,5 +18,11 @@ const Thumbnail = ({ url, defaultChecked }) => (
 
 Thumbnail.propTypes = {
   url: PropTypes.string.isRequired,
+  defaultChecked: PropTypes.bool,
 };
+
+Thumbnail.defaultProps = {
+  defaultChecked: null,
+};
+
 export default Thumbnail;
