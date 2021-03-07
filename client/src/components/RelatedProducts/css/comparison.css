@@ -31,7 +31,17 @@
   width: 300px;
 }
 
+.close {
+  position: fixed;
+  font-size: 15pt;
+  top: 20px;
+  right: 20px;
+}
 
+.close:focus {
+  outline: none;
+  box-shadow: none;
+}
 
 .compareTitle {
   text-align: left;
@@ -41,4 +51,9 @@
   font-size: 15pt;
   font-weight: bold;
   text-align: center;
+}
+
+.comparisonTable {
+  position: relative;
+  top: 10px;
 }

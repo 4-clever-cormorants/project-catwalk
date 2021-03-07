@@ -39,6 +39,7 @@ const Comparison = ({ current, clicked, closeCompare }) => {
       <div className={style.blocker} onClick={closeCompare} onKeyPress={closeCompare} role="button" tabIndex={0} aria-label="Mute volume" />
       <div className={style.comparison}>
         <div className={style.compareTitle}>comparison</div>
+        <i className={`${style.close} fa fa-times`} onClick={closeCompare} onKeyPress={closeCompare} role="button" tabIndex={0} aria-label="Mute volume" />
         <table className={style.comparisonTable}>
           <tbody>
             <tr>
