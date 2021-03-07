@@ -110,11 +110,13 @@ class Questions extends React.Component {
                     <Question question={question} productName={productName} />
                   </div>
                 ))}
-                {questions.results.length > 4 && !hideButton ? <button type="button" onClick={this.loadMoreQuestions.bind(this)} id="loadMoreQuestions">More Answered Questions</button> : ''}
               </div>
             ) : ''}
         </div>
-        <button className={style.addQuestionButton} type="button" onClick={this.addQuestion.bind(this)} id="addQuestionButton">ADD A QUESTION</button>
+        <div className={`${style.qaFooterButtons}`}>
+          {questions.results.length > 4 && !hideButton ? <button className={style.questionButton} type="button" onClick={this.loadMoreQuestions.bind(this)} id="loadMoreQuestions">MORE ANSWERED QUESTIONS</button> : ''}
+          <button className={style.questionButton} type="button" onClick={this.addQuestion.bind(this)} id="addQuestionButton">ADD A QUESTION</button>
+        </div>
         {addQuestionClicked ? <QuestionForm exitQuestionForm={() => this.exitQuestionForm()} productId={productId} productName={productName} /> : ''}
       </div>
     );
