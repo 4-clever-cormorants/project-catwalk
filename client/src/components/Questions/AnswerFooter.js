@@ -58,14 +58,8 @@ class AnswerFooter extends React.Component {
       month: 'long',
       day: 'numeric',
     };
-    let answerNameClass = 'answerName';
-    if (answer.answerer_name === 'Seller') {
-      answerNameClass = `${style.answerNameSeller} answerName`;
-    }
-    let helpfulClassName = `${style.buttonLink} answerHelpfulButton`;<button type="button" className={`${style.buttonLink} answerHelpfulButton`} onClick={this.increaseAnswerHelpfulness.bind(this)} disabled={increased}>Yes</button>;
-    if (increased) {
-      helpfulClassName = `${style.buttonLink} ${style.buttonLinkDisabled} answerHelpfulButton`;
-    }
+    const answerNameClass = answer.answerer_name === 'Seller' ? `${style.answerNameSeller} answerName` : 'answerName';
+    const helpfulClassName = increased ? `${style.buttonLink} ${style.buttonLinkDisabled} answerHelpfulButton` : `${style.buttonLink} answerHelpfulButton`;
     return (
       <div className={`${style.answerFooter} answerFooter`}>
         <div>
