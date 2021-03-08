@@ -25,7 +25,7 @@
 .productInformation .category {
   font-size: 14px;
   font-weight: 100;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Playfair Display';
 }
 
 .productInformation .title {
@@ -40,7 +40,7 @@
   align-items: center;
   position:relative;
   top: 5px;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Lato';
 }
 
 .productInformation .price, .sale {
