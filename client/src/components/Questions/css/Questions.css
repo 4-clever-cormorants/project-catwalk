@@ -38,3 +38,10 @@
 .qaFooterButtons button:first-child {
   margin-right: 10px;
 }
+
+.noMatch {
+  text-align: center;
+  color: gray;
+  margin-top: 24px;
+  margin-bottom: 24px;
+}

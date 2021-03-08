@@ -7,7 +7,6 @@ class SearchBar extends React.Component {
     super(props);
     this.state = {
       searchTerm: '',
-      hits: [],
     };
   }
 
@@ -15,45 +14,49 @@ class SearchBar extends React.Component {
     this.setState({ searchTerm: e.target.value }, () => {
       const { searchTerm } = this.state;
       if (searchTerm.length >= 3) {
-        this.searchQuestions();
+        this.searchQuestions(() => {});
+      } else {
+        const { revertToOriginal } = this.props;
+        revertToOriginal();
       }
     });
   }
 
-  searchQuestions() {
+  searchQuestions(cb) {
     const { questions } = this.props;
     const { searchTerm } = this.state;
-    console.log(questions, searchTerm);
     const questionHits = [];
     for (let i = 0; i < questions.results.length; i += 1) {
       const question = questions.results[i];
       const upperCaseSearchTerm = searchTerm.toUpperCase();
-      if (question.question_body.toUpperCase().search(upperCaseSearchTerm) !== -1) {
+      const questionBody = question.question_body.toUpperCase();
+      if (questionBody.indexOf(upperCaseSearchTerm) !== -1) {
         questionHits.push(question);
-        continue;
-      }
-      const answerIds = Object.keys(question.answers);
-      for (let j = 0; j < answerIds.length; j += 1) {
-        if (question.answers[answerIds[j]].body.toUpperCase().search(upperCaseSearchTerm) !== -1) {
-          questionHits.push(question);
-          continue;
+      } else {
+        const answerIds = Object.keys(question.answers);
+        for (let j = 0; j < answerIds.length; j += 1) {
+          const answerBody = question.answers[answerIds[j]].body.toUpperCase();
+          if (answerBody.indexOf(upperCaseSearchTerm) !== -1) {
+            questionHits.push(question);
+            break;
+          }
         }
       }
     }
-    this.setState({ hits: questionHits }, () => {
-      const { hits } = this.state;
-      if (hits.length === 0) {
-        console.log(`no matching results for ${searchTerm}`);
-      } else {
-        console.log(hits);
-      }
-    });
+    if (questionHits.length === 0) {
+      const { showSearchedQuestions } = this.props;
+      showSearchedQuestions(questionHits, false, searchTerm);
+    } else {
+      const { showSearchedQuestions } = this.props;
+      showSearchedQuestions(questionHits, true);
+    }
+    cb(questionHits, searchTerm);
   }
 
   render() {
     return (
       <div className={`${style.searchBar} searchBar`}>
-        <input type="text" placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS..." onChange={this.handleChange.bind(this)} />
+        <input type="text" placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS..." maxLength="1000" onChange={this.handleChange.bind(this)} />
       </div>
     );
   }
@@ -79,6 +82,8 @@ SearchBar.propTypes = {
       })),
     })),
   }).isRequired,
+  showSearchedQuestions: PropTypes.func.isRequired,
+  revertToOriginal: PropTypes.func.isRequired,
 };
 
 export default SearchBar;
