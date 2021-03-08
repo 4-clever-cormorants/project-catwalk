@@ -1,6 +1,8 @@
 .rating {
   display: block;
   margin: 10px;
+  position: absolute;
+  bottom: 0px;
 }
 
 .star {

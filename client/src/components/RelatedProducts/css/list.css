@@ -24,14 +24,15 @@
   display: flex;
   flex: 0 0 auto;
   position: relative;
-  width: 300px;
+  width: 245px;
   height: 450px;
   float: left;
   margin: 5px;
   justify-content: center;
   align-items: center;
   background-color: rgb(240, 240, 240);
-  border-radius: 20px;
+  box-shadow: -2px 2px 5px rgb(0 0 0 / 15%);
+  font-family: 'Lato';
 };
 
 .addoutfitButton {
@@ -41,7 +42,7 @@
 
 .addToOutfitText {
   display: block;
-  font-size: 30px;
+  font-size: 25px;
   margin-right: 10px;
 }
 
