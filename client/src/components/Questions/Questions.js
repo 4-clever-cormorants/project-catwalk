@@ -113,7 +113,7 @@ class Questions extends React.Component {
     return (
       <div id="qa" className={style.qa}>
         <h3>QUESTIONS AND ANSWERS</h3>
-        <SearchBar />
+        <SearchBar questions={questions} />
         <div id="qaContent" className={style.qaContent}>
           {loadQuestions
             ? (
