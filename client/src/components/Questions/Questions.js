@@ -12,8 +12,11 @@ class Questions extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      allQuestions: dummyQuestions,
       questions: dummyQuestions,
       questionsOnScreen: dummyQuestions.results.slice(0, 4),
+      noSearchResults: false,
+      searchTerm: '',
       addQuestionClicked: false,
       currentLen: 4,
       loadQuestions: false,
@@ -21,6 +24,8 @@ class Questions extends React.Component {
     };
     this.escFunction = this.escFunction.bind(this);
     this.exitQuestionForm = this.exitQuestionForm.bind(this);
+    this.showSearchedQuestions = this.showSearchedQuestions.bind(this);
+    this.revertToOriginal = this.revertToOriginal.bind(this);
   }
 
   componentDidMount() {
@@ -36,6 +41,7 @@ class Questions extends React.Component {
         const questions = response.data;
         const newQuestionsOnScreen = questions.results.slice(0, currentLen);
         this.setState({
+          allQuestions: questions,
           questions,
           questionsOnScreen: newQuestionsOnScreen,
           loadQuestions: true,
@@ -85,33 +91,71 @@ class Questions extends React.Component {
     this.setState({ addQuestionClicked: false });
   }
 
+  showSearchedQuestions(results, found, searchTerm) {
+    if (!found) {
+      this.setState({ noSearchResults: true, searchTerm });
+      return;
+    }
+    const { productId } = this.props;
+    const searchQuestions = {};
+    searchQuestions.product_id = productId.toString();
+    searchQuestions.results = results;
+    this.setState({
+      questions: searchQuestions,
+      noSearchResults: false,
+      currentLen: 4,
+      questionsOnScreen: searchQuestions.results.slice(0, 4),
+    });
+  }
+
+  revertToOriginal() {
+    const { allQuestions } = this.state;
+    this.setState({
+      questions: allQuestions,
+      noSearchResults: false,
+      currentLen: 4,
+      questionsOnScreen: allQuestions.results.slice(0, 4),
+    });
+  }
+
   render() {
     const { productId, productName } = this.props;
     const {
       questions,
       questionsOnScreen,
+      noSearchResults,
+      searchTerm,
       addQuestionClicked,
       hideButton,
       loadQuestions,
     } = this.state;
+    let contentToRender = '';
+    if (noSearchResults) {
+      contentToRender = <div className={style.noMatch}>{`No matching results for '${searchTerm}'!`}</div>;
+    } else if (loadQuestions) {
+      contentToRender = (
+        <div className="questionsList">
+          {questionsOnScreen.map((question) => (
+            <div key={question.question_id} className="question">
+              <Question
+                question={question}
+                productName={productName}
+              />
+            </div>
+          ))}
+        </div>
+      );
+    }
     return (
       <div id="qa" className={style.qa}>
         <h3>QUESTIONS AND ANSWERS</h3>
-        <SearchBar questions={questions} />
+        <SearchBar
+          questions={questions}
+          showSearchedQuestions={this.showSearchedQuestions}
+          revertToOriginal={this.revertToOriginal}
+        />
         <div id="qaContent" className={style.qaContent}>
-          {loadQuestions
-            ? (
-              <div className="questionsList">
-                {questionsOnScreen.map((question) => (
-                  <div key={question.question_id} className="question">
-                    <Question
-                      question={question}
-                      productName={productName}
-                    />
-                  </div>
-                ))}
-              </div>
-            ) : ''}
+          {contentToRender}
         </div>
         <div className={`${style.qaFooterButtons}`}>
           {questions.results.length > 4 && !hideButton ? <button className={style.questionButton} type="button" onClick={this.loadMoreQuestions.bind(this)} id="loadMoreQuestions">MORE ANSWERED QUESTIONS</button> : ''}

@@ -125,18 +125,18 @@ class QuestionForm extends React.Component {
             <form>
               <label htmlFor="question">
                 Question *
-                <textarea id="questionField" className={bodyClass} name="questionField" onChange={(e) => this.handleQuestionChange(e)} />
+                <textarea id="questionField" className={bodyClass} name="questionField" maxLength="1000" onChange={(e) => this.handleQuestionChange(e)} />
               </label>
               <label htmlFor="nickname">
                 Nickname *
-                <input type="text" id="questionNickname" className={nameClass} name="questionNickname" placeholder="Example: jackson11!" onChange={(e) => this.handleNicknameChange(e)} />
+                <input type="text" id="questionNickname" className={nameClass} name="questionNickname" placeholder="Example: jackson11!" maxLength="60" onChange={(e) => this.handleNicknameChange(e)} />
                 <p className={style.fieldDescription}>
                   For privacy reasons, do not use your full name or email address
                 </p>
               </label>
               <label htmlFor="email">
                 Email *
-                <input type="text" id="questionEmail" className={emailClass} name="questionEmail" placeholder="Why did you like the product or not?" onChange={(e) => this.handleEmailChange(e)} />
+                <input type="text" id="questionEmail" className={emailClass} name="questionEmail" placeholder="Why did you like the product or not?" maxLength="60" onChange={(e) => this.handleEmailChange(e)} />
                 <p className={style.fieldDescription}>
                   For authentication reasons, you will not be emailed
                 </p>

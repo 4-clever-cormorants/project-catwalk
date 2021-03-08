@@ -7,7 +7,7 @@ const AddToCart = () => (
     <button type="submit" value="addToBag" className={css.addToCartButton}>
       <span className="fa fa-shopping-bag" />
       &nbsp;
-      Add to Bag
+      ADD TO BAG
     </button>
   </label>
 );
