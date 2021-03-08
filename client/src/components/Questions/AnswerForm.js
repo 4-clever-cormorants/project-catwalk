@@ -110,18 +110,6 @@ class AnswerForm extends React.Component {
     const bodyClass = bodyInvalid ? `${style.invalidField} answerField` : 'answerField';
     const nameClass = nameInvalid ? `${style.invalidField} answerNickname` : 'answerNickname';
     const emailClass = emailInvalid ? `${style.invalidField} answerEmail` : 'answerEmail';
-    // let bodyClass = 'answerField';
-    // let nameClass = 'answerNickname';
-    // let emailClass = 'answerEmail';
-    // if (bodyInvalid) {
-    //   bodyClass = `${style.invalidField} answerField`;
-    // }
-    // if (nameInvalid) {
-    //   nameClass = `${style.invalidField} answerNickname`;
-    // }
-    // if (emailInvalid) {
-    //   emailClass = `${style.invalidField} answerEmail`;
-    // }
     return (
       <div className={style.modal}>
         <div className={style.blocker} onClick={exitAnswerForm} />
