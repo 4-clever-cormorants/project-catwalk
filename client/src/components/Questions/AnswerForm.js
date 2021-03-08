@@ -107,18 +107,21 @@ class AnswerForm extends React.Component {
       emailInvalid,
     } = this.state;
     const errorMessage = errorMessages.join(', ');
-    let bodyClass = 'answerField';
-    let nameClass = 'answerNickname';
-    let emailClass = 'answerEmail';
-    if (bodyInvalid) {
-      bodyClass = `${style.invalidField} answerField`;
-    }
-    if (nameInvalid) {
-      nameClass = `${style.invalidField} answerNickname`;
-    }
-    if (emailInvalid) {
-      emailClass = `${style.invalidField} answerEmail`;
-    }
+    const bodyClass = bodyInvalid ? `${style.invalidField} answerField` : 'answerField';
+    const nameClass = nameInvalid ? `${style.invalidField} answerNickname` : 'answerNickname';
+    const emailClass = emailInvalid ? `${style.invalidField} answerEmail` : 'answerEmail';
+    // let bodyClass = 'answerField';
+    // let nameClass = 'answerNickname';
+    // let emailClass = 'answerEmail';
+    // if (bodyInvalid) {
+    //   bodyClass = `${style.invalidField} answerField`;
+    // }
+    // if (nameInvalid) {
+    //   nameClass = `${style.invalidField} answerNickname`;
+    // }
+    // if (emailInvalid) {
+    //   emailClass = `${style.invalidField} answerEmail`;
+    // }
     return (
       <div className={style.modal}>
         <div className={style.blocker} onClick={exitAnswerForm} />
@@ -161,6 +164,7 @@ class AnswerForm extends React.Component {
                 <button type="button" className={`${style.submitButton} submitAnswer`} onClick={this.handleSubmitAnswer.bind(this)} disabled={submitted}>SUBMIT</button>
               </div>
               {submitError ? <div className={`${style.errorMessage} errorMessage`}>{`You must enter the following: ${errorMessage}`}</div> : ''}
+              {submitted ? <div className={`${style.successMessage} successMessage`}>Successfully submitted!</div> : ''}
             </form>
           </div>
         </div>

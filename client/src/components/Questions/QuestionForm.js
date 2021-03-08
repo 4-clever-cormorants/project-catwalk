@@ -105,18 +105,9 @@ class QuestionForm extends React.Component {
       emailInvalid,
     } = this.state;
     const errorMessage = errorMessages.join(', ');
-    let bodyClass = 'questionField';
-    let nameClass = 'questionNickname';
-    let emailClass = 'questionEmail';
-    if (bodyInvalid) {
-      bodyClass = `${style.invalidField} questionField`;
-    }
-    if (nameInvalid) {
-      nameClass = `${style.invalidField} questionNickname`;
-    }
-    if (emailInvalid) {
-      emailClass = `${style.invalidField} questionEmail`;
-    }
+    const bodyClass = bodyInvalid ? `${style.invalidField} questionField` : 'questionField';
+    const nameClass = nameInvalid ? `${style.invalidField} questionNickname` : 'questionNickname';
+    const emailClass = emailInvalid ? `${style.invalidField} questionEmail` : 'questionEmail';
     return (
       <div className={style.modal}>
         <div className={style.blocker} onClick={exitQuestionForm} />
@@ -152,6 +143,7 @@ class QuestionForm extends React.Component {
                 <button type="button" id="submitQuestion" className={`${style.submitButton}`} onClick={this.handleSubmitAnswer.bind(this)} disabled={submitted}>Submit</button>
               </div>
               {submitError ? <div className={`${style.errorMessage} errorMessage`}>{`You must enter the following: ${errorMessage}`}</div> : ''}
+              {submitted ? <div className={`${style.successMessage} successMessage`}>Successfully submitted!</div> : ''}
             </form>
           </div>
         </div>

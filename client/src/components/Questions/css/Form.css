@@ -137,8 +137,12 @@
   color: black;
 }
 
+.successMessage,
 .errorMessage {
   margin-top: 16px;
+}
+
+.errorMessage {
   color: crimson;
 }
 
