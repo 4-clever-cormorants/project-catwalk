@@ -30,9 +30,13 @@ const add = (id, callback) => {
 const drop = (id, callback) => {
   for (let i = 0; i < wishlistStore.length; i += 1) {
     if (wishlistStore[i] === id) {
-      wishlistStore = wishlistStore
-        .slice(0, wishlist[id])
-        .concat(wishlistStore.slice(wishlist[id] + 1));
+      if (i === wishlistStore.length) {
+        wishlistStore.pop();
+      } else {
+        wishlistStore = wishlistStore
+          .slice(0, i)
+          .concat(wishlistStore.slice(i + 1));
+      }
       delete wishlist[id];
     }
   }
