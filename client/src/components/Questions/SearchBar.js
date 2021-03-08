@@ -16,8 +16,8 @@ class SearchBar extends React.Component {
       if (searchTerm.length >= 3) {
         this.searchQuestions();
       } else {
-        const { revertToOriginalAfterSearch } = this.props;
-        revertToOriginalAfterSearch();
+        const { revertToOriginal } = this.props;
+        revertToOriginal();
       }
     });
   }
@@ -30,13 +30,13 @@ class SearchBar extends React.Component {
       const question = questions.results[i];
       const upperCaseSearchTerm = searchTerm.toUpperCase();
       const questionBody = question.question_body.toUpperCase();
-      if (questionBody.search(upperCaseSearchTerm) !== -1) {
+      if (questionBody.indexOf(upperCaseSearchTerm) !== -1) {
         questionHits.push(question);
       } else {
         const answerIds = Object.keys(question.answers);
         for (let j = 0; j < answerIds.length; j += 1) {
           const answerBody = question.answers[answerIds[j]].body.toUpperCase();
-          if (answerBody.search(upperCaseSearchTerm) !== -1) {
+          if (answerBody.indexOf(upperCaseSearchTerm) !== -1) {
             questionHits.push(question);
             break;
           }
@@ -82,7 +82,7 @@ SearchBar.propTypes = {
     })),
   }).isRequired,
   showSearchedQuestions: PropTypes.func.isRequired,
-  revertToOriginalAfterSearch: PropTypes.func.isRequired,
+  revertToOriginal: PropTypes.func.isRequired,
 };
 
 export default SearchBar;

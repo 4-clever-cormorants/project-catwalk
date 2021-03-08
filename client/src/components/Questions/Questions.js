@@ -25,7 +25,7 @@ class Questions extends React.Component {
     this.escFunction = this.escFunction.bind(this);
     this.exitQuestionForm = this.exitQuestionForm.bind(this);
     this.showSearchedQuestions = this.showSearchedQuestions.bind(this);
-    this.revertToOriginalAfterSearch = this.revertToOriginalAfterSearch.bind(this);
+    this.revertToOriginal = this.revertToOriginal.bind(this);
   }
 
   componentDidMount() {
@@ -108,7 +108,7 @@ class Questions extends React.Component {
     });
   }
 
-  revertToOriginalAfterSearch() {
+  revertToOriginal() {
     const { allQuestions } = this.state;
     this.setState({
       questions: allQuestions,
@@ -152,7 +152,7 @@ class Questions extends React.Component {
         <SearchBar
           questions={questions}
           showSearchedQuestions={this.showSearchedQuestions}
-          revertToOriginalAfterSearch={this.revertToOriginalAfterSearch}
+          revertToOriginal={this.revertToOriginal}
         />
         <div id="qaContent" className={style.qaContent}>
           {contentToRender}
