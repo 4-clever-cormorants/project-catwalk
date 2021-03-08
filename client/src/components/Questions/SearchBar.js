@@ -14,7 +14,7 @@ class SearchBar extends React.Component {
     this.setState({ searchTerm: e.target.value }, () => {
       const { searchTerm } = this.state;
       if (searchTerm.length >= 3) {
-        this.searchQuestions();
+        this.searchQuestions(() => {});
       } else {
         const { revertToOriginal } = this.props;
         revertToOriginal();
@@ -22,7 +22,7 @@ class SearchBar extends React.Component {
     });
   }
 
-  searchQuestions() {
+  searchQuestions(cb) {
     const { questions } = this.props;
     const { searchTerm } = this.state;
     const questionHits = [];
@@ -50,6 +50,7 @@ class SearchBar extends React.Component {
       const { showSearchedQuestions } = this.props;
       showSearchedQuestions(questionHits, true);
     }
+    cb(questionHits, searchTerm);
   }
 
   render() {
