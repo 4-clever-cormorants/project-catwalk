@@ -4,8 +4,7 @@
   left:50%;
   width: fit-content;
   height: fit-content;
-  border-radius: 20px;
-  background-color: ivory;
+  background-color: rgb(255, 255, 255);
   z-index: 110;
   padding: 20px;
   transform: translate(-50%, -50%);
