@@ -12,6 +12,7 @@ class Questions extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      allQuestions: dummyQuestions,
       questions: dummyQuestions,
       questionsOnScreen: dummyQuestions.results.slice(0, 4),
       searchQuestions: { product_id: 'dummy', results: [] },
@@ -41,6 +42,7 @@ class Questions extends React.Component {
         const questions = response.data;
         const newQuestionsOnScreen = questions.results.slice(0, currentLen);
         this.setState({
+          allQuestions: questions,
           questions,
           questionsOnScreen: newQuestionsOnScreen,
           loadQuestions: true,
@@ -99,13 +101,21 @@ class Questions extends React.Component {
     const searchQuestions = {};
     searchQuestions.product_id = productId.toString();
     searchQuestions.results = results;
-    this.setState({ searchQuestions, noSearchResults: false });
+    this.setState({
+      questions: searchQuestions,
+      noSearchResults: false,
+      currentLen: 4,
+      questionsOnScreen: searchQuestions.results.slice(0, 4),
+    });
   }
 
   revertToOriginalAfterSearch() {
+    const { allQuestions } = this.state;
     this.setState({
-      searchQuestions: { product_id: 'dummy', results: [] },
+      questions: allQuestions,
       noSearchResults: false,
+      currentLen: 4,
+      questionsOnScreen: allQuestions.results.slice(0, 4),
     });
   }
 
@@ -122,15 +132,12 @@ class Questions extends React.Component {
       loadQuestions,
     } = this.state;
     let questionsToRender = questionsOnScreen;
-    let moreButtonCondition = questions.results.length;
     if (searchQuestions.results.length > 0) {
       questionsToRender = searchQuestions.results;
-      moreButtonCondition = searchQuestions.results.length;
     }
     let contentToRender = '';
     if (noSearchResults) {
       contentToRender = <div className={style.noMatch}>{`No matching results for '${searchTerm}'!`}</div>;
-      moreButtonCondition = 0; // will never render more questions button at this point
     } else if (loadQuestions) {
       contentToRender = (
         <div className="questionsList">
@@ -157,7 +164,7 @@ class Questions extends React.Component {
           {contentToRender}
         </div>
         <div className={`${style.qaFooterButtons}`}>
-          {moreButtonCondition > 4 && !hideButton ? <button className={style.questionButton} type="button" onClick={this.loadMoreQuestions.bind(this)} id="loadMoreQuestions">MORE ANSWERED QUESTIONS</button> : ''}
+          {questions.results.length > 4 && !hideButton ? <button className={style.questionButton} type="button" onClick={this.loadMoreQuestions.bind(this)} id="loadMoreQuestions">MORE ANSWERED QUESTIONS</button> : ''}
           <button className={style.questionButton} type="button" onClick={this.addQuestion.bind(this)} id="addQuestionButton">ADD A QUESTION</button>
         </div>
         {addQuestionClicked ? <QuestionForm exitQuestionForm={() => this.exitQuestionForm()} productId={productId} productName={productName} /> : ''}

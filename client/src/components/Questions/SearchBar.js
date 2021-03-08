@@ -29,15 +29,17 @@ class SearchBar extends React.Component {
     for (let i = 0; i < questions.results.length; i += 1) {
       const question = questions.results[i];
       const upperCaseSearchTerm = searchTerm.toUpperCase();
-      if (question.question_body.toUpperCase().search(upperCaseSearchTerm) !== -1) {
+      const questionBody = question.question_body.toUpperCase();
+      if (questionBody.search(upperCaseSearchTerm) !== -1) {
         questionHits.push(question);
-        continue;
-      }
-      const answerIds = Object.keys(question.answers);
-      for (let j = 0; j < answerIds.length; j += 1) {
-        if (question.answers[answerIds[j]].body.toUpperCase().search(upperCaseSearchTerm) !== -1) {
-          questionHits.push(question);
-          continue;
+      } else {
+        const answerIds = Object.keys(question.answers);
+        for (let j = 0; j < answerIds.length; j += 1) {
+          const answerBody = question.answers[answerIds[j]].body.toUpperCase();
+          if (answerBody.search(upperCaseSearchTerm) !== -1) {
+            questionHits.push(question);
+            break;
+          }
         }
       }
     }
