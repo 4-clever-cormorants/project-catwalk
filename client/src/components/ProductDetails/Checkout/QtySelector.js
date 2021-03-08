@@ -19,7 +19,7 @@ const QtySelector = ({ qty }) => {
   return (
     <label className={css.qtySelector}>
       <select name="qty" className={css.qtySelectorButton} id="qtySelector">
-        <option value={null} key="qty" className="option">Qty</option>
+        <option value={null} key="qty" className="option">QTY</option>
         { qty !== null
           ? options.map(
             (option) => <option value={option} key={option} className="option">{option}</option>,
