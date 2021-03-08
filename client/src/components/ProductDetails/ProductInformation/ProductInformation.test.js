@@ -22,7 +22,7 @@ test('ProductInformation should display the rating, category, title, price, ship
   const shipping = wrapper.find(Shipping);
   const description = wrapper.find(Description);
   expect(productInformation.exists()).toBe(true);
-  expect(productInformationLen).toBe(5);
+  expect(productInformationLen).toBe(6);
   expect(rating.exists()).toBe(true);
   expect(category.exists()).toBe(true);
   expect(title.exists()).toBe(true);
