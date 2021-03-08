@@ -19,6 +19,7 @@
 .sizeSelector, .qtySelector, .addToCart, .addToWishList {
   width: 90%;
   position: relative;
+  font-family: 'Lato';
 }
 
 .sizeSelector .sizeSelectorButton, .qtySelector .qtySelectorButton, .addToCart .addToCartButton {

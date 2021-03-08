@@ -35,6 +35,7 @@ Thumbnail.propTypes = {
   thmbId: PropTypes.number.isRequired,
   url: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired,
+  selected: PropTypes.string.isRequired,
 };
 
 export default Thumbnail;

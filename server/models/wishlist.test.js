@@ -33,7 +33,10 @@ describe('Test the wishlist module', () => {
 
   test('should able to drop product by id', () => {
     wishlist.drop(dummy.currentProduct.id, () => {});
-    const list = wishlist.getAll();
-    expect(list.length).toBe(2);
+    expect(wishlist.getAll().length).toBe(2);
+    wishlist.drop(dummy.relatedProducts[0].id, () => {});
+    expect(wishlist.getAll().length).toBe(1);
+    wishlist.drop(dummy.relatedProducts[1].id, () => {});
+    expect(wishlist.getAll().length).toBe(0);
   });
 });

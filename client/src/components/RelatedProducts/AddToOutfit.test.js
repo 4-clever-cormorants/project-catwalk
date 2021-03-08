@@ -16,6 +16,9 @@ axios.get.mockImplementation((url) => {
   if (url === '/related/outfitList') {
     return Promise.resolve({ data: dummy.relatedProducts });
   }
+  if (url === '/wishList/getAll') {
+    return Promise.resolve({ data: [] });
+  }
   return undefined;
 });
 
