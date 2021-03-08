@@ -3,7 +3,6 @@ import ProductDetails from './ProductDetails/ProductDetails';
 import RelatedProducts from './RelatedProducts/RelatedProducts';
 import Questions from './Questions/Questions';
 
-const axios = require('axios');
 const url = require('url');
 
 class App extends React.Component {

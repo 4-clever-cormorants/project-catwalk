@@ -79,7 +79,7 @@ class Questions extends React.Component {
     this.setState({
       currentLen: newLen,
       questionsOnScreen: questions.results.slice(0, newLen),
-      hideButton: newLen > questions.results.length,
+      hideButton: newLen >= questions.results.length,
     });
   }
 

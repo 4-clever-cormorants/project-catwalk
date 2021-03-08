@@ -3,6 +3,8 @@
   border: none;
   padding: 0!important;
   color: #555;
+  font-size: 16px;
+  font-family: 'Lato', 'sans-serif';
   text-decoration: underline;
   cursor: pointer;
   outline: none;
@@ -30,7 +32,7 @@
 }
 
 .answerNameAndDate {
-  color: #888;
+  color: #767676;
 }
 
 .answerNameSeller {

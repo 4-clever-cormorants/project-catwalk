@@ -6,3 +6,8 @@
   height: 64px;
   border: solid 1px black;
 }
+
+.searchBar input::placeholder {
+  font-family: 'Lato', 'sans-serif';
+  font-weight: bold;
+}
