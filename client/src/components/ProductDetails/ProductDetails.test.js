@@ -1,4 +1,5 @@
 import React from 'react';
+// import axios from 'axios';
 import { mount } from 'enzyme';
 
 import ProductDetails from './ProductDetails';
@@ -27,8 +28,21 @@ import AddToWishList from './Checkout/AddToWishList';
 import product from './productDummyData';
 import styles from './stylesDummyData';
 
+// axios.get.mockImplementation((url) => {
+//   if (url === `/products/data?product_id=${product.id}`) {
+//     return Promise.resolve({ data: [product] });
+//   }
+//   if (url === `/products/styles?product_id=${product.id}`) {
+//     return Promise.resolve({ data: [styles] });
+//   }
+//   if (url === `/rating/data?product_id=${product.id}`) {
+//     return Promise.resolve({ data: [5] });
+//   }
+//   return undefined;
+// });
+
 describe('test Product Details component', () => {
-  const wrapper = mount(<ProductDetails productId={14933} />);
+  const wrapper = mount(<ProductDetails productId={14034} />);
   wrapper.setState({
     product,
     styleId: styles.results[0].style_id,

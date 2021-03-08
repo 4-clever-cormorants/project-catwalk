@@ -8,7 +8,6 @@ import ProductDetails from '../ProductDetails';
 
 import product from '../productDummyData';
 import styles from '../stylesDummyData';
-import ratings from '../ratingsDummyData';
 
 jest.mock('axios');
 
@@ -20,7 +19,7 @@ axios.get.mockImplementation((url) => {
     return Promise.resolve({ data: [styles] });
   }
   if (url === `/rating/data?product_id=${product.id}`) {
-    return Promise.resolve({ data: [ratings] });
+    return Promise.resolve({ data: [5] });
   }
   return undefined;
 });
@@ -75,19 +74,24 @@ describe('testing the default view of the image gallery', () => {
     expect(leftArrow.exists()).toBe(true);
   });
 
-  // it('should update the default view when the right arrow is clicked', () => {
-  //   const wrapper = mount(<ProductDetails
-  //     productId={14034}
-  //   />);
-  //   const instance = wrapper.instance();
-  //   wrapper.setState({
-  //     load: true,
-  //   });
-  //   expect(instance.state.id).toBe(0);
-  //   const rightArrow = wrapper.find('.fa-chevron-right');
-  //   // let { id } = wrapper.props();
-  //   rightArrow.simulate('click', {});
-  //   // expect(id).toBe(1);
-  //   expect(rightArrow.exists()).toBe(true);
-  // });
+  it('should update the id when the right arrow is clicked', () => {
+    const wrapper = mount(<ProductDetails
+      productId={14034}
+    />);
+    const instance = wrapper.instance();
+    wrapper.setState({
+      product,
+      rating: 5,
+      styleId: styles.results[0].style_id,
+      styles,
+      style: styles.results[0],
+      id: 0,
+      load: true,
+    });
+    wrapper.update();
+    expect(instance.state.id).toBe(0);
+    const rightArrow = wrapper.find('.fa-chevron-right');
+    rightArrow.simulate('click');
+    expect(instance.state.id).toBe(1);
+  });
 });
