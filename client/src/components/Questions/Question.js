@@ -17,7 +17,7 @@ class Question extends React.Component {
       questionHelpfulness: question.question_helpfulness,
       increased: false,
       loadAnswers: false,
-      answerCount: 3,
+      answerCount: Number.MAX_SAFE_INTEGER,
     };
     this.updateAnswers = this.updateAnswers.bind(this);
     this.escFunction = this.escFunction.bind(this);

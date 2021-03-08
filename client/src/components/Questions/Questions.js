@@ -16,7 +16,6 @@ class Questions extends React.Component {
       questionsOnScreen: dummyQuestions.results.slice(0, 4),
       addQuestionClicked: false,
       currentLen: 4,
-      totalCount: 5,
       loadQuestions: false,
       hideButton: false,
     };
@@ -36,8 +35,10 @@ class Questions extends React.Component {
       .then((response) => {
         const questions = response.data;
         const newQuestionsOnScreen = questions.results.slice(0, currentLen);
-        this.setState({ questions, questionsOnScreen: newQuestionsOnScreen }, () => {
-          this.setState({ loadQuestions: true });
+        this.setState({
+          questions,
+          questionsOnScreen: newQuestionsOnScreen,
+          loadQuestions: true,
         });
       })
       .catch((err) => {
@@ -52,11 +53,10 @@ class Questions extends React.Component {
 
   fetchQuestions() {
     const { productId } = this.props;
-    const { totalCount, loadQuestions } = this.state;
     return axios.get('/qa/questions', {
       params: {
         productId,
-        count: !loadQuestions ? 5 : totalCount + 2,
+        count: Number.MAX_SAFE_INTEGER,
       },
     });
   }
@@ -68,29 +68,13 @@ class Questions extends React.Component {
   }
 
   loadMoreQuestions() {
-    const { currentLen, totalCount } = this.state;
-    this.fetchQuestions()
-      .then((response) => {
-        const questions = response.data;
-        const questionsOnScreen = questions.results.slice(0, currentLen + 2);
-        const newLen = currentLen + 2;
-        if (questions.results.length < totalCount + 2) {
-          this.setState({
-            questions,
-            hideButton: true,
-            questionsOnScreen,
-            currentLen: newLen,
-          });
-          return;
-        }
-        const newCount = totalCount + 2;
-        this.setState({
-          questions,
-          questionsOnScreen,
-          currentLen: newLen,
-          totalCount: newCount,
-        });
-      });
+    const { currentLen, questions } = this.state;
+    const newLen = currentLen + 2;
+    this.setState({
+      currentLen: newLen,
+      questionsOnScreen: questions.results.slice(0, newLen),
+      hideButton: newLen > questions.results.length,
+    });
   }
 
   addQuestion() {
@@ -113,14 +97,17 @@ class Questions extends React.Component {
     return (
       <div id="qa" className={style.qa}>
         <h3>QUESTIONS AND ANSWERS</h3>
-        <SearchBar />
+        <SearchBar questions={questions} />
         <div id="qaContent" className={style.qaContent}>
           {loadQuestions
             ? (
               <div className="questionsList">
                 {questionsOnScreen.map((question) => (
                   <div key={question.question_id} className="question">
-                    <Question question={question} productName={productName} />
+                    <Question
+                      question={question}
+                      productName={productName}
+                    />
                   </div>
                 ))}
               </div>
