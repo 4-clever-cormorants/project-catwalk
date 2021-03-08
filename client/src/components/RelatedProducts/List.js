@@ -3,19 +3,33 @@ import propTypes from 'prop-types';
 import Card from './Card';
 import style from './css/list.css';
 
-const List = ({ productsList, compareHandler }) => (
+const List = ({
+  productsList,
+  wishList,
+  compareHandler,
+  addToWishHandler,
+  dropWishHandler,
+}) => (
   <div className={style.relatedProductsList}>
     {productsList.map((item) => (
       <div key={item.id.toString()}>
-        <Card item={item} compareHandler={compareHandler} />
+        <Card
+          item={item}
+          wishList={wishList}
+          compareHandler={compareHandler}
+          addToWishHandler={addToWishHandler}
+          dropWishHandler={dropWishHandler}
+        />
       </div>
-
     ))}
   </div>
 );
 
 List.propTypes = {
+  wishList: propTypes.arrayOf(propTypes.number).isRequired,
   compareHandler: propTypes.func.isRequired,
+  addToWishHandler: propTypes.func.isRequired,
+  dropWishHandler: propTypes.func.isRequired,
   productsList: propTypes.arrayOf(propTypes.object).isRequired,
 };
 
