@@ -9,7 +9,6 @@ const ImageGallery = ({
   styleId, style, id, leftClick, rightClick, renderDefaultView,
 }) => {
   const [photo, photos] = [style.photos[0], style.photos.slice(1)];
-  console.log('id', id, 'style', style);
   return (
     <div className={css.imageGallery} styleid={styleId}>
       <DefaultView
@@ -22,7 +21,7 @@ const ImageGallery = ({
       <div className={css.thumbnailView}>
         <div className={css.thumbnails}>
           <div key={`first ${photo.url.toString()}`}>
-            <Thumbnail id={0} url={photo.url} onClick={renderDefaultView} defaultChecked />
+            <Thumbnail id={0} url={photo.url} onClick={renderDefaultView} />
           </div>
           {photos.map((thumbnail, i) => (
             <div key={`${i} ${thumbnail.url.toString()}`}>

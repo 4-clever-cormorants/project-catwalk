@@ -7,17 +7,14 @@ import PropTypes from 'prop-types';
 import css from './ImageGallery.css';
 
 const Thumbnail = ({
-  id, url, onClick, defaultChecked,
+  id, url, onClick,
 }) => (
   <div
     className={css.thumbnail}
     id={url}
     onClick={onClick}
   >
-    <label>
-      <input type="radio" name="thumbnail" className="styleRadio" defaultChecked={defaultChecked} id={id} />
-      <img src={url} alt="thumbnailimage" id={id} />
-    </label>
+    <img src={url} alt="thumbnailimage" id={id} />
   </div>
 );
 
@@ -25,7 +22,6 @@ Thumbnail.propTypes = {
   id: PropTypes.number.isRequired,
   url: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired,
-  defaultChecked: PropTypes.bool,
 };
 
 Thumbnail.defaultProps = {
