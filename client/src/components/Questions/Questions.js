@@ -103,7 +103,10 @@ class Questions extends React.Component {
   }
 
   revertToOriginalAfterSearch() {
-    this.setState({ searchQuestions: { product_id: 'dummy', results: [] } });
+    this.setState({
+      searchQuestions: { product_id: 'dummy', results: [] },
+      noSearchResults: false,
+    });
   }
 
   render() {
@@ -124,7 +127,7 @@ class Questions extends React.Component {
     }
     let contentToRender = '';
     if (noSearchResults) {
-      contentToRender = <div>{`No matching results for ${searchTerm}`}</div>;
+      contentToRender = <div className={style.noMatch}>{`No matching results for '${searchTerm}'!`}</div>;
     } else if (loadQuestions) {
       contentToRender = (
         <div className="questionsList">

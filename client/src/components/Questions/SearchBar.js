@@ -25,7 +25,6 @@ class SearchBar extends React.Component {
   searchQuestions() {
     const { questions } = this.props;
     const { searchTerm } = this.state;
-    console.log(questions, searchTerm);
     const questionHits = [];
     for (let i = 0; i < questions.results.length; i += 1) {
       const question = questions.results[i];
@@ -44,7 +43,6 @@ class SearchBar extends React.Component {
     }
     if (questionHits.length === 0) {
       const { showSearchedQuestions } = this.props;
-      console.log(`No matching results for ${searchTerm}`);
       showSearchedQuestions(questionHits, false, searchTerm);
     } else {
       const { showSearchedQuestions } = this.props;
