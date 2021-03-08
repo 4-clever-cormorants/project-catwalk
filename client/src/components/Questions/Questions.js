@@ -15,7 +15,6 @@ class Questions extends React.Component {
       allQuestions: dummyQuestions,
       questions: dummyQuestions,
       questionsOnScreen: dummyQuestions.results.slice(0, 4),
-      searchQuestions: { product_id: 'dummy', results: [] },
       noSearchResults: false,
       searchTerm: '',
       addQuestionClicked: false,
@@ -124,24 +123,19 @@ class Questions extends React.Component {
     const {
       questions,
       questionsOnScreen,
-      searchQuestions,
       noSearchResults,
       searchTerm,
       addQuestionClicked,
       hideButton,
       loadQuestions,
     } = this.state;
-    let questionsToRender = questionsOnScreen;
-    if (searchQuestions.results.length > 0) {
-      questionsToRender = searchQuestions.results;
-    }
     let contentToRender = '';
     if (noSearchResults) {
       contentToRender = <div className={style.noMatch}>{`No matching results for '${searchTerm}'!`}</div>;
     } else if (loadQuestions) {
       contentToRender = (
         <div className="questionsList">
-          {questionsToRender.map((question) => (
+          {questionsOnScreen.map((question) => (
             <div key={question.question_id} className="question">
               <Question
                 question={question}
