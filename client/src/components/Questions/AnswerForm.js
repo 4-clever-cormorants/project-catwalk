@@ -110,6 +110,8 @@ class AnswerForm extends React.Component {
     const bodyClass = bodyInvalid ? `${style.invalidField} answerField` : 'answerField';
     const nameClass = nameInvalid ? `${style.invalidField} answerNickname` : 'answerNickname';
     const emailClass = emailInvalid ? `${style.invalidField} answerEmail` : 'answerEmail';
+    const submitButtonClass = submitted ? style.submitButtonDisabled : style.submitButton;
+    const submitButtonText = submitted ? 'SUBMITTED' : 'SUBMIT';
     return (
       <div className={style.modal}>
         <div className={style.blocker} onClick={exitAnswerForm} />
@@ -149,7 +151,7 @@ class AnswerForm extends React.Component {
                 </div>
               </label>
               <div className={`${style.buttonContainer}`}>
-                <button type="button" className={`${style.submitButton} submitAnswer`} onClick={this.handleSubmitAnswer.bind(this)} disabled={submitted}>SUBMIT</button>
+                <button type="button" className={`${submitButtonClass} submitAnswer`} onClick={this.handleSubmitAnswer.bind(this)} disabled={submitted}>{submitButtonText}</button>
               </div>
               {submitError ? <div className={`${style.errorMessage} errorMessage`}>{`You must enter the following: ${errorMessage}`}</div> : ''}
               {submitted ? <div className={`${style.successMessage} successMessage`}>Successfully submitted!</div> : ''}

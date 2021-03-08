@@ -111,6 +111,7 @@
 }
 
 .submitButton,
+.submitButtonDisabled,
 .uploadPhoto {
   width: 100%;
   outline: none;
