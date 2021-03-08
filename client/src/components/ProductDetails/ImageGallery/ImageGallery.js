@@ -7,35 +7,40 @@ import css from './ImageGallery.css';
 
 const ImageGallery = ({
   styleId, style, id, leftClick, rightClick, renderDefaultView,
-}) => {
-  const [photo, photos] = [style.photos[0], style.photos.slice(1)];
-  return (
-    <div className={css.imageGallery} styleid={styleId}>
-      <DefaultView
-        id={id}
-        max={style.photos.length}
-        leftClick={leftClick}
-        rightClick={rightClick}
-        url={style.photos[id].url}
-      />
-      <div className={css.thumbnailView}>
-        <div className={css.thumbnails}>
-          <div key={`first ${photo.url.toString()}`}>
-            <Thumbnail id={0} url={photo.url} onClick={renderDefaultView} />
-          </div>
-          {photos.map((thumbnail, i) => (
+}) => (
+  <div className={css.imageGallery} styleid={styleId}>
+    <DefaultView
+      id={id}
+      max={style.photos.length}
+      leftClick={leftClick}
+      rightClick={rightClick}
+      url={style.photos[id].url}
+    />
+    <div className={css.thumbnailView}>
+      <div className={css.thumbnails}>
+        {style.photos.map((thumbnail, i) => {
+          let selected = 'notSelected';
+          if (parseInt(id, 10) === i) {
+            selected = 'selected';
+          }
+          return (
             <div key={`${i} ${thumbnail.url.toString()}`}>
-              <Thumbnail id={i + 1} url={thumbnail.url} onClick={renderDefaultView} />
+              <Thumbnail
+                thmbId={i}
+                url={thumbnail.url}
+                onClick={renderDefaultView}
+                selected={selected}
+              />
             </div>
-          ))}
-        </div>
-        <div className={css.arrow}>
-          <span className="fa fa-chevron-down" />
-        </div>
+          );
+        })}
+      </div>
+      <div className={css.arrow}>
+        <span className="fa fa-chevron-down" />
       </div>
     </div>
-  );
-};
+  </div>
+);
 
 ImageGallery.propTypes = {
   style: PropTypes.shape({
