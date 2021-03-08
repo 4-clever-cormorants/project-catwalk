@@ -88,7 +88,7 @@ class AnswerFooter extends React.Component {
             </span>
             <span> | </span>
             <span className={`${style.answerReport} answerReport`}>
-              {reported ? <p>Reported</p> : <button type="button" className={`${style.buttonLink} answerReportButton`} onClick={this.reportAnswer.bind(this)}>Report</button>}
+              {reported ? <span>Reported</span> : <button type="button" className={`${style.buttonLink} answerReportButton`} onClick={this.reportAnswer.bind(this)}>Report</button>}
             </span>
           </p>
         </div>

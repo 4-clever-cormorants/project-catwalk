@@ -140,10 +140,15 @@
 .successMessage,
 .errorMessage {
   margin-top: 16px;
+  text-align: center;
 }
 
 .errorMessage {
   color: crimson;
+}
+
+.successMessage {
+  color: rgb(75,181,67);
 }
 
 .buttonContainer {
