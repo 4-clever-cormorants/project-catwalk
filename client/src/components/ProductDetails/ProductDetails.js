@@ -25,6 +25,8 @@ class ProductDetails extends React.Component {
     this.styleSelector = this.styleSelector.bind(this);
     this.skuSelector = this.skuSelector.bind(this);
     this.addToCart = this.addToCart.bind(this);
+    this.leftClick = this.leftClick.bind(this);
+    this.rightClick = this.rightClick.bind(this);
     this.renderDefaultView = this.renderDefaultView.bind(this);
   }
 
@@ -44,8 +46,7 @@ class ProductDetails extends React.Component {
                   styleId: response.data.results[0].style_id,
                   styles: response.data,
                   style: response.data.results[0],
-                  id: '0',
-                  // sku: Object.keys(response.data.results[0].skus)[0],
+                  id: 0,
                   load: true,
                 },
                 () => { getProductName(product.name); });
@@ -68,7 +69,7 @@ class ProductDetails extends React.Component {
         if (style.style_id === styleId) {
           this.setState({
             style,
-            id: '0',
+            id: 0,
             sku: null,
           });
         }
@@ -92,8 +93,25 @@ class ProductDetails extends React.Component {
     }
   }
 
+  leftClick() {
+    const { id } = this.state;
+    if (id > 0) {
+      this.setState({
+        id: id - 1,
+      });
+    }
+  }
+
+  rightClick() {
+    const { id, style } = this.state;
+    if (id < style.photos.length - 1) {
+      this.setState({
+        id: id + 1,
+      });
+    }
+  }
+
   renderDefaultView(e) {
-    console.log(e.target);
     this.setState({
       id: e.target.id,
     });
@@ -112,7 +130,9 @@ class ProductDetails extends React.Component {
             <ImageGallery
               styleId={styleId}
               style={style}
-              defaultView={id}
+              id={parseInt(id, 10)}
+              leftClick={this.leftClick}
+              rightClick={this.rightClick}
               renderDefaultView={this.renderDefaultView}
             />
             <ProductInformation

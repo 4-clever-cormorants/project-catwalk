@@ -6,12 +6,18 @@ import Thumbnail from './Thumbnail';
 import css from './ImageGallery.css';
 
 const ImageGallery = ({
-  styleId, style, defaultView, renderDefaultView,
+  styleId, style, id, leftClick, rightClick, renderDefaultView,
 }) => {
   const [photo, photos] = [style.photos[0], style.photos.slice(1)];
   return (
     <div className={css.imageGallery} styleid={styleId}>
-      <DefaultView url={style.photos[defaultView].url} />
+      <DefaultView
+        id={id}
+        max={style.photos.length}
+        leftClick={leftClick}
+        rightClick={rightClick}
+        url={style.photos[id].url}
+      />
       <div className={css.thumbnailView}>
         <div className={css.thumbnails}>
           <div key={`first ${photo.url.toString()}`}>
@@ -42,7 +48,7 @@ ImageGallery.propTypes = {
     skus: PropTypes.objectOf(PropTypes.object).isRequired,
   }).isRequired,
   styleId: PropTypes.number.isRequired,
-  defaultView: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
   renderDefaultView: PropTypes.func.isRequired,
 };
 
