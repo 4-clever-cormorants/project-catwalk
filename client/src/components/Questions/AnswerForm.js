@@ -151,10 +151,13 @@ class AnswerForm extends React.Component {
                 </div>
               </label>
               <div className={`${style.buttonContainer}`}>
-                <button type="button" className={`${submitButtonClass} submitAnswer`} onClick={this.handleSubmitAnswer.bind(this)} disabled={submitted}>{submitButtonText}</button>
+                <button type="button" className={`${submitButtonClass} submitAnswer`} onClick={this.handleSubmitAnswer.bind(this)} disabled={submitted}>
+                  {submitButtonText}
+                  &nbsp;
+                  {submitted ? <i className="fa fa-check-circle" aria-hidden="true" /> : ''}
+                </button>
               </div>
               {submitError ? <div className={`${style.errorMessage} errorMessage`}>{`You must enter the following: ${errorMessage}`}</div> : ''}
-              {submitted ? <div className={`${style.successMessage} successMessage`}>Successfully submitted!</div> : ''}
             </form>
           </div>
         </div>
