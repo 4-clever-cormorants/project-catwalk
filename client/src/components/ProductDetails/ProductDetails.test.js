@@ -35,7 +35,6 @@ describe('test Product Details component', () => {
     styles,
     style: styles.results[0],
     id: 0,
-    // sku: Object.keys(styles.results[0].skus)[0],
     cart: [],
     rating: { average: 3, totalRatings: 35 },
     load: true,
