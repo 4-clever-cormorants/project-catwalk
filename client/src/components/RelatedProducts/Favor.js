@@ -14,7 +14,7 @@ const Favor = ({
   }
   return (
     <div className={style.actionIconFavor} onClick={dropWishHandler.bind(this, id)} onKeyPress={dropWishHandler.bind(this, id)} role="button" tabIndex={0}>
-      <i className={`${style.favor} fa fa-star`} />
+      <i className={`${style.favorFill} fa fa-star`} />
     </div>
   );
 };

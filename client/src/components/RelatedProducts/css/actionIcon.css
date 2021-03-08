@@ -1,27 +1,45 @@
-.actionIconFavor {
+.actionIconFavor, .actionIconDrop {
   position: absolute;
   top: 0px;
   right: 0px;
   z-index: 100;
+  margin: 10px;
+  background-color: rgba(255, 255, 255, 0.5) ;
+  border-radius: 50%;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  box-shadow: -6px 6px 15px rgb(0 0 0 / 15%);
+  /* object-fit: cover; */
 }
 
 .favor {
-  margin: 10px;
-  font-size: 40px;
-  color: rgb(255, 204, 0);
+  height: 20px;
+  width: 20px;
+  margin: 0 auto;
+  padding: 5px;
+  position: relative;
+  font-size: 20px;
+  color: black;
 }
 
-.actionIconDrop {
-  position: absolute;
-  top: 0px;
-  right: 0px;
-  z-index: 100;
+.favorFill {
+  height: 20px;
+  width: 20px;
+  margin: 0 auto;
+  padding: 5px;
+  position: relative;
+  font-size: 22px;
+  color: black;
 }
 
 .drop {
-  margin: 10px;
-  font-size: 40px;
-  color: gray;
+  height: auto;
+  margin: 0 auto;
+  padding: 5px;
+  position: relative;
+  font-size: 20px;
+  color: black;
 }
 
 .actionIconFavor:focus {

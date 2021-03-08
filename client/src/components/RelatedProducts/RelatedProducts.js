@@ -158,7 +158,7 @@ class RelatedProducts extends React.Component {
       <div className={style.relatedProducts}>
         {load ? (
           <div className={style.gridContainer0}>
-            <span>Related Products</span>
+            <span className={style.ListName}>RELATED PRODUCTS</span>
             {comparison}
             <List
               productsList={related}
@@ -173,7 +173,7 @@ class RelatedProducts extends React.Component {
         )}
         {outfitLoad ? (
           <div className={style.gridContainer1}>
-            <span>Your Ownoutfit</span>
+            <span className={style.ListName}>YOUR OWNOUTFIT</span>
             <div className={style.outfitListWithAdd}>
               <AddToOutfit addToOutfitHandler={this.addToOutfitHandler} />
               <ListOutfit
