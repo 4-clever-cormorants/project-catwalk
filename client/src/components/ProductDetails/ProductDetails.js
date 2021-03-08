@@ -17,7 +17,7 @@ class ProductDetails extends React.Component {
       styleId: null,
       styles: null,
       style: null,
-      defaultView: null,
+      id: null,
       sku: null,
       cart: [],
       load: false,
@@ -44,7 +44,7 @@ class ProductDetails extends React.Component {
                   styleId: response.data.results[0].style_id,
                   styles: response.data,
                   style: response.data.results[0],
-                  defaultView: response.data.results[0].photos[0].url,
+                  id: '0',
                   // sku: Object.keys(response.data.results[0].skus)[0],
                   load: true,
                 },
@@ -68,7 +68,7 @@ class ProductDetails extends React.Component {
         if (style.style_id === styleId) {
           this.setState({
             style,
-            defaultView: style.photos[0].url,
+            id: '0',
             sku: null,
           });
         }
@@ -93,14 +93,15 @@ class ProductDetails extends React.Component {
   }
 
   renderDefaultView(e) {
+    console.log(e.target);
     this.setState({
-      defaultView: e.target.id,
+      id: e.target.id,
     });
   }
 
   render() {
     const {
-      product, rating, styleId, styles, style, defaultView, sku, load,
+      product, rating, styleId, styles, style, id, sku, load,
     } = this.state;
 
     return (
@@ -111,7 +112,7 @@ class ProductDetails extends React.Component {
             <ImageGallery
               styleId={styleId}
               style={style}
-              defaultView={defaultView}
+              defaultView={id}
               renderDefaultView={this.renderDefaultView}
             />
             <ProductInformation

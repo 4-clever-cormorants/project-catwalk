@@ -11,15 +11,15 @@ const ImageGallery = ({
   const [photo, photos] = [style.photos[0], style.photos.slice(1)];
   return (
     <div className={css.imageGallery} styleid={styleId}>
-      <DefaultView url={defaultView} />
+      <DefaultView url={style.photos[defaultView].url} />
       <div className={css.thumbnailView}>
         <div className={css.thumbnails}>
           <div key={`first ${photo.url.toString()}`}>
-            <Thumbnail url={photo.url} onClick={renderDefaultView} defaultChecked />
+            <Thumbnail id={0} url={photo.url} onClick={renderDefaultView} defaultChecked />
           </div>
           {photos.map((thumbnail, i) => (
             <div key={`${i} ${thumbnail.url.toString()}`}>
-              <Thumbnail url={thumbnail.url} onClick={renderDefaultView} />
+              <Thumbnail id={i + 1} url={thumbnail.url} onClick={renderDefaultView} />
             </div>
           ))}
         </div>
