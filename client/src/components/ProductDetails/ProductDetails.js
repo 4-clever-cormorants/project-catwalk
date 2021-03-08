@@ -97,7 +97,7 @@ class ProductDetails extends React.Component {
     const { id } = this.state;
     if (id > 0) {
       this.setState({
-        id: id - 1,
+        id: parseInt(id, 10) - 1,
       });
     }
   }
@@ -106,7 +106,7 @@ class ProductDetails extends React.Component {
     const { id, style } = this.state;
     if (id < style.photos.length - 1) {
       this.setState({
-        id: id + 1,
+        id: parseInt(id, 10) + 1,
       });
     }
   }

@@ -9,6 +9,7 @@ const ImageGallery = ({
   styleId, style, id, leftClick, rightClick, renderDefaultView,
 }) => {
   const [photo, photos] = [style.photos[0], style.photos.slice(1)];
+  console.log('id', id, 'style', style);
   return (
     <div className={css.imageGallery} styleid={styleId}>
       <DefaultView
