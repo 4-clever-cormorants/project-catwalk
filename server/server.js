@@ -8,6 +8,7 @@ const productRoutes = require('./routes/productRoutes.js');
 const questionsRoutes = require('./routes/questionsRoutes.js');
 const relatedRoutes = require('./routes/relatedRoutes.js');
 const ratingRoutes = require('./routes/ratingRoutes.js');
+const wishListRoutes = require('./routes/wishListRoutes.js');
 
 app.use(express.static(path.join(__dirname, '../client/dist')));
 
@@ -26,6 +27,7 @@ app.use('/related', relatedRoutes);
 app.use('/products', productRoutes);
 app.use('/styles', productRoutes);
 app.use('/rating', ratingRoutes);
+app.use('/wishList', wishListRoutes);
 
 app.get('/', (req, res) => {
   res.render('index');
