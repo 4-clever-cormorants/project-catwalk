@@ -122,12 +122,15 @@ class Questions extends React.Component {
       loadQuestions,
     } = this.state;
     let questionsToRender = questionsOnScreen;
+    let moreButtonCondition = questions.results.length;
     if (searchQuestions.results.length > 0) {
       questionsToRender = searchQuestions.results;
+      moreButtonCondition = searchQuestions.results.length;
     }
     let contentToRender = '';
     if (noSearchResults) {
       contentToRender = <div className={style.noMatch}>{`No matching results for '${searchTerm}'!`}</div>;
+      moreButtonCondition = 0; // will never render more questions button at this point
     } else if (loadQuestions) {
       contentToRender = (
         <div className="questionsList">
@@ -154,7 +157,7 @@ class Questions extends React.Component {
           {contentToRender}
         </div>
         <div className={`${style.qaFooterButtons}`}>
-          {questions.results.length > 4 && !hideButton ? <button className={style.questionButton} type="button" onClick={this.loadMoreQuestions.bind(this)} id="loadMoreQuestions">MORE ANSWERED QUESTIONS</button> : ''}
+          {moreButtonCondition > 4 && !hideButton ? <button className={style.questionButton} type="button" onClick={this.loadMoreQuestions.bind(this)} id="loadMoreQuestions">MORE ANSWERED QUESTIONS</button> : ''}
           <button className={style.questionButton} type="button" onClick={this.addQuestion.bind(this)} id="addQuestionButton">ADD A QUESTION</button>
         </div>
         {addQuestionClicked ? <QuestionForm exitQuestionForm={() => this.exitQuestionForm()} productId={productId} productName={productName} /> : ''}
