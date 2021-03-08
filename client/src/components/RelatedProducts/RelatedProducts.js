@@ -14,13 +14,16 @@ class RelatedProducts extends React.Component {
     this.state = {
       related: [],
       outfitList: [],
+      wishList: [],
       current: undefined,
       clicked: undefined,
       load: false,
       outfitLoad: false,
     };
     this.addToOutfitHandler = this.addToOutfitHandler.bind(this);
+    this.addToWishHandler = this.addToWishHandler.bind(this);
     this.dropHandler = this.dropHandler.bind(this);
+    this.dropWishHandler = this.dropWishHandler.bind(this);
     this.compareHandler = this.compareHandler.bind(this);
     this.closeCompare = this.closeCompare.bind(this);
     this.escFunction = this.escFunction.bind(this);
@@ -38,17 +41,27 @@ class RelatedProducts extends React.Component {
 
   getInfo() {
     const { productId } = this.props;
-    axios
-      .get(`/related/relatedProducts?product_id=${productId}`)
-      .then((response) => {
+    const load = [
+      axios
+        .get(`/related/relatedProducts?product_id=${productId}`)
+        .then((response) => {
+          if (response.data) {
+            this.setState({
+              current: response.data[0],
+              related: response.data.slice(1),
+            });
+          }
+        }),
+      axios.get('/wishList/getAll').then((response) => {
         if (response.data) {
           this.setState({
-            current: response.data[0],
-            related: response.data.slice(1),
-            load: true,
+            wishList: response.data,
           });
         }
-      });
+      }),
+    ];
+    Promise.all(load)
+      .then(this.setState({ load: true }));
   }
 
   getOutfitList() {
@@ -73,11 +86,32 @@ class RelatedProducts extends React.Component {
     }
   }
 
+  addToWishHandler(id, e) {
+    e.stopPropagation();
+    const { wishList } = this.state;
+    const checker = wishList.filter((item) => item === id);
+    if (checker.length === 0) {
+      axios.post(`/wishList/add?product_id=${id}`);
+      this.setState({
+        wishList: [...wishList, id],
+      });
+    }
+  }
+
   dropHandler(id) {
     const { outfitList } = this.state;
     axios.post(`/related/outfitListDrop?product_id=${id}`);
     this.setState({
       outfitList: outfitList.filter((item) => item.id !== id),
+    });
+  }
+
+  dropWishHandler(id, e) {
+    e.stopPropagation();
+    const { wishList } = this.state;
+    axios.post(`/wishList/drop?product_id=${id}`);
+    this.setState({
+      wishList: wishList.filter((item) => item !== id),
     });
   }
 
@@ -102,6 +136,7 @@ class RelatedProducts extends React.Component {
   render() {
     const {
       outfitList,
+      wishList,
       clicked,
       current,
       related,
@@ -125,7 +160,13 @@ class RelatedProducts extends React.Component {
           <div className={style.gridContainer0}>
             <span>Related Products</span>
             {comparison}
-            <List productsList={related} compareHandler={this.compareHandler} />
+            <List
+              productsList={related}
+              wishList={wishList}
+              compareHandler={this.compareHandler}
+              addToWishHandler={this.addToWishHandler}
+              dropWishHandler={this.dropWishHandler}
+            />
           </div>
         ) : (
           ''
