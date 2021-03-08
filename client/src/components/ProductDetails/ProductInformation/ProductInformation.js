@@ -7,6 +7,7 @@ import Title from './Title';
 import Description from './Description';
 import Price from './Price';
 import Shipping from './Shipping';
+import Share from './Share';
 
 import css from './ProductInformation.css';
 
@@ -24,6 +25,7 @@ const ProductInformation = ({
         <Shipping />
       </div>
       <Description description={product.description} />
+      <Share />
     </div>
   </div>
 );

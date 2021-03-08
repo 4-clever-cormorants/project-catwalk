@@ -92,9 +92,9 @@
 }
 
 .imageGallery .thumbnailView .thumbnail input:checked + img{
-  margin-bottom: -5px;
+  /* margin-bottom: -5px;
   padding-top: -2px;
-  padding-bottom: 2px;
+  padding-bottom: 2px; */
   border-bottom: 3px solid grey;
 }
 
@@ -112,7 +112,7 @@
 .imageGallery .thumbnailView img:hover {
   /* margin-bottom: -5px;
   padding-top: -2px; */
-  padding-bottom: 2px;
+  /* padding-bottom: 2px; */
   border-bottom: 3px solid grey;
 }
 

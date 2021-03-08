@@ -38,7 +38,7 @@
   flex-direction: row;
   align-items: center;
   position:relative;
-  top: 10px;
+  top: 5px;
 }
 
 .productInformation .price, .sale {
@@ -56,6 +56,28 @@
 
 .sale .salePrice {
   color: rgb(221, 63, 0);
+}
+
+.share {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 75px;
+  position: relative;
+  top: 35px;
+}
+
+.share .fb:hover {
+  color: rgb(59, 89, 152);
+}
+
+.share .tw:hover {
+  color: rgb(29, 161, 242);
+}
+
+.share .p:hover {
+  color: rgb(230, 0, 35);
 }
 
 .productInformation .shipping, .description {
