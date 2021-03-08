@@ -15,6 +15,9 @@ class SearchBar extends React.Component {
       const { searchTerm } = this.state;
       if (searchTerm.length >= 3) {
         this.searchQuestions();
+      } else {
+        const { revertToOriginalAfterSearch } = this.props;
+        revertToOriginalAfterSearch();
       }
     });
   }
@@ -79,6 +82,7 @@ SearchBar.propTypes = {
     })),
   }).isRequired,
   showSearchedQuestions: PropTypes.func.isRequired,
+  revertToOriginalAfterSearch: PropTypes.func.isRequired,
 };
 
 export default SearchBar;

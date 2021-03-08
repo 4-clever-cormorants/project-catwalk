@@ -25,6 +25,7 @@ class Questions extends React.Component {
     this.escFunction = this.escFunction.bind(this);
     this.exitQuestionForm = this.exitQuestionForm.bind(this);
     this.showSearchedQuestions = this.showSearchedQuestions.bind(this);
+    this.revertToOriginalAfterSearch = this.revertToOriginalAfterSearch.bind(this);
   }
 
   componentDidMount() {
@@ -101,6 +102,10 @@ class Questions extends React.Component {
     this.setState({ searchQuestions, noSearchResults: false });
   }
 
+  revertToOriginalAfterSearch() {
+    this.setState({ searchQuestions: { product_id: 'dummy', results: [] } });
+  }
+
   render() {
     const { productId, productName } = this.props;
     const {
@@ -137,7 +142,11 @@ class Questions extends React.Component {
     return (
       <div id="qa" className={style.qa}>
         <h3>QUESTIONS AND ANSWERS</h3>
-        <SearchBar questions={questions} showSearchedQuestions={this.showSearchedQuestions} />
+        <SearchBar
+          questions={questions}
+          showSearchedQuestions={this.showSearchedQuestions}
+          revertToOriginalAfterSearch={this.revertToOriginalAfterSearch}
+        />
         <div id="qaContent" className={style.qaContent}>
           {contentToRender}
         </div>
