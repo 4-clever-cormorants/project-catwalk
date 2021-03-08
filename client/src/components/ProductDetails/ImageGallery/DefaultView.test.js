@@ -1,7 +1,29 @@
 import React from 'react';
+import axios from 'axios';
+
 import { mount } from 'enzyme';
 
 import DefaultView from './DefaultView';
+import ProductDetails from '../ProductDetails';
+
+import product from '../productDummyData';
+import styles from '../stylesDummyData';
+import ratings from '../ratingsDummyData';
+
+jest.mock('axios');
+
+axios.get.mockImplementation((url) => {
+  if (url === `/products/data?product_id=${product.id}`) {
+    return Promise.resolve({ data: [product] });
+  }
+  if (url === `/products/styles?product_id=${product.id}`) {
+    return Promise.resolve({ data: [styles] });
+  }
+  if (url === `/rating/data?product_id=${product.id}`) {
+    return Promise.resolve({ data: [ratings] });
+  }
+  return undefined;
+});
 
 describe('testing the default view of the image gallery', () => {
   it('should render the first image in the style object photos array', () => {
@@ -53,18 +75,19 @@ describe('testing the default view of the image gallery', () => {
     expect(leftArrow.exists()).toBe(true);
   });
 
-  it('should update the default view when the right arrow is clicked', () => {
-    const wrapper = mount(<DefaultView
-      id={0}
-      max={5}
-      leftClick={() => {}}
-      // rightClick={() => {}}
-      url="https://images.unsplash.com/photo-1547257965-087be799b084?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80"
-    />);
-    const rightArrow = wrapper.find('.fa-chevron-right');
-    // let { id } = wrapper.props();
-    rightArrow.simulate('click', {});
-    // expect(id).toBe(1);
-    expect(rightArrow.exists()).toBe(true);
-  });
+  // it('should update the default view when the right arrow is clicked', () => {
+  //   const wrapper = mount(<ProductDetails
+  //     productId={14034}
+  //   />);
+  //   const instance = wrapper.instance();
+  //   wrapper.setState({
+  //     load: true,
+  //   });
+  //   expect(instance.state.id).toBe(0);
+  //   const rightArrow = wrapper.find('.fa-chevron-right');
+  //   // let { id } = wrapper.props();
+  //   rightArrow.simulate('click', {});
+  //   // expect(id).toBe(1);
+  //   expect(rightArrow.exists()).toBe(true);
+  // });
 });

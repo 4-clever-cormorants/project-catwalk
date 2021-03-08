@@ -1,21 +1,21 @@
 const product = {
-  id: 14931,
+  id: 14034,
   campus: 'hr-sfo',
-  name: 'Manuela Pants',
-  slogan: 'Nemo ratione deserunt.',
-  description: 'Rerum quia tempore aperiam reiciendis. Eum a enim. Saepe magni tenetur et. Sit est beatae.',
-  category: 'Pants',
-  default_price: '398.00',
-  created_at: '2021-02-23T02:49:03.102Z',
-  updated_at: '2021-02-23T02:49:03.102Z',
+  name: 'Camo Onesie',
+  slogan: 'Blend in to your crowd',
+  description: 'The So Fatigues will wake you up and fit you in. This high energy camo will have you blending in to even the wildest surroundings.',
+  category: 'Jackets',
+  default_price: '140.00',
+  created_at: '2021-02-23T02:49:02.833Z',
+  updated_at: '2021-02-23T02:49:02.833Z',
   features: [
     {
-      feature: 'Non-GMO',
-      value: null,
+      feature: 'Fabric',
+      value: 'Canvas',
     },
     {
-      feature: 'Material',
-      value: '\'FullControl Skin\'',
+      feature: 'Buttons',
+      value: 'Brass',
     },
   ],
 };
