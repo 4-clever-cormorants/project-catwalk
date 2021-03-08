@@ -18,13 +18,27 @@
 }
 
 .left, .right {
-  /* padding: 5px; */
   margin: 20px;
-  transition: all 0.25s ease;
-  color: grey;
-}
+ }
+
 
 .left:hover, .right:hover {
+  color: black;
+}
+
+button {
+  color: grey;
+  background-color: white;
+  border: none;
+  transition: all 0.25s ease;
+}
+
+button:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+button:hover {
   color: black;
 }
 

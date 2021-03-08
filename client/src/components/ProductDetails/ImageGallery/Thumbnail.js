@@ -6,7 +6,9 @@ import PropTypes from 'prop-types';
 
 import css from './ImageGallery.css';
 
-const Thumbnail = ({ id, url, onClick, defaultChecked }) => (
+const Thumbnail = ({
+  id, url, onClick, defaultChecked,
+}) => (
   <div
     className={css.thumbnail}
     id={url}
@@ -20,6 +22,7 @@ const Thumbnail = ({ id, url, onClick, defaultChecked }) => (
 );
 
 Thumbnail.propTypes = {
+  id: PropTypes.number.isRequired,
   url: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired,
   defaultChecked: PropTypes.bool,

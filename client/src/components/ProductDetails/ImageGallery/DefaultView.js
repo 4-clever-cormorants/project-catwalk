@@ -3,11 +3,13 @@ import PropTypes from 'prop-types';
 
 import css from './ImageGallery.css';
 
-const DefaultView = ({ id, max, leftClick, rightClick, url }) => (
+const DefaultView = ({
+  id, max, leftClick, rightClick, url,
+}) => (
   <div className={css.DV}>
     <div className={css.left}>
       {id > 0 ? (
-        <span onClick={leftClick} className="fa fa-chevron-left" />
+        <button type="button" onClick={leftClick} onKeyPress={leftClick} className="fa fa-chevron-left" />
       ) : ''}
     </div>
     <div className={css.defaultView}>
@@ -15,7 +17,7 @@ const DefaultView = ({ id, max, leftClick, rightClick, url }) => (
     </div>
     <div className={css.right}>
       {id < max - 1 ? (
-        <span onClick={rightClick} className="fa fa-chevron-right" />
+        <button type="button" onClick={rightClick} onKeyPress={rightClick} className="fa fa-chevron-right" />
       ) : ''}
     </div>
   </div>

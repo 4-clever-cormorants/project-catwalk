@@ -49,6 +49,8 @@ ImageGallery.propTypes = {
   }).isRequired,
   styleId: PropTypes.number.isRequired,
   id: PropTypes.number.isRequired,
+  leftClick: PropTypes.func.isRequired,
+  rightClick: PropTypes.func.isRequired,
   renderDefaultView: PropTypes.func.isRequired,
 };
 
