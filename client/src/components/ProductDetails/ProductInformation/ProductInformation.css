@@ -6,7 +6,6 @@
   align-items:flex-start;
   height: 170px;
   /* border: 3px solid blue; */
-  font-family: Arial, Helvetica, sans-serif;
   color: rgb(40, 40, 40);
   position: relative;
   top: 10px;
@@ -17,7 +16,6 @@
   padding: 2px;
   height: 130px;
   width: 77%;
-  /* border: 3px solid purple; */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -26,11 +24,13 @@
 .productInformation .category {
   font-size: 14px;
   font-weight: 100;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .productInformation .title {
   font-size: 20px;
   font-weight: 700;
+  font-family: 'Crimson Text';
 }
 
 .productInformation .flexRow {
@@ -39,6 +39,7 @@
   align-items: center;
   position:relative;
   top: 5px;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .productInformation .price, .sale {
