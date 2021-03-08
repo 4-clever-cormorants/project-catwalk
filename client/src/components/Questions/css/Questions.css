@@ -7,6 +7,15 @@
   color: #333;
 }
 
+.qa {
+  font-family: 'Lato', 'sans-serif';
+}
+
+.qa h3,
+.qa h4 {
+  font-family: 'Playfair Display', 'serif';
+}
+
 .qaContent {
   max-height: calc(90vh - 123px - 1rem);
   overflow: auto;
