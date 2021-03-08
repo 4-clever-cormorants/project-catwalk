@@ -10,22 +10,15 @@ class AnswerList extends React.Component {
     this.state = {
       answersOnScreen: answers.slice(0, 2),
       loadAll: false,
-      loadedAll: false,
     };
   }
 
   loadMoreAnswers() {
     const { updateAnswers } = this.props;
-    const { loadedAll } = this.state;
-    if (loadedAll) {
+    updateAnswers(() => {
       const { answers } = this.props;
       this.setState({ answersOnScreen: answers, loadAll: true });
-    } else {
-      updateAnswers(() => {
-        const { answers } = this.props;
-        this.setState({ answersOnScreen: answers, loadAll: true, loadedAll: true });
-      });
-    }
+    });
   }
 
   collapseAnswers() {

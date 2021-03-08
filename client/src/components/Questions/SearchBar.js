@@ -30,14 +30,24 @@ class SearchBar extends React.Component {
       const upperCaseSearchTerm = searchTerm.toUpperCase();
       if (question.question_body.toUpperCase().search(upperCaseSearchTerm) !== -1) {
         questionHits.push(question);
+        continue;
+      }
+      const answerIds = Object.keys(question.answers);
+      for (let j = 0; j < answerIds.length; j += 1) {
+        if (question.answers[answerIds[j]].body.toUpperCase().search(upperCaseSearchTerm) !== -1) {
+          questionHits.push(question);
+          continue;
+        }
       }
     }
-    if (questionHits.length === 0) {
-      console.log(`no matching results for ${searchTerm}`);
-    }
-    for (let i = 0; i < questionHits.length; i += 1) {
-      console.log(questionHits[i]);
-    }
+    this.setState({ hits: questionHits }, () => {
+      const { hits } = this.state;
+      if (hits.length === 0) {
+        console.log(`no matching results for ${searchTerm}`);
+      } else {
+        console.log(hits);
+      }
+    });
   }
 
   render() {
@@ -51,7 +61,7 @@ class SearchBar extends React.Component {
 
 SearchBar.propTypes = {
   questions: PropTypes.shape({
-    product_id: PropTypes.number,
+    product_id: PropTypes.string,
     results: PropTypes.arrayOf(PropTypes.shape({
       question_id: PropTypes.number,
       question_body: PropTypes.string,
@@ -69,6 +79,20 @@ SearchBar.propTypes = {
       })),
     })),
   }).isRequired,
+  // answers: PropTypes.shape({
+  //   question: PropTypes.string,
+  //   results: PropTypes.arrayOf(PropTypes.shape({
+  //     answer_id: PropTypes.number,
+  //     body: PropTypes.string,
+  //     date: PropTypes.string,
+  //     answerer_name: PropTypes.string,
+  //     helpfulness: PropTypes.number,
+  //     photos: PropTypes.arrayOf(PropTypes.shape({
+  //       id: PropTypes.number,
+  //       url: PropTypes.string,
+  //     })),
+  //   })),
+  // }).isRequired,
 };
 
 export default SearchBar;
