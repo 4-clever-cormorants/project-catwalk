@@ -47,8 +47,8 @@ class AnswerList extends React.Component {
         {answersOnScreen.length > 0 ? <p className={`${style.answerA}`}>A:&nbsp;</p> : ''}
         <div className={`${style.answerListContent} answerListContent`}>
           {answersOnScreen.map((answer) => <Answer key={answer.answer_id} answer={answer} />)}
-          {expandAnswersButton}
         </div>
+        {expandAnswersButton}
       </div>
     );
   }
