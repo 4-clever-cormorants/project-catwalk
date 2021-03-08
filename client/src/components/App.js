@@ -27,8 +27,8 @@ class App extends React.Component {
     const { productId, productName } = this.state;
     return (
       <div id="app" className="app">
-        {/* <ProductDetails productId={productId} getProductName={this.getProductName} />
-        <RelatedProducts productId={productId} /> */}
+        <ProductDetails productId={productId} getProductName={this.getProductName} />
+        <RelatedProducts productId={productId} />
         <Questions productId={productId} productName={productName} />
       </div>
     );
