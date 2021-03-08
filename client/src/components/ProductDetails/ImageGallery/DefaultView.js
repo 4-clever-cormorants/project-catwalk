@@ -5,19 +5,19 @@ import css from './ImageGallery.css';
 
 const DefaultView = ({ id, max, leftClick, rightClick, url }) => (
   <div className={css.DV}>
-    {id > 0 ? (
-      <div className="left">
+    <div className={css.left}>
+      {id > 0 ? (
         <span onClick={leftClick} className="fa fa-chevron-left" />
-      </div>
-    ) : ''}
+      ) : ''}
+    </div>
     <div className={css.defaultView}>
       <img src={url} alt="" />
     </div>
-    {id < max - 1 ? (
-      <div className="right">
+    <div className={css.right}>
+      {id < max - 1 ? (
         <span onClick={rightClick} className="fa fa-chevron-right" />
-      </div>
-    ) : ''}
+      ) : ''}
+    </div>
   </div>
 );
 
