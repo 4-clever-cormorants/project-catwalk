@@ -2,4 +2,8 @@
   max-width: 1280px;
   margin-left: auto;
   margin-right: auto;
+  /*
+  font-family: 'Lato', sans-serif; /* use for body
+  font-family: 'Playfair Display', serif; /* use for titles
+  */
 }
