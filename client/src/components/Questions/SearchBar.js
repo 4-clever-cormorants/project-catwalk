@@ -7,7 +7,6 @@ class SearchBar extends React.Component {
     super(props);
     this.state = {
       searchTerm: '',
-      hits: [],
     };
   }
 
@@ -40,14 +39,14 @@ class SearchBar extends React.Component {
         }
       }
     }
-    this.setState({ hits: questionHits }, () => {
-      const { hits } = this.state;
-      if (hits.length === 0) {
-        console.log(`no matching results for ${searchTerm}`);
-      } else {
-        console.log(hits);
-      }
-    });
+    if (questionHits.length === 0) {
+      const { showSearchedQuestions } = this.props;
+      console.log(`No matching results for ${searchTerm}`);
+      showSearchedQuestions(questionHits, false, searchTerm);
+    } else {
+      const { showSearchedQuestions } = this.props;
+      showSearchedQuestions(questionHits, true);
+    }
   }
 
   render() {
@@ -79,6 +78,7 @@ SearchBar.propTypes = {
       })),
     })),
   }).isRequired,
+  showSearchedQuestions: PropTypes.func.isRequired,
 };
 
 export default SearchBar;
