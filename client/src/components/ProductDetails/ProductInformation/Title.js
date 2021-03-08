@@ -1,8 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import css from './ProductInformation.css';
+
 const Title = ({ title }) => (
-  <div className="title">
+  <div className={css.title}>
     {title}
   </div>
 );

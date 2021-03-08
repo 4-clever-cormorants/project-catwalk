@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import style from './css/Form.css';
 
 const axios = require('axios');
 
@@ -13,6 +14,9 @@ class QuestionForm extends React.Component {
       errorMessages: [],
       submitError: false,
       submitted: false,
+      bodyInvalid: false,
+      nameInvalid: false,
+      emailInvalid: false,
     };
   }
 
@@ -64,52 +68,93 @@ class QuestionForm extends React.Component {
   validateForm(callback) {
     const { questionBody, nickname, email } = this.state;
     const errorMessages = [];
+    let bodyInvalid = false;
+    let nameInvalid = false;
+    let emailInvalid = false;
     if (questionBody.length === 0) {
       errorMessages.push('Question');
+      bodyInvalid = true;
     }
     if (nickname.length === 0) {
       errorMessages.push('Nickname');
+      nameInvalid = true;
     }
     if (email.length === 0) {
       errorMessages.push('Email address');
+      emailInvalid = true;
     } else if (!this.isValidEmail()) {
       errorMessages.push('The email address provided is not in correct email format');
+      emailInvalid = true;
     }
-    this.setState({ errorMessages }, callback);
+    this.setState({
+      errorMessages,
+      bodyInvalid,
+      nameInvalid,
+      emailInvalid,
+    }, callback);
   }
 
   render() {
-    const { exitQuestionForm } = this.props;
+    const { exitQuestionForm, productName } = this.props;
     const {
       errorMessages,
       submitError,
       submitted,
+      bodyInvalid,
+      nameInvalid,
+      emailInvalid,
     } = this.state;
     const errorMessage = errorMessages.join(', ');
+    let bodyClass = 'questionField';
+    let nameClass = 'questionNickname';
+    let emailClass = 'questionEmail';
+    if (bodyInvalid) {
+      bodyClass = `${style.invalidField} questionField`;
+    }
+    if (nameInvalid) {
+      nameClass = `${style.invalidField} questionNickname`;
+    }
+    if (emailInvalid) {
+      emailClass = `${style.invalidField} questionEmail`;
+    }
     return (
-      <div className="questionForm">
-        <h3>Ask Your Question</h3>
-        <h4>About the [PRODUCT NAME HERE]</h4>
-        {/* needs to be passed in from app */}
-        <button type="button" onClick={exitQuestionForm} id="exitButton">X</button>
-        <form>
-          <label htmlFor="question">
-            * Question
-            <textarea id="questionField" name="questionField" onChange={(e) => this.handleQuestionChange(e)} />
-          </label>
-          <label htmlFor="nickname">
-            * Nickname
-            <input type="text" id="questionNickname" name="questionNickname" placeholder="Example: jackson11!" onChange={(e) => this.handleNicknameChange(e)} />
-            <p>For privacy reasons, do not use your full name or email address</p>
-          </label>
-          <label htmlFor="email">
-            * Email
-            <input type="text" id="questionEmail" name="questionEmail" placeholder="Why did you like the product or not?" onChange={(e) => this.handleEmailChange(e)} />
-            <p>For authentication reasons, you will not be emailed</p>
-          </label>
-          <button type="button" id="submitQuestion" onClick={this.handleSubmitAnswer.bind(this)} disabled={submitted}>Submit</button>
-          {submitError ? <div className="errorMessage">{`You must enter the following: ${errorMessage}`}</div> : ''}
-        </form>
+      <div className={style.modal}>
+        <div className={style.blocker} onClick={exitQuestionForm} />
+        <div className={`${style.form} questionForm`}>
+          <div className={`${style.formHeader} questionFormHeader`}>
+            <div className={`${style.formTitle} questionFormTitle`}>
+              <h3>Ask Your Question</h3>
+              <h4>{`About ${productName}`}</h4>
+            </div>
+            <button type="button" onClick={exitQuestionForm} id="exitButton" className={`${style.exitButton}`}>X</button>
+          </div>
+          <div className={`${style.formContent} questionFormContent`}>
+            <form>
+              <label htmlFor="question">
+                Question *
+                <textarea id="questionField" className={bodyClass} name="questionField" onChange={(e) => this.handleQuestionChange(e)} />
+              </label>
+              <label htmlFor="nickname">
+                Nickname *
+                <input type="text" id="questionNickname" className={nameClass} name="questionNickname" placeholder="Example: jackson11!" onChange={(e) => this.handleNicknameChange(e)} />
+                <p className={style.fieldDescription}>
+                  For privacy reasons, do not use your full name or email address
+                </p>
+              </label>
+              <label htmlFor="email">
+                Email *
+                <input type="text" id="questionEmail" className={emailClass} name="questionEmail" placeholder="Why did you like the product or not?" onChange={(e) => this.handleEmailChange(e)} />
+                <p className={style.fieldDescription}>
+                  For authentication reasons, you will not be emailed
+                </p>
+              </label>
+              <div className={`${style.buttonContainer}`}>
+                <button type="button" id="submitQuestion" className={`${style.submitButton}`} onClick={this.handleSubmitAnswer.bind(this)} disabled={submitted}>Submit</button>
+              </div>
+              {submitError ? <div className={`${style.errorMessage} errorMessage`}>{`You must enter the following: ${errorMessage}`}</div> : ''}
+            </form>
+          </div>
+        </div>
       </div>
     );
   }
@@ -118,6 +163,7 @@ class QuestionForm extends React.Component {
 QuestionForm.propTypes = {
   exitQuestionForm: PropTypes.func.isRequired,
   productId: PropTypes.number.isRequired,
+  productName: PropTypes.string.isRequired,
 };
 
 export default QuestionForm;

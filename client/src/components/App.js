@@ -13,16 +13,24 @@ class App extends React.Component {
     const productId = parseInt(queryParams.product_id, 10);
     this.state = {
       productId: !Number.isNaN(productId) ? productId : 14931,
+      productName: 'Manuela Pants',
     };
+    this.getProductName = this.getProductName.bind(this);
+  }
+
+  getProductName(productName) {
+    this.setState({
+      productName,
+    });
   }
 
   render() {
-    const { productId } = this.state;
+    const { productId, productName } = this.state;
     return (
       <div id="app" className="app">
-        <ProductDetails productId={productId} />
+        <ProductDetails productId={productId} getProductName={this.getProductName} />
         <RelatedProducts productId={productId} />
-        <Questions productId={productId} />
+        <Questions productId={productId} productName={productName} />
       </div>
     );
   }

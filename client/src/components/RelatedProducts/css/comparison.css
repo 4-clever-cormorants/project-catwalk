@@ -1,17 +1,59 @@
 .comparison {
-  border: solid;
-  width: 500px;
+  position:fixed;
+  top:50%;
+  left:50%;
+  width: fit-content;
   height: fit-content;
+  border-radius: 20px;
+  background-color: ivory;
+  z-index: 110;
+  padding: 20px;
+  transform: translate(-50%, -50%);
 }
 
-#compareTitle {
+.blocker {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  content: ' ';
+  z-index: 101;
+  background: rgba(0,0,0,.5);
+}
+
+.row {
+  height: 50px;
+}
+
+.currentValue, .feature, .clickedValue {
+  text-align: center;
+  width: 300px;
+}
+
+.close {
+  position: fixed;
+  font-size: 15pt;
+  top: 20px;
+  right: 20px;
+}
+
+.close:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.compareTitle {
+  text-align: left;
+}
+
+.titleRow {
+  font-size: 15pt;
+  font-weight: bold;
+  text-align: center;
+}
+
+.comparisonTable {
   position: relative;
-}
-
-#compareCurrentName {
-  margin-right: 70px;
-}
-
-#compareClickedName {
-  margin-left: 70px;
+  top: 10px;
 }

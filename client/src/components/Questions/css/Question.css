@@ -1,0 +1,40 @@
+.questionContent {
+  display: flex;
+  justify-content: space-between;
+}
+
+.questionText {
+  font-weight: bold;
+}
+
+.questionFooter {
+  display: grid;
+  grid-template-columns: auto auto auto auto auto;
+  color: #555;
+}
+
+.buttonLink {
+  background: none!important;
+  border: none;
+  padding: 0!important;
+  color: #555;
+  text-decoration: underline;
+  cursor: pointer;
+  outline: none;
+}
+
+.buttonLink:active {
+  color: #ccc;
+}
+
+.buttonLink:hover {
+  color: gray;
+  text-decoration: underline gray 2px;
+}
+
+.buttonLinkDisabled,
+.buttonLinkDisabled:hover {
+  text-decoration: none;
+  cursor: default;
+  color: #555;
+}

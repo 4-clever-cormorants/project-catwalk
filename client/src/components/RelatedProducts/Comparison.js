@@ -3,14 +3,14 @@ import propTypes from 'prop-types';
 import style from './css/comparison.css';
 
 const Results = ({ feature, currentValue, clickedValue }) => (
-  <tr>
+  <tr className={style.row}>
     <td className={style.currentValue}>{currentValue}</td>
     <td className={style.feature}>{feature}</td>
     <td className={style.clickedValue}>{clickedValue}</td>
   </tr>
 );
 
-const Comparison = ({ current, clicked }) => {
+const Comparison = ({ current, clicked, closeCompare }) => {
   const currentFeatures = {};
   for (let i = 0; i < current.features.length; i += 1) {
     currentFeatures[current.features[i].feature] = current.features[i].value;
@@ -35,18 +35,23 @@ const Comparison = ({ current, clicked }) => {
   });
 
   return (
-    <div className={style.comparison}>
-      <div>comparison</div>
-      <div id="compareTitle">
-        <span id="compareCurrentName">{current.name}</span>
-        <span id="compareClickedName">{clicked.name}</span>
+    <div>
+      <div className={style.blocker} onClick={closeCompare} onKeyPress={closeCompare} role="button" tabIndex={0} aria-label="Mute volume" />
+      <div className={style.comparison}>
+        <div className={style.compareTitle}>comparison</div>
+        <i className={`${style.close} fa fa-times`} onClick={closeCompare} onKeyPress={closeCompare} role="button" tabIndex={0} aria-label="Mute volume" />
+        <table className={style.comparisonTable}>
+          <tbody>
+            <tr>
+              <td className={style.titleRow}>{current.name}</td>
+              <td className={style.titleRow}>features</td>
+              <td className={style.titleRow}>{clicked.name}</td>
+            </tr>
+            {compareCurrentFeature}
+            {compareClickedFeature}
+          </tbody>
+        </table>
       </div>
-      <table className={style.comparisonTable}>
-        <tbody>
-          {compareCurrentFeature}
-          {compareClickedFeature}
-        </tbody>
-      </table>
     </div>
   );
 };
@@ -68,6 +73,7 @@ Comparison.propTypes = {
     id: propTypes.number.isRequired,
     features: propTypes.arrayOf(propTypes.object).isRequired,
   }).isRequired,
+  closeCompare: propTypes.func.isRequired,
 };
 
 export default Comparison;

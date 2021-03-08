@@ -2,9 +2,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import css from './ProductInformation.css';
+
 const Category = ({ category }) => (
-  <div className="category">
-    {category}
+  <div className={css.category}>
+    {category.toUpperCase()}
   </div>
 );
 

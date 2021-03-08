@@ -1,21 +1,35 @@
+/* eslint-disable react/no-array-index-key */
 import React from 'react';
 import PropTypes from 'prop-types';
 import DefaultView from './DefaultView';
-import ThumbnailView from './ThumbnailView';
+import Thumbnail from './Thumbnail';
+import css from './ImageGallery.css';
 
-const ImageGallery = ({ styleId, style, name }) => (
-  <div className="imageGallery" styleid={styleId}>
-    {/* <div className="name">
-      <h2>{ name }</h2>
-    </div> */}
-    <DefaultView url={style.photos[0].url} />
-    {/* {style.photos.map((photo) => (
-      <div className="thumbnailView" key={photo.thumbnail_url.toString()}>
-        <ThumbnailView thumbnailUrl={photo.thumbnail_url} />
+const ImageGallery = ({
+  styleId, style, defaultView, renderDefaultView,
+}) => {
+  const [photo, photos] = [style.photos[0], style.photos.slice(1)];
+  return (
+    <div className={css.imageGallery} styleid={styleId}>
+      <DefaultView url={defaultView} />
+      <div className={css.thumbnailView}>
+        <div className={css.thumbnails}>
+          <div key={`first ${photo.url.toString()}`}>
+            <Thumbnail url={photo.url} onClick={renderDefaultView} defaultChecked />
+          </div>
+          {photos.map((thumbnail, i) => (
+            <div key={`${i} ${thumbnail.url.toString()}`}>
+              <Thumbnail url={thumbnail.url} onClick={renderDefaultView} />
+            </div>
+          ))}
+        </div>
+        <div className={css.arrow}>
+          <span className="fa fa-chevron-down" />
+        </div>
       </div>
-    ))} */}
-  </div>
-);
+    </div>
+  );
+};
 
 ImageGallery.propTypes = {
   style: PropTypes.shape({
@@ -28,7 +42,8 @@ ImageGallery.propTypes = {
     skus: PropTypes.objectOf(PropTypes.object).isRequired,
   }).isRequired,
   styleId: PropTypes.number.isRequired,
-  name: PropTypes.string.isRequired,
+  defaultView: PropTypes.string.isRequired,
+  renderDefaultView: PropTypes.func.isRequired,
 };
 
 export default ImageGallery;

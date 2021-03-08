@@ -5,6 +5,9 @@ import axios from 'axios';
 import ImageGallery from './ImageGallery/ImageGallery';
 import ProductInformation from './ProductInformation/ProductInformation';
 import StyleSelector from './StyleSelector/StyleSelector';
+import Checkout from './Checkout/Checkout';
+
+import css from './ProductDetails.css';
 
 class ProductDetails extends React.Component {
   constructor(props) {
@@ -14,20 +17,25 @@ class ProductDetails extends React.Component {
       styleId: null,
       styles: null,
       style: null,
-      defaultSku: null,
+      defaultView: null,
+      sku: null,
+      cart: [],
       load: false,
     };
     this.styleSelector = this.styleSelector.bind(this);
+    this.skuSelector = this.skuSelector.bind(this);
+    this.addToCart = this.addToCart.bind(this);
+    this.renderDefaultView = this.renderDefaultView.bind(this);
   }
 
   componentDidMount() {
-    const { productId } = this.props;
+    const { productId, getProductName } = this.props;
     axios.get(`/products/data?product_id=${productId}`)
       .then((prod) => {
         const product = prod.data;
         axios.get(`/rating/data?product_id=${productId}`)
           .then((rtng) => {
-            const rating = rtng.data.average;
+            const rating = rtng.data;
             axios.get(`/products/styles?product_id=${productId}`)
               .then((response) => {
                 this.setState({
@@ -36,51 +44,93 @@ class ProductDetails extends React.Component {
                   styleId: response.data.results[0].style_id,
                   styles: response.data,
                   style: response.data.results[0],
-                  defaultSku: Object.keys(response.data.results[0].skus)[0],
+                  defaultView: response.data.results[0].photos[0].url,
+                  // sku: Object.keys(response.data.results[0].skus)[0],
                   load: true,
-                });
+                },
+                () => { getProductName(product.name); });
               });
           });
       })
       .catch((err) => {
-        console.error(err);
+        throw (err);
       });
   }
 
   styleSelector(e) {
-    // when you click on the style image in StylesDisplay,
-    // update the state with that style id and style
     const styleId = Number(e.target.classList[0]);
-    const { styles } = this.state;
+    if (!Number.isNaN(styleId)) {
+      const { styles } = this.state;
+      this.setState({
+        styleId,
+      });
+      styles.results.forEach((style) => {
+        if (style.style_id === styleId) {
+          this.setState({
+            style,
+            defaultView: style.photos[0].url,
+            sku: null,
+          });
+        }
+      });
+    }
+  }
+
+  skuSelector(e) {
     this.setState({
-      styleId,
+      sku: e.target.value,
     });
-    styles.results.forEach((style) => {
-      if (style.style_id === styleId) {
-        this.setState({
-          style,
-          defaultSku: Object.keys(style.skus)[0],
-        });
-      }
+  }
+
+  addToCart(e) {
+    e.preventDefault();
+    const { cart, sku } = this.state;
+    if (cart.indexOf(sku) === -1) {
+      this.setState({
+        cart: [...cart, sku],
+      });
+    }
+  }
+
+  renderDefaultView(e) {
+    this.setState({
+      defaultView: e.target.id,
     });
   }
 
   render() {
     const {
-      product, rating, styleId, styles, style, defaultSku, load,
+      product, rating, styleId, styles, style, defaultView, sku, load,
     } = this.state;
 
     return (
-      <div>
+      <div className={css.PD}>
+        <h1> Website Header </h1>
         { load ? (
-          <div className="productDetails">
-            <ImageGallery styleId={styleId} style={style} name={product.name} />
-            <ProductInformation product={product} rating={rating} />
+          <div className={css.productDetails}>
+            <ImageGallery
+              styleId={styleId}
+              style={style}
+              defaultView={defaultView}
+              renderDefaultView={this.renderDefaultView}
+            />
+            <ProductInformation
+              product={product}
+              rating={rating.average}
+              totalRatings={rating.ratings}
+              originalPrice={style.original_price}
+              salePrice={style.sale_price}
+            />
             <StyleSelector
               styles={styles.results}
+              selected={style.name}
               styleSelector={this.styleSelector}
+            />
+            <Checkout
+              skuSelector={this.skuSelector}
+              addToCart={this.addToCart}
               style={style}
-              defaultSku={defaultSku}
+              sku={sku}
             />
           </div>
         ) : ''}
@@ -91,6 +141,7 @@ class ProductDetails extends React.Component {
 
 ProductDetails.propTypes = {
   productId: PropTypes.number.isRequired,
+  getProductName: PropTypes.func.isRequired,
 };
 
 export default ProductDetails;

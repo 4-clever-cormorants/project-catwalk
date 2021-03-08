@@ -26,3 +26,9 @@ it('should have a default state of productId being 14931', () => {
   const instance = wrapper.instance();
   expect(instance.state.productId).toBe(14931);
 });
+
+it('should get the productName', () => {
+  const wrapper = mount(<App />);
+  const instance = wrapper.instance();
+  expect(instance.state.productName).toBe('Manuela Pants');
+});

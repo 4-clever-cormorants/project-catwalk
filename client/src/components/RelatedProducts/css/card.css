@@ -1,14 +1,46 @@
-.cardImg {
-  width: 100%;
-  height: 60%;
-  object-fit: cover;
-}
-
 .card {
   position: relative;
-  width: 400px;
-  height: 600px;
+  overflow: hidden;
+  border-radius: 20px;
+  width: 300px;
+  height: 450px;
   float: left;
   margin: 5px;
-  background-color: rgb(237, 237, 237);
+  background-color: rgb(240, 240, 240);
+}
+
+.cardImgContainer {
+  width: 100%;
+  height: 60%;
+  overflow: hidden;
+}
+
+.card:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.cardImgContainer .cardImg {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  transition: transform .5s ease;
+}
+
+.cardName {
+  display: block;
+  width: fit-content;
+  margin-left: 10px;
+  color: black;
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.cardImg:hover {
+  transform: scale(1.2);
+}
+
+.card:hover {
+  background-color: rgb(235, 235, 235);
 }

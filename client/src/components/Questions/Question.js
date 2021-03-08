@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import AnswerList from './AnswerList';
 import AnswerForm from './AnswerForm';
 import dummyAnswers from './dummyAnswers';
+import style from './css/Question.css';
 
 const axios = require('axios');
 
@@ -19,6 +20,8 @@ class Question extends React.Component {
       answerCount: 3,
     };
     this.updateAnswers = this.updateAnswers.bind(this);
+    this.escFunction = this.escFunction.bind(this);
+    this.exitAnswerForm = this.exitAnswerForm.bind(this);
   }
 
   componentDidMount() {
@@ -28,6 +31,17 @@ class Question extends React.Component {
       return;
     }
     this.updateAnswers(() => {});
+    document.addEventListener('keydown', this.escFunction, false);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('keydown', this.escFunction, false);
+  }
+
+  escFunction(event) {
+    if (event.keyCode === 27) {
+      this.exitAnswerForm();
+    }
   }
 
   updateAnswers(callback) {
@@ -83,7 +97,7 @@ class Question extends React.Component {
   }
 
   render() {
-    const { question } = this.props;
+    const { question, productName } = this.props;
     const {
       answers,
       addAnswerClicked,
@@ -91,16 +105,27 @@ class Question extends React.Component {
       increased,
       loadAnswers,
     } = this.state;
+    let helpfulClassName = `${style.buttonLink} questionHelpfulButton`;
+    if (increased) {
+      helpfulClassName = `${style.buttonLink} ${style.buttonLinkDisabled} questionHelpfulButton`;
+    }
     return (
-      <div>
-        <p style={{ fontWeight: 'bold' }}>{`Q: ${question.question_body}`}</p>
-        <p>
-          Helpful?
-          <button type="button" className="questionHelpfulButton" onClick={this.increaseQuestionHelpfulness.bind(this)} disabled={increased}>Yes</button>
-          <span>{`(${questionHelpfulness})`}</span>
-        </p>
-        <button type="button" className="addAnswerButton" onClick={this.addAnswer.bind(this)}>Add answer</button>
-        {addAnswerClicked ? <AnswerForm exitAnswerForm={() => this.exitAnswerForm()} questionBody={question.question_body} questionId={question.question_id} /> : ''}
+      <div className={style.questionDefault}>
+        <div className={style.questionContent}>
+          <div className={style.questionText}>
+            <p>{`Q: ${question.question_body}`}</p>
+          </div>
+          <div className={style.questionFooter}>
+            <p>
+              <span>Helpful? </span>
+              <button type="button" className={helpfulClassName} onClick={this.increaseQuestionHelpfulness.bind(this)} disabled={increased}>Yes</button>
+              <span>{` (${questionHelpfulness})`}</span>
+              <span> | </span>
+              <button type="button" className={`${style.buttonLink} addAnswerButton`} onClick={this.addAnswer.bind(this)}>Add answer</button>
+            </p>
+          </div>
+        </div>
+        {addAnswerClicked ? <AnswerForm exitAnswerForm={() => this.exitAnswerForm()} questionBody={question.question_body} questionId={question.question_id} productName={productName} /> : ''}
         {loadAnswers ? <AnswerList answers={answers.results} updateAnswers={this.updateAnswers} /> : ''}
       </div>
     );
@@ -125,6 +150,7 @@ Question.propTypes = {
     })),
   }),
   test: PropTypes.bool,
+  productName: PropTypes.string.isRequired,
 };
 
 Question.defaultProps = {

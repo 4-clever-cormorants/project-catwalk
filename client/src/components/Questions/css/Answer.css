@@ -1,0 +1,8 @@
+.answerContent {
+  display: grid;
+  grid-template-rows: auto auto;
+}
+
+.answerText {
+  margin: 0;
+}

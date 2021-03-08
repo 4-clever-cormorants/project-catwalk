@@ -4,6 +4,7 @@ import Question from './Question';
 import SearchBar from './SearchBar';
 import QuestionForm from './QuestionForm';
 import dummyQuestions from './dummyQuestions';
+import style from './css/Questions.css';
 
 const axios = require('axios');
 
@@ -11,6 +12,7 @@ class Questions extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      questions: dummyQuestions,
       questionsOnScreen: dummyQuestions.results.slice(0, 4),
       addQuestionClicked: false,
       currentLen: 4,
@@ -18,6 +20,8 @@ class Questions extends React.Component {
       loadQuestions: false,
       hideButton: false,
     };
+    this.escFunction = this.escFunction.bind(this);
+    this.exitQuestionForm = this.exitQuestionForm.bind(this);
   }
 
   componentDidMount() {
@@ -30,14 +34,20 @@ class Questions extends React.Component {
     }
     this.fetchQuestions()
       .then((response) => {
-        const newQuestionsOnScreen = response.data.results.slice(0, currentLen);
-        this.setState({ questionsOnScreen: newQuestionsOnScreen }, () => {
+        const questions = response.data;
+        const newQuestionsOnScreen = questions.results.slice(0, currentLen);
+        this.setState({ questions, questionsOnScreen: newQuestionsOnScreen }, () => {
           this.setState({ loadQuestions: true });
         });
       })
       .catch((err) => {
         console.log(err);
       });
+    document.addEventListener('keydown', this.escFunction, false);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('keydown', this.escFunction, false);
   }
 
   fetchQuestions() {
@@ -51,6 +61,12 @@ class Questions extends React.Component {
     });
   }
 
+  escFunction(event) {
+    if (event.keyCode === 27) {
+      this.exitQuestionForm();
+    }
+  }
+
   loadMoreQuestions() {
     const { currentLen, totalCount } = this.state;
     this.fetchQuestions()
@@ -59,11 +75,17 @@ class Questions extends React.Component {
         const questionsOnScreen = questions.results.slice(0, currentLen + 2);
         const newLen = currentLen + 2;
         if (questions.results.length < totalCount + 2) {
-          this.setState({ hideButton: true, questionsOnScreen, currentLen: newLen });
+          this.setState({
+            questions,
+            hideButton: true,
+            questionsOnScreen,
+            currentLen: newLen,
+          });
           return;
         }
         const newCount = totalCount + 2;
         this.setState({
+          questions,
           questionsOnScreen,
           currentLen: newLen,
           totalCount: newCount,
@@ -80,31 +102,35 @@ class Questions extends React.Component {
   }
 
   render() {
-    const { productId } = this.props;
+    const { productId, productName } = this.props;
     const {
+      questions,
       questionsOnScreen,
       addQuestionClicked,
       hideButton,
       loadQuestions,
-      totalCount,
     } = this.state;
     return (
-      <div>
-        <h3>Questions</h3>
+      <div id="qa" className={style.qa}>
+        <h3>QUESTIONS AND ANSWERS</h3>
         <SearchBar />
-        {loadQuestions
-          ? (
-            <div className="questionsList">
-              {questionsOnScreen.map((question) => (
-                <div key={question.question_id} className="question">
-                  <Question question={question} />
-                </div>
-              ))}
-              {totalCount > 4 && !hideButton ? <button type="button" onClick={this.loadMoreQuestions.bind(this)} id="loadMoreQuestions">More Answered Questions</button> : ''}
-            </div>
-          ) : ''}
-        <button type="button" onClick={this.addQuestion.bind(this)} id="addQuestionButton">Add a question</button>
-        {addQuestionClicked ? <QuestionForm exitQuestionForm={() => this.exitQuestionForm()} productId={productId} /> : ''}
+        <div id="qaContent" className={style.qaContent}>
+          {loadQuestions
+            ? (
+              <div className="questionsList">
+                {questionsOnScreen.map((question) => (
+                  <div key={question.question_id} className="question">
+                    <Question question={question} productName={productName} />
+                  </div>
+                ))}
+              </div>
+            ) : ''}
+        </div>
+        <div className={`${style.qaFooterButtons}`}>
+          {questions.results.length > 4 && !hideButton ? <button className={style.questionButton} type="button" onClick={this.loadMoreQuestions.bind(this)} id="loadMoreQuestions">MORE ANSWERED QUESTIONS</button> : ''}
+          <button className={style.questionButton} type="button" onClick={this.addQuestion.bind(this)} id="addQuestionButton">ADD A QUESTION</button>
+        </div>
+        {addQuestionClicked ? <QuestionForm exitQuestionForm={() => this.exitQuestionForm()} productId={productId} productName={productName} /> : ''}
       </div>
     );
   }
@@ -112,6 +138,7 @@ class Questions extends React.Component {
 
 Questions.propTypes = {
   productId: PropTypes.number.isRequired,
+  productName: PropTypes.string.isRequired,
 };
 
 export default Questions;

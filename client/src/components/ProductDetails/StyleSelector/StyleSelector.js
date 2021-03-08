@@ -1,68 +1,57 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import StylesDisplay from './StylesDisplay';
-import SizeSelector from './SizeSelector';
-import QtySelector from './QtySelector';
-import AddToCart from './AddToCart';
-import Favorite from './Favorite';
+// import StylesDisplay from './StylesDisplay';
+import Style from './Style';
 
-// refactor to hold the state of the selected style and
-// then refactor the size selector and qty selector to reflect the options for that selected style
+import css from './StyleSelector.css';
 
-class StyleSelector extends React.Component {
-  constructor(props) {
-    super(props);
-    const { defaultSku } = this.props;
-    this.state = {
-      sku: defaultSku,
-      cart: [],
-    };
-    this.skuSelector = this.skuSelector.bind(this);
-    this.addToCart = this.addToCart.bind(this);
+// make it so the first one is automatically checked
+
+const StyleSelector = ({ styles, selected, styleSelector }) => {
+  const n = styles.length;
+  let style1;
+  let row1;
+  let row2;
+  if (n > 4) {
+    [style1] = [styles[0]];
+    row1 = styles.slice(1, 4);
+    row2 = styles.slice(4, 8);
+  } else {
+    [style1, row1] = [styles[0], styles.slice(1)];
+    row2 = [];
   }
 
-  skuSelector(e) {
-    this.setState({
-      sku: e.target.value,
-    });
-  }
-
-  addToCart(e) {
-    e.preventDefault();
-    const { cart, sku } = this.state;
-    if (cart.indexOf(sku) === -1) {
-      this.setState({
-        cart: [...cart, sku],
-      });
-    }
-  }
-
-  render() {
-    const {
-      styles, style, styleSelector, defaultSku,
-    } = this.props;
-    let { sku } = this.state;
-    const { skus } = style;
-    if (skus[sku] === undefined) {
-      sku = defaultSku;
-    }
-    const qty = skus[sku].quantity;
-    return (
-      <div className="styleSelector">
-        <StylesDisplay styles={styles} onClick={styleSelector} />
-        <div className="checkout">
-          <form onSubmit={this.addToCart} className="form">
-            <SizeSelector skus={skus} onChange={this.skuSelector} />
-            <QtySelector qty={qty} />
-            <AddToCart />
-            <Favorite />
-          </form>
+  return (
+    <div className={css.styleSelector}>
+      <p className={css.selected}>
+        STYLE &gt; &nbsp;
+        <span className={css.selectedName}>
+          {selected.toUpperCase()}
+        </span>
+      </p>
+      <div className={css.stylesDisplay}>
+        <div className={css.row1}>
+          <div key={style1.style_id} className={css.style}>
+            <Style style={style1} onClick={styleSelector} defaultChecked />
+          </div>
+          {row1.map((style) => (
+            <div key={style.style_id} className={css.style}>
+              <Style style={style} onClick={styleSelector} />
+            </div>
+          ))}
+        </div>
+        <div className={css.row2}>
+          {row2.map((style) => (
+            <div key={style.style_id} className={css.style}>
+              <Style style={style} onClick={styleSelector} />
+            </div>
+          ))}
         </div>
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 StyleSelector.propTypes = {
   styles: PropTypes.arrayOf(PropTypes.shape({
@@ -74,17 +63,8 @@ StyleSelector.propTypes = {
     photos: PropTypes.arrayOf(PropTypes.objectOf(PropTypes.string)).isRequired,
     skus: PropTypes.objectOf(PropTypes.object).isRequired,
   })).isRequired,
+  selected: PropTypes.string.isRequired,
   styleSelector: PropTypes.func.isRequired,
-  style: PropTypes.shape({
-    style_id: PropTypes.number.isRequired,
-    name: PropTypes.string.isRequired,
-    original_price: PropTypes.string.isRequired,
-    sale_price: PropTypes.string,
-    'default?': PropTypes.bool.isRequired,
-    photos: PropTypes.arrayOf(PropTypes.objectOf(PropTypes.string)).isRequired,
-    skus: PropTypes.objectOf(PropTypes.object).isRequired,
-  }).isRequired,
-  defaultSku: PropTypes.string.isRequired,
 };
 
 export default StyleSelector;

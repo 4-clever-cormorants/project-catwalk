@@ -1,0 +1,40 @@
+.qa {
+  max-height: 95vh;
+  display: grid;
+  max-width: 1020px;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333;
+}
+
+.qaContent {
+  max-height: calc(90vh - 123px - 1rem);
+  overflow: auto;
+}
+
+.questionButton {
+  align-self: center;
+  outline: none;
+  border: 1px solid black;
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  background: none;
+  transition: all 0.2s ease-in-out;
+}
+
+.questionButton:hover {
+  cursor: pointer;
+  background: black;
+  color: white;
+}
+
+.qaFooterButtons {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 10px;
+}
+
+.qaFooterButtons button:first-child {
+  margin-right: 10px;
+}

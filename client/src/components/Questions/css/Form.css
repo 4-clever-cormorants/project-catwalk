@@ -1,0 +1,154 @@
+/* .Form {
+  background-color: #f2ebe0;
+} */
+
+/* .modal {
+  transition: opacity 400ms ease-in;
+} */
+
+.blocker {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  content: ' ';
+  z-index: 101;
+  background: rgba(0,0,0,.5);
+}
+
+.form {
+  position:fixed;
+  top:50%;
+  left:50%;
+  width: 500px;
+  height: fit-content;
+  /* border-radius: 20px; */
+  /* background-color: ivory; */
+  background-color: white;
+  z-index: 110;
+  padding: 20px;
+  transform: translate(-50%, -50%);
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.25);
+}
+
+.formHeader {
+  display: grid;
+  grid-template-columns: 100% auto;
+  padding: 20px;
+}
+
+.formHeader h3,
+.formHeader h4 {
+  margin: 0 auto;
+}
+
+.formHeader h3 {
+  grid-row: 1;
+}
+
+.formHeader h4 {
+  color: gray;
+  font-weight: 400;
+  grid-row: 2;
+}
+
+.formTitle {
+  display: grid;
+}
+
+.exitButton {
+  align-self: flex-start;
+  background: none;
+  border: none;
+  outline: none;
+  font-size: 20px;
+  font-family: sans-serif, Arial;
+  color: gray;
+  transition: all 0.2s ease-in-out;
+  margin-top: -26px;
+}
+
+.exitButton:hover {
+  color: black;
+  cursor: pointer;
+}
+
+.formContent {
+  border-radius: 5px;
+  padding: 20px;
+  padding-top: 0;
+}
+
+.form input[type=text],
+.form input[type=email],
+.form input[type=file],
+.form textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+}
+
+.form input[type=file] {
+  height: 46px;
+  /* resize: none; */
+}
+
+.form textarea {
+  resize: none;
+}
+
+.invalidField {
+  border: 1px solid crimson !important;
+}
+
+.photoUploadContainer {
+  display: grid;
+  grid-template-columns: auto 20%;
+}
+
+.submitButton,
+.uploadPhoto {
+  width: 100%;
+  outline: none;
+  border: 1px solid black;
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  background: black;
+  color: white;
+  transition: all 0.2s ease-in-out;
+}
+
+.uploadPhoto {
+  display: block;
+  height: 46px;
+  margin-top: 6px;
+  padding: 0px;
+}
+
+.submitButton:hover,
+.uploadPhoto:hover {
+  cursor: pointer;
+  background: white;
+  color: black;
+}
+
+.errorMessage {
+  margin-top: 16px;
+  color: crimson;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.fieldDescription {
+  margin-top: -10px;
+  color: #555;
+  /* text-align: center; */
+}

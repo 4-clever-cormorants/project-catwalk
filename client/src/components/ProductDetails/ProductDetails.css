@@ -1,0 +1,9 @@
+.PD {
+  height: 800px;
+}
+
+.productDetails {
+  display: grid;
+  grid-template-columns: 7fr 4fr;
+  grid-template-rows: 1fr 1fr 1fr;
+}
