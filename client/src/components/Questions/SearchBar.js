@@ -56,7 +56,12 @@ class SearchBar extends React.Component {
   render() {
     return (
       <div className={`${style.searchBar} searchBar`}>
-        <input type="text" placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS..." maxLength="1000" onChange={this.handleChange.bind(this)} />
+        <form>
+          <label htmlFor="searchQuestions">
+            {/* <i className="fa fa-search" aria-hidden="true" /> */}
+            <input type="text" name="searchQuestions" placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS..." maxLength="1000" onChange={this.handleChange.bind(this)} />
+          </label>
+        </form>
       </div>
     );
   }
