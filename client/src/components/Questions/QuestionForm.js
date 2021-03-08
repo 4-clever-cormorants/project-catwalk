@@ -105,18 +105,11 @@ class QuestionForm extends React.Component {
       emailInvalid,
     } = this.state;
     const errorMessage = errorMessages.join(', ');
-    let bodyClass = 'questionField';
-    let nameClass = 'questionNickname';
-    let emailClass = 'questionEmail';
-    if (bodyInvalid) {
-      bodyClass = `${style.invalidField} questionField`;
-    }
-    if (nameInvalid) {
-      nameClass = `${style.invalidField} questionNickname`;
-    }
-    if (emailInvalid) {
-      emailClass = `${style.invalidField} questionEmail`;
-    }
+    const bodyClass = bodyInvalid ? `${style.invalidField} questionField` : 'questionField';
+    const nameClass = nameInvalid ? `${style.invalidField} questionNickname` : 'questionNickname';
+    const emailClass = emailInvalid ? `${style.invalidField} questionEmail` : 'questionEmail';
+    const submitButtonClass = submitted ? style.submitButtonDisabled : style.submitButton;
+    const submitButtonText = submitted ? 'SUBMITTED' : 'SUBMIT';
     return (
       <div className={style.modal}>
         <div className={style.blocker} onClick={exitQuestionForm} />
@@ -149,7 +142,11 @@ class QuestionForm extends React.Component {
                 </p>
               </label>
               <div className={`${style.buttonContainer}`}>
-                <button type="button" id="submitQuestion" className={`${style.submitButton}`} onClick={this.handleSubmitAnswer.bind(this)} disabled={submitted}>Submit</button>
+                <button type="button" id="submitQuestion" className={submitButtonClass} onClick={this.handleSubmitAnswer.bind(this)} disabled={submitted}>
+                  {submitButtonText}
+                  &nbsp;
+                  {submitted ? <i className="fa fa-check-circle" aria-hidden="true" /> : ''}
+                </button>
               </div>
               {submitError ? <div className={`${style.errorMessage} errorMessage`}>{`You must enter the following: ${errorMessage}`}</div> : ''}
             </form>

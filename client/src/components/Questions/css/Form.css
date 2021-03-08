@@ -111,6 +111,7 @@
 }
 
 .submitButton,
+.submitButtonDisabled,
 .uploadPhoto {
   width: 100%;
   outline: none;
@@ -139,6 +140,7 @@
 
 .errorMessage {
   margin-top: 16px;
+  text-align: center;
   color: crimson;
 }
 
