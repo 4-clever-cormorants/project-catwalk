@@ -11,8 +11,10 @@ it('should render the image gallery with the default view and thumbnail(s)', () 
   const wrapper = mount(<ImageGallery
     styleId={76285}
     style={styles.results[0]}
-    styles={styles.results}
-    stylesSelector={() => {}}
+    id={0}
+    leftClick={() => {}}
+    rightClick={() => {}}
+    renderDefaultView={() => {}}
   />);
   const imageGallery = wrapper.find('.imageGallery');
   const defaultView = wrapper.find(DefaultView);
