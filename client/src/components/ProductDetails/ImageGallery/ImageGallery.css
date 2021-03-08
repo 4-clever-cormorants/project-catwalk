@@ -20,6 +20,12 @@
 .left, .right {
   /* padding: 5px; */
   margin: 20px;
+  transition: all 0.25s ease;
+  color: grey;
+}
+
+.left:hover, .right:hover {
+  color: black;
 }
 
 .imageGallery .defaultView {
