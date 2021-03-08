@@ -35,5 +35,9 @@ describe('Test the wishlist module', () => {
     wishlist.drop(dummy.currentProduct.id, () => {});
     const list = wishlist.getAll();
     expect(list.length).toBe(2);
+    wishlist.drop(dummy.relatedProducts[0].id, () => {});
+    expect(list.length).toBe(1);
+    wishlist.drop(dummy.relatedProducts[1].id, () => {});
+    expect(list.length).toBe(0);
   });
 });

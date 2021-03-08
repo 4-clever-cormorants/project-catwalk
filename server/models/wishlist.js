@@ -28,11 +28,13 @@ const add = (id, callback) => {
  * @param {func} callback - error first callback
  */
 const drop = (id, callback) => {
-  if (id in wishlist) {
-    wishlistStore = wishlistStore
-      .slice(0, wishlist[id])
-      .concat(wishlistStore.slice(wishlist[id] + 1));
-    delete wishlist[id];
+  for (let i = 0; i < wishlistStore.length; i += 1) {
+    if (wishlistStore[i] === id) {
+      wishlistStore = wishlistStore
+        .slice(0, wishlist[id])
+        .concat(wishlistStore.slice(wishlist[id] + 1));
+      delete wishlist[id];
+    }
   }
   callback(null);
 };
