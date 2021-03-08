@@ -22,18 +22,15 @@ describe('Image Gallery tests', () => {
     load: true,
   });
   wrapper.update();
+  const instance = wrapper.instance();
   const imageGallery = wrapper.find('.imageGallery');
   const defaultView = wrapper.find(DefaultView);
   const thumbnail = wrapper.find(Thumbnail);
+  const rightArrow = wrapper.find('.right');
 
   it('should render the image gallery with the default view and thumbnail(s)', () => {
     expect(imageGallery.exists()).toBe(true);
     expect(defaultView.exists()).toBe(true);
     expect(thumbnail.exists()).toBe(true);
-  });
-
-  it('should initially have a left arrow to go to the next photo', () => {
-    const rightArrow = wrapper.find('.right');
-    expect(rightArrow.exists()).toBe(true);
   });
 });
