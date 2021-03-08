@@ -19,14 +19,14 @@
 
 .left, .right {
   margin: 20px;
- }
+}
 
 
 .left:hover, .right:hover {
   color: black;
 }
 
-button {
+.left button, .right button {
   color: grey;
   background-color: white;
   border: none;
@@ -38,7 +38,8 @@ button:focus {
   box-shadow: none;
 }
 
-button:hover {
+.right button:hover, .left button:hover {
+  cursor: pointer;
   color: black;
 }
 
