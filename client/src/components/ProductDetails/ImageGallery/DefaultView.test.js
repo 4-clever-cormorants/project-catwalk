@@ -11,7 +11,7 @@ describe('testing the default view of the image gallery', () => {
     expect(defaultView.exists()).toBe(true);
   });
 
-  it('should intially have a right arrow', () => {
+  it('should intially render a right arrow', () => {
     const wrapper = mount(<DefaultView
       id={0}
       max={5}
@@ -21,5 +21,17 @@ describe('testing the default view of the image gallery', () => {
     />);
     const rightArrow = wrapper.find('.fa-chevron-right');
     expect(rightArrow.exists()).toBe(true);
+  });
+
+  it('should render a left arrow when the index is greater than zero', () => {
+    const wrapper = mount(<DefaultView
+      id={1}
+      max={5}
+      leftClick={() => {}}
+      rightClick={() => {}}
+      url="https://images.unsplash.com/photo-1547257965-087be799b084?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80"
+    />);
+    const leftArrow = wrapper.find('.fa-chevron-left');
+    expect(leftArrow.exists()).toBe(true);
   });
 });
