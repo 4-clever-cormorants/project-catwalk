@@ -93,8 +93,8 @@
 }
 
 .form input[type=file] {
-  height: 46px;
-  /* resize: none; */
+  height: 47px;
+  resize: none;
 }
 
 .form input::placeholder {
@@ -130,7 +130,7 @@
 
 .uploadPhoto {
   display: block;
-  height: 46px;
+  height: 47px;
   margin-top: 6px;
   padding: 0px;
 }
