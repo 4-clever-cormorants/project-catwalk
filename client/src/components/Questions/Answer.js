@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import AnswerFooter from './AnswerFooter';
-import ImageModal from './ImageModal';
+import AnswerImageModal from './AnswerImageModal';
 import style from './css/Answer.css';
 
 class Answer extends React.Component {
@@ -50,7 +50,7 @@ class Answer extends React.Component {
             </div>
           ) : ''}
         <AnswerFooter answer={answer} />
-        {imageClicked ? <ImageModal url={imageUrl} exitModal={this.exitModal} /> : ''}
+        {imageClicked ? <AnswerImageModal url={imageUrl} exitModal={this.exitModal} /> : ''}
       </div>
     );
   }

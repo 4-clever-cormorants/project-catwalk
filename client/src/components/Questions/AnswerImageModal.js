@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import style from './css/ImageModal.css';
+import style from './css/AnswerImageModal.css';
 
-const ImageModal = ({ url, exitModal }) => (
+const AnswerImageModal = ({ url, exitModal }) => (
   <div className={style.modal}>
     <div className={style.blocker} onClick={exitModal} />
     <div className={`${style.imageModal} imageModal`}>
@@ -18,9 +18,9 @@ const ImageModal = ({ url, exitModal }) => (
   </div>
 );
 
-ImageModal.propTypes = {
+AnswerImageModal.propTypes = {
   url: PropTypes.string.isRequired,
   exitModal: PropTypes.func.isRequired,
 };
 
-export default ImageModal;
+export default AnswerImageModal;
