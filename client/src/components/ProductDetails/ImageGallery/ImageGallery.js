@@ -6,7 +6,7 @@ import Thumbnail from './Thumbnail';
 import css from './ImageGallery.css';
 
 const ImageGallery = ({
-  styleId, style, id, leftClick, rightClick, renderDefaultView,
+  styleId, style, id, leftClick, rightClick, renderDefaultView, onScroll, scrollUp, scrollDown
 }) => (
   <div className={css.imageGallery} styleid={styleId}>
     {style.photos[id].url !== null ? (
@@ -19,7 +19,7 @@ const ImageGallery = ({
       />
     ) : ''}
     <div className={css.thumbnailView}>
-      <div className={css.thumbnails}>
+      <div id={'thumbnailView'} className={css.thumbnails}>
         {style.photos.map((thumbnail, i) => {
           let selected = 'notSelected';
           if (parseInt(id, 10) === i) {
@@ -39,9 +39,6 @@ const ImageGallery = ({
           }
           return '';
         })}
-      </div>
-      <div className={css.arrow}>
-        <span className="fa fa-chevron-down" />
       </div>
     </div>
   </div>
