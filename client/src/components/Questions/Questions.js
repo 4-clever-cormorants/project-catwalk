@@ -29,7 +29,7 @@ class Questions extends React.Component {
   }
 
   componentDidMount() {
-    const { productId } = this.props;
+    const { productId, interactions } = this.props;
     const { currentLen } = this.state;
     // for testing purposes
     if (productId === -1) {
@@ -51,6 +51,11 @@ class Questions extends React.Component {
         console.log(err);
       });
     document.addEventListener('keydown', this.escFunction, false);
+    const qaComponent = document.querySelector('#qa');
+    if (qaComponent) {
+      qaComponent.addEventListener('click',
+        (e) => interactions(e, 'QuestionsAndAnswers'));
+    }
   }
 
   componentWillUnmount() {
@@ -170,6 +175,7 @@ class Questions extends React.Component {
 Questions.propTypes = {
   productId: PropTypes.number.isRequired,
   productName: PropTypes.string.isRequired,
+  interactions: PropTypes.func.isRequired,
 };
 
 export default Questions;
