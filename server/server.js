@@ -39,7 +39,7 @@ app.get('/test', (req, res) => {
   res.send('test');
 });
 
-const port = 1128;
+const port = 3000;
 
 const server = app.listen(port, () => {
   console.log(`listening on port ${port}`);
