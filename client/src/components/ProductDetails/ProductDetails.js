@@ -59,7 +59,7 @@ class ProductDetails extends React.Component {
   }
 
   styleSelector(e) {
-    const styleId = Number(e.target.classList[0]);
+    const styleId = parseInt(e.target.classList[0], 10);
     if (!Number.isNaN(styleId)) {
       const { styles } = this.state;
       this.setState({

@@ -40,6 +40,7 @@ describe('StyleSelector tests', () => {
     const stylesDisplay = wrapper.find('.stylesDisplay');
     expect(sS.exists()).toBe(true);
     expect(stylesDisplay.exists()).toBe(true);
+    wrapper.unmount();
   });
 
   it('StylesSelector should render the styles of the given product', () => {
@@ -54,13 +55,15 @@ describe('StyleSelector tests', () => {
     expect(stylesDisplay.exists()).toBe(true);
     expect(len).toBeGreaterThan(3);
     expect(style.exists()).toBe(true);
+    wrapper.unmount();
   });
 
   it('should update the style in the state when you click on another style in the style display', async () => {
-    const wrapper = mount(<ProductDetails productId={14034} />);
+    const wrapper = mount(<ProductDetails productId={14034} getProductName={() => {}} />);
+    const instance = wrapper.instance();
     wrapper.setState({
       product,
-      rating: 5,
+      rating: { average: 5, ratings: 36 },
       styleId: styles.results[0].style_id,
       styles,
       style: styles.results[0],
@@ -68,13 +71,12 @@ describe('StyleSelector tests', () => {
       load: true,
     });
     wrapper.update();
-    const instance = wrapper.instance();
+    expect(instance.state.styleId).toBe(70540);
     const div = wrapper.find('#a70541');
-    const styleInput = div.find('.styleRadio');
+    const styleInput = div.find('img');
     expect(styleInput.exists()).toBe(true);
-    styleInput.simulate('click', {});
+    styleInput.simulate('click');
     await tick();
-    console.log(instance.state.style);
-    expect(instance.state.style.style_id).toBe(70541);
+    expect(instance.state.styleId).toBe(70541);
   });
 });
