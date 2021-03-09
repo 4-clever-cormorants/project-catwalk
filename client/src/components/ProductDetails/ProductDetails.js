@@ -176,6 +176,9 @@ class ProductDetails extends React.Component {
               leftClick={this.leftClick}
               rightClick={this.rightClick}
               renderDefaultView={this.renderDefaultView}
+              onScroll={this.scrollHandler}
+              scrollUp={ProductDetails.scrollUp}
+              scrollDown={ProductDetails.scrollDown}
             />
             <ProductInformation
               product={product}
