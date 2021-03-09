@@ -17,7 +17,7 @@ const Checkout = ({
     qty = skus[sku].quantity;
   }
   return (
-    <div className={css.checkout}>
+    <div id="checkout" className={css.checkout}>
       <form onSubmit={addToCart} className={css.form}>
         <SizeSelector skus={skus} onChange={skuSelector} />
         <QtySelector qty={qty} />

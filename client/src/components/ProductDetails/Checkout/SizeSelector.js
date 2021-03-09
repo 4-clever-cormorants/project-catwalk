@@ -7,13 +7,13 @@ import PropTypes from 'prop-types';
 import css from './Checkout.css';
 
 const SizeSelector = ({ skus, onChange }) => (
-  <label className={css.sizeSelector} onChange={onChange}>
-    <select className={css.sizeSelectorButton} id={css.sizeSelector} required>
-      <option value={null} key="size" className="option">SELECT SIZE</option>
+  <label id="sizeSelectorContainer" className={css.sizeSelector} onChange={onChange}>
+    <select id="sizeSelector" className={css.sizeSelectorButton} id={css.sizeSelector} required>
+      <option id="SELECT SIZE" value={null} key="size" className="option">SELECT SIZE</option>
       {Object.keys(skus).map((sku) => {
         if (skus[sku].quantity !== 0) {
           return (
-            <option value={sku} key={sku} className="option">
+            <option id="size" value={sku} key={sku} className="option">
               {skus[sku].size}
             </option>
           );

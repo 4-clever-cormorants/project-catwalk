@@ -23,7 +23,7 @@ const Rating = ({ rating, totalRatings }) => {
   }
 
   return (
-    <div className={css.rating}>
+    <div id="rating" className={css.rating}>
       {stars.map((star, i) => {
         if (star === 0) {
           return (

@@ -7,18 +7,18 @@ import css from './ImageGallery.css';
 const DefaultView = ({
   id, max, leftClick, rightClick, url,
 }) => (
-  <div className={css.DV}>
-    <div className={css.left}>
+  <div id="defaultView" className={css.DV}>
+    <div id="scrollLeft" className={css.left}>
       {id > 0 ? (
-        <button type="button" onClick={leftClick} onKeyPress={leftClick} className="fa fa-chevron-left" />
+        <button id="defaultViewLeftButton" type="button" onClick={leftClick} onKeyPress={leftClick} className="fa fa-chevron-left" />
       ) : ''}
     </div>
-    <div className={css.defaultView}>
-      <img src={url} alt="" />
+    <div id="defaultImageContainer" className={css.defaultView}>
+      <img id="defaultImage" src={url} alt="" />
     </div>
     <div className={css.right}>
       {id < max - 1 ? (
-        <button type="button" onClick={rightClick} onKeyPress={rightClick} className="fa fa-chevron-right" />
+        <button id="defaultViewRightButton" type="button" onClick={rightClick} onKeyPress={rightClick} className="fa fa-chevron-right" />
       ) : ''}
     </div>
   </div>
