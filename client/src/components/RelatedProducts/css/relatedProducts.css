@@ -1,13 +1,17 @@
 .relatedProducts {
   display: grid;
-  max-width: 1020px;
+  max-width: 1080px;
   margin-left: auto;
   margin-right: auto;
-  grid-template-columns: 1020px;
+  grid-template-columns: 30px 1020px 30px;
   grid-template-rows: 500px 500px;
 }
 
 .outfitListWithAdd {
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 1;
+  grid-row-end: 2;
   overflow:hidden;
   display: flex;
   overflow-x: auto;
@@ -29,4 +33,14 @@
 .ListName {
   font-family: 'Lato';
   font-size: 12pt;
+}
+
+.side {
+  margin: auto;
+  font-size: 15pt;
+}
+
+.side:focus {
+  outline: none;
+  box-shadow: none;
 }
