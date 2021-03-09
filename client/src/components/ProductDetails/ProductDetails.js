@@ -165,6 +165,7 @@ class ProductDetails extends React.Component {
   }
 
   render() {
+    const { interactions } = this.props;
     const {
       product, rating, styleId, styles, style, id, sku, load, thumbnailScroll,
     } = this.state;
@@ -203,6 +204,7 @@ class ProductDetails extends React.Component {
               addToCart={this.addToCart}
               style={style}
               sku={sku}
+              interactions={interactions}
             />
           </div>
         ) : ''}

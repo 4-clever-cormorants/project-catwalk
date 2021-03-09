@@ -4,6 +4,7 @@ const path = require('path');
 
 const app = express();
 
+const interactionsRoutes = require('./routes/interactionsRoutes.js');
 const productRoutes = require('./routes/productRoutes.js');
 const questionsRoutes = require('./routes/questionsRoutes.js');
 const relatedRoutes = require('./routes/relatedRoutes.js');
@@ -22,6 +23,7 @@ app.use('/', logger);
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+app.use('/interactions', interactionsRoutes);
 app.use('/qa', questionsRoutes);
 app.use('/related', relatedRoutes);
 app.use('/products', productRoutes);
