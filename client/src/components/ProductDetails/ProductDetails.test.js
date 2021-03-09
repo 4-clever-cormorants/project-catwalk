@@ -8,6 +8,7 @@ import ProductDetails from './ProductDetails';
 import DefaultView from './ImageGallery/DefaultView';
 import Thumbnail from './ImageGallery/Thumbnail';
 
+import App from '../App';
 import ProductInformation from './ProductInformation/ProductInformation';
 // import Rating from './ProductInformation/Rating';
 import Category from './ProductInformation/Category';
@@ -59,6 +60,7 @@ describe('test Product Details component', () => {
     const productDetails = wrapper.find(ProductDetails);
     expect(productDetails.exists()).toBe(true);
   });
+
 
   it('should have an image gallery that displays the selected style and thumbnails', () => {
     const imageGallery = wrapper.find('.imageGallery');
