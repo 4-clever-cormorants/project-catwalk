@@ -52,7 +52,6 @@ button:focus {
   justify-content: center;
   align-self: center;
   align-items: center;
-  /* border: 1px rgb(98, 98, 98) solid; */
   overflow: hidden;
 }
 
@@ -61,12 +60,10 @@ button:focus {
   max-height: 575px;
 }
 
-/* [2] Transition property for smooth transformation of images */
 .defaultView img {
   transition: transform .5s ease;
 }
 
-/* [3] Finally, transforming the image when container gets hovered */
 .defaultView:hover img {
   transform: scale(1.5);
   cursor: cell;
@@ -87,32 +84,11 @@ button:focus {
   height: 485px;
   display: flex;
   flex-direction: column;
-  /* justify-content: center;
-  align-content: center; */
-  /* border: 3px orange solid; */
   overflow: scroll;
   scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
   padding-bottom: 10px;
 }
-
-
-/* .arrow {
-  align-self: flex-start;
-  width: 75px;
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position:relative;
-  bottom: 20px;
-  background-color: rgba(20, 20, 20, 0);
-} */
-
-/* .arrow .fa {
-  justify-content: center;
-  align-items: center;
-} */
 
 .thumbnails::-webkit-scrollbar {
   display:none;
@@ -123,9 +99,6 @@ button:focus {
 }
 
 .imageGallery .thumbnailView .thumbnail .selected {
-  /* margin-bottom: -5px;
-  padding-top: -2px;
-  padding-bottom: 2px; */
   border-bottom: 3px solid grey;
 }
 
