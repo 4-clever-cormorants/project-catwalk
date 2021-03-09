@@ -49,6 +49,7 @@ class ProductDetails extends React.Component {
     this.addToCart = this.addToCart.bind(this);
     this.leftClick = this.leftClick.bind(this);
     this.rightClick = this.rightClick.bind(this);
+    this.scrollHandler = this.scrollHandler.bind(this);
     this.renderDefaultView = this.renderDefaultView.bind(this);
   }
 
