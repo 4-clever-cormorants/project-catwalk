@@ -13,10 +13,10 @@ class ProductDetails extends React.Component {
   static scrollUp() {
     const scroll = document.getElementById('thumbnailView');
     const currentScroll = scroll.scrollTop;
-    if (currentScroll - 475 < 0) {
+    if (currentScroll - 485 < 0) {
       scroll.scrollTop = 0;
     } else {
-      scroll.scrollTop = Math.floor((currentScroll - (475)) / 115) * 115;
+      scroll.scrollTop = Math.floor((currentScroll - (485)) / 121.25) * 121.25;
     }
   }
 
@@ -25,10 +25,10 @@ class ProductDetails extends React.Component {
     const scrollMax = scroll.scrollHeight - scroll.clientHeight;
     const currentScroll = scroll.scrollTop;
 
-    if (currentScroll + (475) > scrollMax) {
+    if (currentScroll + (485) >= scrollMax) {
       scroll.scrollTop = scrollMax;
     } else {
-      scroll.scrollTop = Math.floor((currentScroll + (475)) / 115) * 115;
+      scroll.scrollTop = Math.floor((currentScroll + (485)) / 121.25) * 121.25;
     }
   }
 
