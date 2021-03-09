@@ -29,19 +29,31 @@ class AnswerList extends React.Component {
   render() {
     const { answers } = this.props;
     const { answersOnScreen, loadAll } = this.state;
-    let expandAnswersButton = '';
-    if (answers.length > 2 && !loadAll) {
-      expandAnswersButton = <button type="button" className={`${style.buttonLink} ${style.expandAnswers} loadAnswers`} onClick={this.loadMoreAnswers.bind(this)}>SEE MORE ANSWERS</button>;
-    } else if (answers.length > 2 && loadAll) {
-      expandAnswersButton = <button type="button" className={`${style.buttonLink} ${style.expandAnswers} collapseAnswers`} onClick={this.collapseAnswers.bind(this)}>COLLAPSE ANSWERS</button>;
-    }
+    const expandAnswersText = !loadAll
+      ? (
+        <span>
+          SEE MORE ANSWERS
+          <i className="fa fa-plus" aria-hidden="true" />
+        </span>
+      )
+      : (
+        <span>
+          COLLAPSE ANSWERS
+          <i className="fa fa-plus" aria-hidden="true" />
+        </span>
+      );
+    const expandAnswersClass = !loadAll ? `${style.loadAnswers}` : `${style.loadAnswers} ${style.collapseAnswers}`;
+    const expandAnswersFunc = !loadAll
+      ? this.loadMoreAnswers.bind(this)
+      : this.collapseAnswers.bind(this);
+    const expandAnswersButton = <button type="button" className={`${style.buttonLink} ${style.expandAnswers} ${expandAnswersClass}`} onClick={expandAnswersFunc}>{expandAnswersText}</button>;
     return (
       <div className={`${style.answerList} answerList`}>
         {answersOnScreen.length > 0 ? <p className={`${style.answerA}`}>A:&nbsp;</p> : ''}
         <div className={`${style.answerListContent} answerListContent`}>
           {answersOnScreen.map((answer) => <Answer key={answer.answer_id} answer={answer} />)}
         </div>
-        {expandAnswersButton}
+        {answers.length > 2 ? expandAnswersButton : ''}
       </div>
     );
   }

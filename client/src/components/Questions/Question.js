@@ -47,12 +47,16 @@ class Question extends React.Component {
   updateAnswers(callback) {
     this.fetchAnswers()
       .then((response) => {
-        let answers = [...response.data.results];
-        for (let i = 0; i < answers.length; i += 1) {
-          if (answers[i].answerer_name === 'Seller') {
-            answers = [].concat(answers[i], answers.slice(0, i), answers.slice(i + 1));
+        let answers = [];
+        const sellerAnswers = [];
+        for (let i = 0; i < response.data.results.length; i += 1) {
+          if (response.data.results[i].answerer_name === 'Seller') {
+            sellerAnswers.push(response.data.results[i]);
+          } else {
+            answers.push(response.data.results[i]);
           }
         }
+        answers = sellerAnswers.concat(answers);
         this.setState({
           answers,
           loadAnswers: true,

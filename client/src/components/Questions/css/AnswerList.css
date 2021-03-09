@@ -37,7 +37,6 @@
 }
 
 .buttonLink:hover {
-  color: gray;
   text-decoration: underline gray 2px;
 }
 
@@ -50,4 +49,16 @@
 
 .expandAnswers:hover {
   color: gray;
+}
+
+.loadAnswers i {
+  -webkit-transition: all .2s ease;
+  -moz-transition: all .2s ease;
+  -o-transition: all .2s ease;
+  -ms-transition: all .2s ease;
+  transition: all .2s ease;
+}
+
+.collapseAnswers i {
+  transform: rotate(135deg);
 }

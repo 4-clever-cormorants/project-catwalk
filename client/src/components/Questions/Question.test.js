@@ -3,9 +3,6 @@ import { mount } from 'enzyme';
 import Question from './Question';
 import AnswerList from './AnswerList';
 import AnswerForm from './AnswerForm';
-import dummyAnswers from './dummyAnswers';
-
-const axios = require('axios');
 
 it('should exist', () => {
   const wrapper = mount(<Question test productName="test" />);
@@ -15,7 +12,7 @@ it('should exist', () => {
 it('should render answers if there are any', () => {
   const wrapper = mount(<Question test productName="test" />);
   const instance = wrapper.instance();
-  expect(instance.state.answers.results.length).toBeGreaterThan(0);
+  expect(instance.state.answers.length).toBeGreaterThan(0);
   const answers = wrapper.find(AnswerList);
   expect(answers.exists()).toBe(true);
 });
