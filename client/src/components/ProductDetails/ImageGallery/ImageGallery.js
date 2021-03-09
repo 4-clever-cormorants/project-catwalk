@@ -8,7 +8,16 @@ import Down from './Down';
 import css from './ImageGallery.css';
 
 const ImageGallery = ({
-  styleId, style, id, leftClick, rightClick, renderDefaultView, onScroll, scrollUp, scrollDown
+  styleId,
+  style,
+  id,
+  leftClick,
+  rightClick,
+  renderDefaultView,
+  onScroll,
+  scrollUp,
+  scrollDown,
+  thumbnailScroll,
 }) => (
   <div className={css.imageGallery} styleid={styleId}>
     {style.photos[id].url !== null ? (
@@ -21,6 +30,7 @@ const ImageGallery = ({
       />
     ) : ''}
     <div className={css.thumbnailView}>
+      {thumbnailScroll === 0 ? (<div />) : (<Up scrollUp={scrollUp} />)}
       <div id="thumbnailView" className={css.thumbnails} onScroll={onScroll}>
         {style.photos.map((thumbnail, i) => {
           let selected = 'notSelected';
@@ -42,6 +52,8 @@ const ImageGallery = ({
           return '';
         })}
       </div>
+      {(thumbnailScroll === 1 || style.photos.length < 5)
+        ? (<div />) : (<Down scrollDown={scrollDown} />)}
     </div>
   </div>
 );
@@ -61,6 +73,10 @@ ImageGallery.propTypes = {
   leftClick: PropTypes.func.isRequired,
   rightClick: PropTypes.func.isRequired,
   renderDefaultView: PropTypes.func.isRequired,
+  onScroll: PropTypes.func.isRequired,
+  scrollUp: PropTypes.func.isRequired,
+  scrollDown: PropTypes.func.isRequired,
+  thumbnailScroll: PropTypes.number.isRequired,
 };
 
 export default ImageGallery;

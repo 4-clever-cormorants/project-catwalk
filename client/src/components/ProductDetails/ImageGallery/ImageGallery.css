@@ -80,7 +80,7 @@ button:focus {
   flex-direction: column;
   justify-content: center;
   align-self: center;
-  align-items: flex-start;
+  align-items: center;
   /* border: 3px red solid; */
 }
 
