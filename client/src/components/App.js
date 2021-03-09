@@ -22,8 +22,8 @@ class App extends React.Component {
       time: new Date(),
     };
     axios.post('/interactions', body)
-      .then((res) => {
-        console.log(res);
+      .then(() => {
+        // console.log(res);
       })
       .catch((err) => {
         console.error(err);
