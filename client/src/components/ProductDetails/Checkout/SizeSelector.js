@@ -8,7 +8,7 @@ import css from './Checkout.css';
 
 const SizeSelector = ({ skus, onChange }) => (
   <label id="sizeSelectorContainer" className={css.sizeSelector} onChange={onChange}>
-    <select id="sizeSelector" className={css.sizeSelectorButton} id={css.sizeSelector} required>
+    <select className={css.sizeSelectorButton} id={css.sizeSelector} required>
       <option id="SELECT SIZE" value={null} key="size" className="option">SELECT SIZE</option>
       {Object.keys(skus).map((sku) => {
         if (skus[sku].quantity !== 0) {
