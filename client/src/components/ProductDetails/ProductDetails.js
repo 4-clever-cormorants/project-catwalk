@@ -155,9 +155,13 @@ class ProductDetails extends React.Component {
   }
 
   renderDefaultView(e) {
-    this.setState({
-      id: e.target.id,
-    });
+    const { style } = this.state;
+    return (
+      style.photos[e.target.id] !== undefined
+        ? this.setState({
+          id: e.target.id,
+        }) : ''
+    );
   }
 
   render() {
