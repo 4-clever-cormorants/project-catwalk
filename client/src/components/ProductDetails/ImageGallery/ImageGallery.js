@@ -6,30 +6,46 @@ import Thumbnail from './Thumbnail';
 import css from './ImageGallery.css';
 
 const ImageGallery = ({
-  styleId, style, defaultView, renderDefaultView,
-}) => {
-  const [photo, photos] = [style.photos[0], style.photos.slice(1)];
-  return (
-    <div className={css.imageGallery} styleid={styleId}>
-      <DefaultView url={defaultView} />
-      <div className={css.thumbnailView}>
-        <div className={css.thumbnails}>
-          <div key={`first ${photo.url.toString()}`}>
-            <Thumbnail url={photo.url} onClick={renderDefaultView} defaultChecked />
-          </div>
-          {photos.map((thumbnail, i) => (
-            <div key={`${i} ${thumbnail.url.toString()}`}>
-              <Thumbnail url={thumbnail.url} onClick={renderDefaultView} />
-            </div>
-          ))}
-        </div>
-        <div className={css.arrow}>
-          <span className="fa fa-chevron-down" />
-        </div>
+  styleId, style, id, leftClick, rightClick, renderDefaultView,
+}) => (
+  <div className={css.imageGallery} styleid={styleId}>
+    {style.photos[id].url !== null ? (
+      <DefaultView
+        id={id}
+        max={style.photos.length}
+        leftClick={leftClick}
+        rightClick={rightClick}
+        url={style.photos[id].url}
+      />
+    ) : ''}
+    <div className={css.thumbnailView}>
+      <div className={css.thumbnails}>
+        {style.photos.map((thumbnail, i) => {
+          let selected = 'notSelected';
+          if (parseInt(id, 10) === i) {
+            selected = 'selected';
+          }
+          if (thumbnail.url !== null) {
+            return (
+              <div key={`${i} ${thumbnail.url.toString()}`}>
+                <Thumbnail
+                  thmbId={i}
+                  url={thumbnail.url}
+                  onClick={renderDefaultView}
+                  selected={selected}
+                />
+              </div>
+            );
+          }
+          return '';
+        })}
+      </div>
+      <div className={css.arrow}>
+        <span className="fa fa-chevron-down" />
       </div>
     </div>
-  );
-};
+  </div>
+);
 
 ImageGallery.propTypes = {
   style: PropTypes.shape({
@@ -42,7 +58,9 @@ ImageGallery.propTypes = {
     skus: PropTypes.objectOf(PropTypes.object).isRequired,
   }).isRequired,
   styleId: PropTypes.number.isRequired,
-  defaultView: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
+  leftClick: PropTypes.func.isRequired,
+  rightClick: PropTypes.func.isRequired,
   renderDefaultView: PropTypes.func.isRequired,
 };
 

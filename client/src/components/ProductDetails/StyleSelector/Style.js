@@ -6,8 +6,8 @@ import PropTypes from 'prop-types';
 
 const Style = ({ style, onClick, defaultChecked }) => (
   <div
-    className={style.style_id}
-    id={style.style_id}
+    className={`${style.style_id}`}
+    id={`a${style.style_id}`}
     onClick={onClick}
   >
     <label>

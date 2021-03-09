@@ -1,4 +1,5 @@
 import React from 'react';
+// import axios from 'axios';
 import { mount } from 'enzyme';
 
 import ProductDetails from './ProductDetails';
@@ -7,6 +8,7 @@ import ProductDetails from './ProductDetails';
 import DefaultView from './ImageGallery/DefaultView';
 import Thumbnail from './ImageGallery/Thumbnail';
 
+import App from '../App';
 import ProductInformation from './ProductInformation/ProductInformation';
 // import Rating from './ProductInformation/Rating';
 import Category from './ProductInformation/Category';
@@ -27,14 +29,27 @@ import AddToWishList from './Checkout/AddToWishList';
 import product from './productDummyData';
 import styles from './stylesDummyData';
 
+// axios.get.mockImplementation((url) => {
+//   if (url === `/products/data?product_id=${product.id}`) {
+//     return Promise.resolve({ data: [product] });
+//   }
+//   if (url === `/products/styles?product_id=${product.id}`) {
+//     return Promise.resolve({ data: [styles] });
+//   }
+//   if (url === `/rating/data?product_id=${product.id}`) {
+//     return Promise.resolve({ data: [5] });
+//   }
+//   return undefined;
+// });
+
 describe('test Product Details component', () => {
-  const wrapper = mount(<ProductDetails productId={14933} />);
+  const wrapper = mount(<ProductDetails productId={14034} />);
   wrapper.setState({
     product,
     styleId: styles.results[0].style_id,
     styles,
     style: styles.results[0],
-    sku: Object.keys(styles.results[0].skus)[0],
+    id: 0,
     cart: [],
     rating: { average: 3, totalRatings: 35 },
     load: true,
@@ -45,6 +60,7 @@ describe('test Product Details component', () => {
     const productDetails = wrapper.find(ProductDetails);
     expect(productDetails.exists()).toBe(true);
   });
+
 
   it('should have an image gallery that displays the selected style and thumbnails', () => {
     const imageGallery = wrapper.find('.imageGallery');

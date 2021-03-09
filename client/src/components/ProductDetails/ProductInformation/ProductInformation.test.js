@@ -11,9 +11,16 @@ import Description from './Description';
 
 import product from '../productDummyData';
 
-test('ProductInformation should display the rating, category, title, price, shipping, and description', () => {
+describe('testing the Product Information subcomponent', () => {
   const wrapper = mount(<ProductInformation product={product} />);
-  const productInformation = wrapper.find(ProductInformation);
+  wrapper.setProps({
+    product,
+    originalPrice: product.default_price,
+    salePrice: (product.default_price) * 0.25,
+    rating: 3,
+    totalRatings: 25,
+  });
+  wrapper.update();
   const productInformationLen = wrapper.find('.info').children().length;
   const rating = wrapper.find(Rating);
   const category = wrapper.find(Category);
@@ -21,12 +28,26 @@ test('ProductInformation should display the rating, category, title, price, ship
   const price = wrapper.find(Price);
   const shipping = wrapper.find(Shipping);
   const description = wrapper.find(Description);
-  expect(productInformation.exists()).toBe(true);
-  expect(productInformationLen).toBe(6);
-  expect(rating.exists()).toBe(true);
-  expect(category.exists()).toBe(true);
-  expect(title.exists()).toBe(true);
-  expect(price.exists()).toBe(true);
-  expect(shipping.exists()).toBe(true);
-  expect(description.exists()).toBe(true);
+  it('ProductInformation should display the rating, category, title, price, shipping, and description', () => {
+    expect(productInformationLen).toBe(6);
+    expect(rating.exists()).toBe(true);
+    expect(category.exists()).toBe(true);
+    expect(title.exists()).toBe(true);
+    expect(price.exists()).toBe(true);
+    expect(shipping.exists()).toBe(true);
+    expect(description.exists()).toBe(true);
+  });
+
+  it('should provide the Ratings components with an average rating and total ratings', () => {
+    // const instance = wrapper.instance();
+    expect(rating.props().rating).toBe(3);
+    expect(rating.props().totalRatings).toBe(25);
+  });
+
+  it('should have a price component that calculates the discount (if there is a sale price)', () => {
+    const disc = price.find('.discount');
+    expect(disc.exists()).toBe(true);
+    console.log(disc.value);
+    // const discount = Math.floor((1 - (salePrice / originalPrice)) * 100);
+  });
 });

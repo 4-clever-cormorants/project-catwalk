@@ -18,7 +18,7 @@
   top: 0;
   width: 0%;
   overflow: hidden;
-  color: #f80;
+  color: rgb(200, 150, 45);
 }
 
 .quarter:after {
@@ -29,7 +29,7 @@
   top: 0;
   width: 25%;
   overflow: hidden;
-  color: #f80;
+  color: rgb(200, 150, 45);
 }
 
 .half:after {
@@ -40,7 +40,7 @@
   top: 0;
   width: 50%;
   overflow: hidden;
-  color: #f80;
+  color: rgb(200, 150, 45);
 }
 
 .threeQuarter:after {
@@ -51,7 +51,7 @@
   top: 0;
   width: 75%;
   overflow: hidden;
-  color: #f80;
+  color: rgb(200, 150, 45);
 }
 
 .full:after {
@@ -62,7 +62,7 @@
   top: 0;
   width: 100%;
   overflow: hidden;
-  color: #f80;
+  color: rgb(200, 150, 45);
 }
 
 .totalRatings {

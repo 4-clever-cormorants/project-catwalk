@@ -10,6 +10,39 @@
   border-bottom: 2px solid rgb(220, 220, 220);
 }
 
+.imageGallery .DV {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.left, .right {
+  margin: 20px;
+}
+
+
+.left:hover, .right:hover {
+  color: black;
+}
+
+.left button, .right button {
+  color: grey;
+  background-color: white;
+  border: none;
+  transition: all 0.25s ease;
+}
+
+button:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.right button:hover, .left button:hover {
+  cursor: pointer;
+  color: black;
+}
+
 .imageGallery .defaultView {
   grid-column: 2;
   grid-row: 1;
@@ -87,11 +120,7 @@
   padding-bottom: 10px;
 }
 
-.imageGallery .thumbnailView .thumbnail input {
-  display: none;
-}
-
-.imageGallery .thumbnailView .thumbnail input:checked + img{
+.imageGallery .thumbnailView .thumbnail .selected {
   /* margin-bottom: -5px;
   padding-top: -2px;
   padding-bottom: 2px; */
@@ -110,9 +139,5 @@
 }
 
 .imageGallery .thumbnailView img:hover {
-  /* margin-bottom: -5px;
-  padding-top: -2px; */
-  /* padding-bottom: 2px; */
   border-bottom: 3px solid grey;
 }
-

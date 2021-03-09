@@ -32,7 +32,7 @@ const StyleSelector = ({ styles, selected, styleSelector }) => {
       </p>
       <div className={css.stylesDisplay}>
         <div className={css.row1}>
-          <div key={style1.style_id} className={css.style}>
+          <div id={0} key={style1.style_id} className={css.style}>
             <Style style={style1} onClick={styleSelector} defaultChecked />
           </div>
           {row1.map((style) => (
