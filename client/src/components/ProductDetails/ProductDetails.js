@@ -71,6 +71,7 @@ class ProductDetails extends React.Component {
                   style: response.data.results[0],
                   id: 0,
                   load: true,
+                  thumbnailScroll: 0,
                 },
                 () => { getProductName(product.name); });
               });
@@ -161,7 +162,7 @@ class ProductDetails extends React.Component {
 
   render() {
     const {
-      product, rating, styleId, styles, style, id, sku, load,
+      product, rating, styleId, styles, style, id, sku, load, thumbnailScroll,
     } = this.state;
 
     return (
@@ -179,6 +180,7 @@ class ProductDetails extends React.Component {
               onScroll={this.scrollHandler}
               scrollUp={ProductDetails.scrollUp}
               scrollDown={ProductDetails.scrollDown}
+              thumbnailScroll={thumbnailScroll}
             />
             <ProductInformation
               product={product}

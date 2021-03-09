@@ -3,6 +3,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import DefaultView from './DefaultView';
 import Thumbnail from './Thumbnail';
+import Up from './Up';
+import Down from './Down';
 import css from './ImageGallery.css';
 
 const ImageGallery = ({
@@ -19,7 +21,7 @@ const ImageGallery = ({
       />
     ) : ''}
     <div className={css.thumbnailView}>
-      <div id={'thumbnailView'} className={css.thumbnails}>
+      <div id="thumbnailView" className={css.thumbnails} onScroll={onScroll}>
         {style.photos.map((thumbnail, i) => {
           let selected = 'notSelected';
           if (parseInt(id, 10) === i) {
