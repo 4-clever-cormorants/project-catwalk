@@ -64,14 +64,16 @@
   outline: none;
   font-size: 20px;
   font-family: sans-serif, Arial;
-  color: gray;
+  color: black;
   transition: all 0.2s ease-in-out;
   margin-top: -26px;
 }
 
 .exitButton:hover {
-  color: black;
+  color: white;
   cursor: pointer;
+  background-color: black;
+  border-radius: 50%;
 }
 
 .formContent {
