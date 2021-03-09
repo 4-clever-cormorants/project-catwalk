@@ -121,7 +121,7 @@ class AnswerForm extends React.Component {
               <h3>Submit your Answer</h3>
               <h4>{`${productName}: ${questionBody}`}</h4>
             </div>
-            <button type="button" className={`${style.exitButton} exitButton`} onClick={exitAnswerForm}>X</button>
+            <button type="button" className={`${style.exitButton} exitButton`} onClick={exitAnswerForm}><span>X</span></button>
           </div>
           <div className={`${style.formContent} answerFormContent`}>
             <form>
