@@ -7,7 +7,7 @@ const AddToOutfit = ({ addToOutfitHandler }) => (
   // eslint-disable-next-line object-curly-spacing
   <div className={style.addToOutfit} onClick={addToOutfitHandler} role="button" onKeyPress={addToOutfitHandler} tabIndex={0}>
     <span className={style.addToOutfitText} id="addToOutfit">
-      AddToOutfit
+      ADD TO OUTFIT
     </span>
     <span className={`${style.addToOutfitText} fa fa-plus`} id="addToOutfitButton" />
   </div>
