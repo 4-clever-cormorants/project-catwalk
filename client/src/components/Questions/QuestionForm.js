@@ -119,7 +119,7 @@ class QuestionForm extends React.Component {
               <h3>Ask Your Question</h3>
               <h4>{`About ${productName}`}</h4>
             </div>
-            <button type="button" onClick={exitQuestionForm} id="exitButton" className={`${style.exitButton}`}>X</button>
+            <button type="button" onClick={exitQuestionForm} id="exitButton" className={`${style.exitButton}`}><span>X</span></button>
           </div>
           <div className={`${style.formContent} questionFormContent`}>
             <form>

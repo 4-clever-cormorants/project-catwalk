@@ -12,7 +12,7 @@ class Question extends React.Component {
     super(props);
     const { question } = this.props;
     this.state = {
-      answers: dummyAnswers,
+      answers: dummyAnswers.results,
       addAnswerClicked: false,
       questionHelpfulness: question.question_helpfulness,
       increased: false,
@@ -47,8 +47,14 @@ class Question extends React.Component {
   updateAnswers(callback) {
     this.fetchAnswers()
       .then((response) => {
+        let answers = [...response.data.results];
+        for (let i = 0; i < answers.length; i += 1) {
+          if (answers[i].answerer_name === 'Seller') {
+            answers = [].concat(answers[i], answers.slice(0, i), answers.slice(i + 1));
+          }
+        }
         this.setState({
-          answers: response.data,
+          answers,
           loadAnswers: true,
           answerCount: Number.MAX_SAFE_INTEGER,
         }, callback);
@@ -126,7 +132,7 @@ class Question extends React.Component {
           </div>
         </div>
         {addAnswerClicked ? <AnswerForm exitAnswerForm={() => this.exitAnswerForm()} questionBody={question.question_body} questionId={question.question_id} productName={productName} /> : ''}
-        {loadAnswers ? <AnswerList answers={answers.results} updateAnswers={this.updateAnswers} /> : ''}
+        {loadAnswers ? <AnswerList answers={answers} updateAnswers={this.updateAnswers} /> : ''}
       </div>
     );
   }
