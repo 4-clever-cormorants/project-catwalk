@@ -54,7 +54,7 @@ class ProductDetails extends React.Component {
   }
 
   componentDidMount() {
-    const { productId, getProductName } = this.props;
+    const { productId, getProductName, interactions } = this.props;
     axios.get(`/products/data?product_id=${productId}`)
       .then((prod) => {
         const product = prod.data;
@@ -80,6 +80,12 @@ class ProductDetails extends React.Component {
       .catch((err) => {
         throw (err);
       });
+    document.addEventListener('keydown', this.escFunction, false);
+    const pdComponent = document.querySelector('#PD');
+    if (pdComponent) {
+      pdComponent.addEventListener('click',
+        (e) => interactions(e, 'ProductDetails'));
+    }
   }
 
   styleSelector(e) {
@@ -170,7 +176,7 @@ class ProductDetails extends React.Component {
     } = this.state;
 
     return (
-      <div className={css.PD}>
+      <div id="PD" className={css.PD}>
         <h1> Website Header </h1>
         { load ? (
           <div className={css.productDetails}>

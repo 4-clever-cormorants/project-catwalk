@@ -5,9 +5,9 @@ const Price = ({ originalPrice, salePrice, css }) => {
   if (salePrice !== null) {
     const discount = Math.floor((1 - (salePrice / originalPrice)) * 100);
     return (
-      <div className={css.price}>
-        <div className={css.sale}>
-          <p className={css.salePrice}>
+      <div id="price" className={css.price}>
+        <div id="sale" className={css.sale}>
+          <p id="salePrice" className={css.salePrice}>
             $
             {salePrice}
           </p>
@@ -17,7 +17,7 @@ const Price = ({ originalPrice, salePrice, css }) => {
             {originalPrice}
           </strike>
           &nbsp; &nbsp;
-          <p className={css.discount}>
+          <p id="discount" className={css.discount}>
             {discount}
             % off
           </p>

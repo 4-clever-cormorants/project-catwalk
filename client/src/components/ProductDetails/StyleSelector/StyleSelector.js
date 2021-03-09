@@ -23,15 +23,15 @@ const StyleSelector = ({ styles, selected, styleSelector }) => {
   }
 
   return (
-    <div className={css.styleSelector}>
-      <p className={css.selected}>
+    <div id="styleSelector" className={css.styleSelector}>
+      <p id="selectedStyleContainer" className={css.selected}>
         STYLE &gt; &nbsp;
-        <span className={css.selectedName}>
+        <span id="selectedStyleName" className={css.selectedName}>
           {selected.toUpperCase()}
         </span>
       </p>
-      <div className={css.stylesDisplay}>
-        <div className={css.row1}>
+      <div id="stylesDisplay" className={css.stylesDisplay}>
+        <div id="row1" className={css.row1}>
           <div id={0} key={style1.style_id} className={css.style}>
             <Style style={style1} onClick={styleSelector} defaultChecked />
           </div>
@@ -41,7 +41,7 @@ const StyleSelector = ({ styles, selected, styleSelector }) => {
             </div>
           ))}
         </div>
-        <div className={css.row2}>
+        <div id="row2" className={css.row2}>
           {row2.map((style) => (
             <div key={style.style_id} className={css.style}>
               <Style style={style} onClick={styleSelector} />

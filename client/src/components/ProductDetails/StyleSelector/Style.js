@@ -13,6 +13,7 @@ const Style = ({ style, onClick, defaultChecked }) => (
     <label>
       <input type="radio" name="style" className="styleRadio" defaultChecked={defaultChecked} />
       <img
+        id="styleSelectorImg"
         src={style.photos[0].url}
         alt=""
         className={style.style_id}

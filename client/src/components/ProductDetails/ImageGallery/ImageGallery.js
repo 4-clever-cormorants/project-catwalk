@@ -19,7 +19,7 @@ const ImageGallery = ({
   scrollDown,
   thumbnailScroll,
 }) => (
-  <div className={css.imageGallery} styleid={styleId}>
+  <div id="imageGallery" className={css.imageGallery} styleid={styleId}>
     {style.photos[id].url !== null ? (
       <DefaultView
         id={id}
@@ -29,7 +29,7 @@ const ImageGallery = ({
         url={style.photos[id].url}
       />
     ) : ''}
-    <div className={css.TN}>
+    <div id="ThumbnailViewContainer" className={css.TV}>
       {thumbnailScroll === 0 ? (<div />) : (<Up scrollUp={scrollUp} />)}
       <div className={css.thumbnailView}>
         <div id="thumbnailView" className={css.thumbnails} onScroll={onScroll}>
@@ -40,7 +40,7 @@ const ImageGallery = ({
             }
             if (thumbnail.url !== null) {
               return (
-                <div key={`${i} ${thumbnail.url.toString()}`}>
+                <div id="thumbnailPhoto" key={`${i} ${thumbnail.url.toString()}`}>
                   <Thumbnail
                     thmbId={i}
                     url={thumbnail.url}
@@ -78,7 +78,11 @@ ImageGallery.propTypes = {
   onScroll: PropTypes.func.isRequired,
   scrollUp: PropTypes.func.isRequired,
   scrollDown: PropTypes.func.isRequired,
-  thumbnailScroll: PropTypes.number.isRequired,
+  thumbnailScroll: PropTypes.number,
+};
+
+ImageGallery.defaultProps = {
+  thumbnailScroll: null,
 };
 
 export default ImageGallery;

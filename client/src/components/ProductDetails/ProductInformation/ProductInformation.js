@@ -14,8 +14,8 @@ import css from './ProductInformation.css';
 const ProductInformation = ({
   product, originalPrice, salePrice, rating, totalRatings,
 }) => (
-  <div className={css.productInformation}>
-    <div className={css.info}>
+  <div id="productInformationContainer" className={css.productInformation}>
+    <div id="productInformation" className={css.info}>
       <Rating rating={rating} totalRatings={totalRatings} />
       <Category category={product.category} />
       <Title title={product.name} />

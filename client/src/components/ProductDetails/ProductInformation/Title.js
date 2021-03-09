@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import css from './ProductInformation.css';
 
 const Title = ({ title }) => (
-  <div className={css.title}>
+  <div id="title" className={css.title}>
     {title}
   </div>
 );
