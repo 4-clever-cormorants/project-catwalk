@@ -233,7 +233,7 @@ class RelatedProducts extends React.Component {
         {outfitListScroll === 0 ? (<div />) : (<Prev list="outfitList" scrollPrev={RelatedProducts.scrollPrev} />)}
         {outfitLoad ? (
           <div className={style.gridContainer1}>
-            <span className={style.ListName}>YOUR OWNOUTFIT</span>
+            <span className={style.ListName}>YOUR OUTFIT</span>
             <div className={`${style.outfitListWithAdd} outfitList`} onScroll={this.scrollHandler.bind(this, 'outfitList')}>
               <AddToOutfit addToOutfitHandler={this.addToOutfitHandler} />
               <ListOutfit
