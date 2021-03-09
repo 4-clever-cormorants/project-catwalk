@@ -58,7 +58,7 @@ class SearchBar extends React.Component {
       <div className={`${style.searchBar} searchBar`}>
         <form>
           <label htmlFor="searchQuestions">
-            {/* <i className="fa fa-search" aria-hidden="true" /> */}
+            <i className="fa fa-search fa-2x" aria-hidden="true" />
             <input type="text" name="searchQuestions" placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS..." maxLength="1000" onChange={this.handleChange.bind(this)} />
           </label>
         </form>

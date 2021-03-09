@@ -1,3 +1,7 @@
+.searchBar {
+  margin-top: -40px;
+}
+
 .searchBar input {
   box-sizing: border-box;
   width: 100%;
@@ -10,4 +14,11 @@
 .searchBar input::placeholder {
   font-family: 'Lato', 'sans-serif';
   font-weight: bold;
+}
+
+.searchBar i {
+  position: relative;
+  margin-top: 0;
+  top: 55px;
+  left: calc(100% - 50px);
 }
