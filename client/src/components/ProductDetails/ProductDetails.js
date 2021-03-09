@@ -31,7 +31,7 @@ class ProductDetails extends React.Component {
       scroll.scrollTop = Math.floor((currentScroll + (475)) / 115) * 115;
     }
   }
-  
+
   constructor(props) {
     super(props);
     this.state = {
@@ -129,6 +129,25 @@ class ProductDetails extends React.Component {
     if (id < style.photos.length - 1) {
       this.setState({
         id: parseInt(id, 10) + 1,
+      });
+    }
+  }
+
+  scrollHandler() {
+    const scroll = document.getElementById('thumbnailView');
+    const scrollMax = scroll.scrollHeight - scroll.clientHeight;
+    const currentScroll = scroll.scrollTop;
+    const { thumbnailScroll } = this.state;
+    let index;
+    if (currentScroll === scrollMax) {
+      index = 1;
+    }
+    if (currentScroll === 0) {
+      index = 0;
+    }
+    if (index !== thumbnailScroll) {
+      this.setState({
+        thumbnailScroll: index,
       });
     }
   }
