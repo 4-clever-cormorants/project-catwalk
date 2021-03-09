@@ -39,7 +39,10 @@ function tick() {
 }
 
 describe('Test Button component', () => {
-  const wrapper = mount(<RelatedProducts productId={dummy.currentProduct.id} />);
+  const wrapper = mount(<RelatedProducts
+    productId={dummy.currentProduct.id}
+    interactions={() => {}}
+  />);
   it('should have a button component', () => {
     wrapper.setState({
       related: dummy.relatedProducts,

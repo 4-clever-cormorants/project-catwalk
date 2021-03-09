@@ -56,7 +56,7 @@ class App extends React.Component {
           getProductName={this.getProductName}
           interactions={App.interactions}
         />
-        <RelatedProducts productId={productId} />
+        <RelatedProducts productId={productId} interactions={App.interactions} />
         <Questions
           productId={productId}
           productName={productName}
