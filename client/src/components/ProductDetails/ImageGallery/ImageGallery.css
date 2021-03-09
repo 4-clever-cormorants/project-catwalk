@@ -143,3 +143,8 @@ button:focus {
 .imageGallery .thumbnailView img:hover {
   border-bottom: 3px solid grey;
 }
+
+.scroll:focus {
+  outline: none;
+  box-shadow: none;
+}
