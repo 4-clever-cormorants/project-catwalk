@@ -5,10 +5,33 @@ import List from './List';
 import ListOutfit from './ListOutfit';
 import AddToOutfit from './AddToOutfit';
 import Comparison from './Comparison';
+import Next from './Next';
+import Prev from './Prev';
 import style from './css/relatedProducts.css';
 import dummy from './dummy_related';
 
 class RelatedProducts extends React.Component {
+  static scrollNext(list) {
+    const scroll = document.querySelector(`.${list}`);
+    const scrollMax = scroll.scrollWidth - scroll.clientWidth;
+    const currentScroll = scroll.scrollLeft;
+    if (currentScroll + (255 * 4) > scrollMax) {
+      scroll.scrollLeft = scrollMax;
+    } else {
+      scroll.scrollLeft = Math.floor((currentScroll + (255 * 4)) / 255) * 255;
+    }
+  }
+
+  static scrollPrev(list) {
+    const scroll = document.querySelector(`.${list}`);
+    const currentScroll = scroll.scrollLeft;
+    if (currentScroll - (255 * 4) < 0) {
+      scroll.scrollLeft = 0;
+    } else {
+      scroll.scrollLeft = Math.floor((currentScroll - (255 * 4)) / 255) * 255;
+    }
+  }
+
   constructor(props) {
     super(props);
     this.state = {
@@ -19,6 +42,8 @@ class RelatedProducts extends React.Component {
       clicked: undefined,
       load: false,
       outfitLoad: false,
+      relatedListScroll: 0,
+      outfitListScroll: 0,
     };
     this.addToOutfitHandler = this.addToOutfitHandler.bind(this);
     this.addToWishHandler = this.addToWishHandler.bind(this);
@@ -27,6 +52,7 @@ class RelatedProducts extends React.Component {
     this.compareHandler = this.compareHandler.bind(this);
     this.closeCompare = this.closeCompare.bind(this);
     this.escFunction = this.escFunction.bind(this);
+    this.scrollHandler = this.scrollHandler.bind(this);
   }
 
   componentDidMount() {
@@ -133,6 +159,34 @@ class RelatedProducts extends React.Component {
     });
   }
 
+  scrollHandler(list) {
+    const scroll = document.querySelector(`.${list}`);
+    const scrollMax = scroll.scrollWidth - scroll.clientWidth;
+    const currentScroll = scroll.scrollLeft;
+    const { relatedListScroll, outfitListScroll } = this.state;
+    let index;
+    if (currentScroll === scrollMax) {
+      index = 1;
+    }
+    if (currentScroll === 0) {
+      index = 0;
+    }
+    if (list === 'relatedList') {
+      if (index !== relatedListScroll) {
+        this.setState({
+          relatedListScroll: index,
+        });
+      }
+    }
+    if (list === 'outfitList') {
+      if (index !== outfitListScroll) {
+        this.setState({
+          outfitListScroll: index,
+        });
+      }
+    }
+  }
+
   render() {
     const {
       outfitList,
@@ -142,6 +196,8 @@ class RelatedProducts extends React.Component {
       related,
       load,
       outfitLoad,
+      relatedListScroll,
+      outfitListScroll,
     } = this.state;
     let comparison;
     if (clicked) {
@@ -156,6 +212,7 @@ class RelatedProducts extends React.Component {
 
     return (
       <div className={style.relatedProducts}>
+        {relatedListScroll === 0 ? (<div />) : (<Prev list="relatedList" scrollPrev={RelatedProducts.scrollPrev} />)}
         {load ? (
           <div className={style.gridContainer0}>
             <span className={style.ListName}>RELATED PRODUCTS</span>
@@ -166,15 +223,18 @@ class RelatedProducts extends React.Component {
               compareHandler={this.compareHandler}
               addToWishHandler={this.addToWishHandler}
               dropWishHandler={this.dropWishHandler}
+              scrollHandler={this.scrollHandler}
             />
           </div>
         ) : (
-          ''
+          <div />
         )}
+        {(relatedListScroll === 1 || related.length < 5) ? (<div />) : (<Next list="relatedList" scrollNext={RelatedProducts.scrollNext} />)}
+        {outfitListScroll === 0 ? (<div />) : (<Prev list="outfitList" scrollPrev={RelatedProducts.scrollPrev} />)}
         {outfitLoad ? (
           <div className={style.gridContainer1}>
-            <span className={style.ListName}>YOUR OWNOUTFIT</span>
-            <div className={style.outfitListWithAdd}>
+            <span className={style.ListName}>YOUR OUTFIT</span>
+            <div className={`${style.outfitListWithAdd} outfitList`} onScroll={this.scrollHandler.bind(this, 'outfitList')}>
               <AddToOutfit addToOutfitHandler={this.addToOutfitHandler} />
               <ListOutfit
                 productsList={outfitList}
@@ -183,8 +243,9 @@ class RelatedProducts extends React.Component {
             </div>
           </div>
         ) : (
-          ''
+          <div />
         )}
+        {(outfitListScroll === 1 || outfitList.length < 4) ? (<div />) : (<Next list="outfitList" scrollNext={RelatedProducts.scrollNext} />)}
       </div>
     );
   }
