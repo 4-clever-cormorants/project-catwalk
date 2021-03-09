@@ -8,7 +8,7 @@ import Comparison from './Comparison';
 import Next from './Next';
 import Prev from './Prev';
 import style from './css/relatedProducts.css';
-import dummy from './dummy_related';
+// import dummy from './dummy_related';
 
 class RelatedProducts extends React.Component {
   static scrollNext(list) {

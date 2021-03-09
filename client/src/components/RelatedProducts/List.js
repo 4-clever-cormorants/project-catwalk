@@ -31,6 +31,7 @@ List.propTypes = {
   compareHandler: propTypes.func.isRequired,
   addToWishHandler: propTypes.func.isRequired,
   dropWishHandler: propTypes.func.isRequired,
+  scrollHandler: propTypes.func.isRequired,
   productsList: propTypes.arrayOf(propTypes.object).isRequired,
 };
 
