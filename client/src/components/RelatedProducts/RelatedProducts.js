@@ -56,9 +56,15 @@ class RelatedProducts extends React.Component {
   }
 
   componentDidMount() {
+    const { interactions } = this.props;
     this.getInfo();
     this.getOutfitList();
     document.addEventListener('keydown', this.escFunction, false);
+    const rrComponent = document.querySelector('#relatedProducts');
+    if (rrComponent) {
+      rrComponent.addEventListener('click',
+        (e) => interactions(e, 'relatedProducts'));
+    }
   }
 
   componentWillUnmount() {
@@ -211,7 +217,7 @@ class RelatedProducts extends React.Component {
     }
 
     return (
-      <div className={style.relatedProducts}>
+      <div className={style.relatedProducts} id="relatedProducts">
         {relatedListScroll === 0 ? (<div />) : (<Prev list="relatedList" scrollPrev={RelatedProducts.scrollPrev} />)}
         {load ? (
           <div className={style.gridContainer0}>
@@ -253,6 +259,7 @@ class RelatedProducts extends React.Component {
 
 RelatedProducts.propTypes = {
   productId: propTypes.number.isRequired,
+  interactions: propTypes.func.isRequired,
 };
 
 export default RelatedProducts;
