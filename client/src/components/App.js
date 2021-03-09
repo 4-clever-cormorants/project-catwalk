@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 import ProductDetails from './ProductDetails/ProductDetails';
 import RelatedProducts from './RelatedProducts/RelatedProducts';
 import Questions from './Questions/Questions';
@@ -6,6 +7,29 @@ import Questions from './Questions/Questions';
 const url = require('url');
 
 class App extends React.Component {
+  static interactions(e, widget) {
+    let element;
+    if (e.target.id.length !== 0) {
+      element = e.target.id;
+    } else if (e.target.classList !== 0) {
+      [element] = e.target.classList;
+    } else {
+      element = e.target.localName;
+    }
+    const body = {
+      element,
+      widget,
+      time: new Date(),
+    };
+    axios.post('/interactions', body)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }
+
   constructor(props) {
     super(props);
     const queryParams = url.parse(window.location.search, true).query;
@@ -27,7 +51,11 @@ class App extends React.Component {
     const { productId, productName } = this.state;
     return (
       <div id="app" className="app">
-        <ProductDetails productId={productId} getProductName={this.getProductName} />
+        <ProductDetails
+          productId={productId}
+          getProductName={this.getProductName}
+          interactions={App.interactions}
+        />
         <RelatedProducts productId={productId} />
         <Questions productId={productId} productName={productName} />
       </div>
