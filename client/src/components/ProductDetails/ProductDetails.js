@@ -10,6 +10,28 @@ import Checkout from './Checkout/Checkout';
 import css from './ProductDetails.css';
 
 class ProductDetails extends React.Component {
+  static scrollUp() {
+    const scroll = document.getElementById('thumbnailView');
+    const currentScroll = scroll.scrollTop;
+    if (currentScroll - 475 < 0) {
+      scroll.scrollTop = 0;
+    } else {
+      scroll.scrollTop = Math.floor((currentScroll - (475)) / 115) * 115;
+    }
+  }
+
+  static scrollDown() {
+    const scroll = document.getElementById('thumbnailView');
+    const scrollMax = scroll.scrollHeight - scroll.clientHeight;
+    const currentScroll = scroll.scrollTop;
+
+    if (currentScroll + (475) > scrollMax) {
+      scroll.scrollTop = scrollMax;
+    } else {
+      scroll.scrollTop = Math.floor((currentScroll + (475)) / 115) * 115;
+    }
+  }
+  
   constructor(props) {
     super(props);
     this.state = {
