@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 import ProductDetails from './ProductDetails/ProductDetails';
 import RelatedProducts from './RelatedProducts/RelatedProducts';
 import Questions from './Questions/Questions';
@@ -16,6 +17,20 @@ class App extends React.Component {
     };
     this.getProductName = this.getProductName.bind(this);
   }
+
+  interactions(widget, e) {
+    axios.post('/interactions', {
+      "element": e.target,
+      "widget": widget,
+      "time": JSON.stringify(new Date())
+    })
+    .then((res) => {
+      console.log(res);
+    })
+    .catch((err) => {
+      console.error(err);
+    })
+  };
 
   getProductName(productName) {
     this.setState({
