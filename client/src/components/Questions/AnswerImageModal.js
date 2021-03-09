@@ -1,10 +1,12 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 import React from 'react';
 import PropTypes from 'prop-types';
 import style from './css/AnswerImageModal.css';
 
 const AnswerImageModal = ({ url, exitModal }) => (
   <div className={style.modal}>
-    <div className={style.blocker} onClick={exitModal} />
+    {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events */}
+    <div className={`${style.blocker} blocker`} onClick={exitModal} />
     <div className={`${style.imageModal} imageModal`}>
       <div className={`${style.imageContent} imageContent`}>
         <button className={`${style.exitButton}`} type="button" onClick={exitModal}>
