@@ -9,13 +9,15 @@ const ImageGallery = ({
   styleId, style, id, leftClick, rightClick, renderDefaultView,
 }) => (
   <div className={css.imageGallery} styleid={styleId}>
-    <DefaultView
-      id={id}
-      max={style.photos.length}
-      leftClick={leftClick}
-      rightClick={rightClick}
-      url={style.photos[id].url}
-    />
+    {style.photos[id].url !== null ? (
+      <DefaultView
+        id={id}
+        max={style.photos.length}
+        leftClick={leftClick}
+        rightClick={rightClick}
+        url={style.photos[id].url}
+      />
+    ) : ''}
     <div className={css.thumbnailView}>
       <div className={css.thumbnails}>
         {style.photos.map((thumbnail, i) => {
@@ -23,16 +25,19 @@ const ImageGallery = ({
           if (parseInt(id, 10) === i) {
             selected = 'selected';
           }
-          return (
-            <div key={`${i} ${thumbnail.url.toString()}`}>
-              <Thumbnail
-                thmbId={i}
-                url={thumbnail.url}
-                onClick={renderDefaultView}
-                selected={selected}
-              />
-            </div>
-          );
+          if (thumbnail.url !== null) {
+            return (
+              <div key={`${i} ${thumbnail.url.toString()}`}>
+                <Thumbnail
+                  thmbId={i}
+                  url={thumbnail.url}
+                  onClick={renderDefaultView}
+                  selected={selected}
+                />
+              </div>
+            );
+          }
+          return '';
         })}
       </div>
       <div className={css.arrow}>
