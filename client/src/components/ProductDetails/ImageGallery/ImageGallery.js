@@ -3,10 +3,21 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import DefaultView from './DefaultView';
 import Thumbnail from './Thumbnail';
+import Up from './Up';
+import Down from './Down';
 import css from './ImageGallery.css';
 
 const ImageGallery = ({
-  styleId, style, id, leftClick, rightClick, renderDefaultView,
+  styleId,
+  style,
+  id,
+  leftClick,
+  rightClick,
+  renderDefaultView,
+  onScroll,
+  scrollUp,
+  scrollDown,
+  thumbnailScroll,
 }) => (
   <div className={css.imageGallery} styleid={styleId}>
     {style.photos[id].url !== null ? (
@@ -18,31 +29,33 @@ const ImageGallery = ({
         url={style.photos[id].url}
       />
     ) : ''}
-    <div className={css.thumbnailView}>
-      <div className={css.thumbnails}>
-        {style.photos.map((thumbnail, i) => {
-          let selected = 'notSelected';
-          if (parseInt(id, 10) === i) {
-            selected = 'selected';
-          }
-          if (thumbnail.url !== null) {
-            return (
-              <div key={`${i} ${thumbnail.url.toString()}`}>
-                <Thumbnail
-                  thmbId={i}
-                  url={thumbnail.url}
-                  onClick={renderDefaultView}
-                  selected={selected}
-                />
-              </div>
-            );
-          }
-          return '';
-        })}
+    <div className={css.TN}>
+      {thumbnailScroll === 0 ? (<div />) : (<Up scrollUp={scrollUp} />)}
+      <div className={css.thumbnailView}>
+        <div id="thumbnailView" className={css.thumbnails} onScroll={onScroll}>
+          {style.photos.map((thumbnail, i) => {
+            let selected = 'notSelected';
+            if (parseInt(id, 10) === i) {
+              selected = 'selected';
+            }
+            if (thumbnail.url !== null) {
+              return (
+                <div key={`${i} ${thumbnail.url.toString()}`}>
+                  <Thumbnail
+                    thmbId={i}
+                    url={thumbnail.url}
+                    onClick={renderDefaultView}
+                    selected={selected}
+                  />
+                </div>
+              );
+            }
+            return '';
+          })}
+        </div>
       </div>
-      <div className={css.arrow}>
-        <span className="fa fa-chevron-down" />
-      </div>
+      {(thumbnailScroll === 1 || style.photos.length < 5)
+        ? (<div />) : (<Down scrollDown={scrollDown} />)}
     </div>
   </div>
 );
@@ -62,6 +75,10 @@ ImageGallery.propTypes = {
   leftClick: PropTypes.func.isRequired,
   rightClick: PropTypes.func.isRequired,
   renderDefaultView: PropTypes.func.isRequired,
+  onScroll: PropTypes.func.isRequired,
+  scrollUp: PropTypes.func.isRequired,
+  scrollDown: PropTypes.func.isRequired,
+  thumbnailScroll: PropTypes.number.isRequired,
 };
 
 export default ImageGallery;
