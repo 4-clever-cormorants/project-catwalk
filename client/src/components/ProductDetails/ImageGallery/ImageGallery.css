@@ -76,7 +76,7 @@ button:focus {
   grid-column: 1;
   grid-row: 1;
   display: flex;
-  height: 570px;
+  height: 475px;
   flex-direction: column;
   justify-content: center;
   align-self: center;
@@ -85,15 +85,18 @@ button:focus {
 }
 
 .imageGallery .thumbnailView .thumbnails {
-  height: 570px;
+  height: 475px;
   display: flex;
   flex-direction: column;
   /* justify-content: center;
   align-content: center; */
   /* border: 3px orange solid; */
   overflow: scroll;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
   padding-bottom: 10px;
 }
+
 
 .arrow {
   align-self: flex-start;
