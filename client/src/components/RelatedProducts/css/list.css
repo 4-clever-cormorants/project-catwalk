@@ -1,8 +1,4 @@
   .relatedProductsList {
-  grid-column-start: 1;
-  grid-column-end: 2;
-  grid-row-start: 0;
-  grid-row-end: 1;
   overflow:hidden;
   display: flex;
   overflow-x: auto;
