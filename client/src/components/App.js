@@ -57,7 +57,11 @@ class App extends React.Component {
           interactions={App.interactions}
         />
         <RelatedProducts productId={productId} />
-        <Questions productId={productId} productName={productName} />
+        <Questions
+          productId={productId}
+          productName={productName}
+          interactions={App.interactions}
+        />
       </div>
     );
   }
