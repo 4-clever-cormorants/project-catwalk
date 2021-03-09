@@ -48,11 +48,14 @@ class Question extends React.Component {
     this.fetchAnswers()
       .then((response) => {
         let answers = [...response.data.results];
+        const sellerAnswers = [];
         for (let i = 0; i < answers.length; i += 1) {
           if (answers[i].answerer_name === 'Seller') {
-            answers = [].concat(answers[i], answers.slice(0, i), answers.slice(i + 1));
+            sellerAnswers.push(answers[i]);
+            answers = [].concat(answers.slice(0, i), answers.slice(i + 1));
           }
         }
+        answers = sellerAnswers.concat(answers);
         this.setState({
           answers,
           loadAnswers: true,
