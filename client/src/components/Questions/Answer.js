@@ -1,22 +1,56 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import AnswerFooter from './AnswerFooter';
+import ImageModal from './ImageModal';
 import style from './css/Answer.css';
 
 class Answer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-
+      imageClicked: false,
+      imageUrl: '',
     };
+    this.exitModal = this.exitModal.bind(this);
+    this.escFunction = this.escFunction.bind(this);
+  }
+
+  componentDidMount() {
+    document.addEventListener('keydown', this.escFunction, false);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('keydown', this.escFunction, false);
+  }
+
+  escFunction(event) {
+    if (event.keyCode === 27) {
+      this.exitModal();
+    }
+  }
+
+  exitModal() {
+    this.setState({ imageClicked: false });
+  }
+
+  showPicture(url) {
+    this.setState({ imageClicked: true, imageUrl: url });
   }
 
   render() {
     const { answer } = this.props;
+    const { imageClicked, imageUrl } = this.state;
     return (
       <div className={`${style.answerContent} answer`}>
         <div><p className={`${style.answerText} answerText`}>{answer.body}</p></div>
+        {answer.photos.length
+          ? (
+            <div className="answerImages">
+              {answer.photos.map((photo) => <img key={photo.id} className={`${style.answerImg} answerImg`} alt={photo.id} src={photo.url} onClick={() => this.showPicture(photo.url)} />)}
+            </div>
+          ) : ''}
         <AnswerFooter answer={answer} />
+        {imageClicked ? <ImageModal url={imageUrl} exitModal={this.exitModal} /> : ''}
       </div>
     );
   }

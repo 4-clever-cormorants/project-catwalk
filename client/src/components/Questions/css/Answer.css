@@ -6,3 +6,16 @@
 .answerText {
   margin: 0;
 }
+
+.answerImg {
+  margin-top: 16px;
+  margin-right: 16px;
+  object-fit: cover;
+  height: 64px;
+  width: 100px;
+}
+
+.answerImg:hover {
+  border: 1px solid black;
+  cursor: pointer;
+}
