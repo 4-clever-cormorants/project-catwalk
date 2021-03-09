@@ -11,7 +11,14 @@ const headers = {
 };
 
 interactionsRoutes.post('/', (req, res) => {
-  res.send(req.body);
+  console.log(req.body);
+  axios.post(`${url}interactions`, req.body, headers)
+    .then(() => {
+      res.send('cool');
+    })
+    .catch((err) => {
+      res.status(500).send(err);
+    });
 });
 
 module.exports = interactionsRoutes;
