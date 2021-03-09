@@ -3,3 +3,4 @@ config.js
 client/dist/bundle.js
 coverage/
 .DS_Store
+*.pem
