@@ -10,7 +10,7 @@ it('should exist', () => {
 });
 
 it('should not load any questions by default', () => {
-  const wrapper = mount(<Questions productId={-1} productName="test" interactions={() => {}} />);
+  const wrapper = mount(<Questions productId={14931} productName="test" interactions={() => {}} />);
   const questions = wrapper.find(Question);
   expect(questions.exists()).toBe(false);
 });
