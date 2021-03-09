@@ -3,6 +3,7 @@
   display: flex;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */

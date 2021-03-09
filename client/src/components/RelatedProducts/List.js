@@ -10,7 +10,7 @@ const List = ({
   addToWishHandler,
   dropWishHandler,
 }) => (
-  <div className={style.relatedProductsList}>
+  <div className={`${style.relatedProductsList} relatedList`}>
     {productsList.map((item) => (
       <div key={item.id.toString()}>
         <Card
