@@ -1,13 +1,13 @@
 import React from 'react';
 import { mount } from 'enzyme';
 
+import regeneratorRuntime from 'regenerator-runtime';
+
 import StyleSelector from './StyleSelector';
 import ProductDetails from '../ProductDetails';
 import Style from './Style';
 import product from '../productDummyData';
 import styles from '../stylesDummyData';
-
-import regeneratorRuntime from 'regenerator-runtime';
 
 function tick() {
   return new Promise((resolve) => {
