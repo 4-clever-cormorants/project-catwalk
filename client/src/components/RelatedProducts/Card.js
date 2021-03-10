@@ -32,7 +32,7 @@ const Card = ({
     </div>
     <a
       className={style.cardName}
-      href={`http://localhost:1128/?product_id=${item.id}`}
+      href={`/?product_id=${item.id}`}
       onClick={(e) => {
         e.stopPropagation();
       }}
