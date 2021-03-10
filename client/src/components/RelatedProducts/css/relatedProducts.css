@@ -27,8 +27,9 @@
 }
 
 .ListName {
-  font-family: 'Lato';
+  font-family: 'Playfair Display';
   font-size: 12pt;
+  font-weight: 500;
 }
 
 .side {
