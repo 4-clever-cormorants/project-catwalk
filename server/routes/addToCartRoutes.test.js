@@ -17,6 +17,6 @@ test('POST /cart', () => {
     .post('/cart', {
       sku_id: 407530,
     })
-    .expect(202);
+    .expect(201);
   expServer.server.close();
 });
