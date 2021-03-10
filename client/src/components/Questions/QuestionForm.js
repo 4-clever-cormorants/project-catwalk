@@ -95,7 +95,11 @@ class QuestionForm extends React.Component {
   }
 
   render() {
-    const { exitQuestionForm, productName } = this.props;
+    const {
+      exitQuestionForm,
+      productName,
+      addQuestionClicked,
+    } = this.props;
     const {
       errorMessages,
       submitError,
@@ -111,7 +115,7 @@ class QuestionForm extends React.Component {
     const submitButtonClass = submitted ? style.submitButtonDisabled : style.submitButton;
     const submitButtonText = submitted ? 'SUBMITTED' : 'SUBMIT';
     return (
-      <div className={style.modal}>
+      <div className={`${style.modal} ${addQuestionClicked ? style.modalShow : ''}`}>
         <div className={style.blocker} onClick={exitQuestionForm} />
         <div className={`${style.form} questionForm`}>
           <div className={`${style.formHeader} questionFormHeader`}>
@@ -161,6 +165,11 @@ QuestionForm.propTypes = {
   exitQuestionForm: PropTypes.func.isRequired,
   productId: PropTypes.number.isRequired,
   productName: PropTypes.string.isRequired,
+  addQuestionClicked: PropTypes.bool,
+};
+
+QuestionForm.defaultProps = {
+  addQuestionClicked: false,
 };
 
 export default QuestionForm;

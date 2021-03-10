@@ -25,28 +25,24 @@ it('should have a button to add more answers', () => {
 
 it('should render answer form when clicking add answer button', () => {
   const wrapper = mount(<Question test productName="test" />);
+  const instance = wrapper.instance();
   const addAnswerButton = wrapper.find('.addAnswerButton');
   expect(addAnswerButton.exists()).toBe(true);
-  let addAnswerForm = wrapper.find(AnswerForm);
-  expect(addAnswerForm.exists()).toBe(false);
+  expect(instance.state.addAnswerClicked).toBe(false);
   addAnswerButton.simulate('click');
-  addAnswerForm = wrapper.find(AnswerForm);
-  expect(addAnswerForm.exists()).toBe(true);
+  expect(instance.state.addAnswerClicked).toBe(true);
 });
 
 it('should close the modal when clicking exit button', () => {
   const wrapper = mount(<Question test productName="test" />);
+  const instance = wrapper.instance();
   const addAnswerButton = wrapper.find('.addAnswerButton');
   expect(addAnswerButton.exists()).toBe(true);
-  let addAnswerForm = wrapper.find(AnswerForm);
-  expect(addAnswerForm.exists()).toBe(false);
   addAnswerButton.simulate('click');
-  addAnswerForm = wrapper.find(AnswerForm);
-  expect(addAnswerForm.exists()).toBe(true);
+  const addAnswerForm = wrapper.find(AnswerForm);
   const exitButton = addAnswerForm.find('.exitButton');
   exitButton.simulate('click');
-  addAnswerForm = wrapper.find(AnswerForm);
-  expect(addAnswerForm.exists()).toBe(false);
+  expect(instance.state.addAnswerClicked).toBe(false);
 });
 
 it('should increase the helpfulness count after clicking helpful button', () => {
