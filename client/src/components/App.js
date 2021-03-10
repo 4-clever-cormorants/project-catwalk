@@ -12,7 +12,7 @@ class App extends React.Component {
     if (e.target.id.length !== 0) {
       element = e.target.id;
     } else if (e.target.classList.length !== 0) {
-      element = JSON.stringify(e.target.classList);
+      [element] = e.target.classList;
     } else {
       element = e.target.localName;
     }
