@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 import css from '../../Questions/css/AnswerImageModal.css';
 
-const DefaultViewModal = ({ url, imageClicked, exitModal}) => (
+const DefaultViewModal = ({ url, imageClicked, exitModal }) => (
   <div className={`${css.modal} ${imageClicked ? css.modalShow : ''}`}>
     {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events */}
     <div className={`${css.blocker} blocker`} onClick={exitModal} />
@@ -24,6 +24,7 @@ const DefaultViewModal = ({ url, imageClicked, exitModal}) => (
 DefaultViewModal.propTypes = {
   url: PropTypes.string.isRequired,
   imageClicked: PropTypes.bool.isRequired,
+  exitModal: PropTypes.func.isRequired,
 };
 
 export default DefaultViewModal;
