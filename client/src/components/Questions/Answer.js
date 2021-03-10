@@ -51,7 +51,6 @@ class Answer extends React.Component {
           ) : ''}
         <AnswerFooter answer={answer} />
         <AnswerImageModal url={imageUrl} exitModal={this.exitModal} imageClicked={imageClicked} />
-        {/* {imageClicked ? <AnswerImageModal url={imageUrl} exitModal={this.exitModal} /> : ''} */}
       </div>
     );
   }
