@@ -115,6 +115,7 @@ button:focus {
 
 .imageGallery .thumbnailView img:hover {
   border-bottom: 3px solid grey;
+  opacity: 0.6;
 }
 
 .scroll {
