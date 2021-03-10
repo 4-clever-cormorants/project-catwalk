@@ -190,6 +190,7 @@ class ProductDetails extends React.Component {
 
   render() {
     const {
+      // eslint-disable-next-line no-unused-vars
       product, rating, styleId, styles, style, id, sku, load, thumbnailScroll, cart,
     } = this.state;
 
