@@ -41,7 +41,7 @@ class ProductDetails extends React.Component {
       style: null,
       id: null,
       sku: null,
-      cart: [],
+      // cart: [],
       load: false,
     };
     this.styleSelector = this.styleSelector.bind(this);
@@ -115,12 +115,18 @@ class ProductDetails extends React.Component {
 
   addToCart(e) {
     e.preventDefault();
-    const { cart, sku } = this.state;
-    if (cart.indexOf(sku) === -1) {
-      this.setState({
-        cart: [...cart, sku],
+    console.log('addToCart');
+    const { sku } = this.state;
+    const body = {
+      sku_id: sku,
+    };
+    axios.post('/cart', body)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.error(err);
       });
-    }
   }
 
   leftClick() {

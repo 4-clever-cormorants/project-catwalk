@@ -11,7 +11,6 @@ const headers = {
 };
 
 interactionsRoutes.post('/', (req, res) => {
-  console.log(req.body);
   axios.post(`${url}interactions`, req.body, headers)
     .then(() => {
       res.send('cool');
