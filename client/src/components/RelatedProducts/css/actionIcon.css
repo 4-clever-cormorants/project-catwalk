@@ -13,19 +13,29 @@
   /* object-fit: cover; */
 }
 
+.actionIconFavor:hover, .actionIconDrop:hover {
+  background-color: rgba(255, 255, 255) ;
+}
+
 .favor {
   height: 20px;
   width: 20px;
   margin: 0 auto;
+  left: -1px;
   padding: 5px;
   position: relative;
   font-size: 20px;
   color: black;
 }
 
+/* .favor:hover, .favorFill:hover {
+  color: gold;
+} */
+
 .favorFill {
   height: 20px;
   width: 20px;
+  top: -1px;
   margin: 0 auto;
   padding: 5px;
   position: relative;
@@ -42,12 +52,8 @@
   color: black;
 }
 
-.actionIconFavor:focus {
-  outline: none;
-  box-shadow: none;
-}
-
-.actionIconDrop:focus {
+.actionIconFavor:focus, .actionIconDrop:focus {
+  background-color: rgba(255, 255, 255) ;
   outline: none;
   box-shadow: none;
 }
