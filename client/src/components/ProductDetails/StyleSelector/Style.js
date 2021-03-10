@@ -4,20 +4,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import css from './StyleSelector.css';
+
 const Style = ({ style, onClick, defaultChecked }) => (
   <div
-    className={`${style.style_id}`}
+    className={`${style.style_id} ${css.style}`}
     id={`a${style.style_id}`}
     onClick={onClick}
   >
     <label>
       <input type="radio" name="style" className="styleRadio" defaultChecked={defaultChecked} />
-      <img
-        id="styleSelectorImg"
-        src={style.photos[0].url}
-        alt=""
-        className={style.style_id}
-      />
+      <div className={css.imgContainer}>
+        <img
+          id="styleSelectorImg"
+          src={style.photos[0].url}
+          alt=""
+          className={style.style_id}
+        />
+      </div>
     </label>
   </div>
 );
