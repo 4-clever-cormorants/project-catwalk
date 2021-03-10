@@ -60,14 +60,14 @@ button:focus {
   max-height: 575px;
 }
 
-.defaultView img {
+/* .defaultView img {
   transition: transform .5s ease;
 }
 
 .defaultView:hover img {
   transform: scale(1.5);
   cursor: cell;
-}
+} */
 
 .imageGallery .TV {
   grid-column: 1;

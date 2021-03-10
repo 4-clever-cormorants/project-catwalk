@@ -13,6 +13,7 @@ const DefaultView = ({
   function exitModal() {
     clickImage(false);
   }
+
   return (
     <div id="defaultView" className={css.DV}>
       <div id="scrollLeft" className={css.left}>
