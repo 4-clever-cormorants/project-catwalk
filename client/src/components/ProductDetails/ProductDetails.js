@@ -121,24 +121,27 @@ class ProductDetails extends React.Component {
   addToCart(e) {
     e.preventDefault();
     const { sku } = this.state;
-    const body = {
-      sku_id: sku,
-    };
-    axios.post('/cart', body)
-      .then(() => {
-        axios.get('/cart')
-          .then((crt) => {
-            this.setState({
-              cart: crt.data,
+    if (sku !== null) {
+      const body = {
+        sku_id: sku,
+      };
+
+      axios.post('/cart', body)
+        .then(() => {
+          axios.get('/cart')
+            .then((crt) => {
+              this.setState({
+                cart: crt.data,
+              });
+            })
+            .catch((err) => {
+              console.error(err);
             });
-          })
-          .catch((err) => {
-            console.error(err);
-          });
-      })
-      .catch((err) => {
-        console.error(err);
-      });
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+    }
   }
 
   leftClick() {
