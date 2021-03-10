@@ -41,7 +41,7 @@ class ProductDetails extends React.Component {
       style: null,
       id: null,
       sku: null,
-      // cart: [],
+      cart: [],
       load: false,
     };
     this.styleSelector = this.styleSelector.bind(this);
@@ -61,24 +61,19 @@ class ProductDetails extends React.Component {
         axios.get(`/rating/data?product_id=${productId}`)
           .then((rtng) => {
             const rating = rtng.data;
-            axios.get('/cart')
-              .then((crt) => {
-                const cart = crt.data;
-                axios.get(`/products/styles?product_id=${productId}`)
-                  .then((response) => {
-                    this.setState({
-                      product,
-                      rating,
-                      styleId: response.data.results[0].style_id,
-                      styles: response.data,
-                      style: response.data.results[0],
-                      id: 0,
-                      load: true,
-                      thumbnailScroll: 0,
-                      cart,
-                    },
-                    () => { getProductName(product.name); });
-                  });
+            axios.get(`/products/styles?product_id=${productId}`)
+              .then((response) => {
+                this.setState({
+                  product,
+                  rating,
+                  styleId: response.data.results[0].style_id,
+                  styles: response.data,
+                  style: response.data.results[0],
+                  id: 0,
+                  load: true,
+                  thumbnailScroll: 0,
+                },
+                () => { getProductName(product.name); });
               });
           });
       })
@@ -193,8 +188,7 @@ class ProductDetails extends React.Component {
 
   render() {
     const {
-      // eslint-disable-next-line no-unused-vars
-      product, rating, styleId, styles, style, id, sku, load, thumbnailScroll, cart,
+      product, rating, styleId, styles, style, id, sku, load, thumbnailScroll,
     } = this.state;
 
     return (
@@ -242,7 +236,6 @@ class ProductDetails extends React.Component {
 ProductDetails.propTypes = {
   productId: PropTypes.number.isRequired,
   getProductName: PropTypes.func.isRequired,
-  interactions: PropTypes.func.isRequired,
 };
 
 export default ProductDetails;
