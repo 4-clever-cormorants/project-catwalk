@@ -26,6 +26,7 @@
 }
 
 .currentValue, .feature, .clickedValue {
+  font-family: 'Lato';
   text-align: center;
   width: 300px;
 }
@@ -44,10 +45,12 @@
 
 .compareTitle {
   text-align: left;
+  font-family: 'Playfair Display';
 }
 
 .titleRow {
-  font-size: 15pt;
+  font-family: 'Playfair Display';
+  font-size: 17pt;
   font-weight: bold;
   text-align: center;
 }
