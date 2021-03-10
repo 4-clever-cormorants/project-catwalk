@@ -97,7 +97,12 @@ class AnswerForm extends React.Component {
   }
 
   render() {
-    const { exitAnswerForm, questionBody, productName } = this.props;
+    const {
+      exitAnswerForm,
+      questionBody,
+      productName,
+      addAnswerClicked,
+    } = this.props;
     const {
       errorMessages,
       submitError,
@@ -113,13 +118,13 @@ class AnswerForm extends React.Component {
     const submitButtonClass = submitted ? style.submitButtonDisabled : style.submitButton;
     const submitButtonText = submitted ? 'SUBMITTED' : 'SUBMIT';
     return (
-      <div className={style.modal}>
+      <div className={`${style.modal} ${addAnswerClicked ? style.modalShow : ''}`}>
         <div className={style.blocker} onClick={exitAnswerForm} />
         <div className={`${style.form} answerForm`}>
           <div className={`${style.formHeader} answerFormHeader`}>
             <div className={`${style.formTitle} answerFormTitle`}>
               <h3>Submit your Answer</h3>
-              <h4>{`${productName}: ${questionBody}`}</h4>
+              <h4 className={`${style.formSubTitle} answerFormSubTitle`}>{`${productName}: ${questionBody}`}</h4>
             </div>
             <button type="button" className={`${style.exitButton} exitButton`} onClick={exitAnswerForm}><span>X</span></button>
           </div>
@@ -171,6 +176,11 @@ AnswerForm.propTypes = {
   questionBody: PropTypes.string.isRequired,
   questionId: PropTypes.number.isRequired,
   productName: PropTypes.string.isRequired,
+  addAnswerClicked: PropTypes.bool,
+};
+
+AnswerForm.defaultProps = {
+  addAnswerClicked: false,
 };
 
 export default AnswerForm;

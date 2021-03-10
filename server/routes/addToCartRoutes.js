@@ -11,7 +11,6 @@ const headers = {
 };
 
 addToCartRoutes.get('/', (req, res) => {
-  console.log('hi');
   axios.get(`${url}cart`, headers)
     .then((cart) => {
       res.send(cart.data);
@@ -24,7 +23,7 @@ addToCartRoutes.get('/', (req, res) => {
 addToCartRoutes.post('/', (req, res) => {
   axios.post(`${url}cart`, req.body, headers)
     .then(() => {
-      res.send('added to cart');
+      res.status(202).send();
     })
     .catch((err) => {
       console.error(err);

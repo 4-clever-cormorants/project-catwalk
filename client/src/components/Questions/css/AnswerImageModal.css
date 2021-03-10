@@ -9,6 +9,18 @@
   background: rgba(0,0,0,.5);
 }
 
+.modal {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.4s ease-in-out;
+}
+
+.modalShow {
+  visibility: visible;
+  opacity: 1;
+  z-index: 110;
+}
+
 .imageModal {
   position:fixed;
   top:50%;
@@ -20,15 +32,29 @@
   padding: 5px;
   transform: translate(-50%, -50%);
   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.25);
-}
-
-.imageModal img {
-  width: auto;
-  max-height: 80vh;
+  max-width: 100%;
 }
 
 .imageContent {
   position: relative;
+}
+
+.imageContent img {
+  width: auto;
+  max-height: 90vh;
+  max-width: 100%;
+}
+
+.imageContent img:before {
+  content: "We're sorry, the image below is broken :(";
+  display: block;
+  margin-bottom: 10px;
+}
+
+.imageContent img:after {
+  content: "(url: " attr(src) ")";
+  display: block;
+  font-size: 12px;
 }
 
 .exitButton {
@@ -41,11 +67,13 @@
   border-radius: 50%;
   outline: none;
   font-size: 20px;
-  font-family: sans-serif, Arial;
+  font-family: 'Lato', sans-serif, Arial;
+  font-weight: 300;
   color: black;
   transition: all 0.2s ease-in-out;
-  height: 25px;
-  width: 25px;
+  transition: visibility 0s ease-in-out;
+  height: 24px;
+  width: 24px;
   box-shadow: -2px 2px 5px rgb(0 0 0 / 15%);
 }
 
@@ -59,12 +87,6 @@
 
 .exitButtonDiv {
   position: absolute;
-}
-
-.exitButton i {
-  position: relative;
   right: 6px;
-  bottom: 11px;
-  height: 25px;
-  width: 25px;
+  bottom: 1px;
 }

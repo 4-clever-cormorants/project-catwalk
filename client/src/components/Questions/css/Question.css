@@ -5,6 +5,9 @@
 
 .questionText {
   font-weight: bold;
+  word-wrap: break-word;
+  word-break: break-all;
+  max-width: 75%;
 }
 
 .questionFooter {

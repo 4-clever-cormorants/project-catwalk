@@ -25,28 +25,24 @@ it('should render questions if there are any', () => {
 
 it('should render question form when clicking "add a question" button', () => {
   const wrapper = mount(<Questions productId={-1} productName="test" interactions={() => {}} />);
+  const instance = wrapper.instance();
   const addQuestionButton = wrapper.find('#addQuestionButton');
   expect(addQuestionButton.exists()).toBe(true);
-  let questionForm = wrapper.find(QuestionForm);
-  expect(questionForm.exists()).toBe(false);
+  expect(instance.state.addQuestionClicked).toBe(false);
   addQuestionButton.simulate('click');
-  questionForm = wrapper.find(QuestionForm);
-  expect(questionForm.exists()).toBe(true);
+  expect(instance.state.addQuestionClicked).toBe(true);
 });
 
 it('should close the question form when clicking on "X" button', () => {
   const wrapper = mount(<Questions productId={-1} productName="test" interactions={() => {}} />);
+  const instance = wrapper.instance();
   const addQuestionButton = wrapper.find('#addQuestionButton');
   expect(addQuestionButton.exists()).toBe(true);
-  let questionForm = wrapper.find(QuestionForm);
-  expect(questionForm.exists()).toBe(false);
   addQuestionButton.simulate('click');
-  questionForm = wrapper.find(QuestionForm);
-  expect(questionForm.exists()).toBe(true);
+  const questionForm = wrapper.find(QuestionForm);
   const exitButton = questionForm.find('#exitButton');
   exitButton.simulate('click');
-  questionForm = wrapper.find(QuestionForm);
-  expect(questionForm.exists()).toBe(false);
+  expect(instance.state.addQuestionClicked).toBe(false);
 });
 
 it('should display up to 4 questions by default', () => {
