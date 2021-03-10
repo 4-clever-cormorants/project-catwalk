@@ -51,7 +51,7 @@
 }
 
 .formHeader h3,
-.formHeader h4 {
+.formSubTitle {
   margin: 0 auto;
 }
 
@@ -59,10 +59,18 @@
   grid-row: 1;
 }
 
-.formHeader h4 {
+.formSubTitle {
   color: gray;
   font-weight: 400;
   grid-row: 2;
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.formHeaderExpanded {
+  text-align: center;
 }
 
 .formTitle {
