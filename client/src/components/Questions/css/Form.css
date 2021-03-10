@@ -83,12 +83,13 @@
   border: none;
   outline: none;
   font-size: 20px;
-  font-family: sans-serif, Arial;
+  font-family: 'Lato', sans-serif, Arial;
+  font-weight: 300;
   color: black;
   transition: all 0.2s ease-in-out;
   margin-top: -26px;
-  height: 25px;
-  width: 25px;
+  height: 24px;
+  width: 24px;
 }
 
 .exitButton:hover {
@@ -100,7 +101,7 @@
 
 .exitButton span {
   position: relative;
-  top: 1px;
+  bottom: 2px;
 }
 
 .formContent {
