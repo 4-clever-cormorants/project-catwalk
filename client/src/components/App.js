@@ -11,7 +11,7 @@ class App extends React.Component {
     let element;
     if (e.target.id.length !== 0) {
       element = e.target.id;
-    } else if (e.target.classList !== 0) {
+    } else if (e.target.classList.length !== 0) {
       [element] = e.target.classList;
     } else {
       element = e.target.localName;
