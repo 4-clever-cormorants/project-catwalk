@@ -101,7 +101,7 @@ class AnswerForm extends React.Component {
       exitAnswerForm,
       questionBody,
       productName,
-      addAnswerClicked
+      addAnswerClicked,
     } = this.props;
     const {
       errorMessages,
@@ -124,7 +124,7 @@ class AnswerForm extends React.Component {
           <div className={`${style.formHeader} answerFormHeader`}>
             <div className={`${style.formTitle} answerFormTitle`}>
               <h3>Submit your Answer</h3>
-              <h4>{`${productName}: ${questionBody}`}</h4>
+              <h4 className={`${style.formSubTitle} answerFormSubTitle`}>{`${productName}: ${questionBody}`}</h4>
             </div>
             <button type="button" className={`${style.exitButton} exitButton`} onClick={exitAnswerForm}><span>X</span></button>
           </div>
