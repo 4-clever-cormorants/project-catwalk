@@ -21,6 +21,9 @@ const Style = ({ style, onClick, defaultChecked }) => (
           alt=""
           className={style.style_id}
         />
+        <div className={css.middle}>
+          <span className={`${css.check} fa fa-check-circle`}/>
+        </div>
       </div>
     </label>
   </div>
