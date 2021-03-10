@@ -43,14 +43,15 @@
 }
 
 .addToCart .addToCartButton {
-  background-color: black;
+  background-image: linear-gradient(to left, rgb(0, 0, 0), rgb(77, 77, 77), rgb(0, 0, 0));
+  background-size: 200%;
   border-color: black;
   color: white;
   transition: all 0.25s ease;
 }
 
 .addToCart .addToCartButton:hover {
-  background-color: rgb(88, 88, 88);
+  background-position: right;
   border-color: rgb(88, 88, 88);
 }
 
