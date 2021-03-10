@@ -53,12 +53,12 @@
   border-radius: 50%;
   outline: none;
   font-size: 20px;
-  font-family: sans-serif, Arial;
+  font-family: 'Lato', sans-serif, Arial;
   color: black;
   transition: all 0.2s ease-in-out;
   transition: visibility 0s ease-in-out;
-  height: 25px;
-  width: 25px;
+  height: 24px;
+  width: 24px;
   box-shadow: -2px 2px 5px rgb(0 0 0 / 15%);
 }
 
@@ -72,12 +72,6 @@
 
 .exitButtonDiv {
   position: absolute;
-}
-
-.exitButton i {
-  position: relative;
-  right: 6px;
-  bottom: 11px;
-  height: 25px;
-  width: 25px;
+  right: 5px;
+  bottom: 1px;
 }
