@@ -61,19 +61,24 @@ class ProductDetails extends React.Component {
         axios.get(`/rating/data?product_id=${productId}`)
           .then((rtng) => {
             const rating = rtng.data;
-            axios.get(`/products/styles?product_id=${productId}`)
-              .then((response) => {
-                this.setState({
-                  product,
-                  rating,
-                  styleId: response.data.results[0].style_id,
-                  styles: response.data,
-                  style: response.data.results[0],
-                  id: 0,
-                  load: true,
-                  thumbnailScroll: 0,
-                },
-                () => { getProductName(product.name); });
+            axios.get('/cart')
+              .then((crt) => {
+                const cart = crt.data;
+                axios.get(`/products/styles?product_id=${productId}`)
+                  .then((response) => {
+                    this.setState({
+                      product,
+                      rating,
+                      styleId: response.data.results[0].style_id,
+                      styles: response.data,
+                      style: response.data.results[0],
+                      id: 0,
+                      load: true,
+                      thumbnailScroll: 0,
+                      cart,
+                    },
+                    () => { getProductName(product.name); });
+                  });
               });
           });
       })
@@ -115,7 +120,6 @@ class ProductDetails extends React.Component {
 
   addToCart(e) {
     e.preventDefault();
-    console.log('addToCart');
     const { sku } = this.state;
     const body = {
       sku_id: sku,
@@ -178,7 +182,7 @@ class ProductDetails extends React.Component {
 
   render() {
     const {
-      product, rating, styleId, styles, style, id, sku, load, thumbnailScroll,
+      product, rating, styleId, styles, style, id, sku, load, thumbnailScroll, cart,
     } = this.state;
 
     return (
