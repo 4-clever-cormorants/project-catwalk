@@ -11,7 +11,7 @@ const List = ({
   dropWishHandler,
   scrollHandler,
 }) => (
-  <div className={`${style.relatedProductsList} relatedList`} onScroll={scrollHandler.bind(this, 'relatedList')}>
+  <div className={`relatedList ${style.relatedProductsList}`} onScroll={scrollHandler.bind(this, 'relatedList')}>
     {productsList.map((item) => (
       <div key={item.id.toString()}>
         <Card

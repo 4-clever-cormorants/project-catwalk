@@ -19,37 +19,37 @@ const Rating = ({ rating, totalRatings, id }) => {
   }
 
   return (
-    <div className={css.rating}>
+    <div className={`rating ${css.rating}`}>
       {stars.map((star) => {
         if (star.value === 0) {
           return (
-            <span key={`${id}R${star.i}`} className={`${css.star} ${css.empty} fa fa-star`} />
+            <span key={`${id}R${star.i}`} className={`rating ${css.star} ${css.empty} fa fa-star`} />
           );
         }
         if (star.value === 0.25) {
           return (
-            <span key={`${id}R${star.i}`} className={`${css.star} ${css.quarter} fa fa-star`} />
+            <span key={`${id}R${star.i}`} className={`rating ${css.star} ${css.quarter} fa fa-star`} />
           );
         }
         if (star.value === 0.50) {
           return (
-            <span key={`${id}R${star.i}`} className={`${css.star} ${css.half} fa fa-star`} />
+            <span key={`${id}R${star.i}`} className={`rating ${css.star} ${css.half} fa fa-star`} />
           );
         }
         if (star.value === 0.75) {
           return (
-            <span key={`${id}R${star.i}`} className={`${css.star} ${css.threeQuarter} fa fa-star`} />
+            <span key={`${id}R${star.i}`} className={`rating ${css.star} ${css.threeQuarter} fa fa-star`} />
           );
         }
         if (star.value === 1) {
           return (
-            <span key={`${id}R${star.i}`} className={`${css.star} ${css.full} fa fa-star`} />
+            <span key={`${id}R${star.i}`} className={`rating ${css.star} ${css.full} fa fa-star`} />
           );
         }
         return undefined;
       })}
       &nbsp;
-      <span className={css.totalRatings}>
+      <span className={`totalRating ${css.totalRatings}`}>
         (
         {totalRatings}
         )

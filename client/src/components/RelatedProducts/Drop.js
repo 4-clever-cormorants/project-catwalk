@@ -3,8 +3,8 @@ import propTypes from 'prop-types';
 import style from './css/actionIcon.css';
 
 const Drop = ({ id, dropHandler }) => (
-  <div className={style.actionIconDrop} onClick={dropHandler.bind(this, id)} onKeyPress={dropHandler.bind(this, id)} role="button" tabIndex={0}>
-    <i className={`${style.drop} far fa-times-circle`} />
+  <div className={`actionIconContainer ${style.actionIconDrop}`} onClick={dropHandler.bind(this, id)} onKeyPress={dropHandler.bind(this, id)} role="button" tabIndex={0}>
+    <i className={`DropIcon ${style.drop} far fa-times-circle`} />
   </div>
 );
 

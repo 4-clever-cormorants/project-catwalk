@@ -4,9 +4,9 @@ import style from './css/comparison.css';
 
 const Results = ({ feature, currentValue, clickedValue }) => (
   <tr className={style.row}>
-    <td className={style.currentValue}>{currentValue}</td>
-    <td className={style.feature}>{feature}</td>
-    <td className={style.clickedValue}>{clickedValue}</td>
+    <td className={`currentValue ${style.currentValue}`}>{currentValue}</td>
+    <td className={`feature ${style.feature}`}>{feature}</td>
+    <td className={`clickedValue ${style.clickedValue}`}>{clickedValue}</td>
   </tr>
 );
 
@@ -36,16 +36,16 @@ const Comparison = ({ current, clicked, closeCompare }) => {
 
   return (
     <div>
-      <div className={style.blocker} onClick={closeCompare} onKeyPress={closeCompare} role="button" tabIndex={0} aria-label="Mute volume" />
-      <div className={style.comparison}>
-        <div className={style.compareTitle}>comparison</div>
-        <i className={`${style.close} fa fa-times`} onClick={closeCompare} onKeyPress={closeCompare} role="button" tabIndex={0} aria-label="Mute volume" />
+      <div className={`blocker ${style.blocker}`} onClick={closeCompare} onKeyPress={closeCompare} role="button" tabIndex={0} aria-label="Mute volume" />
+      <div className={style.comparison} id="comparison">
+        <div className={style.compareTitle} id="comparisonTitle">comparison</div>
+        <i className={`${style.close} fa fa-times`} id="comparisonClose" onClick={closeCompare} onKeyPress={closeCompare} role="button" tabIndex={0} aria-label="Mute volume" />
         <table className={style.comparisonTable}>
           <tbody>
             <tr>
-              <td className={style.titleRow}>{current.name}</td>
-              <td className={style.titleRow}>features</td>
-              <td className={style.titleRow}>{clicked.name}</td>
+              <td className={style.titleRow} id="comparisonCurrent">{current.name}</td>
+              <td className={style.titleRow} id="comparisonfeatures">features</td>
+              <td className={style.titleRow} id="comparisonClicked">{clicked.name}</td>
             </tr>
             {compareCurrentFeature}
             {compareClickedFeature}
