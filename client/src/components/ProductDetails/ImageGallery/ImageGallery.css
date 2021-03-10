@@ -99,6 +99,7 @@ button:focus {
 }
 
 .imageGallery .thumbnailView .thumbnail .selected {
+  opacity: 0.6;
   border-bottom: 3px solid grey;
 }
 
