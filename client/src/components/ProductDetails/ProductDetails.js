@@ -125,8 +125,16 @@ class ProductDetails extends React.Component {
       sku_id: sku,
     };
     axios.post('/cart', body)
-      .then((res) => {
-        console.log(res);
+      .then(() => {
+        axios.get('/cart')
+          .then((crt) => {
+            this.setState({
+              cart: crt.data,
+            });
+          })
+          .catch((err) => {
+            console.error(err);
+          });
       })
       .catch((err) => {
         console.error(err);
