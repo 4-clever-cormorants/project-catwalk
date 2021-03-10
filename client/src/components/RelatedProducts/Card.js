@@ -15,7 +15,7 @@ const Card = ({
 }) => (
   <div
     className={style.card}
-    id={`card${item.id.toString()}`}
+    id={`card${item.id}`}
     onClick={compareHandler.bind(this, item)}
     onKeyPress={compareHandler.bind(this, item)}
     role="button"
@@ -27,11 +27,11 @@ const Card = ({
       addToWishHandler={addToWishHandler}
       dropWishHandler={dropWishHandler}
     />
-    <div className={style.cardImgContainer}>
-      <img className={style.cardImg} src={item.thumbnail_url} alt={item.name} />
+    <div className={`cardImgContainer ${style.cardImgContainer}`}>
+      <img className={`cardImg ${style.cardImg}`} src={item.thumbnail_url} alt={item.name} />
     </div>
     <a
-      className={style.cardName}
+      className={`cardName ${style.cardName}`}
       href={`/?product_id=${item.id}`}
       onClick={(e) => {
         e.stopPropagation();

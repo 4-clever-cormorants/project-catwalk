@@ -218,10 +218,10 @@ class RelatedProducts extends React.Component {
 
     return (
       <div className={style.relatedProducts} id="relatedProducts">
-        {relatedListScroll === 0 ? (<div />) : (<Prev list="relatedList" scrollPrev={RelatedProducts.scrollPrev} />)}
+        {relatedListScroll === 0 ? (<div className="sideButtons" />) : (<Prev list="relatedList" scrollPrev={RelatedProducts.scrollPrev} />)}
         {load ? (
-          <div className={style.gridContainer0}>
-            <span className={style.ListName}>RELATED PRODUCTS</span>
+          <div className={style.gridContainer0} id="gridContainer0">
+            <span className={style.ListName} id="ListNameRelated">RELATED PRODUCTS</span>
             {comparison}
             <List
               productsList={related}
@@ -235,12 +235,12 @@ class RelatedProducts extends React.Component {
         ) : (
           <div />
         )}
-        {(relatedListScroll === 1 || related.length < 5) ? (<div />) : (<Next list="relatedList" scrollNext={RelatedProducts.scrollNext} />)}
-        {outfitListScroll === 0 ? (<div />) : (<Prev list="outfitList" scrollPrev={RelatedProducts.scrollPrev} />)}
+        {(relatedListScroll === 1 || related.length < 5) ? (<div className="sideButtons" />) : (<Next list="relatedList" scrollNext={RelatedProducts.scrollNext} />)}
+        {outfitListScroll === 0 ? (<div className="sideButtons" />) : (<Prev list="outfitList" scrollPrev={RelatedProducts.scrollPrev} />)}
         {outfitLoad ? (
-          <div className={style.gridContainer1}>
-            <span className={style.ListName}>YOUR OUTFIT</span>
-            <div className={`${style.outfitListWithAdd} outfitList`} onScroll={this.scrollHandler.bind(this, 'outfitList')}>
+          <div className={style.gridContainer1} id="gridContainer1">
+            <span className={style.ListName} id="ListNameOutfit">YOUR OUTFIT</span>
+            <div className={`outfitList ${style.outfitListWithAdd}`} onScroll={this.scrollHandler.bind(this, 'outfitList')}>
               <AddToOutfit addToOutfitHandler={this.addToOutfitHandler} />
               <ListOutfit
                 productsList={outfitList}
@@ -251,7 +251,7 @@ class RelatedProducts extends React.Component {
         ) : (
           <div />
         )}
-        {(outfitListScroll === 1 || outfitList.length < 4) ? (<div />) : (<Next list="outfitList" scrollNext={RelatedProducts.scrollNext} />)}
+        {(outfitListScroll === 1 || outfitList.length < 4) ? (<div className="sideButtons" />) : (<Next list="outfitList" scrollNext={RelatedProducts.scrollNext} />)}
       </div>
     );
   }

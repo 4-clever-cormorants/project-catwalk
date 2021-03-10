@@ -3,7 +3,7 @@ import propTypes from 'prop-types';
 import style from './css/relatedProducts.css';
 
 const Next = ({ list, scrollNext }) => (
-  <i className={`${style.side} fa fa-chevron-right`} onClick={scrollNext.bind(this, list)} onKeyPress={scrollNext.bind(this, list)} role="button" tabIndex={0} aria-label="Mute volume" />
+  <i className={`sideButtons ${style.side} fa fa-chevron-right`} onClick={scrollNext.bind(this, list)} onKeyPress={scrollNext.bind(this, list)} role="button" tabIndex={0} aria-label="Mute volume" />
 );
 
 Next.propTypes = {

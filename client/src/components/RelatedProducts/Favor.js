@@ -7,14 +7,14 @@ const Favor = ({
 }) => {
   if (wishList.indexOf(id) === -1) {
     return (
-      <div className={style.actionIconFavor} onClick={addToWishHandler.bind(this, id)} onKeyPress={addToWishHandler.bind(this, id)} role="button" tabIndex={0}>
-        <i className={`${style.favor} far fa-star`} />
+      <div className={`actionIconContainer ${style.actionIconFavor}`} onClick={addToWishHandler.bind(this, id)} onKeyPress={addToWishHandler.bind(this, id)} role="button" tabIndex={0}>
+        <i className={`FavorIconEmpty ${style.favor} far fa-star`} />
       </div>
     );
   }
   return (
-    <div className={style.actionIconFavor} onClick={dropWishHandler.bind(this, id)} onKeyPress={dropWishHandler.bind(this, id)} role="button" tabIndex={0}>
-      <i className={`${style.favorFill} fa fa-star`} />
+    <div className={`actionIconContainer ${style.actionIconFavor}`} onClick={dropWishHandler.bind(this, id)} onKeyPress={dropWishHandler.bind(this, id)} role="button" tabIndex={0}>
+      <i className={`FavorIconFull ${style.favorFill} fa fa-star`} />
     </div>
   );
 };

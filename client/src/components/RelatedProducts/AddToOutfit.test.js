@@ -51,7 +51,7 @@ describe('Test Button component', () => {
       load: true,
       outfitLoad: true,
     });
-    const button = wrapper.find('#addToOutfitButton');
+    const button = wrapper.find('#addToOutfitIcon');
 
     expect(button.exists()).toBe(true);
   });
@@ -65,7 +65,7 @@ describe('Test Button component', () => {
       outfitLoad: true,
     });
     const instance = wrapper.instance();
-    const button = wrapper.find('#addToOutfitButton');
+    const button = wrapper.find('#addToOutfitIcon');
 
     expect(instance.state.outfitList.length).toEqual(dummy.relatedProducts.length);
     button.simulate('click');
@@ -82,7 +82,7 @@ describe('Test Button component', () => {
       outfitLoad: true,
     });
     const instance = wrapper.instance();
-    const button = wrapper.find('#addToOutfitButton');
+    const button = wrapper.find('#addToOutfitIcon');
     expect(instance.state.outfitList.length).toEqual(dummy.relatedProducts.length);
     button.simulate('click');
     await tick();

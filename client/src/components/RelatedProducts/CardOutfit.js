@@ -7,13 +7,13 @@ import Price from '../ProductDetails/ProductInformation/Price';
 import priceCss from './css/price.css';
 
 const CardOutfit = ({ item, dropHandler }) => (
-  <div className={style.card} id={`card${item.id.toString()}`}>
+  <div className={style.card} id={`card${item.id}`}>
     <Drop id={item.id} dropHandler={dropHandler} />
-    <div className={style.cardImgContainer}>
-      <img className={style.cardImg} src={item.thumbnail_url} alt={item.name} />
+    <div className={`cardImgContainer ${style.cardImgContainer}`}>
+      <img className={`cardImg ${style.cardImg}`} src={item.thumbnail_url} alt={item.name} />
     </div>
     <a
-      className={style.cardName}
+      className={`cardName ${style.cardName}`}
       href={`/?product_id=${item.id}`}
       onClick={(e) => {
         e.stopPropagation();
