@@ -6,6 +6,18 @@
   transition: opacity 400ms ease-in;
 } */
 
+.modal {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.4s ease-in-out;
+}
+
+.modalShow {
+  visibility: visible;
+  opacity: 1;
+  z-index: 110;
+}
+
 .blocker {
   position: fixed;
   top: 0;
@@ -136,6 +148,14 @@
   color: white;
   transition: all 0.2s ease-in-out;
 }
+
+.exitButton,
+.submitButton,
+.submitButtonDisabled,
+.uploadPhoto {
+  transition: visibility 0s ease-in-out;
+}
+
 
 .uploadPhoto {
   display: block;

@@ -166,7 +166,12 @@ class Questions extends React.Component {
           {questions.results.length > 4 && !hideButton ? <button className={style.questionButton} type="button" onClick={this.loadMoreQuestions.bind(this)} id="loadMoreQuestions">MORE ANSWERED QUESTIONS</button> : ''}
           <button className={style.questionButton} type="button" onClick={this.addQuestion.bind(this)} id="addQuestionButton">ADD A QUESTION</button>
         </div>
-        {addQuestionClicked ? <QuestionForm exitQuestionForm={() => this.exitQuestionForm()} productId={productId} productName={productName} /> : ''}
+        <QuestionForm
+          exitQuestionForm={() => this.exitQuestionForm()}
+          productId={productId}
+          productName={productName}
+          addQuestionClicked={addQuestionClicked}
+        />
       </div>
     );
   }

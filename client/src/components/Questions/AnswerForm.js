@@ -97,7 +97,12 @@ class AnswerForm extends React.Component {
   }
 
   render() {
-    const { exitAnswerForm, questionBody, productName } = this.props;
+    const {
+      exitAnswerForm,
+      questionBody,
+      productName,
+      addAnswerClicked
+    } = this.props;
     const {
       errorMessages,
       submitError,
@@ -113,7 +118,7 @@ class AnswerForm extends React.Component {
     const submitButtonClass = submitted ? style.submitButtonDisabled : style.submitButton;
     const submitButtonText = submitted ? 'SUBMITTED' : 'SUBMIT';
     return (
-      <div className={style.modal}>
+      <div className={`${style.modal} ${addAnswerClicked ? style.modalShow : ''}`}>
         <div className={style.blocker} onClick={exitAnswerForm} />
         <div className={`${style.form} answerForm`}>
           <div className={`${style.formHeader} answerFormHeader`}>
@@ -171,6 +176,11 @@ AnswerForm.propTypes = {
   questionBody: PropTypes.string.isRequired,
   questionId: PropTypes.number.isRequired,
   productName: PropTypes.string.isRequired,
+  addAnswerClicked: PropTypes.bool,
+};
+
+AnswerForm.defaultProps = {
+  addAnswerClicked: false,
 };
 
 export default AnswerForm;

@@ -9,6 +9,18 @@
   background: rgba(0,0,0,.5);
 }
 
+.modal {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.4s ease-in-out;
+}
+
+.modalShow {
+  visibility: visible;
+  opacity: 1;
+  z-index: 110;
+}
+
 .imageModal {
   position:fixed;
   top:50%;
@@ -22,13 +34,13 @@
   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.25);
 }
 
-.imageModal img {
-  width: auto;
-  max-height: 80vh;
-}
-
 .imageContent {
   position: relative;
+}
+
+.imageContent img {
+  width: auto;
+  max-height: 80vh;
 }
 
 .exitButton {
@@ -44,6 +56,7 @@
   font-family: sans-serif, Arial;
   color: black;
   transition: all 0.2s ease-in-out;
+  transition: visibility 0s ease-in-out;
   height: 25px;
   width: 25px;
   box-shadow: -2px 2px 5px rgb(0 0 0 / 15%);

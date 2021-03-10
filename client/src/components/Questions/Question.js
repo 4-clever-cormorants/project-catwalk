@@ -135,7 +135,13 @@ class Question extends React.Component {
             </p>
           </div>
         </div>
-        {addAnswerClicked ? <AnswerForm exitAnswerForm={() => this.exitAnswerForm()} questionBody={question.question_body} questionId={question.question_id} productName={productName} /> : ''}
+        <AnswerForm
+          exitAnswerForm={() => this.exitAnswerForm()}
+          questionBody={question.question_body}
+          questionId={question.question_id}
+          productName={productName}
+          addAnswerClicked={addAnswerClicked}
+        />
         {loadAnswers ? <AnswerList answers={answers} updateAnswers={this.updateAnswers} /> : ''}
       </div>
     );
