@@ -15,7 +15,7 @@ const Header = () => (
     </div>
     <div className={css.header}>
       <div className={css.logo}>
-        Le boutique
+        &nbsp; Le boutique
       </div>
       <div className={css.selection}>
         <span className={css.sale}>
