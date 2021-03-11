@@ -17,7 +17,6 @@
 
 .card:focus {
   outline: none;
-  box-shadow: none;
 }
 
 .cardImgContainer .cardImg {
