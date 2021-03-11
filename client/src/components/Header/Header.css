@@ -1,6 +1,8 @@
 .headerContainer {
   display: flex;
   flex-direction: column;
+  margin-right: -60px;
+  margin-left: -80px;
 }
 
 .headerContainer .covidSafe {
