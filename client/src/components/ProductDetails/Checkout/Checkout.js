@@ -9,7 +9,7 @@ import AddToWishList from './AddToWishList';
 import css from './Checkout.css';
 
 const Checkout = ({
-  productId, style, addToCart, skuSelector, sku,
+  productId, style, addToCart, skuSelector, onMouseMove, sku,
 }) => {
   const { skus } = style;
   let qty = null;
@@ -21,7 +21,9 @@ const Checkout = ({
       <form onSubmit={addToCart} className={css.form}>
         <SizeSelector skus={skus} onChange={skuSelector} />
         <QtySelector qty={qty} />
-        <AddToCart />
+        <div className={css.addToCartContainer}>
+          <AddToCart onMouseMove={onMouseMove} />
+        </div>
         <AddToWishList productId={productId} />
       </form>
     </div>
@@ -41,6 +43,7 @@ Checkout.propTypes = {
   }).isRequired,
   skuSelector: PropTypes.func.isRequired,
   addToCart: PropTypes.func.isRequired,
+  onMouseMove: PropTypes.func.isRequired,
   sku: PropTypes.string,
 };
 

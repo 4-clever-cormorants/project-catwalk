@@ -32,6 +32,15 @@ class ProductDetails extends React.Component {
     }
   }
 
+  static onMouseMove(e) {
+    const addToCart = document.querySelector('#addToCart');
+    const rect = e.target.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    addToCart.style.setProperty('--x', `${x}px`);
+    addToCart.style.setProperty('--y', `${y}px`);
+  }
+
   constructor(props) {
     super(props);
     this.state = {
@@ -224,6 +233,7 @@ class ProductDetails extends React.Component {
               productId={product.id}
               skuSelector={this.skuSelector}
               addToCart={this.addToCart}
+              onMouseMove={ProductDetails.onMouseMove}
               style={style}
               sku={sku}
             />
