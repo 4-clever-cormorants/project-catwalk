@@ -12,7 +12,8 @@
 .modal {
   visibility: hidden;
   opacity: 0;
-  transition: visibility 0s, opacity 0.4s ease-in-out;
+  transition: visibility 0.4s, opacity 0.4s ease-in-out;
+  z-index: 110;
 }
 
 .modalShow {
