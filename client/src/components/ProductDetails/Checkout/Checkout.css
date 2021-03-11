@@ -32,6 +32,7 @@
 
 .sizeSelector .sizeSelectorButton:hover, .qtySelector .qtySelectorButton:hover {
   border-bottom: 3px solid black;
+  cursor: pointer;
 }
 
 .sizeSelector .sizeSelectorButton option {
@@ -84,6 +85,7 @@
   /* background-color: rgb(235, 235, 235); */
   background-color: rgb(0, 0, 0);
   color: white;
+  cursor: pointer;
 }
 
 .addToCart:hover:before {

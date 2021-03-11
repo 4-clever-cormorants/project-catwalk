@@ -108,6 +108,7 @@
 .styleSelector .stylesDisplay .style .imgContainer:hover {
   border: 3px solid rgb(124, 124, 124);
   border-radius: 23%;
+  cursor: pointer;
 }
 
 .style:hover img {
