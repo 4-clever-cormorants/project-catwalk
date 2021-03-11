@@ -42,8 +42,6 @@
   overflow:hidden;
   display: flex;
   overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
 }
 
 .addToCart {
@@ -60,7 +58,7 @@
   border: none;
   background-image: linear-gradient(to left, rgb(0, 0, 0), rgb(77, 77, 77), rgb(0, 0, 0));
   color: white;
-  transition: all 0.25s ease;
+  transition: all 0.25s;
 }
 
 .addToCart .addToCartButton .fa {
