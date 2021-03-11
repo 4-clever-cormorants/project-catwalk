@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
@@ -22,7 +23,7 @@ const Style = ({ style, onClick, defaultChecked }) => (
           className={style.style_id}
         />
         <div className={css.middle}>
-          <span className={`${css.check} fa fa-check-circle`}/>
+          <span className={`${css.check} fa fa-check-circle`} />
         </div>
       </div>
     </label>
