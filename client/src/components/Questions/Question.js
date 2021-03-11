@@ -123,7 +123,8 @@ class Question extends React.Component {
       <div className={style.questionDefault}>
         <div className={style.questionContent}>
           <div className={style.questionText}>
-            <p>{`Q: ${question.question_body}`}</p>
+            <p>Q: &nbsp;</p>
+            <p>{question.question_body}</p>
           </div>
           <div className={style.questionFooter}>
             <p>
