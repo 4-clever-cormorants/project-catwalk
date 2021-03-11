@@ -65,6 +65,7 @@
   height: 80px;
   justify-self: center;
   align-self: center;
+  border-radius: 22%;
 }
 
 .middle {
@@ -97,7 +98,7 @@
 }
 
 .styleSelector .stylesDisplay .style input:checked + .imgContainer {
-  border: 3px solid rgb(70, 70, 70);
+  border: 3px solid rgb(40, 40, 40);
   border-radius: 23%;
 }
 
@@ -106,7 +107,7 @@
 }
 
 .styleSelector .stylesDisplay .style .imgContainer:hover {
-  border: 3px solid rgb(70, 70, 70);
+  border: 3px solid rgb(80, 80, 80);
   border-radius: 23%;
   cursor: pointer;
 }
