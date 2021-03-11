@@ -86,6 +86,7 @@
   background-color: rgb(0, 0, 0);
   color: white;
   cursor: pointer;
+  overflow: hidden;
 }
 
 .addToCart:hover:before {
