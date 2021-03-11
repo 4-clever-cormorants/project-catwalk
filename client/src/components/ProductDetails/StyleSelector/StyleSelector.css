@@ -46,7 +46,7 @@
 }
 
 .styleSelector .stylesDisplay .style {
-  margin: 8px;
+  margin: 10px;
   height: 75px;
   width: 75px;
   border-radius: 20%;
@@ -59,15 +59,36 @@
   display: none;
 }
 
-.styleSelector .stylesDisplay .style input:checked + img {
-  border: 3px solid rgb(70, 70, 70);
+.imgContainer {
+  object-fit: cover;
+  position: relative;
+  height: 80px;
+  justify-self: center;
+  align-self: center;
+}
+
+.middle {
+  opacity: 0;
+  height: 27px;
+  width: 27px;
+  position: relative;
+  bottom: 95px;
+  left: 65px;
+  background-color: white;
+  border-radius: 50%;
+}
+
+.middle .check {
+  position: relative;
+  font-size: 30px;
+  z-index: 1;
 }
 
 .styleSelector .stylesDisplay .style img {
   padding: 2px;
   object-fit: cover;
   position: relative;
-  top: 2px;
+  /* top: 2px; */
   height: 75px;
   width: 75px;
   border-radius: 20%;
@@ -75,6 +96,21 @@
   transition: border .25s ease;
 }
 
-.styleSelector .stylesDisplay .style img:hover {
+.styleSelector .stylesDisplay .style input:checked + .imgContainer {
   border: 3px solid rgb(70, 70, 70);
+  border-radius: 23%;
+}
+
+.styleSelector .stylesDisplay .style input:checked + .imgContainer .middle {
+  opacity: 1;
+}
+
+.styleSelector .stylesDisplay .style .imgContainer:hover {
+  border: 3px solid rgb(124, 124, 124);
+  border-radius: 23%;
+  cursor: pointer;
+}
+
+.style:hover img {
+  opacity: 0.6;
 }
