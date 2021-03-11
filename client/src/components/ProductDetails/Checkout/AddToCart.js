@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import css from './Checkout.css';
 
@@ -21,6 +22,10 @@ const AddToCart = ({ onMouseMove }) => {
       )}
     </div>
   );
+};
+
+AddToCart.propTypes = {
+  onMouseMove: PropTypes.func.isRequired,
 };
 
 export default AddToCart;
