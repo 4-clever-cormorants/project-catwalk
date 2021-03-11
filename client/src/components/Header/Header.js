@@ -4,38 +4,49 @@ import PropTypes from 'prop-types';
 import css from './Header.css';
 
 const Header = () => (
-  <div className={css.Header}>
-    <div className={css.logo}>
-      <img src="https://upload.wikimedia.org/wikipedia/commons/7/75/Microcarbo_melanoleucos_Austins_Ferry_3.jpg" alt="cormorant" />
+  <div className={css.headerContainer}>
+    <div className={css.covidSafe}>
+      <div className={css.safetyMessage}>
+        Safe in-store shopping.
+      </div>
+      &nbsp;
+      <div className={css.safetyDetail}>
+        <u>Our safety practices to keep you healthy</u>
+      </div>
     </div>
-    <div className={css.title}>
-      Cormorant Boutique
-    </div>
-    <div className={css.selection}>
-      <span className={css.sale}>
-        Sale
-      </span>
-      <span className={css.women}>
-        Women
-      </span>
-      <span className={css.men}>
-        Men
-      </span>
-      <span className={css.kids}>
-        Kids
-      </span>
-      <span className={css.Activewear}>
-        Activewear
-      </span>
-      <span className={css.home}>
-        Home
-      </span>
-      <span className={css.garden}>
-        Garden
-      </span>
-      <span className={css.beauty}>
-        Beauty
-      </span>
+    <div className={css.header}>
+      <div className={css.logo}>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/7/75/Microcarbo_melanoleucos_Austins_Ferry_3.jpg" alt="cormorant" />
+      </div>
+      <div className={css.title}>
+        Cormorant Boutique
+      </div>
+      <div className={css.selection}>
+        <span className={css.sale}>
+          Sale
+        </span>
+        <span className={css.women}>
+          Women
+        </span>
+        <span className={css.men}>
+          Men
+        </span>
+        <span className={css.kids}>
+          Kids
+        </span>
+        <span className={css.Activewear}>
+          Activewear
+        </span>
+        <span className={css.home}>
+          Home
+        </span>
+        <span className={css.garden}>
+          Garden
+        </span>
+        <span className={css.beauty}>
+          Beauty
+        </span>
+      </div>
     </div>
   </div>
 );
