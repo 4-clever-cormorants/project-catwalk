@@ -107,20 +107,4 @@ describe('test Product Details component', () => {
     expect(addToCart.exists()).toBe(true);
     expect(addToWishList.exists()).toBe(true);
   });
-
-  it('should be able to select a sku and add it to the cart', () => {
-    const instance = wrapper.instance();
-    const form = wrapper.find('.form');
-    form.simulate('submit');
-    expect(instance.state.cart.length).toBe(1);
-  });
-
-  it('should only add the same sku once', () => {
-    const instance = wrapper.instance();
-    const form = wrapper.find('.form');
-    form.simulate('submit');
-    expect(instance.state.cart.length).toBe(1);
-    form.simulate('submit');
-    expect(instance.state.cart.length).toBe(1);
-  });
 });
