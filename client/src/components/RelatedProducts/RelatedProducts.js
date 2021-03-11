@@ -258,14 +258,16 @@ class RelatedProducts extends React.Component {
       relatedListScroll,
       outfitListScroll,
     } = this.state;
-    let comparison;
+    let comparison = <div className={style.modal} />;
     if (clicked) {
       comparison = (
-        <Comparison
-          current={current}
-          clicked={clicked}
-          closeCompare={this.closeCompare}
-        />
+        <div className={`${style.modal} ${style.modalShow}`}>
+          <Comparison
+            current={current}
+            clicked={clicked}
+            closeCompare={this.closeCompare}
+          />
+        </div>
       );
     }
 
@@ -275,7 +277,6 @@ class RelatedProducts extends React.Component {
         {load ? (
           <div className={style.gridContainer0} id="gridContainer0">
             <span className={style.ListName} id="ListNameRelated">RELATED PRODUCTS</span>
-            {comparison}
             <List
               productsList={related}
               wishList={wishList}
@@ -312,6 +313,7 @@ class RelatedProducts extends React.Component {
           <div />
         )}
         {(outfitListScroll === 1 || outfitList.length < 4) ? (<div className="sideButtons" />) : (<Next list="outfitList" scrollNext={RelatedProducts.scrollNext} />)}
+        {comparison}
       </div>
     );
   }
