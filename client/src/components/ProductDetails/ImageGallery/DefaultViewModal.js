@@ -12,7 +12,7 @@ const DefaultViewModal = ({ url, imageClicked, exitModal }) => (
       <div className={`${css.imageContent} imageContent`}>
         <button className={`${css.exitButton}`} type="button" onClick={exitModal}>
           <div className={`${css.exitButtonDiv}`}>
-            <i className="fa fa-times" aria-hidden="true" />
+            <span aria-hidden="true">X</span>
           </div>
         </button>
         <img alt="full sized default view" src={url} />
