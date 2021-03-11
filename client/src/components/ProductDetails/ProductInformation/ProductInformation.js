@@ -8,11 +8,12 @@ import Description from './Description';
 import Price from './Price';
 import Shipping from './Shipping';
 import Share from './Share';
+import RatingModal from './RatingModal';
 
 import css from './ProductInformation.css';
 
 const ProductInformation = ({
-  product, originalPrice, salePrice, rating, totalRatings,
+  product, originalPrice, salePrice, rating, totalRatings, ratingsRaw,
 }) => (
   <div id="productInformationContainer" className={css.productInformation}>
     <div id="productInformation" className={css.info}>
@@ -26,6 +27,7 @@ const ProductInformation = ({
       </div>
       <Description description={product.description} />
       <Share />
+      <RatingModal totalRatings={totalRatings} ratingsRaw={ratingsRaw} />
     </div>
   </div>
 );

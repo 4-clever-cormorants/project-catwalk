@@ -1,0 +1,10 @@
+.barDiv {
+  display: flex;
+  flex-direction: row;
+}
+
+.bar {
+  width: 120px;
+  height: 15px;
+  background-color: grey;
+}

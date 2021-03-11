@@ -223,6 +223,7 @@ class ProductDetails extends React.Component {
               product={product}
               rating={rating.average}
               totalRatings={rating.ratings}
+              ratingsRaw={rating.raw}
               originalPrice={style.original_price}
               salePrice={style.sale_price}
             />
