@@ -80,9 +80,11 @@ class RelatedProducts extends React.Component {
     const { interactions } = this.props;
     this.getOutfitList().then(() => {
       const dropTarget = document.querySelector('.outfitList');
-      dropTarget.addEventListener('drop', this.dropped);
-      dropTarget.addEventListener('dragenter', RelatedProducts.cancelDefault);
-      dropTarget.addEventListener('dragover', RelatedProducts.cancelDefault);
+      if (dropTarget) {
+        dropTarget.addEventListener('drop', this.dropped);
+        dropTarget.addEventListener('dragenter', RelatedProducts.cancelDefault);
+        dropTarget.addEventListener('dragover', RelatedProducts.cancelDefault);
+      }
     });
     this.getInfo().then(() => {
       document.addEventListener('keydown', this.escFunction, false);
