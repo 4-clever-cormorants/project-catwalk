@@ -117,6 +117,7 @@ class ProductDetails extends React.Component {
   }
 
   skuSelector(e) {
+    console.log(e.target.value);
     this.setState({
       sku: e.target.value,
     });
