@@ -70,6 +70,6 @@
   border: white;
 }
 
-.addToWishListButton u:hover {
+.add u:hover {
   text-decoration: underline rgb(49, 49, 49) 2px;
 }

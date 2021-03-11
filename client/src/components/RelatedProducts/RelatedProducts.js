@@ -32,6 +32,15 @@ class RelatedProducts extends React.Component {
     }
   }
 
+  static onMouseMove(e) {
+    const addToOutfitCard = document.querySelector('#addToOutfitCard');
+    const rect = e.target.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    addToOutfitCard.style.setProperty('--x', `${x}px`);
+    addToOutfitCard.style.setProperty('--y', `${y}px`);
+  }
+
   constructor(props) {
     super(props);
     this.state = {
@@ -241,7 +250,10 @@ class RelatedProducts extends React.Component {
           <div className={style.gridContainer1} id="gridContainer1">
             <span className={style.ListName} id="ListNameOutfit">YOUR OUTFIT</span>
             <div className={`outfitList ${style.outfitListWithAdd}`} onScroll={this.scrollHandler.bind(this, 'outfitList')}>
-              <AddToOutfit addToOutfitHandler={this.addToOutfitHandler} />
+              <AddToOutfit
+                addToOutfitHandler={this.addToOutfitHandler}
+                mouseMove={RelatedProducts.onMouseMove}
+              />
               <ListOutfit
                 productsList={outfitList}
                 dropHandler={this.dropHandler}
