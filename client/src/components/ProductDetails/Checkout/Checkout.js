@@ -9,7 +9,7 @@ import AddToWishList from './AddToWishList';
 import css from './Checkout.css';
 
 const Checkout = ({
-  productId, style, addToCart, skuSelector, sku,
+  productId, style, addToCart, skuSelector, onMouseMove, sku,
 }) => {
   const { skus } = style;
   let qty = null;
@@ -41,6 +41,7 @@ Checkout.propTypes = {
   }).isRequired,
   skuSelector: PropTypes.func.isRequired,
   addToCart: PropTypes.func.isRequired,
+  onMouseMove: PropTypes.func.isRequired,
   sku: PropTypes.string,
 };
 
