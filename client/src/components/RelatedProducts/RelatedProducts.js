@@ -8,7 +8,7 @@ import Comparison from './Comparison';
 import Next from './Next';
 import Prev from './Prev';
 import style from './css/relatedProducts.css';
-// import dummy from './dummy_related';
+import dummy from './dummy_related';
 
 class RelatedProducts extends React.Component {
   static scrollNext(list) {
@@ -60,6 +60,7 @@ class RelatedProducts extends React.Component {
       wishList: [],
       current: undefined,
       clicked: undefined,
+      prev: dummy.emptyProduct,
       load: false,
       outfitLoad: false,
       relatedListScroll: 0,
@@ -203,6 +204,7 @@ class RelatedProducts extends React.Component {
   compareHandler(item) {
     this.setState({
       clicked: item,
+      prev: item,
     });
   }
 
@@ -250,6 +252,7 @@ class RelatedProducts extends React.Component {
     const {
       outfitList,
       wishList,
+      prev,
       clicked,
       current,
       related,
@@ -258,18 +261,6 @@ class RelatedProducts extends React.Component {
       relatedListScroll,
       outfitListScroll,
     } = this.state;
-    let comparison = <div className={style.modal} />;
-    if (clicked) {
-      comparison = (
-        <div className={`${style.modal} ${style.modalShow}`}>
-          <Comparison
-            current={current}
-            clicked={clicked}
-            closeCompare={this.closeCompare}
-          />
-        </div>
-      );
-    }
 
     return (
       <div className={style.relatedProducts} id="relatedProducts">
@@ -313,7 +304,12 @@ class RelatedProducts extends React.Component {
           <div />
         )}
         {(outfitListScroll === 1 || outfitList.length < 4) ? (<div className="sideButtons" />) : (<Next list="outfitList" scrollNext={RelatedProducts.scrollNext} />)}
-        {comparison}
+        <Comparison
+          current={current || prev}
+          clicked={clicked || prev}
+          closeCompare={this.closeCompare}
+          isClicked={clicked !== undefined}
+        />
       </div>
     );
   }

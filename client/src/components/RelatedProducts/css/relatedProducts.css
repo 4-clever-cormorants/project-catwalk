@@ -42,14 +42,3 @@
   box-shadow: none;
 }
 
-.modal {
-  visibility: hidden;
-  opacity: 0;
-  transition: visibility 0.4s, opacity 0.4s ease-in-out;
-}
-
-.modalShow {
-  visibility: visible;
-  opacity: 1;
-  z-index: 120;
-}
