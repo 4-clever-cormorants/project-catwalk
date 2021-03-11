@@ -115,11 +115,27 @@ class ProductDetails extends React.Component {
 
   addToCart(e) {
     e.preventDefault();
-    const { cart, sku } = this.state;
-    if (cart.indexOf(sku) === -1) {
-      this.setState({
-        cart: [...cart, sku],
-      });
+    const { sku } = this.state;
+    if (sku !== null) {
+      const body = {
+        sku_id: sku,
+      };
+
+      axios.post('/cart', body)
+        .then(() => {
+          axios.get('/cart')
+            .then((crt) => {
+              this.setState({
+                cart: crt.data,
+              });
+            })
+            .catch((err) => {
+              console.error(err);
+            });
+        })
+        .catch((err) => {
+          console.error(err);
+        });
     }
   }
 
