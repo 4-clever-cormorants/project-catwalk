@@ -205,6 +205,7 @@ class ProductDetails extends React.Component {
               styleSelector={this.styleSelector}
             />
             <Checkout
+              productId={product.id}
               skuSelector={this.skuSelector}
               addToCart={this.addToCart}
               style={style}
