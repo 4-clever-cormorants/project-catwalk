@@ -4,6 +4,7 @@ import Header from './Header/Header';
 import ProductDetails from './ProductDetails/ProductDetails';
 import RelatedProducts from './RelatedProducts/RelatedProducts';
 import Questions from './Questions/Questions';
+import Footer from './Footer/Footer';
 
 const url = require('url');
 
@@ -64,6 +65,7 @@ class App extends React.Component {
           productName={productName}
           interactions={App.interactions}
         />
+        <Footer />
       </div>
     );
   }
