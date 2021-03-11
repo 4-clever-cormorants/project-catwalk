@@ -116,6 +116,7 @@ class ProductDetails extends React.Component {
   }
 
   skuSelector(e) {
+    console.log(e.target.value);
     this.setState({
       sku: e.target.value,
     });
@@ -201,9 +202,8 @@ class ProductDetails extends React.Component {
 
     return (
       <div id="PD" className={css.PD}>
-        <h1> Website Header </h1>
-        { load ? (
-          <div className={css.productDetails}>
+        <div className={css.productDetails}>
+          {load ? (
             <ImageGallery
               styleId={styleId}
               style={style}
@@ -216,6 +216,8 @@ class ProductDetails extends React.Component {
               scrollDown={ProductDetails.scrollDown}
               thumbnailScroll={thumbnailScroll}
             />
+          ) : ''}
+          {load ? (
             <ProductInformation
               product={product}
               rating={rating.average}
@@ -223,11 +225,15 @@ class ProductDetails extends React.Component {
               originalPrice={style.original_price}
               salePrice={style.sale_price}
             />
+          ) : ''}
+          {load ? (
             <StyleSelector
               styles={styles.results}
               selected={style.name}
               styleSelector={this.styleSelector}
             />
+          ) : ''}
+          {load ? (
             <Checkout
               productId={product.id}
               skuSelector={this.skuSelector}
@@ -236,8 +242,8 @@ class ProductDetails extends React.Component {
               style={style}
               sku={sku}
             />
-          </div>
-        ) : ''}
+          ) : ''}
+        </div>
       </div>
     );
   }

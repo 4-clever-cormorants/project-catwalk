@@ -15,6 +15,7 @@ const Card = ({
 }) => (
   <div
     className={style.card}
+    draggable="true"
     id={`card${item.id}`}
     onClick={compareHandler.bind(this, item)}
     onKeyPress={compareHandler.bind(this, item)}
@@ -28,7 +29,7 @@ const Card = ({
       dropWishHandler={dropWishHandler}
     />
     <div className={`cardImgContainer ${style.cardImgContainer}`}>
-      <img className={`cardImg ${style.cardImg}`} src={item.thumbnail_url} alt={item.name} />
+      <img className={`cardImg ${style.cardImg}`} src={item.thumbnail_url} alt={item.name} draggable="false" />
     </div>
     <a
       className={`cardName ${style.cardName}`}

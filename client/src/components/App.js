@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import Header from './Header/Header';
 import ProductDetails from './ProductDetails/ProductDetails';
 import RelatedProducts from './RelatedProducts/RelatedProducts';
 import Questions from './Questions/Questions';
@@ -51,6 +52,7 @@ class App extends React.Component {
     const { productId, productName } = this.state;
     return (
       <div id="app" className="app">
+        <Header />
         <ProductDetails
           productId={productId}
           getProductName={this.getProductName}

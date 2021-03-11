@@ -6,8 +6,8 @@
   height: 450px;
   float: left;
   margin: 5px;
-  background-color: rgb(240, 240, 240);
-  box-shadow: -2px 2px 5px rgb(0 0 0 / 15%);
+  background: white;
+  box-shadow: 2px 2px 5px rgb(0 0 0 / 25%);
 }
 
 .cardImgContainer {
@@ -18,7 +18,6 @@
 
 .card:focus {
   outline: none;
-  box-shadow: none;
 }
 
 .cardImgContainer .cardImg {
@@ -44,5 +43,6 @@
 }
 
 .card:hover {
-  background-color: rgb(235, 235, 235);
+  box-shadow: 2px 2px 5px rgb(0 0 0 / 50%);
+  cursor: pointer;
 }
