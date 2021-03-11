@@ -13,7 +13,7 @@ const Checkout = ({
 }) => {
   const { skus } = style;
   let qty = null;
-  if (sku !== null && sku !== 'Size') {
+  if (sku !== null && sku !== 'SELECT SIZE') {
     qty = skus[sku].quantity;
   }
   return (

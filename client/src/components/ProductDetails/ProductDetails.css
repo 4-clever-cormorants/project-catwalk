@@ -1,5 +1,7 @@
 .PD {
+  max-width: 1280;
   height: 800px;
+  margin: 8px;
 }
 
 .productDetails {
