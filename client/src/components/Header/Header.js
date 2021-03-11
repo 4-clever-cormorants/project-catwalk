@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import css from './Header.css';
 
@@ -16,10 +15,7 @@ const Header = () => (
     </div>
     <div className={css.header}>
       <div className={css.logo}>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/7/75/Microcarbo_melanoleucos_Austins_Ferry_3.jpg" alt="cormorant" />
-      </div>
-      <div className={css.title}>
-        Cormorant Boutique
+        Le boutique
       </div>
       <div className={css.selection}>
         <span className={css.sale}>
@@ -34,7 +30,7 @@ const Header = () => (
         <span className={css.kids}>
           Kids
         </span>
-        <span className={css.Activewear}>
+        <span className={css.activewear}>
           Activewear
         </span>
         <span className={css.home}>
@@ -46,6 +42,17 @@ const Header = () => (
         <span className={css.beauty}>
           Beauty
         </span>
+      </div>
+      <div className={css.icons}>
+        <div className={`${css.search} ${css.icon}`}>
+          <span className="fa fa-search" />
+        </div>
+        <div className={`${css.start} ${css.icon}`}>
+          <span className="fa fa-star" />
+        </div>
+        <div className={`${css.bag} ${css.icon}`}>
+          <span className="fa fa-shopping-bag" />
+        </div>
       </div>
     </div>
   </div>

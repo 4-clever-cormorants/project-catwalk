@@ -1,6 +1,7 @@
 .rating {
   display: flex;
   flex-direction: row;
+  font-family: 'Lato';
 }
 
 .star {
