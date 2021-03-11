@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unused-state */
 import React from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
@@ -24,7 +25,6 @@ class ProductDetails extends React.Component {
     const scroll = document.getElementById('thumbnailView');
     const scrollMax = scroll.scrollHeight - scroll.clientHeight;
     const currentScroll = scroll.scrollTop;
-
     if (currentScroll + (485) >= scrollMax) {
       scroll.scrollTop = scrollMax;
     } else {
@@ -253,6 +253,7 @@ class ProductDetails extends React.Component {
 ProductDetails.propTypes = {
   productId: PropTypes.number.isRequired,
   getProductName: PropTypes.func.isRequired,
+  interactions: PropTypes.func.isRequired,
 };
 
 export default ProductDetails;
