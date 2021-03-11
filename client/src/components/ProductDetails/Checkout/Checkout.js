@@ -21,7 +21,9 @@ const Checkout = ({
       <form onSubmit={addToCart} className={css.form}>
         <SizeSelector skus={skus} onChange={skuSelector} />
         <QtySelector qty={qty} />
-        <AddToCart onMouseMove={onMouseMove} />
+        <div className={css.addToCartContainer}>
+          <AddToCart onMouseMove={onMouseMove} />
+        </div>
         <AddToWishList productId={productId} />
       </form>
     </div>

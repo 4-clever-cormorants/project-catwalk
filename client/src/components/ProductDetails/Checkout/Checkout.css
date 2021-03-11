@@ -38,6 +38,14 @@
   background-color: white;
 }
 
+.addToCartContainer {
+  overflow:hidden;
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+}
+
 .addToCart {
   display: flex;
   flex: 0 0 auto;
