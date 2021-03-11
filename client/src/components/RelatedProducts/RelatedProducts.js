@@ -41,6 +41,17 @@ class RelatedProducts extends React.Component {
     addToOutfitCard.style.setProperty('--y', `${y}px`);
   }
 
+  static dragStart(e) {
+    const id = e.target.id.slice(4);
+    e.dataTransfer.setData('text/plain', id);
+  }
+
+  static cancelDefault(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    return false;
+  }
+
   constructor(props) {
     super(props);
     this.state = {
@@ -62,18 +73,31 @@ class RelatedProducts extends React.Component {
     this.closeCompare = this.closeCompare.bind(this);
     this.escFunction = this.escFunction.bind(this);
     this.scrollHandler = this.scrollHandler.bind(this);
+    this.dropped = this.dropped.bind(this);
   }
 
   componentDidMount() {
     const { interactions } = this.props;
-    this.getInfo();
-    this.getOutfitList();
-    document.addEventListener('keydown', this.escFunction, false);
-    const rrComponent = document.querySelector('#relatedProducts');
-    if (rrComponent) {
-      rrComponent.addEventListener('click',
-        (e) => interactions(e, 'relatedProducts'));
-    }
+    this.getOutfitList().then(() => {
+      const dropTarget = document.querySelector('.outfitList');
+      if (dropTarget) {
+        dropTarget.addEventListener('drop', this.dropped);
+        dropTarget.addEventListener('dragenter', RelatedProducts.cancelDefault);
+        dropTarget.addEventListener('dragover', RelatedProducts.cancelDefault);
+      }
+    });
+    this.getInfo().then(() => {
+      document.addEventListener('keydown', this.escFunction, false);
+      const rrComponent = document.querySelector('#relatedProducts');
+      if (rrComponent) {
+        rrComponent.addEventListener('click',
+          (e) => interactions(e, 'relatedProducts'));
+      }
+      const dragSources = document.querySelectorAll('[draggable="true"]');
+      dragSources.forEach((dragSource) => {
+        dragSource.addEventListener('dragstart', RelatedProducts.dragStart);
+      });
+    });
   }
 
   componentWillUnmount() {
@@ -101,12 +125,12 @@ class RelatedProducts extends React.Component {
         }
       }),
     ];
-    Promise.all(load)
+    return Promise.all(load)
       .then(this.setState({ load: true }));
   }
 
   getOutfitList() {
-    axios.get('/related/outfitList').then((response) => {
+    return axios.get('/related/outfitList').then((response) => {
       if (response.data) {
         this.setState({
           outfitList: response.data,
@@ -124,6 +148,26 @@ class RelatedProducts extends React.Component {
       this.setState({
         outfitList: [current, ...outfitList],
       });
+    }
+  }
+
+  addRelatedToOutfitHandler(id) {
+    const { related, outfitList } = this.state;
+    const checker = outfitList.filter((item) => item.id === id);
+    const product = related.filter((item) => item.id === id);
+    if (checker.length === 0) {
+      axios.post(`/related/outfitList?product_id=${id}`);
+      this.setState({
+        outfitList: [...product, ...outfitList],
+      });
+    }
+  }
+
+  dropped(e) {
+    RelatedProducts.cancelDefault(e);
+    const id = parseInt(e.dataTransfer.getData('text/plain'), 10);
+    if (!Number.isNaN(id)) {
+      this.addRelatedToOutfitHandler(id);
     }
   }
 
@@ -249,7 +293,11 @@ class RelatedProducts extends React.Component {
         {outfitLoad ? (
           <div className={style.gridContainer1} id="gridContainer1">
             <span className={style.ListName} id="ListNameOutfit">YOUR OUTFIT</span>
-            <div className={`outfitList ${style.outfitListWithAdd}`} onScroll={this.scrollHandler.bind(this, 'outfitList')}>
+            <div
+              className={`outfitList ${style.outfitListWithAdd}`}
+              onScroll={this.scrollHandler.bind(this, 'outfitList')}
+              data-role="drag-drop-container"
+            >
               <AddToOutfit
                 addToOutfitHandler={this.addToOutfitHandler}
                 mouseMove={RelatedProducts.onMouseMove}

@@ -15,6 +15,7 @@ const AddToOutfit = ({ addToOutfitHandler, mouseMove }) => (
 
 AddToOutfit.propTypes = {
   addToOutfitHandler: propTypes.func.isRequired,
+  mouseMove: propTypes.func.isRequired,
 };
 
 export default AddToOutfit;
