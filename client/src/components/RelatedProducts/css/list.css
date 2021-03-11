@@ -34,6 +34,7 @@
   background-color: rgb(240, 240, 240);
   box-shadow: -2px 2px 5px rgb(0 0 0 / 15%);
   font-family: 'Lato';
+  overflow: hidden;
 };
 
 .addoutfitButton {
@@ -51,6 +52,23 @@
   /* background-color: rgb(235, 235, 235); */
   background-color: rgb(0, 0, 0);
   color: white;
+}
+
+.addToOutfit:hover:before {
+  --size: 0;
+  content: '';
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  width: var(--size);
+  height: var(--size);
+  background: radial-gradient(circle closest-side, rgba(255, 255, 255, 0.33), transparent);
+  transform: translate(-50%, -50%);
+  transition: width 0.2s ease, height 0.2s ease;
+}
+
+.addToOutfit:hover:hover:before {
+  --size: 800px;
 }
 
 .addToOutfit:focus {

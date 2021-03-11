@@ -3,9 +3,9 @@ import propTypes from 'prop-types';
 import style from './css/list.css';
 
 // TODO: add eventListener to add current product to state
-const AddToOutfit = ({ addToOutfitHandler }) => (
+const AddToOutfit = ({ addToOutfitHandler, mouseMove }) => (
   // eslint-disable-next-line object-curly-spacing
-  <div className={style.addToOutfit} id="addToOutfitCard" onClick={addToOutfitHandler} role="button" onKeyPress={addToOutfitHandler} tabIndex={0}>
+  <div className={style.addToOutfit} id="addToOutfitCard" onMouseMove={mouseMove} onClick={addToOutfitHandler} role="button" onKeyPress={addToOutfitHandler} tabIndex={0}>
     <span className={style.addToOutfitText} id="addToOutfit">
       ADD TO OUTFIT
     </span>
