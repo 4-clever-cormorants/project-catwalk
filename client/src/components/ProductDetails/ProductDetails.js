@@ -24,7 +24,6 @@ class ProductDetails extends React.Component {
     const scroll = document.getElementById('thumbnailView');
     const scrollMax = scroll.scrollHeight - scroll.clientHeight;
     const currentScroll = scroll.scrollTop;
-
     if (currentScroll + (485) >= scrollMax) {
       scroll.scrollTop = scrollMax;
     } else {
