@@ -6,8 +6,6 @@ import Style from './Style';
 
 import css from './StyleSelector.css';
 
-// make it so the first one is automatically checked
-
 const StyleSelector = ({ styles, selected, styleSelector }) => {
   const n = styles.length;
   let style1;
@@ -41,13 +39,15 @@ const StyleSelector = ({ styles, selected, styleSelector }) => {
             </div>
           ))}
         </div>
-        <div id="row2" className={css.row2}>
-          {row2.map((style) => (
-            <div key={style.style_id} className={css.style}>
-              <Style style={style} onClick={styleSelector} />
-            </div>
-          ))}
-        </div>
+        {row2.length !== 0 ? (
+          <div id="row2" className={css.row2}>
+            {row2.map((style) => (
+              <div key={style.style_id} className={css.style}>
+                <Style style={style} onClick={styleSelector} />
+              </div>
+            ))}
+          </div>
+        ) : ''}
       </div>
     </div>
   );
