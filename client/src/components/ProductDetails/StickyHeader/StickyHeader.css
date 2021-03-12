@@ -1,6 +1,7 @@
 #stickyHeaderContainer {
   visibility: visible;
   width: 100%;
+  padding: 10px;
 }
 
 #sticky {
