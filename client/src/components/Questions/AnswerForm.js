@@ -16,6 +16,7 @@ class AnswerForm extends React.Component {
       uploadButtonClicked: false,
       uploadError: false,
       errorMessages: [],
+      unUploadedPhotos: false,
       submitError: false,
       submitted: false,
       bodyInvalid: false,
@@ -166,18 +167,23 @@ class AnswerForm extends React.Component {
       errorMessages.push('The email address provided is not in correct email format');
       emailInvalid = true;
     }
-    // const photoNames = [];
-    // if (photos.length !== photoUrls.length) {
-    //   for (let i = 0; i < photos.length; i += 1) {
-    //     if (photos[i] !== undefined) {
-    //       photoNames.push(photos[i]);
-    //     }
-    //   }
-    // }
-    // if (photoNames.length !== photoUrls.length) {
-    //   console.log('Did you mean to upload these photos? ', photoNames);
-    //   return;
-    // }
+    const photoNames = [];
+    if (photos.length !== photoUrls.length) {
+      for (let i = 0; i < photos.length; i += 1) {
+        if (photos[i] !== undefined) {
+          photoNames.push(photos[i]);
+        }
+      }
+      if (photoNames.length !== photoUrls.length) {
+        const { unUploadedPhotos } = this.state;
+        if (!unUploadedPhotos) {
+          console.log(photoNames, photoUrls);
+          console.log('Did you mean to upload these photos? ', photoNames);
+          this.setState({ unUploadedPhotos: true });
+          return;
+        }
+      }
+    }
     this.setState({
       errorMessages,
       bodyInvalid,
@@ -203,6 +209,7 @@ class AnswerForm extends React.Component {
       bodyInvalid,
       nameInvalid,
       emailInvalid,
+      unUploadedPhotos,
     } = this.state;
     const errorMessage = errorMessages.join(', ');
     const bodyClass = bodyInvalid ? `${style.invalidField} answerField` : 'answerField';
@@ -259,6 +266,7 @@ class AnswerForm extends React.Component {
                     {uploadButtonClicked ? <i className="fa fa-check-circle" aria-hidden="true" /> : ''}
                   </button>
                   {uploadError ? <div className={`${style.uploadError} uploadError`}>Error uploading photo</div> : ''}
+                  {unUploadedPhotos ? <div className={`${style.uploadError} unUploadedPhotos`}>Did you mean to upload the photos?</div> : ''}
                 </div>
               </label>
               <div className={`${style.buttonContainer}`}>
