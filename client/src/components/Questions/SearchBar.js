@@ -56,10 +56,10 @@ class SearchBar extends React.Component {
   render() {
     return (
       <div className={`${style.searchBar} searchBar`}>
-        <form>
+        <form role="search">
           <label htmlFor="searchQuestions">
             <i className="fa fa-search fa-2x" aria-hidden="true" />
-            <input type="text" name="searchQuestions" placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS..." maxLength="1000" onChange={this.handleChange.bind(this)} />
+            <input type="text" id="searchQuestions" name="searchQuestions" placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS..." maxLength="1000" onChange={this.handleChange.bind(this)} />
           </label>
         </form>
       </div>
