@@ -5,7 +5,7 @@
   grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
   background-color: white;
   z-index: 102;
-  position: fixed;
+  position: absolute;
   top: 20%;
   padding: 15px;
   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
