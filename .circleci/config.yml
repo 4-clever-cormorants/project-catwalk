@@ -27,5 +27,9 @@ jobs:
           command: |
             echo module.exports = { TOKEN: \'$TOKEN\' } > config.js
       - run:
+          name: Copy AWS S3 config
+          command: |
+            echo AWSAccessKeyId=$AWSAccessKeyId AWSSecretKey=$AWSSecretKey S3_BUCKET=$S3_BUCKET > .env
+      - run:
           name: Run Tests
           command: npm test
