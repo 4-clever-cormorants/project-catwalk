@@ -30,12 +30,13 @@ describe('StyleSelector tests', () => {
     });
   }
 
-  it('StyleSelector should render all the subcomponents', () => {
+  it('StyleSelector should render all the subcomponents', async () => {
     const wrapper = mount(<StyleSelector
       styles={styles.results}
       selected={styles.results[0].name}
       styleSelector={styleSelector}
     />);
+    await wrapper.instance();
     const sS = wrapper.find(StyleSelector);
     const stylesDisplay = wrapper.find('.stylesDisplay');
     expect(sS.exists()).toBe(true);
@@ -63,7 +64,18 @@ describe('StyleSelector tests', () => {
     const instance = wrapper.instance();
     wrapper.setState({
       product,
-      rating: { average: 5, ratings: 36 },
+      rating: {
+        average: 3.12,
+        ratings: 125,
+        raw: {
+          0: '1',
+          1: '22',
+          2: '16',
+          3: '37',
+          4: '25',
+          5: '25',
+        },
+      },
       styleId: styles.results[0].style_id,
       styles,
       style: styles.results[0],
