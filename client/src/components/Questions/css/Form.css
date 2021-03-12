@@ -123,7 +123,7 @@
 }
 
 .form input[type=file] {
-  height: 47px;
+  /* height: 46px; */
   resize: none;
 }
 
@@ -139,10 +139,10 @@
   border: 1px solid crimson !important;
 }
 
-.photoUploadContainer {
+/* .photoUploadContainer {
   display: grid;
-  grid-template-columns: auto 20%;
-}
+  grid-template-columns: 1fr 20%;
+} */
 
 .submitButton,
 .submitButtonDisabled,
@@ -166,12 +166,12 @@
 }
 
 
-.uploadPhoto {
+/* .uploadPhoto {
   display: block;
-  height: 47px;
+  height: 46px;
   margin-top: 6px;
   padding: 0px;
-}
+} */
 
 .submitButton:hover,
 .uploadPhoto:hover {
