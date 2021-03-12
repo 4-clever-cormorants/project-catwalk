@@ -11,6 +11,7 @@ import Checkout from './Checkout/Checkout';
 import css from './ProductDetails.css';
 
 class ProductDetails extends React.Component {
+  // move these states down to the component they are interacting with
   static scrollUp() {
     const scroll = document.getElementById('thumbnailView');
     const currentScroll = scroll.scrollTop;
