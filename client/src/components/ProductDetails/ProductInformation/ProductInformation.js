@@ -1,3 +1,4 @@
+/* eslint-disable react/forbid-prop-types */
 import React from 'react';
 import PropTypes from 'prop-types';
 
@@ -12,11 +13,11 @@ import Share from './Share';
 import css from './ProductInformation.css';
 
 const ProductInformation = ({
-  product, originalPrice, salePrice, rating, totalRatings,
+  product, originalPrice, salePrice, rating,
 }) => (
   <div id="productInformationContainer" className={css.productInformation}>
     <div id="productInformation" className={css.info}>
-      <Rating rating={rating} totalRatings={totalRatings} />
+      <Rating rating={rating} />
       <Category category={product.category} />
       <Title title={product.name} />
       <div className={css.flexRow}>
@@ -45,8 +46,7 @@ ProductInformation.propTypes = {
   }).isRequired,
   originalPrice: PropTypes.string.isRequired,
   salePrice: PropTypes.string,
-  rating: PropTypes.number,
-  totalRatings: PropTypes.number.isRequired,
+  rating: PropTypes.object,
 };
 
 ProductInformation.defaultProps = {

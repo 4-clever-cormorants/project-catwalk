@@ -1,0 +1,27 @@
+.indicator {
+  display: block;
+  float: left;
+  height: 5px;
+  width: 20px;
+  margin-left: 5px;
+  margin-right: 5px;
+  background-color: rgba(0, 0, 0, 0.25);
+  transition: all 0.2s;
+}
+
+.container {
+  display: block;
+  position: relative;
+  margin: auto;
+  padding-top: 10px;
+  height: 20px;
+  width: fit-content;
+}
+
+.current {
+  background-color: rgba(0, 0, 0, 1);
+}
+
+.hide {
+  visibility: hidden;
+}

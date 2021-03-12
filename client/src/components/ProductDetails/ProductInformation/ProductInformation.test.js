@@ -12,14 +12,29 @@ import Description from './Description';
 import product from '../productDummyData';
 
 describe('testing the Product Information subcomponent', () => {
-  const wrapper = mount(<ProductInformation product={product} />);
-  wrapper.setProps({
-    product,
-    originalPrice: product.default_price,
-    salePrice: (product.default_price) * 0.25,
-    rating: 3,
-    totalRatings: 25,
-  });
+  const wrapper = mount(<ProductInformation
+    product={product}
+    originalPrice={product.default_price}
+    salePrice={JSON.stringify(product.default_price * 0.25)}
+    rating={{
+      average: 3.12,
+      ratings: 125,
+      raw: {
+        0: '1',
+        1: '22',
+        2: '16',
+        3: '37',
+        4: '25',
+        5: '25',
+      },
+    }}
+  />);
+  // wrapper.setProps({
+  //   product,
+  //   originalPrice: product.default_price,
+  //   salePrice: (product.default_price) * 0.25,
+  //   rating: ratings,
+  // });
   wrapper.update();
   const productInformationLen = wrapper.find('.info').children().length;
   const rating = wrapper.find(Rating);
@@ -39,15 +54,12 @@ describe('testing the Product Information subcomponent', () => {
   });
 
   it('should provide the Ratings components with an average rating and total ratings', () => {
-    // const instance = wrapper.instance();
-    expect(rating.props().rating).toBe(3);
-    expect(rating.props().totalRatings).toBe(25);
+    expect(rating.props().rating.average).toBe(3.12);
+    expect(rating.props().rating.ratings).toBe(125);
   });
 
   it('should have a price component that calculates the discount (if there is a sale price)', () => {
     const disc = price.find('.discount');
     expect(disc.exists()).toBe(true);
-    console.log(disc.value);
-    // const discount = Math.floor((1 - (salePrice / originalPrice)) * 100);
   });
 });

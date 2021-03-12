@@ -29,6 +29,7 @@ ratingRouter.get('/data', (req, res) => {
       const result = {
         average: average(rating.data.ratings)[0],
         ratings: average(rating.data.ratings)[1],
+        raw: rating.data.ratings,
       };
       res.send(result);
     })
