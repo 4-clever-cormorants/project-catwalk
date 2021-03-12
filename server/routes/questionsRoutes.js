@@ -4,6 +4,7 @@ const AWS = require('aws-sdk');
 const fs = require('fs');
 const fileType = require('file-type');
 const multiparty = require('multiparty');
+const pathModule = require('path');
 require('dotenv').config();
 
 const config = require('../../config.js');
@@ -135,13 +136,14 @@ router.put('/answerReport', (req, res) => {
 
 const uploadPhoto = async (path, name) => {
   const buffer = fs.readFileSync(path);
+  const distinctName = `${name}-${pathModule.parse(path).name}`;
   const type = await fileType.fromBuffer(buffer);
   const params = {
     ACL: 'public-read',
     Body: buffer,
     Bucket: process.env.S3_BUCKET,
     ContentType: type.mime,
-    Key: `${name}.${type.ext}`,
+    Key: `${distinctName}.${type.ext}`,
   };
   return s3.upload(params).promise();
 };
