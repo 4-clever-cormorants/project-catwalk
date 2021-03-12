@@ -9,6 +9,8 @@ import Next from './Next';
 import Prev from './Prev';
 import style from './css/relatedProducts.css';
 import dummy from './dummy_related';
+import ScrollIndicator from './ScrollIndicator';
+import indicatorCss from './css/indicator.css';
 
 class RelatedProducts extends React.Component {
   static scrollNext(list) {
@@ -222,9 +224,22 @@ class RelatedProducts extends React.Component {
 
   scrollHandler(list) {
     const scroll = document.querySelector(`.${list}`);
+    const indicator = document.querySelectorAll(`.${list}indicator`);
     const scrollMax = scroll.scrollWidth - scroll.clientWidth;
     const currentScroll = scroll.scrollLeft;
     const { relatedListScroll, outfitListScroll } = this.state;
+
+    const scrollIndex = Math.floor((currentScroll / 255));
+    const scrollIndexMax = scrollMax / 255;
+
+    for (let i = 0; i < indicator.length; i += 1) {
+      if (scrollIndex <= i && i < (scrollIndex + 4)) {
+        indicator[i].classList.add(indicatorCss.current);
+      } else {
+        indicator[i].classList.remove(indicatorCss.current);
+      }
+    }
+
     let index;
     if (currentScroll === scrollMax) {
       index = 1;
@@ -276,6 +291,7 @@ class RelatedProducts extends React.Component {
               dropWishHandler={this.dropWishHandler}
               scrollHandler={this.scrollHandler}
             />
+            <ScrollIndicator scrollLength={related.length} listName="relatedList" />
           </div>
         ) : (
           <div />
@@ -299,6 +315,7 @@ class RelatedProducts extends React.Component {
                 dropHandler={this.dropHandler}
               />
             </div>
+            <ScrollIndicator scrollLength={outfitList.length} listName="outfitList" />
           </div>
         ) : (
           <div />
