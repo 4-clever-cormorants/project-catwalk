@@ -6,12 +6,12 @@ import AddToBagButton from '../Checkout/AddToBagButton';
 
 import css from './StickHeader.css';
 
-const StickyHeader = ({url, product }) => {
+const StickyHeader = ({style, product }) => (
   <div id={css.stickyContainer}>
     <div id={css.sticky}>
       <div className={css.product}>
         <div className={css.image}>
-
+          {/* first style photo */}
         </div>
         <div className={css.info}>
           <div className={css.name}>
@@ -30,7 +30,7 @@ const StickyHeader = ({url, product }) => {
       </div>
     </div>
   </div>
-};
+);
 
 StickyHeader.propTypes = {
   url: PropTypes.string.isRequired,
