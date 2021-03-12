@@ -53,19 +53,19 @@ class App extends React.Component {
     const { productId, productName } = this.state;
     return (
       <div id="app" className="app">
-        {/* <Header /> */}
-        {/* <ProductDetails
+        <Header />
+        <ProductDetails
           productId={productId}
           getProductName={this.getProductName}
           interactions={App.interactions}
-        /> */}
+        />
         <RelatedProducts productId={productId} interactions={App.interactions} />
-        {/* <Questions
+        <Questions
           productId={productId}
           productName={productName}
           interactions={App.interactions}
         />
-        <Footer /> */}
+        <Footer />
       </div>
     );
   }
