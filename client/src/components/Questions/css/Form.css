@@ -125,6 +125,7 @@
 .form input[type=file] {
   /* height: 46px; */
   resize: none;
+  margin-bottom: 6px;
 }
 
 .form input::placeholder {
