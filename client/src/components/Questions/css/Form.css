@@ -146,7 +146,8 @@
 
 .submitButton,
 .submitButtonDisabled,
-.uploadPhoto {
+.uploadPhoto,
+.uploadPhotoDisabled {
   width: 100%;
   outline: none;
   border: 1px solid black;
@@ -161,10 +162,15 @@
 .exitButton,
 .submitButton,
 .submitButtonDisabled,
-.uploadPhoto {
+.uploadPhoto,
+.uploadPhotoDisabled {
   transition: visibility 0s ease-in-out;
 }
 
+.uploadPhoto,
+.uploadPhotoDisabled {
+  margin-bottom: 16px;
+}
 
 /* .uploadPhoto {
   display: block;

@@ -221,7 +221,15 @@ class AnswerForm extends React.Component {
                 Photos
                 <div className={style.photoUploadContainer}>
                   {photoInputArray.map((inputs) => inputs)}
-                  {!uploadButtonClicked ? <button type="button" className={`${style.uploadPhoto} uploadPhoto`} onClick={(this.handleSubmitPhoto.bind(this))}>UPLOAD</button> : ''}
+                  <button
+                    type="button"
+                    className={`${!uploadButtonClicked ? style.uploadPhoto : style.uploadPhotoDisabled} uploadPhoto`}
+                    onClick={(this.handleSubmitPhoto.bind(this))}
+                  >
+                    {!uploadButtonClicked ? 'UPLOAD PHOTO' : 'UPLOADED'}
+                    &nbsp;
+                    {uploadButtonClicked ? <i className="fa fa-check-circle" aria-hidden="true" /> : ''}
+                  </button>
                 </div>
               </label>
               <div className={`${style.buttonContainer}`}>
