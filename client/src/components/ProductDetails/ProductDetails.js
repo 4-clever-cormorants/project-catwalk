@@ -7,6 +7,7 @@ import ImageGallery from './ImageGallery/ImageGallery';
 import ProductInformation from './ProductInformation/ProductInformation';
 import StyleSelector from './StyleSelector/StyleSelector';
 import Checkout from './Checkout/Checkout';
+import StickyHeader from './StickyHeader/StickyHeader';
 
 import css from './ProductDetails.css';
 
@@ -203,11 +204,11 @@ class ProductDetails extends React.Component {
     } = this.state;
     return (
       <div id="PD" className={css.PD}>
-        <div className={css.productDetails}>
-          {load ? (
+        {load ? (
+          <div className={css.productDetails}>
             <ImageGallery
               styleId={styleId}
-              style={style}s
+              style={style}
               id={parseInt(id, 10)}
               leftClick={this.leftClick}
               rightClick={this.rightClick}
@@ -217,23 +218,17 @@ class ProductDetails extends React.Component {
               scrollDown={ProductDetails.scrollDown}
               thumbnailScroll={thumbnailScroll}
             />
-          ) : ''}
-          {load ? (
             <ProductInformation
               product={product}
               rating={rating}
               originalPrice={style.original_price}
               salePrice={style.sale_price}
             />
-          ) : ''}
-          {load ? (
             <StyleSelector
               styles={styles.results}
               selected={style.name}
               styleSelector={this.styleSelector}
             />
-          ) : ''}
-          {load ? (
             <Checkout
               productId={product.id}
               skuSelector={this.skuSelector}
@@ -242,8 +237,11 @@ class ProductDetails extends React.Component {
               style={style}
               sku={sku}
             />
-          ) : ''}
-        </div>
+          </div>
+        ) : ''}
+        {load ? (
+          <StickyHeader product={product} style={style} onMouseMove={ProductDetails.onMouseMove} />
+        ) : ''}
       </div>
     );
   }

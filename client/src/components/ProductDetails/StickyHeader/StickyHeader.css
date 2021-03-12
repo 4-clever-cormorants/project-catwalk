@@ -1,0 +1,64 @@
+#stickyHeaderContainer {
+  visibility: visible;
+  width: 100%;
+}
+
+#sticky {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  border: 1px solid black;
+}
+
+#sticky .product {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-left: 25px;
+}
+
+.product .image {
+  grid-column: 1;
+  justify-content: center;
+  align-self: center;
+}
+
+.image img {
+  max-height: 90px;
+  max-width: 90px;
+}
+
+.product .info {
+  grid-column: 2;
+  align-self: center;
+  align-items: space-evenly;
+}
+
+.info .category {
+  font-family: 'Lato';
+  font-weight: 100;
+}
+
+.info .name {
+  font-family: 'Playfair Display';
+}
+
+#sticky .right {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 40%;
+  margin-right: 25px;
+}
+
+#sticky .flexCol {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-end;
+  position:relative;
+  top: 5px;
+  font-family: 'Lato';
+}
