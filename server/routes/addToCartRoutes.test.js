@@ -1,3 +1,5 @@
+import regeneratorRuntime from 'regenerator-runtime';
+
 const supertest = require('supertest');
 
 const expServer = require('../server');
