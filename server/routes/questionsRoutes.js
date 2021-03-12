@@ -1,5 +1,9 @@
 const router = require('express').Router();
 const axios = require('axios');
+const fs = require('fs');
+const fileType = require('file-type');
+const multiparty = require('multiparty');
+
 const config = require('../../config.js');
 
 const apiUrl = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/';
@@ -118,6 +122,38 @@ router.put('/answerReport', (req, res) => {
       console.log(err);
       res.status(500).send(err);
     });
+});
+
+const uploadPhoto = (buffer, name, type) => {
+  const params = {
+    ACL: 'public-read',
+    Body: buffer,
+    Bucket: process.env.S3_BUCKET,
+    ContentType: type.mime,
+    Key: `${name}.${type.ext}`,
+  };
+  return s3.upload(params).promise();
+};
+
+router.post('/test-upload', (req, res) => {
+  const form = new multiparty.Form();
+  form.parse(req, async (error, fields, files) => {
+    if (error) {
+      return res.status(500).send(error);
+    }
+    try {
+      const { path } = files.file[0];
+      const buffer = fs.readFileSync(path);
+      const type = await fileType.fromBuffer(buffer);
+      const fileName = `media/${Date.now().toString()}`;
+      // const data = await uploadFile(buffer, fileName, type);
+      // return response.status(200).send(data);
+      console.log(fileName);
+      return res.status(200).send(`fileName: ${fileName}, type: ${type}`);
+    } catch (err) {
+      return res.status(500).send(err);
+    }
+  });
 });
 
 module.exports = router;

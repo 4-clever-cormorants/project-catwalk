@@ -11,6 +11,7 @@ class AnswerForm extends React.Component {
       answerBody: '',
       nickname: '',
       email: '',
+      photos: [],
       errorMessages: [],
       submitError: false,
       submitted: false,
@@ -32,6 +33,21 @@ class AnswerForm extends React.Component {
     this.setState({ email: e.target.value });
   }
 
+  handlePhotoChange(e) {
+    const { photos } = this.state;
+    const newPhotos = [...photos];
+    if (!e.target.files.item(0)) {
+      console.log('not a valid file');
+      return;
+    }
+    newPhotos.push(e.target.files);
+    console.log(JSON.stringify(e.target.files.item(0)));
+    console.log(e.target.value);
+    this.setState({
+      photos: newPhotos,
+    });
+  }
+
   handleSubmitAnswer() {
     this.validateForm(() => {
       const { errorMessages } = this.state;
@@ -43,6 +59,40 @@ class AnswerForm extends React.Component {
         this.setState({ submitError: true });
       }
     });
+  }
+
+  handleSubmitPhoto(e) {
+    const { photos } = this.state;
+    if (photos.length === 0) {
+      console.log('no photos yet');
+      return;
+    }
+    console.log('ok', photos, e);
+    console.log(photos[0]);
+    const formData = new FormData();
+    formData.append('file', photos[0][0]);
+    axios.post('/qa/test-upload', formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    })
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    // try {
+    //   const formData = new FormData();
+    //   formData.append('file', photos[0][0]);
+    //   axios.post('/qa/test-upload', formData, {
+    //     headers: {
+    //       'Content-Type': 'multipart/form-data',
+    //     },
+    //   });
+    // } catch (error) {
+    //   console.log(error);
+    // }
   }
 
   isValidEmail() {
@@ -151,8 +201,8 @@ class AnswerForm extends React.Component {
               <label htmlFor="photos">
                 Photos
                 <div className={style.photoUploadContainer}>
-                  <input type="file" />
-                  <button type="button" className={`${style.uploadPhoto} uploadPhoto`}>UPLOAD</button>
+                  <input type="file" accept="image/*" onChange={(e) => this.handlePhotoChange(e)} />
+                  <button type="button" className={`${style.uploadPhoto} uploadPhoto`} onClick={this.handleSubmitPhoto.bind(this)}>UPLOAD</button>
                 </div>
               </label>
               <div className={`${style.buttonContainer}`}>

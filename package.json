@@ -19,10 +19,13 @@
   },
   "homepage": "https://github.com/samuelberston/project-catwalk#readme",
   "dependencies": {
+    "aws-sdk": "^2.862.0",
     "axios": "^0.21.1",
     "express": "^4.17.1",
+    "file-type": "^16.3.0",
     "install": "^0.13.0",
     "jest-environment-enzyme": "^7.1.2",
+    "multiparty": "^4.2.2",
     "npm": "^7.6.1",
     "prop-types": "^15.7.2",
     "react": "^16.14.0",
