@@ -14,7 +14,7 @@ const RatingModal = ({
   return (
     <div id={css.ratingModal} className={`${css.modal} ${clicked ? css.modalShow : ''}`}>
       <div className={css.top}>
-        <p className={css.summary}>&nbsp; &nbsp; Reviews Summary</p>
+        <p className={css.summary}>Reviews Summary</p>
         <button type="button" onClick={exitModal} onKeyPress={exitModal}>X &nbsp; </button>
       </div>
       <div className={`${css.barDiv} five`}>
