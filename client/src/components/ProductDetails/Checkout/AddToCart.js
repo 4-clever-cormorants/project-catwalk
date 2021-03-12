@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import AddToBagButton from './AddToBagButton';
+
 import css from './Checkout.css';
 
 const AddToCart = ({ onMouseMove }) => {
@@ -14,11 +16,7 @@ const AddToCart = ({ onMouseMove }) => {
           ADDED TO BAG
         </button>
       ) : (
-        <button type="submit" value="addToBag" className={css.addToCartButton}>
-          <span className="fa fa-shopping-bag" />
-          &nbsp;
-          ADD TO BAG
-        </button>
+        <AddToBagButton />
       )}
     </div>
   );

@@ -202,12 +202,11 @@ class ProductDetails extends React.Component {
     } = this.state;
     return (
       <div id="PD" className={css.PD}>
-        {console.log('ratingObj', rating)}
         <div className={css.productDetails}>
           {load ? (
             <ImageGallery
               styleId={styleId}
-              style={style}
+              style={style}s
               id={parseInt(id, 10)}
               leftClick={this.leftClick}
               rightClick={this.rightClick}
