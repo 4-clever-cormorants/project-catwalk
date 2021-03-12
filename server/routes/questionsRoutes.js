@@ -4,6 +4,7 @@ const AWS = require('aws-sdk');
 const fs = require('fs');
 const fileType = require('file-type');
 const multiparty = require('multiparty');
+const pathModule = require('path');
 require('dotenv').config();
 
 const config = require('../../config.js');
@@ -133,14 +134,16 @@ router.put('/answerReport', (req, res) => {
     });
 });
 
-const uploadPhoto = (buffer, name, type) => {
-  console.log('bucket:', process.env.S3_BUCKET);
+const uploadPhoto = async (path, name) => {
+  const buffer = fs.readFileSync(path);
+  const distinctName = `${name}-${pathModule.parse(path).name}`;
+  const type = await fileType.fromBuffer(buffer);
   const params = {
     ACL: 'public-read',
     Body: buffer,
     Bucket: process.env.S3_BUCKET,
     ContentType: type.mime,
-    Key: `${name}.${type.ext}`,
+    Key: `${distinctName}.${type.ext}`,
   };
   return s3.upload(params).promise();
 };
@@ -151,19 +154,25 @@ router.post('/test-upload', (req, res) => {
     if (error) {
       return res.status(500).send(error);
     }
-    try {
-      const { path } = files.file[0];
-      const buffer = fs.readFileSync(path);
-      const type = await fileType.fromBuffer(buffer);
-      const fileName = `media/${Date.now().toString()}`;
-      const data = await uploadPhoto(buffer, fileName, type);
-      return res.status(200).send(data);
-      // console.log(fileName);
-      // return res.status(200).send(`fileName: ${fileName}, type: ${type}`);
-    } catch (err) {
-      console.log(err);
-      return res.status(500).send(err);
+    const promises = [];
+    for (let i = 0; i < files.file.length; i += 1) {
+      try {
+        const { path } = files.file[i];
+        const fileName = `media/${Date.now().toString()}`;
+        promises.push(uploadPhoto(path, fileName));
+      } catch (err) {
+        console.log(err);
+        return res.status(500).send(err);
+      }
     }
+    return Promise.all(promises)
+      .then((data) => {
+        res.send(data);
+      })
+      .catch((err) => {
+        console.log(err);
+        return res.status(500).send(err);
+      });
   });
 });
 

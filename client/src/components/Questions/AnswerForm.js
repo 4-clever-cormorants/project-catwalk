@@ -14,7 +14,9 @@ class AnswerForm extends React.Component {
       photos: [],
       photoUrls: [],
       uploadButtonClicked: false,
+      uploadError: false,
       errorMessages: [],
+      unUploadedPhotos: false,
       submitError: false,
       submitted: false,
       bodyInvalid: false,
@@ -35,18 +37,21 @@ class AnswerForm extends React.Component {
     this.setState({ email: e.target.value });
   }
 
-  handlePhotoChange(e) {
+  handlePhotoChange(e, index) {
     const { photos } = this.state;
     const newPhotos = [...photos];
     if (!e.target.files.item(0)) {
       console.log('not a valid file');
+      newPhotos[index] = undefined;
+      this.setState({ photos: newPhotos, uploadError: true });
       return;
     }
-    newPhotos.push(e.target.files);
+    newPhotos[index] = e.target.files;
     console.log(JSON.stringify(e.target.files.item(0)));
     console.log(e.target.value);
     this.setState({
       photos: newPhotos,
+      uploadError: false,
     });
   }
 
@@ -63,16 +68,26 @@ class AnswerForm extends React.Component {
     });
   }
 
-  handleSubmitPhoto(e) {
+  handleSubmitPhoto() {
     const { photos } = this.state;
     if (photos.length === 0) {
       console.log('no photos yet');
+      this.setState({ uploadError: true });
       return;
     }
-    console.log('ok', photos, e);
-    console.log(photos[0]);
     const formData = new FormData();
-    formData.append('file', photos[0][0]);
+    let hasFormData = false;
+    for (let i = 0; i < photos.length; i += 1) {
+      if (photos[i] !== undefined) {
+        formData.append('file', photos[i][0]);
+        hasFormData = true;
+      }
+    }
+    if (!hasFormData) {
+      console.log('no photos yet');
+      this.setState({ uploadError: true });
+      return;
+    }
     axios.post('/qa/test-upload', formData, {
       headers: {
         'Content-Type': 'multipart/form-data',
@@ -80,14 +95,16 @@ class AnswerForm extends React.Component {
     })
       .then((response) => {
         console.log(response);
-        console.log(response.data.Location);
-        const { photoUrls } = this.state;
-        const newPhotoUrls = [...photoUrls];
-        newPhotoUrls.push(response.data.Location);
-        this.setState({ photoUrls: newPhotoUrls, uploadButtonClicked: true });
+        const newPhotoUrls = [];
+        for (let i = 0; i < response.data.length; i += 1) {
+          console.log(response.data[i].Location);
+          newPhotoUrls[i] = response.data[i].Location;
+        }
+        this.setState({ photoUrls: newPhotoUrls, uploadButtonClicked: true, uploadError: false });
       })
       .catch((error) => {
         console.log(error);
+        this.setState({ uploadError: true });
       });
   }
 
@@ -97,14 +114,24 @@ class AnswerForm extends React.Component {
     return emailRegex.test(email);
   }
 
+  /*
+  ASK USER IF THEY WANNA SUBMIT WITH THE PHOTOS
+  IF THEY HAVE PHOTOS BUT NOT UPLOADED/NO URLS
+  DOUBLE CHECK, MAKE THEM CLICK TWICE
+  */
   postAnswer() {
-    const { answerBody, nickname, email } = this.state;
+    const {
+      answerBody,
+      nickname,
+      email,
+      photoUrls,
+    } = this.state;
     const { questionId } = this.props;
     axios.post('/qa/answerPost', {
       body: answerBody,
       name: nickname,
       email,
-      photos: [],
+      photos: photoUrls,
       questionId,
     })
       .then(() => {})
@@ -114,7 +141,13 @@ class AnswerForm extends React.Component {
   }
 
   validateForm(callback) {
-    const { answerBody, nickname, email } = this.state;
+    const {
+      answerBody,
+      nickname,
+      email,
+      photos,
+      photoUrls,
+    } = this.state;
     const errorMessages = [];
     let bodyInvalid = false;
     let nameInvalid = false;
@@ -133,6 +166,23 @@ class AnswerForm extends React.Component {
     } else if (!this.isValidEmail()) {
       errorMessages.push('The email address provided is not in correct email format');
       emailInvalid = true;
+    }
+    const photoNames = [];
+    if (photos.length !== photoUrls.length) {
+      for (let i = 0; i < photos.length; i += 1) {
+        if (photos[i] !== undefined) {
+          photoNames.push(photos[i]);
+        }
+      }
+      if (photoNames.length !== photoUrls.length) {
+        const { unUploadedPhotos } = this.state;
+        if (!unUploadedPhotos) {
+          console.log(photoNames, photoUrls);
+          console.log('Did you mean to upload these photos? ', photoNames);
+          this.setState({ unUploadedPhotos: true });
+          return;
+        }
+      }
     }
     this.setState({
       errorMessages,
@@ -154,9 +204,12 @@ class AnswerForm extends React.Component {
       submitError,
       submitted,
       uploadButtonClicked,
+      uploadError,
+      photos,
       bodyInvalid,
       nameInvalid,
       emailInvalid,
+      unUploadedPhotos,
     } = this.state;
     const errorMessage = errorMessages.join(', ');
     const bodyClass = bodyInvalid ? `${style.invalidField} answerField` : 'answerField';
@@ -164,6 +217,10 @@ class AnswerForm extends React.Component {
     const emailClass = emailInvalid ? `${style.invalidField} answerEmail` : 'answerEmail';
     const submitButtonClass = submitted ? style.submitButtonDisabled : style.submitButton;
     const submitButtonText = submitted ? 'SUBMITTED' : 'SUBMIT';
+    const photoInputArray = [];
+    for (let i = 0; i < 5; i += 1) {
+      photoInputArray.push(<input type="file" accept="image/*" key={`image-input-${i}`} onChange={(e) => this.handlePhotoChange(e, i)} hidden={photos.length < i} />);
+    }
     return (
       <div className={`${style.modal} ${addAnswerClicked ? style.modalShow : ''}`}>
         <div className={style.blocker} onClick={exitAnswerForm} />
@@ -198,8 +255,18 @@ class AnswerForm extends React.Component {
               <label htmlFor="photos">
                 Photos
                 <div className={style.photoUploadContainer}>
-                  <input type="file" accept="image/*" onChange={(e) => this.handlePhotoChange(e)} />
-                  {!uploadButtonClicked ? <button type="button" className={`${style.uploadPhoto} uploadPhoto`} onClick={this.handleSubmitPhoto.bind(this)}>UPLOAD</button> : ''}
+                  {photoInputArray.map((inputs) => inputs)}
+                  <button
+                    type="button"
+                    className={`${!uploadButtonClicked ? style.uploadPhoto : style.uploadPhotoDisabled} uploadPhoto`}
+                    onClick={(this.handleSubmitPhoto.bind(this))}
+                  >
+                    {!uploadButtonClicked ? 'UPLOAD PHOTO' : 'UPLOADED'}
+                    &nbsp;
+                    {uploadButtonClicked ? <i className="fa fa-check-circle" aria-hidden="true" /> : ''}
+                  </button>
+                  {uploadError ? <div className={`${style.uploadError} uploadError`}>Error uploading photo</div> : ''}
+                  {unUploadedPhotos ? <div className={`${style.uploadError} unUploadedPhotos`}>Did you mean to upload the photos?</div> : ''}
                 </div>
               </label>
               <div className={`${style.buttonContainer}`}>
