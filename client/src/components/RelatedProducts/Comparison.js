@@ -10,7 +10,9 @@ const Results = ({ feature, currentValue, clickedValue }) => (
   </tr>
 );
 
-const Comparison = ({ current, clicked, closeCompare }) => {
+const Comparison = ({
+  current, clicked, closeCompare, isClicked,
+}) => {
   const currentFeatures = {};
   for (let i = 0; i < current.features.length; i += 1) {
     currentFeatures[current.features[i].feature] = current.features[i].value;
@@ -35,7 +37,7 @@ const Comparison = ({ current, clicked, closeCompare }) => {
   });
 
   return (
-    <div>
+    <div className={`${style.modal} ${isClicked ? style.modalShow : ''}`}>
       <div className={`blocker ${style.blocker}`} onClick={closeCompare} onKeyPress={closeCompare} role="button" tabIndex={0} aria-label="Mute volume" />
       <div className={style.comparison} id="comparison">
         <div className={style.compareTitle} id="comparisonTitle">comparison</div>
@@ -74,6 +76,7 @@ Comparison.propTypes = {
     features: propTypes.arrayOf(propTypes.object).isRequired,
   }).isRequired,
   closeCompare: propTypes.func.isRequired,
+  isClicked: propTypes.bool.isRequired,
 };
 
 export default Comparison;

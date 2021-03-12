@@ -1,5 +1,11 @@
 const router = require('express').Router();
 const axios = require('axios');
+const AWS = require('aws-sdk');
+const fs = require('fs');
+const fileType = require('file-type');
+const multiparty = require('multiparty');
+require('dotenv').config();
+
 const config = require('../../config.js');
 
 const apiUrl = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/';
@@ -9,6 +15,13 @@ const headers = {
     Authorization: `${config.TOKEN}`,
   },
 };
+
+AWS.config.update({
+  accessKeyId: process.env.AWSAccessKeyId,
+  secretAccessKey: process.env.AWSSecretKey,
+});
+
+const s3 = new AWS.S3();
 
 router.get('/', (req, res) => {
   res.send('Hello World');
@@ -118,6 +131,40 @@ router.put('/answerReport', (req, res) => {
       console.log(err);
       res.status(500).send(err);
     });
+});
+
+const uploadPhoto = (buffer, name, type) => {
+  console.log('bucket:', process.env.S3_BUCKET);
+  const params = {
+    ACL: 'public-read',
+    Body: buffer,
+    Bucket: process.env.S3_BUCKET,
+    ContentType: type.mime,
+    Key: `${name}.${type.ext}`,
+  };
+  return s3.upload(params).promise();
+};
+
+router.post('/test-upload', (req, res) => {
+  const form = new multiparty.Form();
+  form.parse(req, async (error, fields, files) => {
+    if (error) {
+      return res.status(500).send(error);
+    }
+    try {
+      const { path } = files.file[0];
+      const buffer = fs.readFileSync(path);
+      const type = await fileType.fromBuffer(buffer);
+      const fileName = `media/${Date.now().toString()}`;
+      const data = await uploadPhoto(buffer, fileName, type);
+      return res.status(200).send(data);
+      // console.log(fileName);
+      // return res.status(200).send(`fileName: ${fileName}, type: ${type}`);
+    } catch (err) {
+      console.log(err);
+      return res.status(500).send(err);
+    }
+  });
 });
 
 module.exports = router;

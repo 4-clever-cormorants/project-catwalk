@@ -11,6 +11,13 @@ const ListOutfit = ({ productsList, dropHandler }) => (
       </div>
 
     ))}
+    <div className={`notification ${style.notification}`}>
+      <span>
+        Add current product
+        <br />
+        or drag to add related
+      </span>
+    </div>
   </div>
 );
 
