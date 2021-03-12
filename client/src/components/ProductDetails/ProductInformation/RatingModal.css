@@ -1,10 +1,74 @@
-.barDiv {
+#ratingModal {
+  height: 250px;
+  width: 300px;
+  /* border: 1px solid black; */
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+  background-color: white;
+  z-index: 10;
+  position: fixed;
+  top: 20%;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+}
+
+.modal {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0.4s, opacity 0.4s ease-in-out;
+  z-index: 110;
+}
+
+.modalShow {
+  visibility: visible;
+  opacity: 1
+}
+
+.top {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: -10px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-weight: 600;
+}
+
+.top button {
+  background-color: white;
+  border: none;
+}
+
+.summary {
+  grid-row: 1;
+  height: 25px;
+  position: relative;
+  top: 10px;
+  font-size: 14px;
+}
+
+.barDiv {
+  height: 20px;
+  /* display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center; */
+  display: grid;
+  grid-template-columns: 1fr 4fr 1fr;
+  align-items: center;
+}
+
+.stars {
+  font-size: 13px;
+  margin-left: 10px;
 }
 
 .bar {
   width: 120px;
   height: 15px;
   background-color: grey;
+  justify-self: center;
+}
+
+.percent {
+  font-size: 14px;
 }

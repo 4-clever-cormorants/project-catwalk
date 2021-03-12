@@ -8,7 +8,6 @@ import Description from './Description';
 import Price from './Price';
 import Shipping from './Shipping';
 import Share from './Share';
-import RatingModal from './RatingModal';
 
 import css from './ProductInformation.css';
 
@@ -17,7 +16,7 @@ const ProductInformation = ({
 }) => (
   <div id="productInformationContainer" className={css.productInformation}>
     <div id="productInformation" className={css.info}>
-      <Rating rating={rating} totalRatings={totalRatings} />
+      <Rating rating={rating} totalRatings={totalRatings} ratingsRaw={ratingsRaw} />
       <Category category={product.category} />
       <Title title={product.name} />
       <div className={css.flexRow}>
@@ -27,7 +26,6 @@ const ProductInformation = ({
       </div>
       <Description description={product.description} />
       <Share />
-      <RatingModal totalRatings={totalRatings} ratingsRaw={ratingsRaw} />
     </div>
   </div>
 );
@@ -49,6 +47,7 @@ ProductInformation.propTypes = {
   salePrice: PropTypes.string,
   rating: PropTypes.number,
   totalRatings: PropTypes.number.isRequired,
+  ratingsRaw: PropTypes.objectOf(PropTypes.string).isRequired,
 };
 
 ProductInformation.defaultProps = {

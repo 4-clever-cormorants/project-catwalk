@@ -3,15 +3,7 @@ import PropTypes from 'prop-types';
 
 import css from './RatingModal.css';
 
-
 class RatingModal extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-
-    };
-  }
-
   componentDidMount() {
     const { totalRatings, ratingsRaw } = this.props;
     const five = Math.floor((parseInt(ratingsRaw[5], 10) / totalRatings) * 100);
@@ -32,48 +24,70 @@ class RatingModal extends React.Component {
   }
 
   render() {
-    const { totalRatings, ratingsRaw } = this.props;
+    const {
+      totalRatings, ratingsRaw, clicked, exitModal,
+    } = this.props;
     const five = Math.floor((parseInt(ratingsRaw[5], 10) / totalRatings) * 100);
     const four = Math.floor((parseInt(ratingsRaw[4], 10) / totalRatings) * 100);
     const three = Math.floor((parseInt(ratingsRaw[3], 10) / totalRatings) * 100);
     const two = Math.floor((parseInt(ratingsRaw[2], 10) / totalRatings) * 100);
     const one = Math.floor((parseInt(ratingsRaw[1], 10) / totalRatings) * 100);
-    console.log(one, two, three, four, five);
     return (
-      <div className={css.ratingModal}>
+      <div id={css.ratingModal} className={`${css.modal} ${clicked ? css.modalShow : ''}`}>
+        <div className={css.top}>
+          <p className={css.summary}>&nbsp; &nbsp; Reviews Summary</p>
+          <button type="button" onClick={exitModal} onKeyPress={exitModal}>X &nbsp; </button>
+        </div>
         <div className={`${css.barDiv} five`}>
-          5 stars
+          <p className={css.stars}>5 stars</p>
           <div id="fiveBar" className={css.bar} />
-          {five}
-          %
+          <p className={css.percent}>
+            {five}
+            %
+          </p>
         </div>
         <div className={`${css.barDiv} four`}>
-          4 stars
+          <p className={css.stars}>4 stars</p>
           <div id="fourBar" className={css.bar} />
-          {four}
-          %
+          <p className={css.percent}>
+            {four}
+            %
+          </p>
         </div>
         <div className={`${css.barDiv} three`}>
-          3 stars
+          <p className={css.stars}>3 stars</p>
           <div id="threeBar" className={css.bar} />
-          {three}
-          %
+          <p className={css.percent}>
+            {three}
+            %
+          </p>
         </div>
         <div className={`${css.barDiv} two`}>
-          2 stars
+          <p className={css.stars}>2 stars</p>
           <div id="twoBar" className={css.bar} />
-          {two}
-          %
+          <p className={css.percent}>
+            {two}
+            %
+          </p>
         </div>
         <div className={`${css.barDiv} one`}>
-          1 star
+          <p className={css.stars}>1 star</p>
           <div id="oneBar" className={css.bar} />
-          {one}
-          %
+          <p className={css.percent}>
+            {one}
+            %
+          </p>
         </div>
       </div>
     );
   }
 }
+
+RatingModal.propTypes = {
+  totalRatings: PropTypes.number.isRequired,
+  ratingsRaw: PropTypes.objectOf(PropTypes.string).isRequired,
+  clicked: PropTypes.bool.isRequired,
+  exitModal: PropTypes.func.isRequired,
+};
 
 export default RatingModal;
