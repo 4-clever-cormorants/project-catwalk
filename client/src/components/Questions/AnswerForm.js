@@ -119,14 +119,24 @@ class AnswerForm extends React.Component {
     return emailRegex.test(email);
   }
 
+  /*
+  ASK USER IF THEY WANNA SUBMIT WITH THE PHOTOS
+  IF THEY HAVE PHOTOS BUT NOT UPLOADED/NO URLS
+  DOUBLE CHECK, MAKE THEM CLICK TWICE
+  */
   postAnswer() {
-    const { answerBody, nickname, email } = this.state;
+    const {
+      answerBody,
+      nickname,
+      email,
+      photoUrls,
+    } = this.state;
     const { questionId } = this.props;
     axios.post('/qa/answerPost', {
       body: answerBody,
       name: nickname,
       email,
-      photos: [], // change to photoUrls here
+      photos: photoUrls,
       questionId,
     })
       .then(() => {})
@@ -136,7 +146,13 @@ class AnswerForm extends React.Component {
   }
 
   validateForm(callback) {
-    const { answerBody, nickname, email } = this.state;
+    const {
+      answerBody,
+      nickname,
+      email,
+      photos,
+      photoUrls,
+    } = this.state;
     const errorMessages = [];
     let bodyInvalid = false;
     let nameInvalid = false;
@@ -156,6 +172,18 @@ class AnswerForm extends React.Component {
       errorMessages.push('The email address provided is not in correct email format');
       emailInvalid = true;
     }
+    // const photoNames = [];
+    // if (photos.length !== photoUrls.length) {
+    //   for (let i = 0; i < photos.length; i += 1) {
+    //     if (photos[i] !== undefined) {
+    //       photoNames.push(photos[i]);
+    //     }
+    //   }
+    // }
+    // if (photoNames.length !== photoUrls.length) {
+    //   console.log('Did you mean to upload these photos? ', photoNames);
+    //   return;
+    // }
     this.setState({
       errorMessages,
       bodyInvalid,
