@@ -10,7 +10,6 @@ import Shipping from './Shipping';
 import Description from './Description';
 
 import product from '../productDummyData';
-import ratings from '../ratingsDummyData';
 
 describe('testing the Product Information subcomponent', () => {
   const wrapper = mount(<ProductInformation

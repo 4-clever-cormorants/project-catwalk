@@ -30,12 +30,13 @@ describe('StyleSelector tests', () => {
     });
   }
 
-  it('StyleSelector should render all the subcomponents', () => {
+  it('StyleSelector should render all the subcomponents', async () => {
     const wrapper = mount(<StyleSelector
       styles={styles.results}
       selected={styles.results[0].name}
       styleSelector={styleSelector}
     />);
+    await wrapper.instance();
     const sS = wrapper.find(StyleSelector);
     const stylesDisplay = wrapper.find('.stylesDisplay');
     expect(sS.exists()).toBe(true);

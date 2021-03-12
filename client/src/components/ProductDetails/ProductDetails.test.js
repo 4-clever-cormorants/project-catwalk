@@ -28,7 +28,6 @@ import AddToWishList from './Checkout/AddToWishList';
 
 import product from './productDummyData';
 import styles from './stylesDummyData';
-import ratings from './ratingsDummyData';
 
 describe('test Product Details component', () => {
   const wrapper = mount(<ProductDetails productId={14034} />);
