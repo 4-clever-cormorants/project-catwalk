@@ -16,7 +16,6 @@ describe('Test comparsion component', () => {
       load: true,
     });
     const card = wrapper.find('.relatedProductsList').find(Card).first();
-    expect(wrapper.find(Comparison).exists()).toBe(false);
     card.simulate('click');
     expect(wrapper.find(Comparison).exists()).toBe(true);
   });

@@ -34,6 +34,7 @@ const Card = ({
     <a
       className={`cardName ${style.cardName}`}
       href={`/?product_id=${item.id}`}
+      draggable="false"
       onClick={(e) => {
         e.stopPropagation();
       }}

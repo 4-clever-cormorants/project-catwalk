@@ -1,5 +1,26 @@
 const related = [14373, 15034, 14586];
 
+const emptyProduct = {
+  id: 0,
+  campus: 'hr-sfo',
+  name: '',
+  slogan: '',
+  description:
+    '',
+  category: '',
+  default_price: '',
+  created_at: '',
+  updated_at: '',
+  features: [
+    {
+      feature: '',
+      value: null,
+    },
+  ],
+  thumbnail_url:
+    '',
+};
+
 const currentProduct = {
   id: 14931,
   campus: 'hr-sfo',
@@ -204,4 +225,5 @@ module.exports = {
   related,
   relatedProducts,
   currentProduct,
+  emptyProduct,
 };
