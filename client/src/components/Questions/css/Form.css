@@ -187,10 +187,19 @@
   color: black;
 }
 
+.uploadError,
 .errorMessage {
-  margin-top: 16px;
   text-align: center;
   color: crimson;
+}
+
+.errorMessage {
+  margin-top: 16px;
+}
+
+.uploadError {
+  margin-top: -13px;
+  margin-bottom: 16px;
 }
 
 .buttonContainer {

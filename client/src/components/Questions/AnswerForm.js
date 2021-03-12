@@ -15,6 +15,7 @@ class AnswerForm extends React.Component {
       photoUrls: [],
       showInput: [true, false, false, false, false],
       uploadButtonClicked: false,
+      uploadError: false,
       errorMessages: [],
       submitError: false,
       submitted: false,
@@ -42,7 +43,7 @@ class AnswerForm extends React.Component {
     if (!e.target.files.item(0)) {
       console.log('not a valid file');
       newPhotos[index] = undefined;
-      this.setState({ photos: newPhotos });
+      this.setState({ photos: newPhotos, uploadError: true });
       return;
     }
     newPhotos[index] = e.target.files;
@@ -55,6 +56,7 @@ class AnswerForm extends React.Component {
     this.setState({
       photos: newPhotos,
       showInput: newShowInput,
+      uploadError: false,
     });
   }
 
@@ -75,6 +77,7 @@ class AnswerForm extends React.Component {
     const { photos } = this.state;
     if (photos.length === 0) {
       console.log('no photos yet');
+      this.setState({ uploadError: true });
       return;
     }
     const formData = new FormData();
@@ -87,6 +90,7 @@ class AnswerForm extends React.Component {
     }
     if (!hasFormData) {
       console.log('no photos yet');
+      this.setState({ uploadError: true });
       return;
     }
     axios.post('/qa/test-upload', formData, {
@@ -101,10 +105,11 @@ class AnswerForm extends React.Component {
           console.log(response.data[i].Location);
           newPhotoUrls[i] = response.data[i].Location;
         }
-        this.setState({ photoUrls: newPhotoUrls, uploadButtonClicked: true });
+        this.setState({ photoUrls: newPhotoUrls, uploadButtonClicked: true, uploadError: false });
       })
       .catch((error) => {
         console.log(error);
+        this.setState({ uploadError: true });
       });
   }
 
@@ -171,6 +176,7 @@ class AnswerForm extends React.Component {
       submitError,
       submitted,
       uploadButtonClicked,
+      uploadError,
       showInput,
       bodyInvalid,
       nameInvalid,
@@ -230,6 +236,7 @@ class AnswerForm extends React.Component {
                     &nbsp;
                     {uploadButtonClicked ? <i className="fa fa-check-circle" aria-hidden="true" /> : ''}
                   </button>
+                  {uploadError ? <div className={`${style.uploadError} uploadError`}>Error uploading photo</div> : ''}
                 </div>
               </label>
               <div className={`${style.buttonContainer}`}>
