@@ -43,10 +43,9 @@ class Rating extends React.Component {
       } else if (n === 0) {
         stars.push(0);
       }
-    }
+    }code
     return (
       <div id="rating" className={css.rating}>
-        {console.log('rating', rating)}
         {stars.map((star, i) => {
           if (star === 0) {
             return (
