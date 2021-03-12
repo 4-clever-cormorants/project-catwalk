@@ -21,7 +21,7 @@ const RatingModal = ({
         <p className={css.stars}>5 stars</p>
         <progress id="fiveBar" value={five} max="100" className={css.bar} />
         <p className={css.percent}>
-          {five}
+          {Number.isNaN(five) ? 0 : five}
           %
         </p>
       </div>
@@ -29,7 +29,7 @@ const RatingModal = ({
         <p className={css.stars}>4 stars</p>
         <progress id="fourBar" value={four} max="100" className={css.bar} />
         <p className={css.percent}>
-          {four}
+          {Number.isNaN(four) ? 0 : four}
           %
         </p>
       </div>
@@ -37,7 +37,7 @@ const RatingModal = ({
         <p className={css.stars}>3 stars</p>
         <progress id="threeBar" value={three} max="100" className={css.bar} />
         <p className={css.percent}>
-          {three}
+          {Number.isNaN(three) ? 0 : three}
           %
         </p>
       </div>
@@ -45,7 +45,7 @@ const RatingModal = ({
         <p className={css.stars}>2 stars</p>
         <progress id="twoBar" value={two} max="100" className={css.bar} />
         <p className={css.percent}>
-          {two}
+          {Number.isNaN(two) ? 0 : two}
           %
         </p>
       </div>
@@ -53,7 +53,7 @@ const RatingModal = ({
         <p className={css.stars}>1 star</p>
         <progress id="oneBar" value={one} max="100" className={css.bar} />
         <p className={css.percent}>
-          {one}
+          {Number.isNaN(one) ? 0 : one}
           %
         </p>
       </div>
