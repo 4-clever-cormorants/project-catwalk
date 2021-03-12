@@ -36,12 +36,6 @@ class AnswerForm extends React.Component {
     this.setState({ email: e.target.value });
   }
 
-  // REFACTOR PHOTOS TO BE AN OBJECT
-  // USERS CAN CANCEL OUT OF THEIR FORM, LEAVING AN EMPTY UNDEFINED
-  // THIS UNDEFINED IS STILL COUNTED IN LENGTH
-  // DOES NOT PLAY NICELY WITH FOR LOOPS
-  // EX: LENGTH: 3, BUT ARRAY IS [PHOTO, UND, PHOTO, UND, PHOTO]
-  // FOR LOOP IS NOW LOOPING AS PHOTO, UND, PHOTO
   handlePhotoChange(e, index) {
     const { photos, showInput } = this.state;
     const newPhotos = [...photos];
@@ -84,10 +78,16 @@ class AnswerForm extends React.Component {
       return;
     }
     const formData = new FormData();
+    let hasFormData = false;
     for (let i = 0; i < photos.length; i += 1) {
       if (photos[i] !== undefined) {
         formData.append('file', photos[i][0]);
+        hasFormData = true;
       }
+    }
+    if (!hasFormData) {
+      console.log('no photos yet');
+      return;
     }
     axios.post('/qa/test-upload', formData, {
       headers: {
