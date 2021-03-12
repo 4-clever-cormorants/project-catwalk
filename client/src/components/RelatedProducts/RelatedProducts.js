@@ -7,10 +7,10 @@ import AddToOutfit from './AddToOutfit';
 import Comparison from './Comparison';
 import Next from './Next';
 import Prev from './Prev';
-import style from './css/relatedProducts.css';
-import dummy from './dummy_related';
 import ScrollIndicator from './ScrollIndicator';
 import indicatorCss from './css/indicator.css';
+import style from './css/relatedProducts.css';
+import dummy from './dummy_related';
 
 class RelatedProducts extends React.Component {
   static scrollNext(list) {
@@ -162,7 +162,8 @@ class RelatedProducts extends React.Component {
       axios.post(`/related/outfitList?product_id=${id}`);
       this.setState({
         outfitList: [...product, ...outfitList],
-      });
+      },
+      this.scrollHandler.bind(this, 'outfitList'));
     }
   }
 
@@ -230,22 +231,19 @@ class RelatedProducts extends React.Component {
     const { relatedListScroll, outfitListScroll } = this.state;
 
     const scrollIndex = Math.floor((currentScroll / 255));
-    const scrollIndexMax = scrollMax / 255;
-
-    for (let i = 0; i < indicator.length; i += 1) {
-      if (scrollIndex <= i && i < (scrollIndex + 4)) {
-        indicator[i].classList.add(indicatorCss.current);
-      } else {
-        indicator[i].classList.remove(indicatorCss.current);
-      }
-    }
-
     let index;
     if (currentScroll === scrollMax) {
       index = 1;
     }
     if (currentScroll === 0) {
       index = 0;
+    }
+    for (let i = 0; i < indicator.length; i += 1) {
+      if (scrollIndex <= i && i < (scrollIndex + 4)) {
+        indicator[i].classList.add(indicatorCss.current);
+      } else {
+        indicator[i].classList.remove(indicatorCss.current);
+      }
     }
     if (list === 'relatedList') {
       if (index !== relatedListScroll) {
@@ -315,7 +313,7 @@ class RelatedProducts extends React.Component {
                 dropHandler={this.dropHandler}
               />
             </div>
-            <ScrollIndicator scrollLength={outfitList.length} listName="outfitList" />
+            <ScrollIndicator scrollLength={outfitList.length + 2} listName="outfitList" />
           </div>
         ) : (
           <div />

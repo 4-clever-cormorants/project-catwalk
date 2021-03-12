@@ -3,9 +3,15 @@ import propTypes from 'prop-types';
 import style from './css/indicator.css';
 
 const ScrollIndicator = ({ scrollLength, listName }) => {
-  let indicator = [];
+  const indicator = [];
+  // const hide = listName === 'relatedList' ? 4 : 4;
   for (let i = 0; i < scrollLength; i += 1) {
-    indicator.push(<div className={`${listName}indicator ind${i} ${style.indicator} ${i < 4 ? style.current : ''}`} key={`${listName}indicator${i}`} />);
+    indicator.push(
+      <div
+        className={`${listName}indicator ind${i} ${style.indicator} ${i < 4 ? style.current : ''} ${(i === 0 || i === (scrollLength - 1)) ? style.hide : ''}`}
+        key={`${listName}indicator${i}`}
+      />,
+    );
   }
 
   return (
@@ -15,6 +21,11 @@ const ScrollIndicator = ({ scrollLength, listName }) => {
       </div>
     </div>
   );
+};
+
+ScrollIndicator.propTypes = {
+  scrollLength: propTypes.number.isRequired,
+  listName: propTypes.string.isRequired,
 };
 
 export default ScrollIndicator;
