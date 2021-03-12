@@ -13,7 +13,6 @@ class AnswerForm extends React.Component {
       email: '',
       photos: [],
       photoUrls: [],
-      showInput: [true, false, false, false, false],
       uploadButtonClicked: false,
       uploadError: false,
       errorMessages: [],
@@ -38,7 +37,7 @@ class AnswerForm extends React.Component {
   }
 
   handlePhotoChange(e, index) {
-    const { photos, showInput } = this.state;
+    const { photos } = this.state;
     const newPhotos = [...photos];
     if (!e.target.files.item(0)) {
       console.log('not a valid file');
@@ -49,13 +48,8 @@ class AnswerForm extends React.Component {
     newPhotos[index] = e.target.files;
     console.log(JSON.stringify(e.target.files.item(0)));
     console.log(e.target.value);
-    const newShowInput = [...showInput];
-    if (index === photos.length) {
-      newShowInput[photos.length + 1] = true;
-    }
     this.setState({
       photos: newPhotos,
-      showInput: newShowInput,
       uploadError: false,
     });
   }
@@ -205,7 +199,7 @@ class AnswerForm extends React.Component {
       submitted,
       uploadButtonClicked,
       uploadError,
-      showInput,
+      photos,
       bodyInvalid,
       nameInvalid,
       emailInvalid,
@@ -218,7 +212,7 @@ class AnswerForm extends React.Component {
     const submitButtonText = submitted ? 'SUBMITTED' : 'SUBMIT';
     const photoInputArray = [];
     for (let i = 0; i < 5; i += 1) {
-      photoInputArray.push(<input type="file" accept="image/*" key={`image-input-${i}`} onChange={(e) => this.handlePhotoChange(e, i)} hidden={!showInput[i]} />);
+      photoInputArray.push(<input type="file" accept="image/*" key={`image-input-${i}`} onChange={(e) => this.handlePhotoChange(e, i)} hidden={photos.length < i} />);
     }
     return (
       <div className={`${style.modal} ${addAnswerClicked ? style.modalShow : ''}`}>
