@@ -4,13 +4,13 @@ import { mount } from 'enzyme';
 
 import ProductDetails from './ProductDetails';
 
-// import ImageGallery from './ImageGallery/ImageGallery';
+import ImageGallery from './ImageGallery/ImageGallery';
 import DefaultView from './ImageGallery/DefaultView';
 import Thumbnail from './ImageGallery/Thumbnail';
 
 import App from '../App';
 import ProductInformation from './ProductInformation/ProductInformation';
-// import Rating from './ProductInformation/Rating';
+import Rating from './ProductInformation/Rating';
 import Category from './ProductInformation/Category';
 import Title from './ProductInformation/Title';
 import Price from './ProductInformation/Price';
@@ -39,19 +39,30 @@ describe('test Product Details component', () => {
     style: styles.results[0],
     id: 0,
     cart: [],
-    rating: ratings,
+    rating: {
+      average: 3.12,
+      ratings: 125,
+      raw: {
+        0: '1',
+        1: '22',
+        2: '16',
+        3: '37',
+        4: '25',
+        5: '25',
+      },
+    },
     load: true,
   });
   wrapper.update();
+  wrapper.instance();
 
   it('should exist', () => {
     const productDetails = wrapper.find(ProductDetails);
     expect(productDetails.exists()).toBe(true);
   });
 
-
   it('should have an image gallery that displays the selected style and thumbnails', () => {
-    const imageGallery = wrapper.find('.imageGallery');
+    const imageGallery = wrapper.find(ImageGallery);
     const defaultView = wrapper.find(DefaultView);
     const thumbnail = wrapper.find(Thumbnail);
     expect(imageGallery.exists()).toBe(true);
@@ -61,7 +72,7 @@ describe('test Product Details component', () => {
 
   it('should have a product information section that describes the product', () => {
     const productInformation = wrapper.find(ProductInformation);
-    const rating = wrapper.find('.rating');
+    const rating = wrapper.find(Rating);
     const category = wrapper.find(Category);
     const title = wrapper.find(Title);
     const price = wrapper.find(Price);

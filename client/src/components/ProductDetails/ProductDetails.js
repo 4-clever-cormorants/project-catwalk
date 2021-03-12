@@ -202,6 +202,7 @@ class ProductDetails extends React.Component {
     } = this.state;
     return (
       <div id="PD" className={css.PD}>
+        {console.log('ratingObj', rating)}
         <div className={css.productDetails}>
           {load ? (
             <ImageGallery
@@ -217,7 +218,6 @@ class ProductDetails extends React.Component {
               thumbnailScroll={thumbnailScroll}
             />
           ) : ''}
-          {console.log('PD', rating)}
           {load ? (
             <ProductInformation
               product={product}

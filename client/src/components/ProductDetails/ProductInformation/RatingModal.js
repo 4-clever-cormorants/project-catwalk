@@ -27,6 +27,7 @@ class RatingModal extends React.Component {
     const {
       total, data, clicked, exitModal,
     } = this.props;
+    console.log(this.props);
     const five = Math.floor((parseInt(data[5], 10) / total) * 100);
     const four = Math.floor((parseInt(data[4], 10) / total) * 100);
     const three = Math.floor((parseInt(data[3], 10) / total) * 100);

@@ -1,3 +1,4 @@
+/* eslint-disable react/forbid-prop-types */
 import React from 'react';
 import PropTypes from 'prop-types';
 
@@ -15,7 +16,6 @@ const ProductInformation = ({
   product, originalPrice, salePrice, rating,
 }) => (
   <div id="productInformationContainer" className={css.productInformation}>
-    {console.log('PI', rating) }
     <div id="productInformation" className={css.info}>
       <Rating rating={rating} />
       <Category category={product.category} />
