@@ -29,7 +29,7 @@ const Card = ({
       dropWishHandler={dropWishHandler}
     />
     <div className={`cardImgContainer ${style.cardImgContainer}`}>
-      <img className={`cardImg ${style.cardImg}`} src={item.thumbnail_url} alt={item.name} draggable="false" />
+      <img className={`cardImg ${style.cardImg}`} src={item.thumbnail_url} alt={item.name} draggable="false" loading="lazy" />
     </div>
     <a
       className={`cardName ${style.cardName}`}

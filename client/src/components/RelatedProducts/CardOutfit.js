@@ -10,7 +10,7 @@ const CardOutfit = ({ item, dropHandler }) => (
   <div className={style.card} id={`card${item.id}`}>
     <Drop id={item.id} dropHandler={dropHandler} />
     <div className={`cardImgContainer ${style.cardImgContainer}`}>
-      <img className={`cardImg ${style.cardImg}`} src={item.thumbnail_url} alt={item.name} />
+      <img className={`cardImg ${style.cardImg}`} src={item.thumbnail_url} alt={item.name} loading="lazy" />
     </div>
     <a
       className={`cardName ${style.cardName}`}
