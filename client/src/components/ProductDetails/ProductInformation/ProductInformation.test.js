@@ -54,15 +54,12 @@ describe('testing the Product Information subcomponent', () => {
   });
 
   it('should provide the Ratings components with an average rating and total ratings', () => {
-    // const instance = wrapper.instance();
-    expect(rating.props().rating).toBe(3);
-    expect(rating.props().totalRatings).toBe(25);
+    expect(rating.props().rating.average).toBe(3.12);
+    expect(rating.props().rating.ratings).toBe(125);
   });
 
   it('should have a price component that calculates the discount (if there is a sale price)', () => {
     const disc = price.find('.discount');
     expect(disc.exists()).toBe(true);
-    console.log(disc.value);
-    // const discount = Math.floor((1 - (salePrice / originalPrice)) * 100);
   });
 });
