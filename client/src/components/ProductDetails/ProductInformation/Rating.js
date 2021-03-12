@@ -1,3 +1,4 @@
+/* eslint-disable react/forbid-prop-types */
 /* eslint-disable jsx-a11y/control-has-associated-label */
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable array-callback-return */
@@ -27,7 +28,7 @@ class Rating extends React.Component {
   render() {
     const { rating } = this.props;
     const { clicked } = this.state;
-    const average = rating.average;
+    const { average } = rating;
     const data = rating.raw;
     const total = rating.ratings;
     let n = Number((Math.round(average * 4) / 4).toFixed(2));
@@ -45,7 +46,6 @@ class Rating extends React.Component {
     }
     return (
       <div id="rating" className={css.rating}>
-        {console.log('rating', rating)}
         {stars.map((star, i) => {
           if (star === 0) {
             return (
