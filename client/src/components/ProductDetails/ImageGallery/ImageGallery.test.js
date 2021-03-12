@@ -18,11 +18,22 @@ describe('Image Gallery tests', () => {
     style: styles.results[0],
     id: 0,
     cart: [],
-    rating: { average: 3, totalRatings: 35 },
+    rating: {
+      average: 3.12,
+      ratings: 125,
+      raw: {
+        0: '1',
+        1: '22',
+        2: '16',
+        3: '37',
+        4: '25',
+        5: '25',
+      },
+    },
     load: true,
   });
   wrapper.update();
-  const instance = wrapper.instance();
+  wrapper.instance();
   const imageGallery = wrapper.find('.imageGallery');
   const defaultView = wrapper.find(DefaultView);
   const thumbnail = wrapper.find(Thumbnail);

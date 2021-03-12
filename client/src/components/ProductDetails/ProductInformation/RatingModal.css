@@ -1,0 +1,94 @@
+#ratingModal {
+  height: 200px;
+  width: 300px;
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+  background-color: white;
+  z-index: 102;
+  position: absolute;
+  top: 20%;
+  padding: 15px;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+  color:rgb(70, 70, 70);
+}
+
+.modal {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0.4s, opacity 0.4s ease-in-out;
+  z-index: 110;
+}
+
+.modalShow {
+  visibility: visible;
+  opacity: 1
+}
+
+.top {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: -10px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-weight: 600;
+}
+
+.top button {
+  background-color: white;
+  border: none;
+  transition: all 0.25s ease;
+}
+
+.top button:hover {
+  color: black;
+}
+
+.summary {
+  grid-row: 1;
+  height: 25px;
+  position: relative;
+  top: 10px;
+  font-size: 14px;
+}
+
+.barDiv {
+  height: 20px;
+  display: grid;
+  grid-template-columns: 1fr 4fr 1fr;
+  align-items: center;
+}
+
+.stars {
+  font-size: 13px;
+  margin-left: 10px;
+  font-family: 'Lato';
+}
+
+progress {
+  width: 120px;
+  height: 20px;
+  border-radius: 0;
+  justify-self: center;
+}
+
+progress[value]::-webkit-progress-bar {
+  background-color: #eee;
+  color: black;
+  border-radius: 2px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+}
+
+progress[value]::-webkit-progress-value {
+  background-image:
+	   -webkit-linear-gradient(top,
+	                           rgba(255, 255, 255, .25),
+	                           rgba(0, 0, 0, .25)),
+	   -webkit-linear-gradient(left, rgb(0, 0, 0), rgb(40, 40, 40));
+
+    border-radius: 2px;
+}
+
+.percent {
+  font-size: 14px;
+}

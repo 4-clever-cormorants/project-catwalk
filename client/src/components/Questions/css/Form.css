@@ -125,6 +125,7 @@
 .form input[type=file] {
   /* height: 46px; */
   resize: none;
+  margin-bottom: 6px;
 }
 
 .form input::placeholder {
@@ -146,7 +147,8 @@
 
 .submitButton,
 .submitButtonDisabled,
-.uploadPhoto {
+.uploadPhoto,
+.uploadPhotoDisabled {
   width: 100%;
   outline: none;
   border: 1px solid black;
@@ -158,13 +160,25 @@
   transition: all 0.2s ease-in-out;
 }
 
+.uploadPhoto,
+.uploadPhotoDisabled {
+  background: white;
+  border: 1px solid black;
+  color: black;
+}
+
 .exitButton,
 .submitButton,
 .submitButtonDisabled,
-.uploadPhoto {
+.uploadPhoto,
+.uploadPhotoDisabled {
   transition: visibility 0s ease-in-out;
 }
 
+.uploadPhoto,
+.uploadPhotoDisabled {
+  margin-bottom: 16px;
+}
 
 /* .uploadPhoto {
   display: block;
@@ -173,17 +187,31 @@
   padding: 0px;
 } */
 
-.submitButton:hover,
-.uploadPhoto:hover {
+.submitButton:hover {
   cursor: pointer;
   background: white;
   color: black;
 }
 
+.uploadPhoto:hover {
+  cursor: pointer;
+  background: black;
+  color: white;
+}
+
+.uploadError,
 .errorMessage {
-  margin-top: 16px;
   text-align: center;
   color: crimson;
+}
+
+.errorMessage {
+  margin-top: 16px;
+}
+
+.uploadError {
+  margin-top: -13px;
+  margin-bottom: 16px;
 }
 
 .buttonContainer {
