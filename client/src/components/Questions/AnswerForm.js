@@ -14,7 +14,6 @@ class AnswerForm extends React.Component {
       photos: [],
       photoUrls: [],
       showInput: [true, false, false, false, false],
-      uploadButtonClicks: 0,
       uploadButtonClicked: false,
       errorMessages: [],
       submitError: false,
@@ -38,7 +37,7 @@ class AnswerForm extends React.Component {
   }
 
   handlePhotoChange(e, index) {
-    const { photos, uploadButtonClicks, showInput } = this.state;
+    const { photos, showInput } = this.state;
     const newPhotos = [...photos];
     if (!e.target.files.item(0)) {
       console.log('not a valid file');
@@ -49,14 +48,15 @@ class AnswerForm extends React.Component {
     // take two parameters, e, and index
     // newPhotos[index] = e.target.files
     newPhotos[index] = e.target.files;
-    //newPhotos.push(e.target.files);
+    // newPhotos.push(e.target.files);
     console.log(JSON.stringify(e.target.files.item(0)));
     console.log(e.target.value);
     const newShowInput = [...showInput];
-    newShowInput[uploadButtonClicks + 1] = true;
+    if (index === photos.length) {
+      newShowInput[photos.length + 1] = true;
+    }
     this.setState({
       photos: newPhotos,
-      uploadButtonClicks: uploadButtonClicks + 1,
       showInput: newShowInput,
     });
   }
