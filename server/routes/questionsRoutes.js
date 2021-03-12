@@ -134,7 +134,6 @@ router.put('/answerReport', (req, res) => {
 });
 
 const uploadPhoto = async (path, name) => {
-  console.log('bucket:', process.env.S3_BUCKET);
   const buffer = fs.readFileSync(path);
   const type = await fileType.fromBuffer(buffer);
   const params = {
@@ -153,10 +152,8 @@ router.post('/test-upload', (req, res) => {
     if (error) {
       return res.status(500).send(error);
     }
-    console.log('hello', files);
     const promises = [];
     for (let i = 0; i < files.file.length; i += 1) {
-      console.log('hello, ', files.file[i]);
       try {
         const { path } = files.file[i];
         const fileName = `media/${Date.now().toString()}`;

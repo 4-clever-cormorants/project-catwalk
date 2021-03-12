@@ -36,19 +36,22 @@ class AnswerForm extends React.Component {
     this.setState({ email: e.target.value });
   }
 
+  // REFACTOR PHOTOS TO BE AN OBJECT
+  // USERS CAN CANCEL OUT OF THEIR FORM, LEAVING AN EMPTY UNDEFINED
+  // THIS UNDEFINED IS STILL COUNTED IN LENGTH
+  // DOES NOT PLAY NICELY WITH FOR LOOPS
+  // EX: LENGTH: 3, BUT ARRAY IS [PHOTO, UND, PHOTO, UND, PHOTO]
+  // FOR LOOP IS NOW LOOPING AS PHOTO, UND, PHOTO
   handlePhotoChange(e, index) {
     const { photos, showInput } = this.state;
     const newPhotos = [...photos];
     if (!e.target.files.item(0)) {
       console.log('not a valid file');
-      // newPhotoes[index] = undefined
       newPhotos[index] = undefined;
+      this.setState({ photos: newPhotos });
       return;
     }
-    // take two parameters, e, and index
-    // newPhotos[index] = e.target.files
     newPhotos[index] = e.target.files;
-    // newPhotos.push(e.target.files);
     console.log(JSON.stringify(e.target.files.item(0)));
     console.log(e.target.value);
     const newShowInput = [...showInput];
@@ -74,20 +77,18 @@ class AnswerForm extends React.Component {
     });
   }
 
-  handleSubmitPhoto(e) {
+  handleSubmitPhoto() {
     const { photos } = this.state;
     if (photos.length === 0) {
       console.log('no photos yet');
       return;
     }
-    console.log('ok', photos, e);
-    console.log(photos[0]);
     const formData = new FormData();
-    console.log(photos.length);
     for (let i = 0; i < photos.length; i += 1) {
-      formData.append('file', photos[i][0]);
+      if (photos[i] !== undefined) {
+        formData.append('file', photos[i][0]);
+      }
     }
-    // formData.append('file', photos[0][0]);
     axios.post('/qa/test-upload', formData, {
       headers: {
         'Content-Type': 'multipart/form-data',
@@ -100,11 +101,6 @@ class AnswerForm extends React.Component {
           console.log(response.data[i].Location);
           newPhotoUrls[i] = response.data[i].Location;
         }
-        // this.setState({ uploadButtonClicked: true });
-        // console.log(response.data.Location);
-        // const { photoUrls } = this.state;
-        // const newPhotoUrls = [...photoUrls];
-        // newPhotoUrls.push(response.data.Location);
         this.setState({ photoUrls: newPhotoUrls, uploadButtonClicked: true });
       })
       .catch((error) => {
