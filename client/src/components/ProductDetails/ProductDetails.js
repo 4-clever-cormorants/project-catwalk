@@ -48,6 +48,7 @@ class ProductDetails extends React.Component {
       styleId: null,
       styles: null,
       style: null,
+      rating: null,
       id: null,
       sku: null,
       cart: [],
@@ -117,7 +118,6 @@ class ProductDetails extends React.Component {
   }
 
   skuSelector(e) {
-    console.log(e.target.value);
     this.setState({
       sku: e.target.value,
     });
@@ -200,7 +200,6 @@ class ProductDetails extends React.Component {
     const {
       product, rating, styleId, styles, style, id, sku, load, thumbnailScroll,
     } = this.state;
-
     return (
       <div id="PD" className={css.PD}>
         <div className={css.productDetails}>
@@ -218,12 +217,11 @@ class ProductDetails extends React.Component {
               thumbnailScroll={thumbnailScroll}
             />
           ) : ''}
+          {console.log('PD', rating)}
           {load ? (
             <ProductInformation
               product={product}
-              rating={rating.average}
-              totalRatings={rating.ratings}
-              ratingsRaw={rating.raw}
+              rating={rating}
               originalPrice={style.original_price}
               salePrice={style.sale_price}
             />

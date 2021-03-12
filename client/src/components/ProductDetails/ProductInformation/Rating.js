@@ -25,9 +25,12 @@ class Rating extends React.Component {
   }
 
   render() {
-    const { rating, totalRatings, ratingsRaw } = this.props;
+    const { rating } = this.props;
     const { clicked } = this.state;
-    let n = Number((Math.round(rating * 4) / 4).toFixed(2));
+    const average = rating.average;
+    const data = rating.raw;
+    const total = rating.ratings;
+    let n = Number((Math.round(average * 4) / 4).toFixed(2));
     const stars = [];
     for (let i = 0; i < 5; i += 1) {
       if (n >= 1) {
@@ -71,7 +74,7 @@ class Rating extends React.Component {
         })}
         &nbsp;
         <div className={css.totalRatings}>
-          ({totalRatings}) &nbsp;
+          ({total}) &nbsp;
           <span
             role="button"
             className={`${css.arrow}`}
@@ -95,8 +98,8 @@ class Rating extends React.Component {
           </span>
         </div>
         <RatingModal
-          totalRatings={totalRatings}
-          ratingsRaw={ratingsRaw}
+          total={total}
+          data={data}
           clicked={clicked}
           exitModal={this.exitModal}
         />
@@ -106,9 +109,7 @@ class Rating extends React.Component {
 }
 
 Rating.propTypes = {
-  rating: PropTypes.number,
-  totalRatings: PropTypes.number.isRequired,
-  ratingsRaw: PropTypes.objectOf(PropTypes.string).isRequired,
+  rating: PropTypes.object,
 };
 
 Rating.defaultProps = {

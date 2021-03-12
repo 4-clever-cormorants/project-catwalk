@@ -28,19 +28,7 @@ import AddToWishList from './Checkout/AddToWishList';
 
 import product from './productDummyData';
 import styles from './stylesDummyData';
-
-// axios.get.mockImplementation((url) => {
-//   if (url === `/products/data?product_id=${product.id}`) {
-//     return Promise.resolve({ data: [product] });
-//   }
-//   if (url === `/products/styles?product_id=${product.id}`) {
-//     return Promise.resolve({ data: [styles] });
-//   }
-//   if (url === `/rating/data?product_id=${product.id}`) {
-//     return Promise.resolve({ data: [5] });
-//   }
-//   return undefined;
-// });
+import ratings from './ratingsDummyData';
 
 describe('test Product Details component', () => {
   const wrapper = mount(<ProductDetails productId={14034} />);
@@ -51,7 +39,7 @@ describe('test Product Details component', () => {
     style: styles.results[0],
     id: 0,
     cart: [],
-    rating: { average: 3, totalRatings: 35 },
+    rating: ratings,
     load: true,
   });
   wrapper.update();

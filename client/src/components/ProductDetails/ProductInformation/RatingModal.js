@@ -5,12 +5,12 @@ import css from './RatingModal.css';
 
 class RatingModal extends React.Component {
   componentDidMount() {
-    const { totalRatings, ratingsRaw } = this.props;
-    const five = Math.floor((parseInt(ratingsRaw[5], 10) / totalRatings) * 100);
-    const four = Math.floor((parseInt(ratingsRaw[4], 10) / totalRatings) * 100);
-    const three = Math.floor((parseInt(ratingsRaw[3], 10) / totalRatings) * 100);
-    const two = Math.floor((parseInt(ratingsRaw[2], 10) / totalRatings) * 100);
-    const one = Math.floor((parseInt(ratingsRaw[1], 10) / totalRatings) * 100);
+    const { total, data } = this.props;
+    const five = Math.floor((parseInt(data[5], 10) / total) * 100);
+    const four = Math.floor((parseInt(data[4], 10) / total) * 100);
+    const three = Math.floor((parseInt(data[3], 10) / total) * 100);
+    const two = Math.floor((parseInt(data[2], 10) / total) * 100);
+    const one = Math.floor((parseInt(data[1], 10) / total) * 100);
     document.getElementById('fiveBar').style['border-left'] = `${five * 1.2}px solid black`;
     document.getElementById('fiveBar').style.width = `${120 - (five * 1.2)}px`;
     document.getElementById('fourBar').style['border-left'] = `${four * 1.2}px solid black`;
@@ -25,13 +25,13 @@ class RatingModal extends React.Component {
 
   render() {
     const {
-      totalRatings, ratingsRaw, clicked, exitModal,
+      total, data, clicked, exitModal,
     } = this.props;
-    const five = Math.floor((parseInt(ratingsRaw[5], 10) / totalRatings) * 100);
-    const four = Math.floor((parseInt(ratingsRaw[4], 10) / totalRatings) * 100);
-    const three = Math.floor((parseInt(ratingsRaw[3], 10) / totalRatings) * 100);
-    const two = Math.floor((parseInt(ratingsRaw[2], 10) / totalRatings) * 100);
-    const one = Math.floor((parseInt(ratingsRaw[1], 10) / totalRatings) * 100);
+    const five = Math.floor((parseInt(data[5], 10) / total) * 100);
+    const four = Math.floor((parseInt(data[4], 10) / total) * 100);
+    const three = Math.floor((parseInt(data[3], 10) / total) * 100);
+    const two = Math.floor((parseInt(data[2], 10) / total) * 100);
+    const one = Math.floor((parseInt(data[1], 10) / total) * 100);
     return (
       <div id={css.ratingModal} className={`${css.modal} ${clicked ? css.modalShow : ''}`}>
         <div className={css.top}>
@@ -84,8 +84,8 @@ class RatingModal extends React.Component {
 }
 
 RatingModal.propTypes = {
-  totalRatings: PropTypes.number.isRequired,
-  ratingsRaw: PropTypes.objectOf(PropTypes.string).isRequired,
+  total: PropTypes.number.isRequired,
+  data: PropTypes.objectOf(PropTypes.string).isRequired,
   clicked: PropTypes.bool.isRequired,
   exitModal: PropTypes.func.isRequired,
 };
