@@ -1,8 +1,10 @@
 const router = require('express').Router();
 const axios = require('axios');
+const AWS = require('aws-sdk');
 const fs = require('fs');
 const fileType = require('file-type');
 const multiparty = require('multiparty');
+require('dotenv').config();
 
 const config = require('../../config.js');
 
@@ -13,6 +15,13 @@ const headers = {
     Authorization: `${config.TOKEN}`,
   },
 };
+
+AWS.config.update({
+  accessKeyId: process.env.AWSAccessKeyId,
+  secretAccessKey: process.env.AWSSecretKey,
+});
+
+const s3 = new AWS.S3();
 
 router.get('/', (req, res) => {
   res.send('Hello World');
@@ -125,6 +134,7 @@ router.put('/answerReport', (req, res) => {
 });
 
 const uploadPhoto = (buffer, name, type) => {
+  console.log('bucket:', process.env.S3_BUCKET);
   const params = {
     ACL: 'public-read',
     Body: buffer,
@@ -146,11 +156,12 @@ router.post('/test-upload', (req, res) => {
       const buffer = fs.readFileSync(path);
       const type = await fileType.fromBuffer(buffer);
       const fileName = `media/${Date.now().toString()}`;
-      // const data = await uploadFile(buffer, fileName, type);
-      // return response.status(200).send(data);
-      console.log(fileName);
-      return res.status(200).send(`fileName: ${fileName}, type: ${type}`);
+      const data = await uploadPhoto(buffer, fileName, type);
+      return res.status(200).send(data);
+      // console.log(fileName);
+      // return res.status(200).send(`fileName: ${fileName}, type: ${type}`);
     } catch (err) {
+      console.log(err);
       return res.status(500).send(err);
     }
   });

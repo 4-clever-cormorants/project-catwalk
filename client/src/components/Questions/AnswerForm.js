@@ -12,6 +12,8 @@ class AnswerForm extends React.Component {
       nickname: '',
       email: '',
       photos: [],
+      photoUrls: [],
+      uploadButtonClicked: false,
       errorMessages: [],
       submitError: false,
       submitted: false,
@@ -78,21 +80,15 @@ class AnswerForm extends React.Component {
     })
       .then((response) => {
         console.log(response);
+        console.log(response.data.Location);
+        const { photoUrls } = this.state;
+        const newPhotoUrls = [...photoUrls];
+        newPhotoUrls.push(response.data.Location);
+        this.setState({ photoUrls: newPhotoUrls, uploadButtonClicked: true });
       })
       .catch((error) => {
         console.log(error);
       });
-    // try {
-    //   const formData = new FormData();
-    //   formData.append('file', photos[0][0]);
-    //   axios.post('/qa/test-upload', formData, {
-    //     headers: {
-    //       'Content-Type': 'multipart/form-data',
-    //     },
-    //   });
-    // } catch (error) {
-    //   console.log(error);
-    // }
   }
 
   isValidEmail() {
@@ -157,6 +153,7 @@ class AnswerForm extends React.Component {
       errorMessages,
       submitError,
       submitted,
+      uploadButtonClicked,
       bodyInvalid,
       nameInvalid,
       emailInvalid,
@@ -202,7 +199,7 @@ class AnswerForm extends React.Component {
                 Photos
                 <div className={style.photoUploadContainer}>
                   <input type="file" accept="image/*" onChange={(e) => this.handlePhotoChange(e)} />
-                  <button type="button" className={`${style.uploadPhoto} uploadPhoto`} onClick={this.handleSubmitPhoto.bind(this)}>UPLOAD</button>
+                  {!uploadButtonClicked ? <button type="button" className={`${style.uploadPhoto} uploadPhoto`} onClick={this.handleSubmitPhoto.bind(this)}>UPLOAD</button> : ''}
                 </div>
               </label>
               <div className={`${style.buttonContainer}`}>
