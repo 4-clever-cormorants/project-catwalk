@@ -17,7 +17,7 @@ const AnswerImageModal = ({ url, exitModal, imageClicked }) => (
             <span>X</span>
           </div>
         </button>
-        <img alt="full sized answer" src={url} />
+        <img alt="full sized answer" src={url} loading="lazy" />
       </div>
     </div>
   </div>
