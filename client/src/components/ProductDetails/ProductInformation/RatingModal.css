@@ -4,7 +4,7 @@
   display: grid;
   grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
   background-color: white;
-  z-index: 10;
+  z-index: 102;
   position: fixed;
   top: 20%;
   padding: 15px;
