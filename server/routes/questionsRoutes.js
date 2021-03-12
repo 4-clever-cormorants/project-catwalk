@@ -133,8 +133,10 @@ router.put('/answerReport', (req, res) => {
     });
 });
 
-const uploadPhoto = (buffer, name, type) => {
+const uploadPhoto = async (path, name) => {
   console.log('bucket:', process.env.S3_BUCKET);
+  const buffer = fs.readFileSync(path);
+  const type = await fileType.fromBuffer(buffer);
   const params = {
     ACL: 'public-read',
     Body: buffer,
@@ -151,19 +153,27 @@ router.post('/test-upload', (req, res) => {
     if (error) {
       return res.status(500).send(error);
     }
-    try {
-      const { path } = files.file[0];
-      const buffer = fs.readFileSync(path);
-      const type = await fileType.fromBuffer(buffer);
-      const fileName = `media/${Date.now().toString()}`;
-      const data = await uploadPhoto(buffer, fileName, type);
-      return res.status(200).send(data);
-      // console.log(fileName);
-      // return res.status(200).send(`fileName: ${fileName}, type: ${type}`);
-    } catch (err) {
-      console.log(err);
-      return res.status(500).send(err);
+    console.log('hello', files);
+    const promises = [];
+    for (let i = 0; i < files.file.length; i += 1) {
+      console.log('hello, ', files.file[i]);
+      try {
+        const { path } = files.file[i];
+        const fileName = `media/${Date.now().toString()}`;
+        promises.push(uploadPhoto(path, fileName));
+      } catch (err) {
+        console.log(err);
+        return res.status(500).send(err);
+      }
     }
+    return Promise.all(promises)
+      .then((data) => {
+        res.send(data);
+      })
+      .catch((err) => {
+        console.log(err);
+        return res.status(500).send(err);
+      });
   });
 });
 

@@ -35,14 +35,19 @@ class AnswerForm extends React.Component {
     this.setState({ email: e.target.value });
   }
 
-  handlePhotoChange(e) {
+  handlePhotoChange(e, index) {
     const { photos } = this.state;
     const newPhotos = [...photos];
     if (!e.target.files.item(0)) {
       console.log('not a valid file');
+      // newPhotoes[index] = undefined
+      newPhotos[index] = undefined;
       return;
     }
-    newPhotos.push(e.target.files);
+    // take two parameters, e, and index
+    // newPhotos[index] = e.target.files
+    newPhotos[index] = e.target.files;
+    //newPhotos.push(e.target.files);
     console.log(JSON.stringify(e.target.files.item(0)));
     console.log(e.target.value);
     this.setState({
@@ -72,7 +77,11 @@ class AnswerForm extends React.Component {
     console.log('ok', photos, e);
     console.log(photos[0]);
     const formData = new FormData();
-    formData.append('file', photos[0][0]);
+    console.log(photos.length);
+    for (let i = 0; i < photos.length; i += 1) {
+      formData.append('file', photos[i][0]);
+    }
+    // formData.append('file', photos[0][0]);
     axios.post('/qa/test-upload', formData, {
       headers: {
         'Content-Type': 'multipart/form-data',
@@ -80,11 +89,15 @@ class AnswerForm extends React.Component {
     })
       .then((response) => {
         console.log(response);
-        console.log(response.data.Location);
-        const { photoUrls } = this.state;
-        const newPhotoUrls = [...photoUrls];
-        newPhotoUrls.push(response.data.Location);
-        this.setState({ photoUrls: newPhotoUrls, uploadButtonClicked: true });
+        for (let i = 0; i < response.data.length; i += 1) {
+          console.log(response.data[i].Location);
+        }
+        this.setState({ uploadButtonClicked: true });
+        // console.log(response.data.Location);
+        // const { photoUrls } = this.state;
+        // const newPhotoUrls = [...photoUrls];
+        // newPhotoUrls.push(response.data.Location);
+        // this.setState({ photoUrls: newPhotoUrls, uploadButtonClicked: true });
       })
       .catch((error) => {
         console.log(error);
@@ -198,8 +211,8 @@ class AnswerForm extends React.Component {
               <label htmlFor="photos">
                 Photos
                 <div className={style.photoUploadContainer}>
-                  <input type="file" accept="image/*" onChange={(e) => this.handlePhotoChange(e)} />
-                  {!uploadButtonClicked ? <button type="button" className={`${style.uploadPhoto} uploadPhoto`} onClick={this.handleSubmitPhoto.bind(this)}>UPLOAD</button> : ''}
+                  <input type="file" accept="image/*" onChange={(e) => this.handlePhotoChange(e, 0)} />
+                  {!uploadButtonClicked ? <button type="button" className={`${style.uploadPhoto} uploadPhoto`} onClick={(this.handleSubmitPhoto.bind(this))}>UPLOAD</button> : ''}
                 </div>
               </label>
               <div className={`${style.buttonContainer}`}>
