@@ -20,7 +20,6 @@ class StickyHeader extends React.Component {
   }
 
   sticky() {
-    console.log(window.scrollY);
     const fromTop = window.scrollY;
     if (fromTop > 800) {
       this.setState({
@@ -74,7 +73,7 @@ class StickyHeader extends React.Component {
       </div>
     );
   }
-};
+}
 
 StickyHeader.propTypes = {
   style: PropTypes.object.isRequired,
