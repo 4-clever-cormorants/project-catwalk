@@ -46,7 +46,7 @@ class Answer extends React.Component {
         {answer.photos.length
           ? (
             <div className="answerImages">
-              {answer.photos.map((photo) => <img key={photo.id} className={`${style.answerImg} answerImg`} alt={photo.id} src={photo.url} onClick={() => this.showPicture(photo.url)} />)}
+              {answer.photos.map((photo) => <img key={photo.id} className={`${style.answerImg} answerImg`} alt={photo.id} src={photo.url} onClick={() => this.showPicture(photo.url)} loading="lazy"/>)}
             </div>
           ) : ''}
         <AnswerFooter answer={answer} />

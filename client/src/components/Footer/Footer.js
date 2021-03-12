@@ -6,8 +6,8 @@ const Footer = () => (
   <div className={css.footer}>
     <div className={css.footerContent}>
       <div className={css.githubIcon}>
-        <a href="https://github.com/4-clever-cormorants/project-catwalk">
-          <i className="fa fa-github fa-2x" aria-hidden="true" />
+        <a href="https://github.com/4-clever-cormorants/project-catwalk" title="GitHub Link">
+          <i className="fa fa-github fa-2x" aria-hidden="true" title="GitHub Icon" />
         </a>
       </div>
       <div className={`${css.topButtonContainer} topButtonContainer`}>
