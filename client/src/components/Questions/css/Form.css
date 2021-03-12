@@ -160,6 +160,13 @@
   transition: all 0.2s ease-in-out;
 }
 
+.uploadPhoto,
+.uploadPhotoDisabled {
+  background: white;
+  border: 1px solid black;
+  color: black;
+}
+
 .exitButton,
 .submitButton,
 .submitButtonDisabled,
@@ -180,11 +187,16 @@
   padding: 0px;
 } */
 
-.submitButton:hover,
-.uploadPhoto:hover {
+.submitButton:hover {
   cursor: pointer;
   background: white;
   color: black;
+}
+
+.uploadPhoto:hover {
+  cursor: pointer;
+  background: black;
+  color: white;
 }
 
 .uploadError,
