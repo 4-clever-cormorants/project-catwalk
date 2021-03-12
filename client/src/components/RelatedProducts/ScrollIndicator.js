@@ -4,11 +4,12 @@ import style from './css/indicator.css';
 
 const ScrollIndicator = ({ scrollLength, listName }) => {
   const indicator = [];
-  // const hide = listName === 'relatedList' ? 4 : 4;
+  const hide = (listName === 'outfitList');
   for (let i = 0; i < scrollLength; i += 1) {
+    const checker = (i === 0 || i === (scrollLength - 1));
     indicator.push(
       <div
-        className={`${listName}indicator ind${i} ${style.indicator} ${i < 4 ? style.current : ''} ${(i === 0 || i === (scrollLength - 1)) ? style.hide : ''}`}
+        className={`${listName}indicator ind${i} ${style.indicator} ${i < 4 ? style.current : ''} ${(checker && hide) ? style.hide : ''}`}
         key={`${listName}indicator${i}`}
       />,
     );
