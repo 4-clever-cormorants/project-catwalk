@@ -151,6 +151,7 @@ class AnswerForm extends React.Component {
         const submitErrorMessage = ['Error submitting'];
         this.setState({
           success: false,
+          submitted: false,
           submitError: true,
           errorMessages: submitErrorMessage,
         });
