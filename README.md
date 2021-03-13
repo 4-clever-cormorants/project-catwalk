@@ -19,15 +19,15 @@
 1. copy the config.example.js, rename to config.js, add you github token
 2. add a .env file with: 
 4. Run the following commands
-  - npm install
-  - npm run react-pro
-  - npm run server-dev
+   1. npm install
+   2. npm run react-pro
+   3. npm run server-dev
 
 *App Stats*
-Best Practices - 94
-Accessibility - 93
-Test Coverage - 63%
-Performance - 77
+1. Best Practices - 94
+2. Accessibility - 93
+3. Test Coverage - 63%
+4. Performance - 77
 
 *Screenshots*
 
