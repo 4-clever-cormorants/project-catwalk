@@ -40,6 +40,7 @@ class Question extends React.Component {
 
   escFunction(event) {
     if (event.keyCode === 27) {
+      // AnswerForm.resetForm();
       this.exitAnswerForm();
     }
   }
