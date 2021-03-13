@@ -12,47 +12,61 @@ const Card = ({
   compareHandler,
   addToWishHandler,
   dropWishHandler,
-}) => (
-  <div
-    className={`${style.card} ${style.relatedcards}`}
-    draggable="true"
-    id={`card${item.id}`}
-    onClick={compareHandler.bind(this, item)}
-    onKeyPress={compareHandler.bind(this, item)}
-    role="button"
-    tabIndex={0}
-  >
-    <Favor
-      id={item.id}
-      wishList={wishList}
-      addToWishHandler={addToWishHandler}
-      dropWishHandler={dropWishHandler}
-    />
-    <div className={`cardImgContainer ${style.cardImgContainer}`}>
-      <img className={`cardImg ${style.cardImg}`} src={item.thumbnail_url} alt={item.name} draggable="false" loading="lazy" />
-    </div>
-    <a
-      className={`cardName ${style.cardName}`}
-      href={`/?product_id=${item.id}`}
-      draggable="false"
-      onClick={(e) => {
-        e.stopPropagation();
-      }}
+}) => {
+  let image;
+  if (item.thumbnail_url) {
+    image = (
+      <div className={`cardImgContainer ${style.cardImgContainer}`}>
+        <img className={`cardImg ${style.cardImg}`} src={item.thumbnail_url} alt={item.name} draggable="false" loading="lazy" />
+      </div>
+    );
+  } else {
+    image = (
+      <div className={`cardImgLostContainer ${style.cardImgLostContainer}`}>
+        <div className={`cardImgLost ${style.cardImgLost}`}>Sorry Photo lost</div>
+      </div>
+    );
+  }
+  return (
+    <div
+      className={`${style.card} ${style.relatedcards}`}
+      draggable="true"
+      id={`card${item.id}`}
+      onClick={compareHandler.bind(this, item)}
+      onKeyPress={compareHandler.bind(this, item)}
+      role="button"
+      tabIndex={0}
     >
-      <h3>{item.name}</h3>
-    </a>
-    <Price
-      originalPrice={item.default_price}
-      salePrice={item.sale_price}
-      css={priceCss}
-    />
-    <Rating
-      rating={item.average_ratings}
-      totalRatings={item.totalReviews}
-      id={item.id}
-    />
-  </div>
-);
+      <Favor
+        id={item.id}
+        wishList={wishList}
+        addToWishHandler={addToWishHandler}
+        dropWishHandler={dropWishHandler}
+      />
+      {image}
+      <a
+        className={`cardName ${style.cardName}`}
+        href={`/?product_id=${item.id}`}
+        draggable="false"
+        onClick={(e) => {
+          e.stopPropagation();
+        }}
+      >
+        <h3>{item.name}</h3>
+      </a>
+      <Price
+        originalPrice={item.default_price}
+        salePrice={item.sale_price}
+        css={priceCss}
+      />
+      <Rating
+        rating={item.average_ratings}
+        totalRatings={item.totalReviews}
+        id={item.id}
+      />
+    </div>
+  );
+};
 
 Card.propTypes = {
   item: propTypes.shape({
