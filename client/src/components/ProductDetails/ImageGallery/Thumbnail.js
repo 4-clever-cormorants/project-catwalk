@@ -1,6 +1,3 @@
-/* eslint-disable jsx-a11y/label-has-associated-control */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable jsx-a11y/no-static-element-interactions */
 import React from 'react';
 import PropTypes from 'prop-types';
 
@@ -14,6 +11,9 @@ const Thumbnail = ({
       <div
         className={css.thumbnail}
         onClick={onClick}
+        onKeyPress={onClick}
+        tabIndex={0}
+        role="button"
       >
         <img src={url} alt="thumbnailimage" id={thmbId} className={css.selected} />
       </div>
@@ -24,8 +24,11 @@ const Thumbnail = ({
       className={css.thumbnail}
       id={url}
       onClick={onClick}
+      onKeyPress={onClick}
+      tabIndex={0}
+      role="button"
     >
-      <img src={url} alt="thumbnailimage" id={thmbId} className={css.notSelected} />
+      <img src={url} alt="thumbnailimage" id={thmbId} className={css.notSelected} loading="lazy" />
     </div>
   );
 };

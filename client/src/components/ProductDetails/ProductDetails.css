@@ -5,9 +5,20 @@
   margin-right: auto;
 }
 
+::selection {
+  color: white;
+  background: rgb(49, 49, 49);
+}
+
 .productDetails {
   margin: 8px;
   display: grid;
   grid-template-columns: 7fr 4fr;
   grid-template-rows: 1fr 1fr 1fr;
+}
+
+.load {
+  position: relative;
+  top: 30%;
+  left: 50%;
 }

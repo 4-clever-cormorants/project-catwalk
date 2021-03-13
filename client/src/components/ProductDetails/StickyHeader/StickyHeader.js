@@ -34,7 +34,7 @@ class StickyHeader extends React.Component {
 
   render() {
     const {
-      sku, style, product, onMouseMove,
+      sku, style, product,
     } = this.props;
     const { show } = this.state;
     window.addEventListener('scroll', this.sticky);
@@ -43,7 +43,7 @@ class StickyHeader extends React.Component {
         <div id={css.sticky}>
           <div className={css.product}>
             <div className={css.image}>
-              <img src={`${style.photos[0].url}`} alt="" />
+              <img src={`${style.photos[0].url}`} alt="" loading="lazy" />
             </div>
             <div className={css.info}>
               <div className={css.name}>
@@ -68,7 +68,7 @@ class StickyHeader extends React.Component {
               </div>
             </div>
             <div className={css.addToBagButton}>
-              <AddToCart sku={sku} onMouseMove={onMouseMove} css={bag} />
+              <AddToCart sku={sku} css={bag} />
             </div>
           </div>
         </div>
@@ -78,10 +78,13 @@ class StickyHeader extends React.Component {
 }
 
 StickyHeader.propTypes = {
-  sku: PropTypes.number.isRequired,
+  sku: PropTypes.string,
   style: PropTypes.object.isRequired,
   product: PropTypes.object.isRequired,
-  onMouseMove: PropTypes.func.isRequired,
+};
+
+StickyHeader.defaultProps = {
+  sku: null,
 };
 
 export default StickyHeader;
