@@ -144,10 +144,16 @@ class AnswerForm extends React.Component {
       questionId,
     })
       .then(() => {
-        this.setState({ success: true });
+        this.setState({ success: true, submitError: false });
       })
       .catch((err) => {
         console.log(err);
+        const submitErrorMessage = ['Error submitting'];
+        this.setState({
+          success: false,
+          submitError: true,
+          errorMessages: submitErrorMessage,
+        });
       });
   }
 
@@ -186,7 +192,12 @@ class AnswerForm extends React.Component {
 
   photoInputs() {
     const photoInputArray = [];
-    const { photos, uploadButtonClicked, submitted } = this.state;
+    const {
+      photos,
+      uploadButtonClicked,
+      submitted,
+      success,
+    } = this.state;
     const { questionId } = this.props;
     for (let i = 0; i < 5; i += 1) {
       photoInputArray.push(
@@ -194,12 +205,13 @@ class AnswerForm extends React.Component {
           <input type="file" accept="image/*" ref={this.inputRefs[i]} className={style.file} key={`image-input-${i}`} id={`image-input-${i}-${questionId}`} onChange={(e) => this.handlePhotoChange(e, i)} />
           <button
             type="button"
-            className={`${!uploadButtonClicked && !submitted ? style.uploadPhoto : style.uploadPhotoDisabled} uploadPhoto`}
+            className={`${!uploadButtonClicked && !success ? style.uploadPhoto : style.uploadPhotoDisabled} uploadPhoto`}
             key={`image-button-${i}-${questionId}`}
             id={`image-button-${i}-${questionId}`}
             onClick={() => {
               this.inputRefs[i].current.click();
             }}
+            disabled={success}
           >
             {photos[i] ? <div className={`${style.uploadButtonText} uploadButtonText`}>{photos[i][0].name}</div> : 'UPLOAD PHOTO'}
           </button>
@@ -230,15 +242,17 @@ class AnswerForm extends React.Component {
     const bodyClass = bodyInvalid ? `${style.invalidField} answerField` : 'answerField';
     const nameClass = nameInvalid ? `${style.invalidField} answerNickname` : 'answerNickname';
     const emailClass = emailInvalid ? `${style.invalidField} answerEmail` : 'answerEmail';
-    const submitButtonClass = submitted ? style.submitButtonDisabled : style.submitButton;
+    let submitButtonClass = style.submitButton;
     let submitButtonText = 'SUBMIT';
     let submitIcon = '';
     if (submitted && !success && !submitError) {
       submitIcon = <i className="fa fa-spinner fa-pulse" />;
       submitButtonText = 'SUBMITTING';
+      submitButtonClass = style.submitButtonDisabled;
     } else if (submitted && success) {
       submitIcon = <i className="fa fa-check-circle" aria-hidden="true" />;
       submitButtonText = 'SUBMITTED';
+      submitButtonClass = style.submitButtonDisabled;
     }
     return (
       <div className={`${style.modal} ${addAnswerClicked ? style.modalShow : ''}`}>
@@ -279,7 +293,7 @@ class AnswerForm extends React.Component {
                 </div>
               </label>
               <div className={`${style.buttonContainer}`}>
-                <button type="button" className={`${submitButtonClass} submitAnswer`} onClick={this.handleSubmitAnswer.bind(this)} disabled={submitted}>
+                <button type="button" className={`${submitButtonClass} submitAnswer`} onClick={this.handleSubmitAnswer.bind(this)} disabled={success}>
                   {submitButtonText}
                   &nbsp;
                   {submitIcon}
