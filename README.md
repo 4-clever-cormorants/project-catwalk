@@ -27,7 +27,7 @@
 Best Practices - 94
 Accessibility - 93
 Test Coverage - 63%
-Performance - 76
+Performance - 77
 
 *Screenshots*
 
