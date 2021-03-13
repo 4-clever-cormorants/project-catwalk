@@ -1,72 +1,67 @@
 # project-catwalk
 
-1. Package Manager - Npm
-2. Dependencies - Axios + Webpack
-3. Version - ES6
-4. Linting - ESlint
+*Project Description*
+  Our frontend capstone project for Hack Reactor consists of an e-commerce site with Product Overview, Related Products, and Question & Answers modules. Stylistically, we took inspiration from Nordstrom, Adidas, and a webstie featured on dribbble.com. The project took us approximately three weeks to complete. During the first week, we planned out the technologies, structure, and git workflow of our application. During the second week, we built out the functionality using React and nodejs. Finally, we added styles using CSS to make our page shine.
+  
+  Product Overview - Sam 
+    - description
+    - challenges
+    - accomplishments
+
+
+  Related Products - Jeffrey
+  
+  
+  Questions & Answers - Ronny
+
+
+*Installation*
+1. copy the config.example.js, rename to config.js, add you github token
+2. add a .env file with: 
+4. Run the following commands
+   1. npm install
+   2. npm run react-pro
+   3. npm run server-dev
+
+*App Stats*
+1. Best Practices - 94
+2. Accessibility - 93
+3. Test Coverage - 63%
+4. Performance - 77
+
+*Screenshots*
+
+Product Overview
+
+Related Products
+
+Questions & Answers
+
+
+*Technologies Used*
+
+Package Manager - Npm
+Version - ES6
+Linting - ESlint
 
 Front-end
 1. Asset compilation + loading - Webpack + Nodemon + Axios
 2. Front-end MVC - React
 3. Data Store - React Hooks
-4. CSS Frameworks - Styled components and CSS
+4. CSS Frameworks - CSS modules and stylesheets
 
 Server
-1. MVC - ExpressJS
-2. Authentication - Passport FB
-3. Templating - None
-4. Axios
-5. 
-
-Database
-1. Primary DB - MongoDB + Mongoose
-2. Caching and Queuing - ???
+- ExpressJS + Axios
 
 Testing
-1. Frameworks and Libraries - Jest
-2. Code Coverage - Jest
-3. End-to-end testing - Puppeteer
-4. Cloud testing - ???
+ - Jest/Enzyme
+ - circleci
 
 Deployment 
-1. Containers and Swarms - Digital Ocean / Dockers
-2. One-click Deploy - AWS Elastic Beanstalk
-3. Continuous Integration - ???
+ - AWS
 
 Performance and Analytics 
-- New Relic
-- 
+- Chrome devtools Lighthouse
 
-Misc Stuff
-1. Email - Sendgrid
-2.File Uploads
-Filepicker.io
-3.Transcoding -Zencoder
-4. Static asset hosting - AWS S3
-5. CDN - AWS Cloudfront
-6. Notification - AWS SNS || Twilio
-
-**File Structure**
-
-E-commerce site
-- client
-  | - dist
-      | - styles.css
-      | - index.html
-      | - bundle.js
-  | - src
-      | - index.jsx (app)
-      | - components (add README file to each individual component)
-          | - Product Detail Page
-          | - Ratings & Reviews
-          | - Questions & Answers
-          | - Related Items & Comparison
-- server
-  | - server.js (api folder ?)
-- README.md (can link to the component READMEs)
-- .gitignore - (node_modules, API keys, the bundle)
-- config.js (put your github token here)
-- package.json
-- webpack.config.js
-
-
+Photo Uploads  
+- AWS S3
