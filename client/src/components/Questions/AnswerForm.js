@@ -120,7 +120,7 @@ class AnswerForm extends React.Component {
       })
       .catch((error) => {
         console.log(error);
-        this.setState({ uploadError: true, submitError: true });
+        this.setState({ uploadError: true, submitError: true, submitted: false });
       });
   }
 
@@ -249,7 +249,7 @@ class AnswerForm extends React.Component {
     let submitButtonClass = style.submitButton;
     let submitButtonText = 'SUBMIT';
     let submitIcon = '';
-    if (submitted && !success && !submitError) {
+    if (submitted) {
       submitIcon = <i className="fa fa-spinner fa-pulse" />;
       submitButtonText = 'SUBMITTING';
       submitButtonClass = style.submitButtonDisabled;
