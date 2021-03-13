@@ -52,6 +52,7 @@ class AnswerForm extends React.Component {
     this.setState({
       photos: newPhotos,
       uploadError: false,
+      unUploadedPhotos: false,
     });
   }
 
@@ -266,7 +267,23 @@ class AnswerForm extends React.Component {
                     {uploadButtonClicked ? <i className="fa fa-check-circle" aria-hidden="true" /> : ''}
                   </button>
                   {uploadError ? <div className={`${style.uploadError} uploadError`}>Error uploading photo</div> : ''}
-                  {unUploadedPhotos ? <div className={`${style.uploadError} unUploadedPhotos`}>Did you mean to upload the photos?</div> : ''}
+                  {unUploadedPhotos
+                    ? (
+                      <div className={`${style.uploadError} unUploadedPhotos`}>
+                        Did you mean to upload these photos?
+                        {photos.map((photo) => {
+                          if (photo !== undefined) {
+                            return (
+                              <p key={`${photo[0].name}`}>
+                                {photo[0].name}
+                                &nbsp;
+                              </p>
+                            );
+                          }
+                          return '';
+                        })}
+                      </div>
+                    ) : ''}
                 </div>
               </label>
               <div className={`${style.buttonContainer}`}>
