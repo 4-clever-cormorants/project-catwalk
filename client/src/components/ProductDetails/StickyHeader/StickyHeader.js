@@ -48,7 +48,7 @@ class StickyHeader extends React.Component {
                 {product.name}
               </div>
               <div className={css.category}>
-                {product.slogan}
+                {product.category}
               </div>
             </div>
           </div>
