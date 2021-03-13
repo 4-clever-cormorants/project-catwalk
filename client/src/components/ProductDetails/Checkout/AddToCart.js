@@ -3,12 +3,22 @@ import PropTypes from 'prop-types';
 
 import AddToBagButton from './AddToBagButton';
 
-// import css from './Checkout.css';
-
-const AddToCart = ({ onMouseMove, css }) => {
+const AddToCart = ({ sku, onMouseMove, css }) => {
   const [added, add] = React.useState(false);
   return (
-    <div role="button" className={css.addToCart} id="addToCart" onMouseMove={onMouseMove} onClick={() => { add(true); }} onKeyPress={() => {}} tabIndex={0}>
+    <div
+      role="button"
+      className={css.addToCart}
+      id="addToCart"
+      onMouseMove={onMouseMove}
+      onClick={() => {
+        if (sku !== null) {
+          add(true);
+        }
+      }}
+      onKeyPress={() => {}}
+      tabIndex={0}
+    >
       {added ? (
         <button type="submit" value="addToBag" className={css.addToCartButton}>
           <span className="fa fa-shopping-bag" />
@@ -23,10 +33,8 @@ const AddToCart = ({ onMouseMove, css }) => {
 };
 
 AddToCart.propTypes = {
+  sku: PropTypes.string.isRequired,
   css: PropTypes.objectOf(PropTypes.string).isRequired,
-};
-
-AddToCart.propTypes = {
   onMouseMove: PropTypes.func.isRequired,
 };
 

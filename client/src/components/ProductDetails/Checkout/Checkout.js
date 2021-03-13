@@ -22,7 +22,7 @@ const Checkout = ({
         <SizeSelector skus={skus} onChange={skuSelector} />
         <QtySelector qty={qty} />
         <div className={css.addToCartContainer}>
-          <AddToCart onMouseMove={onMouseMove} css={css} />
+          <AddToCart sku={sku} onMouseMove={onMouseMove} css={css} />
         </div>
         <AddToWishList productId={productId} />
       </form>
