@@ -199,7 +199,9 @@ class ProductDetails extends React.Component {
             sku={sku}
             onMouseMove={ProductDetails.onMouseMove}
           />
-        ) : ''}
+        ) : (
+          <i className={`${css.load} fa fa-spinner fa-pulse fa-2x`} />
+        )}
       </div>
     );
   }
