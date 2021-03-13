@@ -33,9 +33,13 @@ const AddToCart = ({ sku, onMouseMove, css }) => {
 };
 
 AddToCart.propTypes = {
-  sku: PropTypes.string.isRequired,
+  sku: PropTypes.string,
   css: PropTypes.objectOf(PropTypes.string).isRequired,
   onMouseMove: PropTypes.func.isRequired,
+};
+
+AddToCart.defaultProps = {
+  sku: null,
 };
 
 export default AddToCart;

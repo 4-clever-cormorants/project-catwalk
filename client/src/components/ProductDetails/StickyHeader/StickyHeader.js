@@ -78,10 +78,14 @@ class StickyHeader extends React.Component {
 }
 
 StickyHeader.propTypes = {
-  sku: PropTypes.number.isRequired,
+  sku: PropTypes.number,
   style: PropTypes.object.isRequired,
   product: PropTypes.object.isRequired,
   onMouseMove: PropTypes.func.isRequired,
+};
+
+StickyHeader.defaultProps = {
+  sku: null,
 };
 
 export default StickyHeader;
