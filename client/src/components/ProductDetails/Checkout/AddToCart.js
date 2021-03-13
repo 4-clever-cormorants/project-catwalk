@@ -30,10 +30,12 @@ class AddToCart extends React.Component {
       document.getElementById('bagMessage').innerHTML = '';
     } else {
       document.getElementById('bagMessage').innerHTML = 'Select a size and quantity';
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth',
-      });
+      if (window.scrollY > 800) {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth',
+        });
+      }
     }
   }
 
