@@ -196,7 +196,7 @@ class ProductDetails extends React.Component {
           <StickyHeader
             product={product}
             style={style}
-            SKU={sku}
+            sku={sku}
             onMouseMove={ProductDetails.onMouseMove}
           />
         ) : ''}
