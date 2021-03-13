@@ -120,7 +120,7 @@ class AnswerForm extends React.Component {
       })
       .catch((error) => {
         console.log(error);
-        this.setState({ uploadError: true });
+        this.setState({ uploadError: true, submitError: true });
       });
   }
 
