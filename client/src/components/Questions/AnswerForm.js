@@ -207,7 +207,7 @@ class AnswerForm extends React.Component {
               this.inputRefs[i].current.click();
             }}
           >
-            {photos[i] ? photos[i][0].name : 'UPLOAD PHOTO'}
+            {photos[i] ? <div className={`${style.uploadButtonText} uploadButtonText`}>{photos[i][0].name}</div> : 'UPLOAD PHOTO'}
           </button>
         </div>,
       );
