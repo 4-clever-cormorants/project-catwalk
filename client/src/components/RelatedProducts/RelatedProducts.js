@@ -9,6 +9,7 @@ import Next from './Next';
 import Prev from './Prev';
 import ScrollIndicator from './ScrollIndicator';
 import indicatorCss from './css/indicator.css';
+import cardCss from './css/card.css';
 import style from './css/relatedProducts.css';
 import dummy from './dummy_related';
 
@@ -160,7 +161,10 @@ class RelatedProducts extends React.Component {
     const { current, outfitList } = this.state;
     const checker = outfitList.filter((item) => item.id === current.id);
     if (checker.length === 0) {
-      axios.post(`/related/outfitList?product_id=${current.id}`);
+      axios.post(`/related/outfitList?product_id=${current.id}`).catch(() => {
+        const item = document.querySelector(`#outfitcard${current.id}`);
+        item.classList.add(cardCss.failed);
+      });
       this.setState({
         outfitList: [current, ...outfitList],
       });
@@ -172,7 +176,10 @@ class RelatedProducts extends React.Component {
     const checker = outfitList.filter((item) => item.id === id);
     const product = related.filter((item) => item.id === id);
     if (checker.length === 0) {
-      axios.post(`/related/outfitList?product_id=${id}`);
+      axios.post(`/related/outfitList?product_id=${id}`).catch(() => {
+        const item = document.querySelector(`#outfitcard${id}`);
+        item.classList.add(cardCss.failed);
+      });
       this.setState({
         outfitList: [...product, ...outfitList],
       },

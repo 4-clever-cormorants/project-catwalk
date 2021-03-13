@@ -120,7 +120,7 @@ describe('Test Button component', () => {
     const instance = wrapper.instance();
     const { id } = dummy.relatedProducts[0];
     const outfitList = wrapper.find('.outfitListWithAdd');
-    const drop = outfitList.find(`#card${id}`).find(Drop);
+    const drop = outfitList.find(`#outfitcard${id}`).find(Drop);
 
     const check = (target) => {
       for (let i = 0; i < instance.state.outfitList.length; i += 1) {
