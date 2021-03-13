@@ -249,13 +249,13 @@ class AnswerForm extends React.Component {
     let submitButtonClass = style.submitButton;
     let submitButtonText = 'SUBMIT';
     let submitIcon = '';
-    if (submitted) {
-      submitIcon = <i className="fa fa-spinner fa-pulse" />;
-      submitButtonText = 'SUBMITTING';
-      submitButtonClass = style.submitButtonDisabled;
-    } else if (submitted && success) {
+    if (submitted && success) {
       submitIcon = <i className="fa fa-check-circle" aria-hidden="true" />;
       submitButtonText = 'SUBMITTED';
+      submitButtonClass = style.submitButtonDisabled;
+    } else if (submitted) {
+      submitIcon = <i className="fa fa-spinner fa-pulse" />;
+      submitButtonText = 'SUBMITTING';
       submitButtonClass = style.submitButtonDisabled;
     }
     return (
