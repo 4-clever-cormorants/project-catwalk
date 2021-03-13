@@ -12,8 +12,8 @@ const Style = ({ style, onClick, defaultChecked }) => (
     tabIndex={0}
     role="button"
   >
-    <label htmlFor="radio">
-      <input id="radio" type="radio" name="style" className="styleRadio" defaultChecked={defaultChecked} />
+    <label>
+      <input type="radio" name="style" className="styleRadio" defaultChecked={defaultChecked} />
       <div className={css.imgContainer}>
         <img
           id="styleSelectorImg"
