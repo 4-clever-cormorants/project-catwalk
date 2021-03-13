@@ -40,7 +40,7 @@ const requestData = (productId) => Promise.all([
   requestProductStyle(productId),
   requestProductReviewsMeta(productId),
 ]).then((results) => {
-  const urlOrigin = urlModule.parse(results[1].data.results[0].photos[0].url, true, true);
+  const urlOrigin = urlModule.parse(results[1].data.results[0].photos[0].url || '', true, true);
   urlOrigin.search = '';
   urlOrigin.query.w = '450';
   const urlFit = urlModule.format(urlOrigin);
