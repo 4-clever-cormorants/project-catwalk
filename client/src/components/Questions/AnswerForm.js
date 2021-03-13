@@ -234,6 +234,7 @@ class AnswerForm extends React.Component {
     const {
       errorMessages,
       submitError,
+      submitErrorMessage,
       submitted,
       success,
       uploadError,
@@ -302,7 +303,13 @@ class AnswerForm extends React.Component {
                   {submitIcon}
                 </button>
               </div>
-              {submitError ? <div className={`${style.errorMessage} errorMessage`}>{`You must enter the following: ${errorMessage}`}</div> : ''}
+              {submitError
+                ? (
+                  <div className={`${style.errorMessage} errorMessage`}>
+                    {submitErrorMessage}
+                    {`You must enter the following: ${errorMessage}`}
+                  </div>
+                ) : ''}
             </form>
           </div>
         </div>
