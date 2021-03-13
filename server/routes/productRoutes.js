@@ -1,5 +1,6 @@
 const productRoutes = require('express').Router();
 const axios = require('axios');
+const urlModule = require('url');
 const config = require('../../config.js');
 
 const url = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/';
@@ -25,6 +26,17 @@ productRoutes.get('/styles', (req, res) => {
   axios
     .get(`${url}products/${req.query.product_id}/styles`, headers)
     .then((styles) => {
+      styles.data.results.forEach((style) => {
+        style.photos.forEach((photo) => {
+          const urlOrigin = urlModule.parse(photo.url, true, true);
+          urlOrigin.search = '';
+          urlOrigin.query.w = '600';
+          urlModule.format(urlOrigin);
+          const urlFit = urlModule.format(urlOrigin);
+          photo.url = urlFit;
+        });
+      });
+      console.log(styles.data.results[0].photos);
       res.send(styles.data);
     })
     .catch((err) => {
