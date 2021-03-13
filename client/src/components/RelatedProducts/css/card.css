@@ -27,6 +27,10 @@
   transition: transform .5s ease;
 }
 
+.cardImg:hover {
+  transform: scale(1.2);
+}
+
 .cardName {
   display: block;
   width: fit-content;
@@ -38,11 +42,15 @@
   font-family: 'Playfair Display';
 }
 
-.cardImg:hover {
-  transform: scale(1.2);
+.cardName:hover {
+  text-decoration: underline;
 }
 
-.card:hover {
+.relatedcards:hover {
   box-shadow: 2px 2px 5px rgb(0 0 0 / 50%);
   cursor: pointer;
+}
+
+.outfitcards:hover {
+  box-shadow: 2px 2px 5px rgb(0 0 0 / 50%);
 }
