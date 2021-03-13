@@ -31,7 +31,7 @@
 
 .form {
   position:fixed;
-  top:50%;
+  top: calc(50% + 36px);
   left:50%;
   width: 500px;
   height: fit-content;
