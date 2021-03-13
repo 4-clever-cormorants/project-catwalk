@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const axios = require('axios');
+const urlModule = require('url');
 const config = require('../../config.js');
 const outfitList = require('../models/outfitList');
 
@@ -39,9 +40,13 @@ const requestData = (productId) => Promise.all([
   requestProductStyle(productId),
   requestProductReviewsMeta(productId),
 ]).then((results) => {
+  const urlOrigin = urlModule.parse(results[1].data.results[0].photos[0].url, true, true);
+  urlOrigin.search = '';
+  urlOrigin.query.w = '450';
+  const urlFit = urlModule.format(urlOrigin);
   const productInfo = results[0].data;
   productInfo.sale_price = results[1].data.results[0].sale_price;
-  productInfo.thumbnail_url = results[1].data.results[0].photos[0].url;
+  productInfo.thumbnail_url = urlFit;
   const ratingCal = average(results[2].data.ratings);
   productInfo.average_ratings = ratingCal.average_ratings;
   productInfo.totalReviews = ratingCal.totalReviews;
