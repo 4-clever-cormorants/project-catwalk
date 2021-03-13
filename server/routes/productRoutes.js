@@ -31,7 +31,6 @@ productRoutes.get('/styles', (req, res) => {
           const urlOrigin = urlModule.parse(photo.url, true, true);
           urlOrigin.search = '';
           urlOrigin.query.w = '600';
-          urlModule.format(urlOrigin);
           const urlFit = urlModule.format(urlOrigin);
           photo.url = urlFit;
         });
