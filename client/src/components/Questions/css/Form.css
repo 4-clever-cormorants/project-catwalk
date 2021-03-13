@@ -1,11 +1,3 @@
-/* .Form {
-  background-color: #f2ebe0;
-} */
-
-/* .modal {
-  transition: opacity 400ms ease-in;
-} */
-
 .modal {
   visibility: hidden;
   opacity: 0;
@@ -35,8 +27,6 @@
   left:50%;
   width: 500px;
   height: fit-content;
-  /* border-radius: 20px; */
-  /* background-color: ivory; */
   background-color: white;
   z-index: 110;
   padding: 20px;
@@ -123,9 +113,6 @@
 }
 
 .form input[type=file] {
-  /* height: 46px; */
-  /* resize: none; */
-  /* margin-bottom: 6px; */
   width: 1px !important;
   height: 1px !important;
   z-index: 0;
@@ -133,13 +120,6 @@
   border: none;
 }
 
-/* input[type="file"]::-webkit-file-upload-button{
-  height:40px;
-} */
-
-/* .fileInput {
-  height: 26px;
-} */
 
 .file {
   opacity: 0;
@@ -161,11 +141,6 @@
 .invalidField {
   border: 1px solid crimson !important;
 }
-
-/* .photoUploadContainer {
-  display: grid;
-  grid-template-columns: 1fr 20%;
-} */
 
 .submitButton,
 .submitButtonDisabled,
@@ -203,13 +178,6 @@
   margin: 6px auto;
 }
 
-/* .uploadPhoto {
-  display: block;
-  height: 46px;
-  margin-top: 6px;
-  padding: 0px;
-} */
-
 .submitButton:hover {
   cursor: pointer;
   background: white;
@@ -244,5 +212,4 @@
 .fieldDescription {
   margin-top: -10px;
   color: #555;
-  /* text-align: center; */
 }

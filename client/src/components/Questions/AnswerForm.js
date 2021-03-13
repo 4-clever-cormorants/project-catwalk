@@ -65,7 +65,11 @@ class AnswerForm extends React.Component {
       const { errorMessages } = this.state;
       if (errorMessages.length === 0) {
         const { photos } = this.state;
-        if (photos.length !== 0) {
+        let undefinedCount = 0;
+        for (let i = 0; i < photos.length; i += 1) {
+          undefinedCount += 1;
+        }
+        if (photos.length !== 0 && photos.length !== undefinedCount) {
           this.handleSubmitPhoto(() => {
             this.setState({ submitError: false, submitted: true }, () => {
               this.postAnswer();
@@ -192,11 +196,12 @@ class AnswerForm extends React.Component {
     const { questionId } = this.props;
     for (let i = 0; i < 5; i += 1) {
       photoInputArray.push(
-        <div className={`${style.fileInput} fileInput`} hidden={photos.length < i}>
+        <div className={`${style.fileInput} fileInput`} key={`fileInput-${i}-${questionId}`} hidden={photos.length < i}>
           <input type="file" accept="image/*" ref={this.inputRefs[i]} className={style.file} key={`image-input-${i}`} id={`image-input-${i}-${questionId}`} onChange={(e) => this.handlePhotoChange(e, i)} />
           <button
             type="button"
             className={`${!uploadButtonClicked ? style.uploadPhoto : style.uploadPhotoDisabled} uploadPhoto`}
+            key={`image-button-${i}-${questionId}`}
             id={`image-button-${i}-${questionId}`}
             onClick={() => {
               this.inputRefs[i].current.click();
