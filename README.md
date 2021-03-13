@@ -24,10 +24,10 @@
   - npm run server-dev
 
 *App Stats*
-Best Practices - 100
-Accessibility - 83
+Best Practices - 94
+Accessibility - 93
 Test Coverage - 63%
-Performance - 
+Performance - 76
 
 *Screenshots*
 
