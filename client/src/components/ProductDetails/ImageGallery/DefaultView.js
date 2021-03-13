@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/control-has-associated-label */
 import React from 'react';
 import PropTypes from 'prop-types';
 
@@ -30,7 +29,7 @@ class DefaultView extends React.Component {
       <div id="defaultView" className={css.DV}>
         <div id="scrollLeft" className={css.left}>
           {id > 0 ? (
-            <button id="defaultViewLeftButton" type="button" onClick={leftClick} onKeyPress={leftClick} className="fa fa-chevron-left" />
+            <button id="defaultViewLeftButton" type="button" onClick={leftClick} onKeyPress={leftClick} className="fa fa-chevron-left" aria-label="button" />
           ) : ''}
         </div>
         <div
@@ -50,7 +49,7 @@ class DefaultView extends React.Component {
         </div>
         <div className={css.right}>
           {id < max - 1 ? (
-            <button id="defaultViewRightButton" type="button" onClick={rightClick} onKeyPress={rightClick} className="fa fa-chevron-right" />
+            <button id="defaultViewRightButton" type="button" onClick={rightClick} onKeyPress={rightClick} className="fa fa-chevron-right" aria-label="button" />
           ) : ''}
         </div>
         <DefaultViewModal url={url} imageClicked={clicked} exitModal={this.exitModal} />
