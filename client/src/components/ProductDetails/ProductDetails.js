@@ -193,7 +193,12 @@ class ProductDetails extends React.Component {
           </div>
         ) : ''}
         {load ? (
-          <StickyHeader product={product} style={style} onMouseMove={ProductDetails.onMouseMove} />
+          <StickyHeader
+            product={product}
+            style={style}
+            SKU={sku}
+            onMouseMove={ProductDetails.onMouseMove}
+          />
         ) : ''}
       </div>
     );
