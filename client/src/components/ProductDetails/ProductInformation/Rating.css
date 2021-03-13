@@ -76,6 +76,10 @@
   font-size: 18px;
 }
 
+.arrow:hover {
+  color: black;
+}
+
 .arrow:focus {
   outline: 0;
 }

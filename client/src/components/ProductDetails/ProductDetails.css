@@ -5,6 +5,11 @@
   margin-right: auto;
 }
 
+::selection {
+  color: white;
+  background: rgb(49, 49, 49);
+}
+
 .productDetails {
   margin: 8px;
   display: grid;
