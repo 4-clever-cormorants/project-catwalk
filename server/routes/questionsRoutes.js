@@ -138,6 +138,9 @@ const uploadPhoto = async (path, name) => {
   const buffer = fs.readFileSync(path);
   const distinctName = `${name}-${pathModule.parse(path).name}`;
   const type = await fileType.fromBuffer(buffer);
+  // add type validation here
+  // allow only .tiff, .pjp, .jfif, .gif, .svg, .bmp, .png, .jpeg,
+  // .svgz, .jpg, .webp, .ico, .xbm, .dib, .tif, .pjpeg, .avif
   const params = {
     ACL: 'public-read',
     Body: buffer,
@@ -148,13 +151,16 @@ const uploadPhoto = async (path, name) => {
   return s3.upload(params).promise();
 };
 
-router.post('/test-upload', (req, res) => {
+router.post('/upload', (req, res) => {
   const form = new multiparty.Form();
   form.parse(req, async (error, fields, files) => {
     if (error) {
       return res.status(500).send(error);
     }
     const promises = [];
+    if (files.file === undefined) {
+      return res.status(500).send('No files sent');
+    }
     for (let i = 0; i < files.file.length; i += 1) {
       try {
         const { path } = files.file[i];

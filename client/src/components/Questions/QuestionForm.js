@@ -14,6 +14,7 @@ class QuestionForm extends React.Component {
       errorMessages: [],
       submitError: false,
       submitted: false,
+      success: false,
       bodyInvalid: false,
       nameInvalid: false,
       emailInvalid: false,
@@ -59,9 +60,18 @@ class QuestionForm extends React.Component {
       name: nickname,
       email,
     })
-      .then(() => {})
+      .then(() => {
+        this.setState({ success: true, submitError: false });
+      })
       .catch((err) => {
         console.log(err);
+        const submitErrorMessage = ['Error submitting'];
+        this.setState({
+          success: false,
+          submitted: false,
+          submitError: true,
+          errorMessages: submitErrorMessage,
+        });
       });
   }
 
@@ -104,6 +114,7 @@ class QuestionForm extends React.Component {
       errorMessages,
       submitError,
       submitted,
+      success,
       bodyInvalid,
       nameInvalid,
       emailInvalid,
@@ -112,8 +123,18 @@ class QuestionForm extends React.Component {
     const bodyClass = bodyInvalid ? `${style.invalidField} questionField` : 'questionField';
     const nameClass = nameInvalid ? `${style.invalidField} questionNickname` : 'questionNickname';
     const emailClass = emailInvalid ? `${style.invalidField} questionEmail` : 'questionEmail';
-    const submitButtonClass = submitted ? style.submitButtonDisabled : style.submitButton;
-    const submitButtonText = submitted ? 'SUBMITTED' : 'SUBMIT';
+    let submitButtonClass = style.submitButton;
+    let submitButtonText = 'SUBMIT';
+    let submitIcon = '';
+    if (submitted && !success && !submitError) {
+      submitIcon = <i className="fa fa-spinner fa-pulse" />;
+      submitButtonText = 'SUBMITTING';
+      submitButtonClass = style.submitButtonDisabled;
+    } else if (submitted && success) {
+      submitIcon = <i className="fa fa-check-circle" aria-hidden="true" />;
+      submitButtonText = 'SUBMITTED';
+      submitButtonClass = style.submitButtonDisabled;
+    }
     return (
       <div className={`${style.modal} ${addQuestionClicked ? style.modalShow : ''}`}>
         <div className={style.blocker} onClick={exitQuestionForm} />
@@ -146,10 +167,10 @@ class QuestionForm extends React.Component {
                 </p>
               </label>
               <div className={`${style.buttonContainer}`}>
-                <button type="button" id="submitQuestion" className={submitButtonClass} onClick={this.handleSubmitAnswer.bind(this)} disabled={submitted}>
+                <button type="button" id="submitQuestion" className={submitButtonClass} onClick={this.handleSubmitAnswer.bind(this)} disabled={success}>
                   {submitButtonText}
                   &nbsp;
-                  {submitted ? <i className="fa fa-check-circle" aria-hidden="true" /> : ''}
+                  {submitIcon}
                 </button>
               </div>
               {submitError ? <div className={`${style.errorMessage} errorMessage`}>{`You must enter the following: ${errorMessage}`}</div> : ''}

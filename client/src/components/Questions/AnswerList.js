@@ -10,14 +10,17 @@ class AnswerList extends React.Component {
     this.state = {
       answersOnScreen: answers.slice(0, 2),
       loadAll: false,
+      loading: false,
     };
   }
 
   loadMoreAnswers() {
     const { updateAnswers } = this.props;
-    updateAnswers(() => {
-      const { answers } = this.props;
-      this.setState({ answersOnScreen: answers, loadAll: true });
+    this.setState({ loading: true }, () => {
+      updateAnswers(() => {
+        const { answers } = this.props;
+        this.setState({ answersOnScreen: answers, loadAll: true, loading: false });
+      });
     });
   }
 
@@ -28,12 +31,13 @@ class AnswerList extends React.Component {
 
   render() {
     const { answers } = this.props;
-    const { answersOnScreen, loadAll } = this.state;
+    const { answersOnScreen, loadAll, loading } = this.state;
     const expandAnswersText = !loadAll
       ? (
         <span>
           SEE MORE ANSWERS
           <i className="fa fa-plus" aria-hidden="true" />
+          {loading ? ' Loading...' : ''}
         </span>
       )
       : (
