@@ -25,7 +25,7 @@ const Thumbnail = ({
       id={url}
       onClick={onClick}
     >
-      <img src={url} alt="thumbnailimage" id={thmbId} className={css.notSelected} />
+      <img src={url} alt="thumbnailimage" id={thmbId} className={css.notSelected} loading="lazy" />
     </div>
   );
 };

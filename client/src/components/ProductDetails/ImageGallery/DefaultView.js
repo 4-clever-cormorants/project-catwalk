@@ -46,7 +46,7 @@ class DefaultView extends React.Component {
           role="button"
           tabIndex={0}
         >
-          <img id="defaultImage" src={url} alt="" />
+          <img id="defaultImage" src={url} alt="" loading="lazy" />
         </div>
         <div className={css.right}>
           {id < max - 1 ? (

@@ -43,7 +43,7 @@ class StickyHeader extends React.Component {
         <div id={css.sticky}>
           <div className={css.product}>
             <div className={css.image}>
-              <img src={`${style.photos[0].url}`} alt="" />
+              <img src={`${style.photos[0].url}`} alt="" loading="lazy" />
             </div>
             <div className={css.info}>
               <div className={css.name}>

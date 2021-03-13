@@ -21,6 +21,7 @@ const Style = ({ style, onClick, defaultChecked }) => (
           src={style.photos[0].url}
           alt=""
           className={style.style_id}
+          loading="lazy"
         />
         <div className={css.middle}>
           <span className={`${css.check} fa fa-check-circle`} />
