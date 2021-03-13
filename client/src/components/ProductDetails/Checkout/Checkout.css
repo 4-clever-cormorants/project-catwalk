@@ -40,7 +40,7 @@
 }
 
 .addToCartContainer {
-  overflow:hidden;
+  overflow: hidden;
   display: flex;
   overflow-x: auto;
 }
