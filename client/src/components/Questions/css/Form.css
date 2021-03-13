@@ -124,8 +124,30 @@
 
 .form input[type=file] {
   /* height: 46px; */
-  resize: none;
-  margin-bottom: 6px;
+  /* resize: none; */
+  /* margin-bottom: 6px; */
+  width: 1px !important;
+  height: 1px !important;
+  z-index: 0;
+  padding: 0;
+  border: none;
+}
+
+/* input[type="file"]::-webkit-file-upload-button{
+  height:40px;
+} */
+
+/* .fileInput {
+  height: 26px;
+} */
+
+.file {
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+  max-width: 100%;
+  margin-bottom: 6px !important;
+  position: absolute;
 }
 
 .form input::placeholder {
@@ -165,6 +187,7 @@
   background: white;
   border: 1px solid black;
   color: black;
+  z-index: 1;
 }
 
 .exitButton,
@@ -177,7 +200,7 @@
 
 .uploadPhoto,
 .uploadPhotoDisabled {
-  margin-bottom: 16px;
+  margin: 6px auto;
 }
 
 /* .uploadPhoto {

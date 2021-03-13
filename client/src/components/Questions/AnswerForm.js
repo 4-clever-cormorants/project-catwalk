@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { createRef } from 'react';
 import PropTypes from 'prop-types';
 import style from './css/Form.css';
 
@@ -23,6 +23,10 @@ class AnswerForm extends React.Component {
       nameInvalid: false,
       emailInvalid: false,
     };
+    this.inputRefs = [];
+    for (let i = 0; i < 5; i += 1) {
+      this.inputRefs.push(createRef(null));
+    }
   }
 
   handleAnswerChange(e) {
@@ -182,10 +186,38 @@ class AnswerForm extends React.Component {
     }, callback);
   }
 
+  photoInputs() {
+    const photoInputArray = [];
+    const { photos, uploadButtonClicked } = this.state;
+    const { questionId } = this.props;
+    for (let i = 0; i < 5; i += 1) {
+      photoInputArray.push(
+        <div className={`${style.fileInput} fileInput`} hidden={photos.length < i}>
+          <input type="file" accept="image/*" ref={this.inputRefs[i]} className={style.file} key={`image-input-${i}`} id={`image-input-${i}-${questionId}`} onChange={(e) => this.handlePhotoChange(e, i)} />
+          <button
+            type="button"
+            className={`${!uploadButtonClicked ? style.uploadPhoto : style.uploadPhotoDisabled} uploadPhoto`}
+            id={`image-button-${i}-${questionId}`}
+            onClick={() => {
+              this.inputRefs[i].current.click();
+            }}
+          >
+            {photos[i] ? photos[i][0].name : 'UPLOAD PHOTO'}
+          </button>
+        </div>,
+      );
+      if (photos[i]) {
+        console.log(photos[i]);
+      }
+    }
+    return photoInputArray.map((inputs) => inputs);
+  }
+
   render() {
     const {
       exitAnswerForm,
       questionBody,
+      questionId,
       productName,
       addAnswerClicked,
     } = this.props;
@@ -207,10 +239,6 @@ class AnswerForm extends React.Component {
     const emailClass = emailInvalid ? `${style.invalidField} answerEmail` : 'answerEmail';
     const submitButtonClass = submitted ? style.submitButtonDisabled : style.submitButton;
     const submitButtonText = submitted ? 'SUBMITTED' : 'SUBMIT';
-    const photoInputArray = [];
-    for (let i = 0; i < 5; i += 1) {
-      photoInputArray.push(<input type="file" accept="image/*" key={`image-input-${i}`} onChange={(e) => this.handlePhotoChange(e, i)} hidden={photos.length < i} />);
-    }
     return (
       <div className={`${style.modal} ${addAnswerClicked ? style.modalShow : ''}`}>
         <div className={style.blocker} onClick={exitAnswerForm} />
@@ -245,7 +273,7 @@ class AnswerForm extends React.Component {
               <label htmlFor="photos">
                 Photos
                 <div className={style.photoUploadContainer}>
-                  {photoInputArray.map((inputs) => inputs)}
+                  {this.photoInputs()}
                   {/* <button
                     type="button"
                     className={`${!uploadButtonClicked ? style.uploadPhoto : style.uploadPhotoDisabled} uploadPhoto`}
