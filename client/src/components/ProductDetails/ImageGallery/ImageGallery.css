@@ -98,6 +98,10 @@ button:focus {
   padding-bottom: 10px;
 }
 
+.thumbnail:focus {
+  outline: none;
+}
+
 .imageGallery .thumbnailView .thumbnail .selected {
   border-bottom: 3px solid grey;
 }
