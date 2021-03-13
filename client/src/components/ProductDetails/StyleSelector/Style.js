@@ -1,7 +1,3 @@
-/* eslint-disable jsx-a11y/label-has-associated-control */
-/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
 import React from 'react';
 import PropTypes from 'prop-types';
 
@@ -12,6 +8,9 @@ const Style = ({ style, onClick, defaultChecked }) => (
     className={`${style.style_id} ${css.style}`}
     id={`a${style.style_id}`}
     onClick={onClick}
+    onKeyPress={onClick}
+    tabIndex={0}
+    role="button"
   >
     <label>
       <input type="radio" name="style" className="styleRadio" defaultChecked={defaultChecked} />
@@ -21,6 +20,7 @@ const Style = ({ style, onClick, defaultChecked }) => (
           src={style.photos[0].url}
           alt=""
           className={style.style_id}
+          loading="lazy"
         />
         <div className={css.middle}>
           <span className={`${css.check} fa fa-check-circle`} />

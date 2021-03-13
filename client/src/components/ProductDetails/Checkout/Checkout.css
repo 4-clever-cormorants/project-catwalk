@@ -47,11 +47,11 @@
 
 .addToCart {
   display: flex;
+  flex-direction: column;
   flex: 0 0 auto;
   position: relative;
   justify-content: center;
   align-items: center;
-  background-color: rgb(240, 240, 240);
   box-shadow: -2px 2px 5px rgb(0 0 0 / 15%);
 }
 
@@ -64,6 +64,12 @@
 
 .addToCart .addToCartButton .fa {
   background-color: white;
+}
+
+.addToCart .bagMessage {
+  color: rgb(226, 26, 0);
+  font-size: 12px;
+  font-family: 'Lato';
 }
 
 .addToWishList {
