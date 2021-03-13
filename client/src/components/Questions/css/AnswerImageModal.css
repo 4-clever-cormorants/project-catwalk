@@ -43,7 +43,7 @@
 .imageContent img {
   width: auto;
   max-height: calc(90vh - 36px);
-  max-width: 100%;
+  max-width: 90vw;
 }
 
 .imageContent img:before {
