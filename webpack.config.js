@@ -1,3 +1,4 @@
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const path = require('path');
 
 const SRC_DIR = path.join(__dirname, '/client/src');
@@ -25,5 +26,10 @@ module.exports = {
         loader: 'style-loader!css-loader?modules',
       },
     ],
+  },
+  optimization: {
+    minimizer: [new UglifyJsPlugin({
+      test: /\.m?js|jsx$/,
+    })],
   },
 };

@@ -28,6 +28,16 @@ class AnswerForm extends React.Component {
     for (let i = 0; i < 5; i += 1) {
       this.inputRefs.push(createRef(null));
     }
+    this.escFunction = this.escFunction.bind(this);
+    this.resetForm = this.resetForm.bind(this);
+  }
+
+  componentDidMount() {
+    document.addEventListener('keydown', this.escFunction, false);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('keydown', this.escFunction, false);
   }
 
   handleAnswerChange(e) {
@@ -96,7 +106,6 @@ class AnswerForm extends React.Component {
       }
     }
     if (!hasFormData) {
-      console.log('no photos yet');
       this.setState({ uploadError: true });
       return;
     }
@@ -106,10 +115,8 @@ class AnswerForm extends React.Component {
       },
     })
       .then((response) => {
-        console.log(response);
         const newPhotoUrls = [];
         for (let i = 0; i < response.data.length; i += 1) {
-          console.log(response.data[i].Location);
           newPhotoUrls[i] = response.data[i].Location;
         }
         this.setState({
@@ -122,6 +129,15 @@ class AnswerForm extends React.Component {
         console.log(error);
         this.setState({ uploadError: true, submitError: true, submitted: false });
       });
+  }
+
+  escFunction(event) {
+    if (event.keyCode === 27) {
+      const { success } = this.state;
+      if (success) {
+        this.resetForm();
+      }
+    }
   }
 
   isValidEmail() {
@@ -198,7 +214,6 @@ class AnswerForm extends React.Component {
     const {
       photos,
       uploadButtonClicked,
-      submitted,
       success,
     } = this.state;
     const { questionId } = this.props;
@@ -224,6 +239,28 @@ class AnswerForm extends React.Component {
     return photoInputArray.map((inputs) => inputs);
   }
 
+  resetForm() {
+    setTimeout(() => {
+      this.setState({
+        answerBody: '',
+        nickname: '',
+        email: '',
+        photos: [],
+        photoUrls: [],
+        uploadButtonClicked: false,
+        uploadError: false,
+        errorMessages: [],
+        submitError: false,
+        submitErrorMessage: '',
+        submitted: false,
+        success: false,
+        bodyInvalid: false,
+        nameInvalid: false,
+        emailInvalid: false,
+      });
+    }, 400);
+  }
+
   render() {
     const {
       exitAnswerForm,
@@ -232,6 +269,9 @@ class AnswerForm extends React.Component {
       addAnswerClicked,
     } = this.props;
     const {
+      answerBody,
+      nickname,
+      email,
       errorMessages,
       submitError,
       submitErrorMessage,
@@ -260,31 +300,49 @@ class AnswerForm extends React.Component {
     }
     return (
       <div className={`${style.modal} ${addAnswerClicked ? style.modalShow : ''}`}>
-        <div className={style.blocker} onClick={exitAnswerForm} />
+        <div
+          className={style.blocker}
+          onClick={() => {
+            if (success) {
+              this.resetForm();
+            }
+            exitAnswerForm();
+          }} />
         <div className={`${style.form} answerForm`}>
           <div className={`${style.formHeader} answerFormHeader`}>
             <div className={`${style.formTitle} answerFormTitle`}>
               <h3>Submit your Answer</h3>
               <h4 className={`${style.formSubTitle} answerFormSubTitle`}>{`${productName}: ${questionBody}`}</h4>
             </div>
-            <button type="button" className={`${style.exitButton} exitButton`} onClick={exitAnswerForm}><span>X</span></button>
+            <button
+              type="button"
+              className={`${style.exitButton} exitButton`}
+              onClick={() => {
+                if (success) {
+                  this.resetForm();
+                }
+                exitAnswerForm();
+              }}
+            >
+              <span>X</span>
+            </button>
           </div>
           <div className={`${style.formContent} answerFormContent`}>
             <form>
               <label htmlFor="answer">
                 Answer *
-                <textarea className={bodyClass} name="answerField" maxLength="1000" onChange={(e) => this.handleAnswerChange(e)} required />
+                <textarea className={bodyClass} value={answerBody} name="answerField" maxLength="1000" onChange={(e) => this.handleAnswerChange(e)} required />
               </label>
               <label htmlFor="nickname">
                 Nickname *
-                <input type="text" className={nameClass} placeholder="Example: jack543!" maxLength="60" onChange={(e) => this.handleNicknameChange(e)} required />
+                <input type="text" value={nickname} className={nameClass} placeholder="Example: jack543!" maxLength="60" onChange={(e) => this.handleNicknameChange(e)} required />
                 <p className={style.fieldDescription}>
                   For privacy reasons, do not use your full name or email address
                 </p>
               </label>
               <label htmlFor="email">
                 Email *
-                <input type="email" className={emailClass} placeholder="Example: jack@email.com" maxLength="60" onChange={(e) => this.handleEmailChange(e)} required />
+                <input type="email" value={email} className={emailClass} placeholder="Example: jack@email.com" maxLength="60" onChange={(e) => this.handleEmailChange(e)} required />
                 <p className={style.fieldDescription}>
                   For authentication reasons, you will not be emailed
                 </p>
