@@ -22,7 +22,7 @@ const CardOutfit = ({ item, dropHandler }) => {
     );
   }
   return (
-    <div className={`${style.card} ${style.outfitcards}`} id={`card${item.id}`}>
+    <div className={`${style.card} ${style.outfitcards}`} id={`outfitcard${item.id}`}>
       <Drop id={item.id} dropHandler={dropHandler} />
       {image}
       <a
