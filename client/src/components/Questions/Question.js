@@ -123,7 +123,7 @@ class Question extends React.Component {
       <div className={style.questionDefault}>
         <div className={style.questionContent}>
           <div className={style.questionText}>
-            <p>Q: &nbsp;</p>
+            <p>Q:&nbsp;</p>
             <p>{question.question_body}</p>
           </div>
           <div className={style.questionFooter}>
@@ -143,7 +143,7 @@ class Question extends React.Component {
           productName={productName}
           addAnswerClicked={addAnswerClicked}
         />
-        {loadAnswers ? <AnswerList answers={answers} updateAnswers={this.updateAnswers} /> : ''}
+        {loadAnswers ? <AnswerList answers={answers} updateAnswers={this.updateAnswers} /> : <i className="fa fa-spinner fa-pulse fa-2x" />}
       </div>
     );
   }

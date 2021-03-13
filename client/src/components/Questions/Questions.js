@@ -134,7 +134,7 @@ class Questions extends React.Component {
       hideButton,
       loadQuestions,
     } = this.state;
-    let contentToRender = '';
+    let contentToRender = <i className="fa fa-spinner fa-pulse fa-2x" />;
     if (noSearchResults) {
       contentToRender = <div className={style.noMatch}>{`No matching results for '${searchTerm}'!`}</div>;
     } else if (loadQuestions) {

@@ -10,9 +10,6 @@ const AnswerImageModal = ({ url, exitModal, imageClicked }) => (
     <div className={`${style.imageModal} imageModal`}>
       <div className={`${style.imageContent} imageContent`}>
         <button className={`${style.exitButton}`} type="button" onClick={exitModal}>
-          {/* <div className={`${style.exitButtonDiv}`}>
-            <i className="fa fa-times" aria-hidden="true" />
-          </div> */}
           <div className={`${style.exitButtonDiv}`}>
             <span>X</span>
           </div>
