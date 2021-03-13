@@ -36,7 +36,6 @@ productRoutes.get('/styles', (req, res) => {
           photo.url = urlFit;
         });
       });
-      console.log(styles.data.results[0].photos);
       res.send(styles.data);
     })
     .catch((err) => {
