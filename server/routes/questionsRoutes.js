@@ -148,7 +148,7 @@ const uploadPhoto = async (path, name) => {
   return s3.upload(params).promise();
 };
 
-router.post('/test-upload', (req, res) => {
+router.post('/upload', (req, res) => {
   const form = new multiparty.Form();
   form.parse(req, async (error, fields, files) => {
     if (error) {

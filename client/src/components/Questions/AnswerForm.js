@@ -98,7 +98,7 @@ class AnswerForm extends React.Component {
       this.setState({ uploadError: true });
       return;
     }
-    axios.post('/qa/test-upload', formData, {
+    axios.post('/qa/upload', formData, {
       headers: {
         'Content-Type': 'multipart/form-data',
       },
