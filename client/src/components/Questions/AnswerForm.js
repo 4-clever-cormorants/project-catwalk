@@ -52,7 +52,7 @@ class AnswerForm extends React.Component {
     this.setState({
       photos: newPhotos,
       uploadError: false,
-      unUploadedPhotos: false,
+      // unUploadedPhotos: false,
     });
   }
 
@@ -60,22 +60,31 @@ class AnswerForm extends React.Component {
     this.validateForm(() => {
       const { errorMessages } = this.state;
       if (errorMessages.length === 0) {
-        this.setState({ submitError: false, submitted: true }, () => {
-          this.postAnswer();
-        });
+        const { photos } = this.state;
+        if (photos.length !== 0) {
+          this.handleSubmitPhoto(() => {
+            this.setState({ submitError: false, submitted: true }, () => {
+              this.postAnswer();
+            });
+          });
+        } else {
+          this.setState({ submitError: false, submitted: true }, () => {
+            this.postAnswer();
+          });
+        }
       } else {
         this.setState({ submitError: true });
       }
     });
   }
 
-  handleSubmitPhoto() {
+  handleSubmitPhoto(callback) {
     const { photos } = this.state;
-    if (photos.length === 0) {
-      console.log('no photos yet');
-      this.setState({ uploadError: true });
-      return;
-    }
+    // if (photos.length === 0) {
+    //   console.log('no photos yet');
+    //   this.setState({ uploadError: true });
+    //   return;
+    // }
     const formData = new FormData();
     let hasFormData = false;
     for (let i = 0; i < photos.length; i += 1) {
@@ -101,7 +110,11 @@ class AnswerForm extends React.Component {
           console.log(response.data[i].Location);
           newPhotoUrls[i] = response.data[i].Location;
         }
-        this.setState({ photoUrls: newPhotoUrls, uploadButtonClicked: true, uploadError: false });
+        this.setState({
+          photoUrls: newPhotoUrls,
+          // uploadButtonClicked: true,
+          uploadError: false,
+        }, callback);
       })
       .catch((error) => {
         console.log(error);
@@ -115,11 +128,6 @@ class AnswerForm extends React.Component {
     return emailRegex.test(email);
   }
 
-  /*
-  ASK USER IF THEY WANNA SUBMIT WITH THE PHOTOS
-  IF THEY HAVE PHOTOS BUT NOT UPLOADED/NO URLS
-  DOUBLE CHECK, MAKE THEM CLICK TWICE
-  */
   postAnswer() {
     const {
       answerBody,
@@ -146,8 +154,6 @@ class AnswerForm extends React.Component {
       answerBody,
       nickname,
       email,
-      photos,
-      photoUrls,
     } = this.state;
     const errorMessages = [];
     let bodyInvalid = false;
@@ -167,23 +173,6 @@ class AnswerForm extends React.Component {
     } else if (!this.isValidEmail()) {
       errorMessages.push('The email address provided is not in correct email format');
       emailInvalid = true;
-    }
-    const photoNames = [];
-    if (photos.length !== photoUrls.length) {
-      for (let i = 0; i < photos.length; i += 1) {
-        if (photos[i] !== undefined) {
-          photoNames.push(photos[i]);
-        }
-      }
-      if (photoNames.length !== photoUrls.length) {
-        const { unUploadedPhotos } = this.state;
-        if (!unUploadedPhotos) {
-          console.log(photoNames, photoUrls);
-          console.log('Did you mean to upload these photos? ', photoNames);
-          this.setState({ unUploadedPhotos: true });
-          return;
-        }
-      }
     }
     this.setState({
       errorMessages,
@@ -257,7 +246,7 @@ class AnswerForm extends React.Component {
                 Photos
                 <div className={style.photoUploadContainer}>
                   {photoInputArray.map((inputs) => inputs)}
-                  <button
+                  {/* <button
                     type="button"
                     className={`${!uploadButtonClicked ? style.uploadPhoto : style.uploadPhotoDisabled} uploadPhoto`}
                     onClick={(this.handleSubmitPhoto.bind(this))}
@@ -265,9 +254,9 @@ class AnswerForm extends React.Component {
                     {!uploadButtonClicked ? 'UPLOAD PHOTO' : 'UPLOADED'}
                     &nbsp;
                     {uploadButtonClicked ? <i className="fa fa-check-circle" aria-hidden="true" /> : ''}
-                  </button>
+                  </button> */}
                   {uploadError ? <div className={`${style.uploadError} uploadError`}>Error uploading photo</div> : ''}
-                  {unUploadedPhotos
+                  {/* {unUploadedPhotos
                     ? (
                       <div className={`${style.uploadError} unUploadedPhotos`}>
                         Did you mean to upload these photos?
@@ -283,7 +272,7 @@ class AnswerForm extends React.Component {
                           return '';
                         })}
                       </div>
-                    ) : ''}
+                    ) : ''} */}
                 </div>
               </label>
               <div className={`${style.buttonContainer}`}>
