@@ -211,9 +211,6 @@ class AnswerForm extends React.Component {
           </button>
         </div>,
       );
-      if (photos[i]) {
-        console.log(photos[i]);
-      }
     }
     return photoInputArray.map((inputs) => inputs);
   }
