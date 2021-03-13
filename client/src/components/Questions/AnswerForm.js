@@ -17,6 +17,7 @@ class AnswerForm extends React.Component {
       uploadError: false,
       errorMessages: [],
       submitError: false,
+      submitErrorMessage: '',
       submitted: false,
       success: false,
       bodyInvalid: false,
@@ -57,30 +58,30 @@ class AnswerForm extends React.Component {
   }
 
   handleSubmitAnswer() {
-    this.validateForm(() => {
-      const { errorMessages } = this.state;
-      if (errorMessages.length === 0) {
-        const { photos } = this.state;
-        let undefinedCount = 0;
-        for (let i = 0; i < photos.length; i += 1) {
-          if (photos[i] === undefined) {
-            undefinedCount += 1;
+    this.setState({ submitted: true }, () => {
+      this.validateForm(() => {
+        const { errorMessages } = this.state;
+        if (errorMessages.length === 0) {
+          const { photos } = this.state;
+          let undefinedCount = 0;
+          for (let i = 0; i < photos.length; i += 1) {
+            if (photos[i] === undefined) {
+              undefinedCount += 1;
+            }
           }
-        }
-        if (photos.length !== 0 && photos.length !== undefinedCount) {
-          this.handleSubmitPhoto(() => {
-            this.setState({ submitError: false, submitted: true }, () => {
+          if (photos.length !== 0 && photos.length !== undefinedCount) {
+            this.handleSubmitPhoto(() => {
               this.postAnswer();
             });
-          });
+          } else {
+            this.setState({ submitError: false }, () => {
+              this.postAnswer();
+            });
+          }
         } else {
-          this.setState({ submitError: false, submitted: true }, () => {
-            this.postAnswer();
-          });
+          this.setState({ submitError: true, submitted: false });
         }
-      } else {
-        this.setState({ submitError: true });
-      }
+      });
     });
   }
 
@@ -114,6 +115,7 @@ class AnswerForm extends React.Component {
         this.setState({
           photoUrls: newPhotoUrls,
           uploadError: false,
+          submitError: false,
         }, callback);
       })
       .catch((error) => {
@@ -148,12 +150,12 @@ class AnswerForm extends React.Component {
       })
       .catch((err) => {
         console.log(err);
-        const submitErrorMessage = ['Error submitting'];
+        const submitErrorMessage = 'Error submitting';
         this.setState({
           success: false,
           submitted: false,
           submitError: true,
-          errorMessages: submitErrorMessage,
+          submitErrorMessage,
         });
       });
   }
