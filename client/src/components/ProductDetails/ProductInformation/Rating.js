@@ -1,9 +1,5 @@
 /* eslint-disable react/forbid-prop-types */
-/* eslint-disable jsx-a11y/control-has-associated-label */
 /* eslint-disable react/no-array-index-key */
-/* eslint-disable array-callback-return */
-/* eslint-disable consistent-return */
-/* eslint-disable react/jsx-one-expression-per-line */
 import React from 'react';
 import PropTypes from 'prop-types';
 import RatingModal from './RatingModal';
@@ -72,10 +68,13 @@ class Rating extends React.Component {
               <span className={`${css.star} ${css.full} fa fa-star`} key={i} />
             );
           }
+          return undefined;
         })}
         &nbsp;
         <div className={css.totalRatings}>
-          ({total}) &nbsp;
+          (
+          {total}
+          ) &nbsp;
           <span
             role="button"
             className={`${css.arrow}`}
@@ -90,6 +89,7 @@ class Rating extends React.Component {
               });
             }}
             tabIndex={0}
+            aria-label="button"
           >
             {!clicked ? (
               <span className="fa fa-angle-up" />
