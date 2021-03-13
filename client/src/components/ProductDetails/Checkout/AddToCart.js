@@ -27,6 +27,13 @@ class AddToCart extends React.Component {
       this.setState({
         added: true,
       });
+      document.getElementById('bagMessage').innerHTML = '';
+    } else {
+      document.getElementById('bagMessage').innerHTML = 'Select a size and quantity';
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+      });
     }
   }
 
@@ -52,6 +59,7 @@ class AddToCart extends React.Component {
         ) : (
           <AddToBagButton />
         )}
+        <span id="bagMessage" className={css.bagMessage} />
       </div>
     );
   }
