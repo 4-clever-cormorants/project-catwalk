@@ -38,6 +38,10 @@
   right: 20px;
 }
 
+.close:hover {
+  cursor: pointer;
+}
+
 .close:focus {
   outline: none;
   box-shadow: none;
