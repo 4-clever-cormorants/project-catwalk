@@ -65,9 +65,26 @@ button:focus {
 }
 
 .defaultView:hover img {
-  transform: scale(1.5);
+  transform: scale(2.4);
   cursor: cell;
 }
+
+/* #defaultImage:hover :before {
+  --size: 0;
+  content: '';
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  width: var(--size);
+  height: var(--size);
+  background: radial-gradient(circle closest-side, rgba(255, 255, 255, 0.33), transparent);
+  transform: translate(-50%, -50%);
+  transition: width 0.2s ease, height 0.2s ease;
+}
+
+#defaultImage:hover:hover:before {
+  --size: 600px;
+} */
 
 .imageGallery .TV {
   grid-column: 1;
