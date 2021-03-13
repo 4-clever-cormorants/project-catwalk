@@ -11,11 +11,6 @@ class DefaultView extends React.Component {
     // const rect = e.target.getBoundingClientRect();
     const x = e.clientX;
     const y = e.clientY;
-    console.log('x', x, 'y', y);
-    console.log(`${((x - defaultImage.offsetLeft) / defaultImage.width) * 100}% ${((y - defaultImage.offsetTop) / defaultImage.height) * 100}%`);
-    defaultImage.style.setProperty('--x', `${x}px`);
-    defaultImage.style.setProperty('--y', `${y}px`);
-    defaultImage.style.setProperty('transform-origin', `${x}px ${y}px`);
     defaultImage.style.setProperty('transform-origin', `${((x - defaultImage.offsetLeft) / defaultImage.width) * 100}% ${((y - defaultImage.offsetTop) / defaultImage.height) * 100}%`);
   }
 

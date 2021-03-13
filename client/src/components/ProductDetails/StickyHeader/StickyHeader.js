@@ -78,7 +78,7 @@ class StickyHeader extends React.Component {
 }
 
 StickyHeader.propTypes = {
-  sku: PropTypes.number,
+  sku: PropTypes.string,
   style: PropTypes.object.isRequired,
   product: PropTypes.object.isRequired,
 };

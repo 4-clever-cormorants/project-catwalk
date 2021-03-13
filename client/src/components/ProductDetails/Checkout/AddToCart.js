@@ -18,7 +18,7 @@ class AddToCart extends React.Component {
     this.state = {
       added: false,
     };
-    this.ass = this.add.bind(this);
+    this.add = this.add.bind(this);
   }
 
   add() {
