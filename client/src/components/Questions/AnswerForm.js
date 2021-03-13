@@ -67,8 +67,11 @@ class AnswerForm extends React.Component {
         const { photos } = this.state;
         let undefinedCount = 0;
         for (let i = 0; i < photos.length; i += 1) {
-          undefinedCount += 1;
+          if (photos[i] === undefined) {
+            undefinedCount += 1;
+          }
         }
+        console.log('submitanswer', photos.length, undefinedCount);
         if (photos.length !== 0 && photos.length !== undefinedCount) {
           this.handleSubmitPhoto(() => {
             this.setState({ submitError: false, submitted: true }, () => {
