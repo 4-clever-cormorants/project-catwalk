@@ -7,58 +7,69 @@ import Up from './Up';
 import Down from './Down';
 import css from './ImageGallery.css';
 
-const ImageGallery = ({
-  styleId,
-  style,
-  id,
-  leftClick,
-  rightClick,
-  renderDefaultView,
-  onScroll,
-  scrollUp,
-  scrollDown,
-  thumbnailScroll,
-}) => (
-  <div id="imageGallery" className={css.imageGallery} styleid={styleId}>
-    {style.photos[id].url !== null ? (
-      <DefaultView
-        id={id}
-        max={style.photos.length}
-        leftClick={leftClick}
-        rightClick={rightClick}
-        url={style.photos[id].url}
-      />
-    ) : ''}
-    <div id="ThumbnailViewContainer" className={css.TV}>
-      {thumbnailScroll === 0 ? (<div />) : (<Up scrollUp={scrollUp} />)}
-      <div className={css.thumbnailView}>
-        <div id="thumbnailView" className={css.thumbnails} onScroll={onScroll}>
-          {style.photos.map((thumbnail, i) => {
-            let selected = 'notSelected';
-            if (parseInt(id, 10) === i) {
-              selected = 'selected';
-            }
-            if (thumbnail.url !== null) {
-              return (
-                <div id="thumbnailPhoto" key={`${i} ${thumbnail.url.toString()}`}>
-                  <Thumbnail
-                    thmbId={i}
-                    url={thumbnail.url}
-                    onClick={renderDefaultView}
-                    selected={selected}
-                  />
-                </div>
-              );
-            }
-            return '';
-          })}
+class ImageGallery extends React.Component {
+  constructor(prop) {
+    super(prop);
+    this.state = {
+    };
+  }
+
+  render() {
+    const {
+      styleId,
+      style,
+      id,
+      leftClick,
+      rightClick,
+      renderDefaultView,
+      onScroll,
+      scrollUp,
+      scrollDown,
+      thumbnailScroll,
+    } = this.props;
+    return (
+      <div id="imageGallery" className={css.imageGallery} styleid={styleId}>
+        {style.photos[id].url !== null ? (
+          <DefaultView
+            id={id}
+            max={style.photos.length}
+            leftClick={leftClick}
+            rightClick={rightClick}
+            url={style.photos[id].url}
+          />
+        ) : ''}
+        <div id="ThumbnailViewContainer" className={css.TV}>
+          {thumbnailScroll === 0 ? (<div />) : (<Up scrollUp={scrollUp} />)}
+          <div className={css.thumbnailView}>
+            <div id="thumbnailView" className={css.thumbnails} onScroll={onScroll}>
+              {style.photos.map((thumbnail, i) => {
+                let selected = 'notSelected';
+                if (parseInt(id, 10) === i) {
+                  selected = 'selected';
+                }
+                if (thumbnail.url !== null) {
+                  return (
+                    <div id="thumbnailPhoto" key={`${i} ${thumbnail.url.toString()}`}>
+                      <Thumbnail
+                        thmbId={i}
+                        url={thumbnail.url}
+                        onClick={renderDefaultView}
+                        selected={selected}
+                      />
+                    </div>
+                  );
+                }
+                return '';
+              })}
+            </div>
+          </div>
+          {(thumbnailScroll === 1 || style.photos.length < 5)
+            ? (<div />) : (<Down scrollDown={scrollDown} />)}
         </div>
       </div>
-      {(thumbnailScroll === 1 || style.photos.length < 5)
-        ? (<div />) : (<Down scrollDown={scrollDown} />)}
-    </div>
-  </div>
-);
+    );
+  }
+}
 
 ImageGallery.propTypes = {
   style: PropTypes.shape({

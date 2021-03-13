@@ -13,7 +13,6 @@ const Thumbnail = ({
     return (
       <div
         className={css.thumbnail}
-        // id={url}
         onClick={onClick}
       >
         <img src={url} alt="thumbnailimage" id={thmbId} className={css.selected} />

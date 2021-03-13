@@ -57,7 +57,7 @@ class DefaultView extends React.Component {
       </div>
     );
   }
-};
+}
 
 DefaultView.propTypes = {
   id: PropTypes.number.isRequired,
