@@ -34,6 +34,19 @@ class RelatedProducts extends React.Component {
     }
   }
 
+  static scrollToInd(list, index) {
+    const scroll = document.querySelector(`.${list}`);
+    const scrollMax = scroll.scrollWidth - scroll.clientWidth;
+    const indicator = (index - 1) * 255;
+    if (indicator < 0) {
+      scroll.scrollLeft = 0;
+    } else if (indicator <= scrollMax) {
+      scroll.scrollLeft = indicator;
+    } else {
+      scroll.scrollLeft = scrollMax;
+    }
+  }
+
   static onMouseMove(e) {
     const addToOutfitCard = document.querySelector('#addToOutfitCard');
     const rect = e.target.getBoundingClientRect();
@@ -289,7 +302,7 @@ class RelatedProducts extends React.Component {
               dropWishHandler={this.dropWishHandler}
               scrollHandler={this.scrollHandler}
             />
-            <ScrollIndicator scrollLength={related.length} listName="relatedList" />
+            <ScrollIndicator scrollLength={related.length} listName="relatedList" scrollToInd={RelatedProducts.scrollToInd} />
           </div>
         ) : (
           <div />
@@ -313,7 +326,7 @@ class RelatedProducts extends React.Component {
                 dropHandler={this.dropHandler}
               />
             </div>
-            <ScrollIndicator scrollLength={outfitList.length + 2} listName="outfitList" />
+            <ScrollIndicator scrollLength={outfitList.length + 2} listName="outfitList" scrollToInd={RelatedProducts.scrollToInd} />
           </div>
         ) : (
           <div />

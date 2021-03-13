@@ -7,31 +7,11 @@ import ImageGallery from './ImageGallery/ImageGallery';
 import ProductInformation from './ProductInformation/ProductInformation';
 import StyleSelector from './StyleSelector/StyleSelector';
 import Checkout from './Checkout/Checkout';
+import StickyHeader from './StickyHeader/StickyHeader';
 
 import css from './ProductDetails.css';
 
 class ProductDetails extends React.Component {
-  static scrollUp() {
-    const scroll = document.getElementById('thumbnailView');
-    const currentScroll = scroll.scrollTop;
-    if (currentScroll - 485 < 0) {
-      scroll.scrollTop = 0;
-    } else {
-      scroll.scrollTop = Math.floor((currentScroll - (485)) / 121.25) * 121.25;
-    }
-  }
-
-  static scrollDown() {
-    const scroll = document.getElementById('thumbnailView');
-    const scrollMax = scroll.scrollHeight - scroll.clientHeight;
-    const currentScroll = scroll.scrollTop;
-    if (currentScroll + (485) >= scrollMax) {
-      scroll.scrollTop = scrollMax;
-    } else {
-      scroll.scrollTop = Math.floor((currentScroll + (485)) / 121.25) * 121.25;
-    }
-  }
-
   static onMouseMove(e) {
     const addToCart = document.querySelector('#addToCart');
     const rect = e.target.getBoundingClientRect();
@@ -59,7 +39,6 @@ class ProductDetails extends React.Component {
     this.addToCart = this.addToCart.bind(this);
     this.leftClick = this.leftClick.bind(this);
     this.rightClick = this.rightClick.bind(this);
-    this.scrollHandler = this.scrollHandler.bind(this);
     this.renderDefaultView = this.renderDefaultView.bind(this);
   }
 
@@ -81,7 +60,6 @@ class ProductDetails extends React.Component {
                   style: response.data.results[0],
                   id: 0,
                   load: true,
-                  thumbnailScroll: 0,
                 },
                 () => { getProductName(product.name); });
               });
@@ -167,25 +145,6 @@ class ProductDetails extends React.Component {
     }
   }
 
-  scrollHandler() {
-    const scroll = document.getElementById('thumbnailView');
-    const scrollMax = scroll.scrollHeight - scroll.clientHeight;
-    const currentScroll = scroll.scrollTop;
-    const { thumbnailScroll } = this.state;
-    let index;
-    if (currentScroll === scrollMax) {
-      index = 1;
-    }
-    if (currentScroll === 0) {
-      index = 0;
-    }
-    if (index !== thumbnailScroll) {
-      this.setState({
-        thumbnailScroll: index,
-      });
-    }
-  }
-
   renderDefaultView(e) {
     const { style } = this.state;
     return (
@@ -198,12 +157,12 @@ class ProductDetails extends React.Component {
 
   render() {
     const {
-      product, rating, styleId, styles, style, id, sku, load, thumbnailScroll,
+      product, rating, styleId, styles, style, id, sku, load,
     } = this.state;
     return (
-      <div id="PD" className={css.PD}>
-        <div className={css.productDetails}>
-          {load ? (
+      <div id={css.PD} className={css.PD}>
+        {load ? (
+          <div className={css.productDetails}>
             <ImageGallery
               styleId={styleId}
               style={style}
@@ -211,28 +170,18 @@ class ProductDetails extends React.Component {
               leftClick={this.leftClick}
               rightClick={this.rightClick}
               renderDefaultView={this.renderDefaultView}
-              onScroll={this.scrollHandler}
-              scrollUp={ProductDetails.scrollUp}
-              scrollDown={ProductDetails.scrollDown}
-              thumbnailScroll={thumbnailScroll}
             />
-          ) : ''}
-          {load ? (
             <ProductInformation
               product={product}
               rating={rating}
               originalPrice={style.original_price}
               salePrice={style.sale_price}
             />
-          ) : ''}
-          {load ? (
             <StyleSelector
               styles={styles.results}
               selected={style.name}
               styleSelector={this.styleSelector}
             />
-          ) : ''}
-          {load ? (
             <Checkout
               productId={product.id}
               skuSelector={this.skuSelector}
@@ -241,8 +190,16 @@ class ProductDetails extends React.Component {
               style={style}
               sku={sku}
             />
-          ) : ''}
-        </div>
+          </div>
+        ) : ''}
+        {load ? (
+          <StickyHeader
+            product={product}
+            style={style}
+            sku={sku}
+            onMouseMove={ProductDetails.onMouseMove}
+          />
+        ) : ''}
       </div>
     );
   }

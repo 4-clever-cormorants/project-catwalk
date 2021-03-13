@@ -1,10 +1,12 @@
-.PD {
-  max-width: 1280;
+#PD {
   height: 800px;
-  margin: 8px;
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .productDetails {
+  margin: 8px;
   display: grid;
   grid-template-columns: 7fr 4fr;
   grid-template-rows: 1fr 1fr 1fr;
