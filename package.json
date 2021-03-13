@@ -26,7 +26,6 @@
     "file-type": "^16.3.0",
     "install": "^0.13.0",
     "jest-environment-enzyme": "^7.1.2",
-    "jquery": "^3.6.0",
     "multiparty": "^4.2.2",
     "npm": "^7.6.1",
     "prop-types": "^15.7.2",
