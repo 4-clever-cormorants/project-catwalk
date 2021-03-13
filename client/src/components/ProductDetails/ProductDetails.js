@@ -13,26 +13,26 @@ import css from './ProductDetails.css';
 
 class ProductDetails extends React.Component {
   // move these states down to the component they are interacting with
-  static scrollUp() {
-    const scroll = document.getElementById('thumbnailView');
-    const currentScroll = scroll.scrollTop;
-    if (currentScroll - 485 < 0) {
-      scroll.scrollTop = 0;
-    } else {
-      scroll.scrollTop = Math.floor((currentScroll - (485)) / 121.25) * 121.25;
-    }
-  }
+  // static scrollUp() {
+  //   const scroll = document.getElementById('thumbnailView');
+  //   const currentScroll = scroll.scrollTop;
+  //   if (currentScroll - 485 < 0) {
+  //     scroll.scrollTop = 0;
+  //   } else {
+  //     scroll.scrollTop = Math.floor((currentScroll - (485)) / 121.25) * 121.25;
+  //   }
+  // }
 
-  static scrollDown() {
-    const scroll = document.getElementById('thumbnailView');
-    const scrollMax = scroll.scrollHeight - scroll.clientHeight;
-    const currentScroll = scroll.scrollTop;
-    if (currentScroll + (485) >= scrollMax) {
-      scroll.scrollTop = scrollMax;
-    } else {
-      scroll.scrollTop = Math.floor((currentScroll + (485)) / 121.25) * 121.25;
-    }
-  }
+  // static scrollDown() {
+  //   const scroll = document.getElementById('thumbnailView');
+  //   const scrollMax = scroll.scrollHeight - scroll.clientHeight;
+  //   const currentScroll = scroll.scrollTop;
+  //   if (currentScroll + (485) >= scrollMax) {
+  //     scroll.scrollTop = scrollMax;
+  //   } else {
+  //     scroll.scrollTop = Math.floor((currentScroll + (485)) / 121.25) * 121.25;
+  //   }
+  // }
 
   static onMouseMove(e) {
     const addToCart = document.querySelector('#addToCart');
@@ -214,8 +214,8 @@ class ProductDetails extends React.Component {
               rightClick={this.rightClick}
               renderDefaultView={this.renderDefaultView}
               onScroll={this.scrollHandler}
-              scrollUp={ProductDetails.scrollUp}
-              scrollDown={ProductDetails.scrollDown}
+              // scrollUp={ProductDetails.scrollUp}
+              // scrollDown={ProductDetails.scrollDown}
               thumbnailScroll={thumbnailScroll}
             />
             <ProductInformation

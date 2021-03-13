@@ -8,6 +8,27 @@ import Down from './Down';
 import css from './ImageGallery.css';
 
 class ImageGallery extends React.Component {
+  static scrollUp() {
+    const scroll = document.getElementById('thumbnailView');
+    const currentScroll = scroll.scrollTop;
+    if (currentScroll - 485 < 0) {
+      scroll.scrollTop = 0;
+    } else {
+      scroll.scrollTop = Math.floor((currentScroll - (485)) / 121.25) * 121.25;
+    }
+  }
+
+  static scrollDown() {
+    const scroll = document.getElementById('thumbnailView');
+    const scrollMax = scroll.scrollHeight - scroll.clientHeight;
+    const currentScroll = scroll.scrollTop;
+    if (currentScroll + (485) >= scrollMax) {
+      scroll.scrollTop = scrollMax;
+    } else {
+      scroll.scrollTop = Math.floor((currentScroll + (485)) / 121.25) * 121.25;
+    }
+  }
+
   constructor(prop) {
     super(prop);
     this.state = {
@@ -23,8 +44,8 @@ class ImageGallery extends React.Component {
       rightClick,
       renderDefaultView,
       onScroll,
-      scrollUp,
-      scrollDown,
+      // scrollUp,
+      // scrollDown,
       thumbnailScroll,
     } = this.props;
     return (
@@ -39,7 +60,7 @@ class ImageGallery extends React.Component {
           />
         ) : ''}
         <div id="ThumbnailViewContainer" className={css.TV}>
-          {thumbnailScroll === 0 ? (<div />) : (<Up scrollUp={scrollUp} />)}
+          {thumbnailScroll === 0 ? (<div />) : (<Up scrollUp={ImageGallery.scrollUp} />)}
           <div className={css.thumbnailView}>
             <div id="thumbnailView" className={css.thumbnails} onScroll={onScroll}>
               {style.photos.map((thumbnail, i) => {
@@ -64,7 +85,7 @@ class ImageGallery extends React.Component {
             </div>
           </div>
           {(thumbnailScroll === 1 || style.photos.length < 5)
-            ? (<div />) : (<Down scrollDown={scrollDown} />)}
+            ? (<div />) : (<Down scrollDown={ImageGallery.scrollDown} />)}
         </div>
       </div>
     );
@@ -87,8 +108,8 @@ ImageGallery.propTypes = {
   rightClick: PropTypes.func.isRequired,
   renderDefaultView: PropTypes.func.isRequired,
   onScroll: PropTypes.func.isRequired,
-  scrollUp: PropTypes.func.isRequired,
-  scrollDown: PropTypes.func.isRequired,
+  // scrollUp: PropTypes.func.isRequired,
+  // scrollDown: PropTypes.func.isRequired,
   thumbnailScroll: PropTypes.number,
 };
 
