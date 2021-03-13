@@ -305,7 +305,9 @@ class RelatedProducts extends React.Component {
             <ScrollIndicator scrollLength={related.length} listName="relatedList" scrollToInd={RelatedProducts.scrollToInd} />
           </div>
         ) : (
-          <div />
+          <div>
+            <i className="fa fa-spinner fa-pulse fa-2x" />
+          </div>
         )}
         {(relatedListScroll === 1 || related.length < 5) ? (<div className="sideButtons" />) : (<Next list="relatedList" scrollNext={RelatedProducts.scrollNext} />)}
         {outfitListScroll === 0 ? (<div className="sideButtons" />) : (<Prev list="outfitList" scrollPrev={RelatedProducts.scrollPrev} />)}
