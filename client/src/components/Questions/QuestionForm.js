@@ -19,6 +19,16 @@ class QuestionForm extends React.Component {
       nameInvalid: false,
       emailInvalid: false,
     };
+    this.escFunction = this.escFunction.bind(this);
+    this.resetForm = this.resetForm.bind(this);
+  }
+
+  componentDidMount() {
+    document.addEventListener('keydown', this.escFunction, false);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('keydown', this.escFunction, false);
   }
 
   handleQuestionChange(e) {
@@ -43,6 +53,15 @@ class QuestionForm extends React.Component {
         this.setState({ submitError: true });
       }
     });
+  }
+
+  escFunction(event) {
+    if (event.keyCode === 27) {
+      const { success } = this.state;
+      if (success) {
+        this.resetForm();
+      }
+    }
   }
 
   isValidEmail() {
@@ -104,6 +123,23 @@ class QuestionForm extends React.Component {
     }, callback);
   }
 
+  resetForm() {
+    setTimeout(() => {
+      this.setState({
+        questionBody: '',
+        nickname: '',
+        email: '',
+        errorMessages: [],
+        submitError: false,
+        submitted: false,
+        success: false,
+        bodyInvalid: false,
+        nameInvalid: false,
+        emailInvalid: false,
+      });
+    }, 400);
+  }
+
   render() {
     const {
       exitQuestionForm,
@@ -111,6 +147,9 @@ class QuestionForm extends React.Component {
       addQuestionClicked,
     } = this.props;
     const {
+      questionBody,
+      nickname,
+      email,
       errorMessages,
       submitError,
       submitted,
@@ -126,42 +165,62 @@ class QuestionForm extends React.Component {
     let submitButtonClass = style.submitButton;
     let submitButtonText = 'SUBMIT';
     let submitIcon = '';
-    if (submitted && !success && !submitError) {
-      submitIcon = <i className="fa fa-spinner fa-pulse" />;
-      submitButtonText = 'SUBMITTING';
-      submitButtonClass = style.submitButtonDisabled;
-    } else if (submitted && success) {
+    if (submitted && success) {
       submitIcon = <i className="fa fa-check-circle" aria-hidden="true" />;
       submitButtonText = 'SUBMITTED';
+      submitButtonClass = style.submitButtonDisabled;
+    } else if (submitted) {
+      submitIcon = <i className="fa fa-spinner fa-pulse" />;
+      submitButtonText = 'SUBMITTING';
       submitButtonClass = style.submitButtonDisabled;
     }
     return (
       <div className={`${style.modal} ${addQuestionClicked ? style.modalShow : ''}`}>
-        <div className={style.blocker} onClick={exitQuestionForm} />
+        <div
+          className={style.blocker}
+          onClick={() => {
+            if (success) {
+              this.resetForm();
+            }
+            exitQuestionForm();
+          }}
+        />
         <div className={`${style.form} questionForm`}>
           <div className={`${style.formHeader} questionFormHeader`}>
             <div className={`${style.formTitle} questionFormTitle`}>
               <h3>Ask Your Question</h3>
               <h4 className={`${style.formSubTitle} answerFormSubTitle`}>{`About ${productName}`}</h4>
             </div>
-            <button type="button" onClick={exitQuestionForm} id="exitButton" className={`${style.exitButton}`}><span>X</span></button>
+            <button
+              type="button"
+              onClick={() => {
+                if (success) {
+                  this.resetForm();
+                }
+                exitQuestionForm();
+              }}
+              id="exitButton"
+              className={`${style.exitButton}`}
+            >
+              <span>X</span>
+            </button>
           </div>
           <div className={`${style.formContent} questionFormContent`}>
             <form>
               <label htmlFor="question">
                 Question *
-                <textarea id="questionField" className={bodyClass} name="questionField" maxLength="1000" onChange={(e) => this.handleQuestionChange(e)} />
+                <textarea id="questionField" value={questionBody} className={bodyClass} name="questionField" maxLength="1000" onChange={(e) => this.handleQuestionChange(e)} />
               </label>
               <label htmlFor="nickname">
                 Nickname *
-                <input type="text" id="questionNickname" className={nameClass} name="questionNickname" placeholder="Example: jackson11!" maxLength="60" onChange={(e) => this.handleNicknameChange(e)} />
+                <input type="text" id="questionNickname" value={nickname} className={nameClass} name="questionNickname" placeholder="Example: jackson11!" maxLength="60" onChange={(e) => this.handleNicknameChange(e)} />
                 <p className={style.fieldDescription}>
                   For privacy reasons, do not use your full name or email address
                 </p>
               </label>
               <label htmlFor="email">
                 Email *
-                <input type="text" id="questionEmail" className={emailClass} name="questionEmail" placeholder="Why did you like the product or not?" maxLength="60" onChange={(e) => this.handleEmailChange(e)} />
+                <input type="text" id="questionEmail" value={email} className={emailClass} name="questionEmail" placeholder="Why did you like the product or not?" maxLength="60" onChange={(e) => this.handleEmailChange(e)} />
                 <p className={style.fieldDescription}>
                   For authentication reasons, you will not be emailed
                 </p>
