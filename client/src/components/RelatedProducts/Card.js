@@ -14,7 +14,7 @@ const Card = ({
   dropWishHandler,
 }) => (
   <div
-    className={style.card}
+    className={`${style.card} ${style.relatedcards}`}
     draggable="true"
     id={`card${item.id}`}
     onClick={compareHandler.bind(this, item)}
