@@ -17,7 +17,7 @@
 
 *Installation*
 1. copy the config.example.js, rename to config.js, add you github token
-2. add a .env file with: 
+2. fill your aws s3 bucket info into the example.env file
 4. Run the following commands
   - npm install
   - npm run react-pro
@@ -25,9 +25,9 @@
 
 *App Stats*
 Best Practices - 100
+Performance - 93
 Accessibility - 83
 Test Coverage - 63%
-Performance - 
 
 *Screenshots*
 
@@ -40,9 +40,8 @@ Questions & Answers
 
 *Technologies Used*
 
-Package Manager - Npm
+Package Manager - npm
 Version - ES6
-Linting - ESlint
 
 Front-end
 1. Asset compilation + loading - Webpack + Nodemon + Axios
@@ -58,7 +57,7 @@ Testing
  - circleci
 
 Deployment 
- - AWS
+ - AWS EC2
 
 Performance and Analytics 
 - Chrome devtools Lighthouse
