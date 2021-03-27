@@ -1,7 +1,7 @@
 # project-catwalk
 
 *Project Description*
-  Our frontend capstone project for Hack Reactor consists of an e-commerce site with Product Overview, Related Products, and Question & Answers modules. Stylistically, we took inspiration from Nordstrom, Adidas, and a website featured on dribbble.com. The project took us approximately three weeks to complete. During the first week, we planned out the technologies, structure, and git workflow of our application. During the second week, we built out the functionality using React and nodejs. Finally, we added styles using CSS to make our page shine.
+  This product page includes Product Overview, Related Products, and Question & Answers modules. Stylistically, we took inspiration from Nordstrom, Adidas, and a website featured on dribbble.com. The project took approximately three weeks to complete. During the first week, we planned out the technologies, structure, and git workflow of our application. During the second week, we built out the functionality using React and nodejs. Finally, we added styles using CSS to make our page shine.
   
   Product Overview - Sam 
     - description
