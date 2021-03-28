@@ -19,15 +19,17 @@
 1. copy the config.example.js, rename to config.js, add you github token
 2. fill your aws s3 bucket info into the example.env file
 4. Run the following commands
-  - npm install
-  - npm run react-pro
-  - npm run server-dev
+   1. npm install
+   2. npm run react-pro
+   3. npm run server-dev
 
 *App Stats*
+
 Best Practices - 100
 Performance - 93
 Accessibility - 83
 Test Coverage - 63%
+
 
 *Screenshots*
 

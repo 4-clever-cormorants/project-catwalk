@@ -24,7 +24,7 @@
 
 .imageModal {
   position:fixed;
-  top: calc(50% + 36px);
+  top:50%;
   left:50%;
   width: auto;
   height: fit-content;
@@ -42,7 +42,7 @@
 
 .imageContent img {
   width: auto;
-  max-height: calc(90vh - 36px);
+  max-height: 90vh;
   max-width: 90vw;
 }
 
