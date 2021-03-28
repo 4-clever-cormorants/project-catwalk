@@ -74,7 +74,7 @@ class ImageGallery extends React.Component {
             max={style.photos.length}
             leftClick={leftClick}
             rightClick={rightClick}
-            url={style.photos[id].url}
+            url={style.photos[id].thumbnail_url}
           />
         ) : ''}
         <div id="ThumbnailViewContainer" className={css.TV}>

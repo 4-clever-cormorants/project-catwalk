@@ -32,6 +32,7 @@ productRoutes.get('/styles', (req, res) => {
           urlOrigin.search = '';
           urlOrigin.query.w = '600';
           const urlFit = urlModule.format(urlOrigin);
+          photo.thumbnail_url = photo.url;
           photo.url = urlFit;
         });
       });
