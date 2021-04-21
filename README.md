@@ -1,7 +1,7 @@
 # project-catwalk
 
 *Project Description*
-  Our frontend capstone project for Hack Reactor consists of an e-commerce site with Product Overview, Related Products, and Question & Answers modules. Stylistically, we took inspiration from Nordstrom, Adidas, and a webstie featured on dribbble.com. The project took us approximately three weeks to complete. During the first week, we planned out the technologies, structure, and git workflow of our application. During the second week, we built out the functionality using React and nodejs. Finally, we added styles using CSS to make our page shine.
+  This product page includes Product Overview, Related Products, and Question & Answers modules. Stylistically, we took inspiration from Nordstrom, Adidas, and a website featured on dribbble.com. The project took approximately three weeks to complete. During the first week, we planned out the technologies, structure, and git workflow of our application. During the second week, we built out the functionality using React and nodejs. Finally, we added styles using CSS to make our page shine.
   
   Product Overview - Sam 
     - description
@@ -17,17 +17,19 @@
 
 *Installation*
 1. copy the config.example.js, rename to config.js, add you github token
-2. add a .env file with: 
+2. fill your aws s3 bucket info into the example.env file
 4. Run the following commands
    1. npm install
    2. npm run react-pro
    3. npm run server-dev
 
 *App Stats*
-1. Best Practices - 94
-2. Accessibility - 93
-3. Test Coverage - 63%
-4. Performance - 77
+
+Best Practices - 100
+Performance - 93
+Accessibility - 83
+Test Coverage - 63%
+
 
 *Screenshots*
 
@@ -40,9 +42,8 @@ Questions & Answers
 
 *Technologies Used*
 
-Package Manager - Npm
+Package Manager - npm
 Version - ES6
-Linting - ESlint
 
 Front-end
 1. Asset compilation + loading - Webpack + Nodemon + Axios
@@ -58,7 +59,7 @@ Testing
  - circleci
 
 Deployment 
- - AWS
+ - AWS EC2
 
 Performance and Analytics 
 - Chrome devtools Lighthouse
