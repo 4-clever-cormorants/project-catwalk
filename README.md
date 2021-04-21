@@ -38,7 +38,10 @@ Product Overview
 Related Products
 
 Questions & Answers
-
+  <img src="/readme_pictures/fec%20qa1.gif?raw=true" alt="QA photo viewer">
+  <img src="/readme_pictures/fec%20qa2.gif?raw=true" alt="QA photo upload">
+  <img src="/readme_pictures/fec%20qa3.gif?raw=true" alt="QA answer form submit">
+  <img src="/readme_pictures/fec%20qa4.gif?raw=true" alt="QA load more answers">
 
 *Technologies Used*
 
